@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Libre Franklin', sans-serif;
+
+}
+  
+body{
+  background: #F0F0F0
+}
+
+a{
+  color: unset;
+  text-decoration: none;
+}

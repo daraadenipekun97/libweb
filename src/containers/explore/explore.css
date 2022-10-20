@@ -1,0 +1,72 @@
+.lib-explore{
+    background-color:   #e3daf0;
+    padding: 4rem 6rem;
+
+
+}
+
+.lib-explore-top-items{
+    /* border: solid; */
+    margin-bottom: 2rem;
+}
+
+.lib-explore-top-items h1{
+    font-style: normal;
+        font-weight: 800;
+        font-size: 34px;
+        line-height: 45px;
+        color:#5e458b ;
+        margin-bottom: 1rem;
+        
+}
+.lib-explore-top-items p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    color: #78787d;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:440px) {
+   
+    
+.lib-explore-top-items{
+    text-align: center;
+}
+
+.lib-explore{
+    padding: 4rem 2rem;
+}
+
+
+.lib-explore-top-items h1{
+    margin-bottom: 1rem;
+}
+     
+.lib-explore-top-items p{
+    line-height: 20px;
+}
+
+ }
