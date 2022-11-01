@@ -1,37 +1,35 @@
-.btn-wrapper-purple{
-    padding: 0.5rem 1rem; 
-    font-weight: 500;
-    border-radius: 5px;
-    font-style: normal;
-    font-size: 18px;
-    line-height: 25px;
-    border: 0;
-    outline: none;
-    background-color: #5e458b;
-    color: white;
+.btn-wrapper-purple {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 25px;
+  border: 0;
+  outline: none;
+  background-color: #5e458b;
+  color: white;
 }
 
-.btn-wrapper-purple:hover{
-    cursor: pointer;
-    background-color: #4c3575;
+.btn-wrapper-purple:hover {
+  cursor: pointer;
+  background-color: #4c3575;
 }
 
-
-.btn-wrapper-white{
-
-    padding: 0.5rem 1rem; 
-    font-weight: 500;
-    border-radius: 5px;
-    font-style: normal;
-    font-size: 18px;
-    line-height: 25px;
-    border: 0;
-    outline: none;
-    background-color: white;
-    color: #5e458b;
+.btn-wrapper-white {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 25px;
+  border: 0;
+  outline: none;
+  background-color: white;
+  color: #5e458b;
 }
 
-.btn-wrapper-white:hover{
-    cursor: pointer;
-    background-color:whitesmoke;
+.btn-wrapper-white:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
 }

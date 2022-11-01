@@ -1,132 +1,78 @@
-.lib-download-app-container{
-    /* border: solid; */
-    padding: 4rem 6rem;
-    background-image: url(../../assets/images/HeroSectionBlur.png);
-    background-size: cover;
-    background-color: white;
-    
-
+.lib-download-app-container {
+  /* border: solid; */
+  padding: 4rem 6rem;
+  background-image: url(../../assets/images/HeroSectionBlur.png);
+  background-size: cover;
+  background-color: white;
 }
 
-.lib-download-app-wrapper{
+.lib-download-app-wrapper {
+  background-color: #e3daf0;
+  padding: 4rem 4rem;
+  border-radius: 10px;
+}
 
-    background-color:   #e3daf0;
+.lib-download-app-top-text {
+  font-size: 16px;
+  color: #78787d;
+}
+
+.lib-download-app-middle-text {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 45px;
+  color: #5e458b;
+  margin: 0.5rem 0rem;
+}
+
+.lib-download-app-bottom-text {
+  font-size: 16px;
+  color: #78787d;
+  margin-bottom: 1rem;
+}
+
+.lib-download-app-two {
+  display: flex;
+  justify-content: space-between;
+  width: 21rem;
+}
+
+@media screen and (max-width: 633px) {
+  .lib-download-app-container {
     padding: 4rem 4rem;
-    border-radius: 10px;
-
-
-
+  }
 }
 
-.lib-download-app-top-text{
-    font-size: 16px;
-    color: #78787d;
-
-}
-
-.lib-download-app-middle-text{
-
-    font-style: normal;
-    font-weight: 800;
-    font-size: 34px;
-    line-height: 45px;
-    color:#5e458b ;
-    margin: 0.5rem 0rem;
-
-}
-
-.lib-download-app-bottom-text{
-    font-size: 16px;
-    color: #78787d;
-    margin-bottom: 1rem;
-}
-
-.lib-download-app-two{
+@media screen and (max-width: 580px) {
+  .lib-download-app-two {
     display: flex;
     justify-content: space-between;
-    width: 21rem;
+    flex-direction: column;
+    width: fit-content;
+  }
+
+  .lib-download-app-two a {
+    margin-bottom: 1rem;
+    width: fit-content;
+  }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media screen and (max-width:633px) {
-
-
-    .lib-download-app-container{
-        padding: 4rem 4rem;
-
-    }
-
+@media screen and (max-width: 580px) {
+  .lib-download-app-container {
+    padding: 4rem 2rem;
+  }
 }
 
-@media screen and (max-width:580px) {
+@media screen and (max-width: 374px) {
+  .lib-download-app-wrapper {
+    padding: 4rem 2rem;
+  }
 
-
-    .lib-download-app-two{
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        width: fit-content;
-    }
-
-    .lib-download-app-two a{
-        margin-bottom: 1rem;
-         width: fit-content;
-    }
-    
-    
-
-}
-
-
-@media screen and (max-width:580px) {
-
-    .lib-download-app-container{
-        padding: 4rem 2rem;
-    }
-
-}
-
-
-@media screen and (max-width:374px) {
-
-    .lib-download-app-wrapper{
-
-        padding: 4rem 2rem;
-    
-    
-    
-    }
-
-    .lib-download-app-middle-text{
-
-        font-style: normal;
-        font-weight: 800;
-        font-size: 30px;
-        line-height: 40px;
-       
-    
-    }
-
+  .lib-download-app-middle-text {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 40px;
+  }
 }

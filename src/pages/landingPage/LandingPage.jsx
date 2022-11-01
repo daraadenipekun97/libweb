@@ -1,19 +1,19 @@
-import React from 'react'
-import "./landingPage.css"
+import React from "react";
+import "./landingPage.css";
 
-import { Navbar, Header, Footer, Explore, DownloadApp, Community } from '../../containers'
+import { Navbar, Header, Footer, Explore, DownloadApp, Community } from "../../containers";
 
 const LandingPage = () => {
   return (
     <div className="app">
-          <Navbar />
-          <Header />
-          <Explore />
-          <DownloadApp />
-          <Community/>
-          <Footer />
+      <Navbar />
+      <Header />
+      <Explore />
+      <DownloadApp />
+      <Community />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;
