@@ -91,16 +91,25 @@
 .login-validation-error-text {
   color: red;
   transition: 0.5s;
-  /* display: none; */
   text-align: left;
   font-size: 10px;
   margin-bottom: 0.5rem;
   width: 150px;
+  display: none;
 }
 
 .lib-login-input-group input:focus {
   border: 1px solid #5e458b;
 }
+
+.lib-login-input-group input:invalid[focused="true"] ~ .login-validation-error-text{
+  display: block;
+}
+
+.lib-login-input-group input:invalid[focused="true"]{
+  border: 1px solid red;
+}
+
 
 .lib-login-input-group label {
   font-size: 15px;
@@ -174,6 +183,7 @@ hr {
     margin-bottom: 0.5rem;
   }
 }
+
 
 @media screen and (max-width: 769px) {
   .login-area {

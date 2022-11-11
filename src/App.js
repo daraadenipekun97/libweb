@@ -1,7 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import ReduxToastr from "react-redux-toastr";
+import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
+import store from "./Store";
+import { Provider } from "react-redux";
+
 
 import {
   LandingPage,
@@ -9,11 +12,17 @@ import {
   RegisterPage,
   ForgotPasswordPage,
   ResetPasswordPage,
-} from "./pages";
+  VerifyEmailPage,
+  HomePage,
+  DashboardPage,
+  NotfoundPage
+} from "./pages"; 
 
 function App() {
   return (
     <>
+    <Provider store={store}>
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -21,22 +30,27 @@ function App() {
           <Route path="register" element={<RegisterPage />} />
           <Route path="forgot" element={<ForgotPasswordPage />} />
           <Route path="reset" element={<ResetPasswordPage />} />
+          <Route path="verify" element={<VerifyEmailPage />} />
+          <Route path="home" element={<HomePage/>}>
+            <Route path="dashboard" element={<DashboardPage/>}/>
+          </Route>
+
+
+          <Route path="*" element={<NotfoundPage />} />
         </Routes>
       </BrowserRouter>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
+      <ReduxToastr
+        timeOut={4000}
         newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
+        preventDuplicates
+        position="top-right"
+        getState={(state) => state.toastr}
+        transitionIn="bounceIn"
+        transitionOut="bounceOut"
+        progressBar
+        closeOnToastrClick
       />
-      {/* Same as */}
-      <ToastContainer />
+     </Provider>
     </>
   );
 }
