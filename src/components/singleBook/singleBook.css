@@ -80,6 +80,18 @@ button:active {
   outline: none;
 }
 
+.see-all-text{
+  color: #78787d;
+  font-weight: 600;
+}
+
+.see-all-text:hover{
+  text-decoration: underline;
+}
+
+
+
+
 .lib-book-gallery-wrapper {
   display: grid;
   place-items: center;
@@ -92,10 +104,11 @@ button:active {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  
 }
 
 .lib-gallery-box {
-  padding: 0 20px 20px;
+  padding: 0px 20px 20px;
   width: 200.5px;
   height: 350px;
   transition: 1s;
@@ -106,7 +119,7 @@ button:active {
   /* box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 5px; */
   /* border: 1px solid rgba(156, 30, 30, 0.1); */
   border-radius: 20px;
-  scale: 1.2;
+  scale: 1.05;
 
   cursor: pointer;
 }
@@ -120,6 +133,9 @@ button:active {
   color: #78787d;
   font-size: 15px;
   margin: 0.5rem 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .lib-gallery-box-book-name {
@@ -139,6 +155,8 @@ button:active {
 
   .lib-gallery-box {
     padding: 0 10px 10px;
+    /* border: solid; */
+    margin: 10px 0px;
   }
 }
 

@@ -9,7 +9,7 @@ const Community = () => {
       <div className="lib-community-left-wrapper">
         <h1>Join our community of readers</h1>
         <p>
-          Rub mind with a community of readers just like yourself and get more insights into
+          Rub mind with our facebook community of readers just like yourself and get more insights into
           trending books
         </p>
         <a
@@ -18,7 +18,7 @@ const Community = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Join Facebook Community
+          Get Started
         </a>
       </div>
 

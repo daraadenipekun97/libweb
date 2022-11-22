@@ -21,7 +21,7 @@ const DownloadApp = () => {
             >
               <div className="lib-store-wrapper">
                 <svg width="1.5rem" height="1.5625rem" viewBox="0 0 24 25" fill="none">
-                  <g clip-path="url(#apple-logo-clip-path)" fill="white">
+                  <g clipPath="url(#apple-logo-clip-path)" fill="white">
                     <path d="M16.499.5c-1.28.088-2.775.907-3.646 1.974-.796.967-1.45 2.404-1.194 3.801 1.397.043 2.842-.795 3.679-1.88.783-1.009 1.376-2.437 1.161-3.895z"></path>
                     <path d="M21.555 8.552c-1.228-1.54-2.955-2.435-4.585-2.435-2.153 0-3.063 1.03-4.559 1.03-1.542 0-2.713-1.027-4.575-1.027-1.828 0-3.775 1.118-5.01 3.029-1.735 2.69-1.438 7.75 1.374 12.06 1.007 1.542 2.35 3.276 4.109 3.29 1.564.016 2.005-1.003 4.125-1.013 2.12-.012 2.521 1.027 4.083 1.01 1.76-.013 3.177-1.934 4.183-3.476.722-1.106.99-1.662 1.55-2.91-4.07-1.55-4.722-7.337-.695-9.558z"></path>
                   </g>
@@ -50,7 +50,7 @@ const DownloadApp = () => {
             >
               <div className="lib-store-wrapper">
                 <svg width="1.5rem" height="1.5625rem" viewBox="0 0 24 25" fill="none">
-                  <g clip-path="url(#play-store-logo-clip-path)">
+                  <g clipPath="url(#play-store-logo-clip-path)">
                     <path
                       d="M4.66955 0.877687C4.1228 0.52439 3.46608 0.417609 2.8501 0.563015L13.675 11.388L17.1834 7.87959L4.66955 0.877687Z"
                       fill="currentColor"

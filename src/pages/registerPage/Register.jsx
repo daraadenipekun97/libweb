@@ -5,21 +5,46 @@ import Select from "react-select";
 import "./register.css";
 import { registerUser, fetchAllCountries, restoreRegisterInitial } from "../../Actions";
 import Spinner from "../../components/spinner/Spinner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 
 
 
-
-const Register = () => {
+const Register = ({user}) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const location = useLocation();
 
   const { countries } = useSelector((state) =>state.getAll);
-  const { registerSuccess, registerFailure } = useSelector((state) =>state.auth);
+  const { registerSuccess, registerFailure } = useSelector((state) =>state.auth);  
+
+  const hanldeSwal = () =>{
+    Swal.fire({
+      title: 'Please Logout',
+      icon: 'warning',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false,
+      confirmButtonText: 'Ok',
+      denyButtonText: `Don't save`,
+      confirmButtonColor: '#5e458b',
+      width: 400,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/home/dashboard")
+       
+
+
+      } 
+      // else if (result.isDenied) {
+      //   Swal.fire('Changes are not saved', '', 'info')
+      // }
+    })
+  }
+
+
 
 
 
@@ -47,6 +72,10 @@ const Register = () => {
 
   useEffect(() => {  
     dispatch(fetchAllCountries())  
+    if(user && location.pathname === "/register")  {
+      hanldeSwal()
+
+    }
   }, [dispatch])
   
 
@@ -296,8 +325,16 @@ const countryHandler = e => {
 
 const [showPasswordDesc, setShowPasswordDesc] = useState(false)
  
+const [passwordShow, setPasswordShow] = useState(false)
 
 
+const handlePasswordShow = () => {
+  setPasswordShow(true)
+}
+
+const handlePasswordHide = () =>{
+  setPasswordShow(false)
+}
 
 
 
@@ -439,7 +476,7 @@ const [showPasswordDesc, setShowPasswordDesc] = useState(false)
     <>
       <Navbar />
       <div className="lib-register-container">
-        <div class="lib-register-wrapper">
+        <div className="lib-register-wrapper">
           <h1>Create your account</h1>
           <div className="lib-register-form">
             <div className="lib-register-input-group">
@@ -494,6 +531,7 @@ const [showPasswordDesc, setShowPasswordDesc] = useState(false)
                 <input 
                   name="phone"
                   type="number" 
+                  id="phone-num"
                   placeholder="Phone Number*" 
                   value = {formValues.phone}
                   required
@@ -540,9 +578,9 @@ const [showPasswordDesc, setShowPasswordDesc] = useState(false)
               <div className="lib-register-input-group-wrapper-left">
                 <Select 
                     options={theCountry} 
-                    value = {countryId}
+                    // value = {countryId.label}
                     styles={customStyles} 
-                    placeholder="Country*"
+                    placeholder={'Country'}                   
                     onChange = {(e) => countryHandler(e)}
 
 
@@ -558,7 +596,7 @@ const [showPasswordDesc, setShowPasswordDesc] = useState(false)
                 <input 
                     autoComplete="off"
                     name="password"
-                    type="password" 
+                    type={passwordShow ? "text" : "password"} 
                     placeholder="Password*" 
                     value = {formValues.password}
                     required
@@ -570,6 +608,10 @@ const [showPasswordDesc, setShowPasswordDesc] = useState(false)
 
                 
                 />
+                {
+                  passwordShow ?<i className="fa fa-eye-slash toggle-pass" aria-hidden="true" onClick={() => handlePasswordHide()}></i> :<i className="fa fa-eye toggle-pass" aria-hidden="true" onClick={() =>handlePasswordShow()}></i>
+
+                }
                 {
                   showPasswordDesc ? <p className="green-warning">Password should be 6-15 characters and include at least 1 lower case letter, 1 uppercase letter, 1 number and 1 special character!</p> :<p className="register-validation-error-text">Password is required</p>
 
@@ -617,8 +659,8 @@ const [showPasswordDesc, setShowPasswordDesc] = useState(false)
           </div>
         </div>
 
-        <div class="area">
-          <ul class="circles">
+        <div className="area">
+          <ul className="circles">
             <li></li>
             <li></li>
             <li></li>

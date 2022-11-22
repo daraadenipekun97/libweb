@@ -31,3 +31,15 @@ export const RESTORE_RESET_PASSWORD_INITIAL = "restore_reset_password_initial";
 
 export const FETCH_ALL_COUNTRIES = "get_all_countries";
 export const FETCH_ALL_COUNTRIES_SUCCESS = "get_all_countries_success";
+
+
+export const GOOGLE_LOGIN = "google_login";
+export const GOOGLE_LOGIN_SUCCESS = "google_login_success";
+export const RESTORE_GOOGLE_LOGIN_INITIAL = "restore_google_login_initial";
+
+
+export const FETCH_ALL_TRENDING_BOOKS = "fetch_all_trending_books";
+export const FETCH_ALL_TRENDING_BOOKS_SUCCESS = "fetch_all_trending_books_success";
+
+export const FETCH_ALL_TRENDING_BOOKS_UNAUTH = "fetch_all_trending_books_unauth";
+export const FETCH_ALL_TRENDING_BOOKS_UNAUTH_SUCCESS = "fetch_all_trending_books_unauth_success";

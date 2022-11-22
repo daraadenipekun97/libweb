@@ -120,7 +120,8 @@ export const postVerifyUser = async (body) => {
   
         if (response.status === 200 && response.data.status === true) {
             localStorage.clear();
-            localStorage.setItem("userLoginData", JSON.stringify(response.data));            toastr.success('Login Successful', "success");  
+            localStorage.setItem("userLoginData", JSON.stringify(response.data));            
+            toastr.success('Login Successful', "success");  
           return response.data;
         }
         else{
@@ -201,6 +202,42 @@ export const postVerifyUser = async (body) => {
         }
     } catch (ex) {
       toastr.error("Reset Password", "Please try again");
+    //   return ex.response.data.message
+    }
+  
+  }
+    
+  };
+
+
+
+  export const postGoogleLogin = async (body) => {
+    if (navigator.onLine === false) {
+      toastr.error('No Internet Connection', 'Please try again');
+  } else {
+    try {
+      const response = await api.post(`${baseController}goggle/login`, body);
+      if (typeof response !== "undefined"){
+  
+        if (response.status === 200 && response.data.status === true) {
+           
+            localStorage.clear();
+            localStorage.setItem("userLoginData", JSON.stringify(response.data));
+          toastr.success('Login Successful', "success");  
+          return response.data.status;
+        }
+        else{
+          toastr.error("Couldnt Login you in", "Please try again");
+          return response.data.status;
+
+        }
+  
+      }
+        else {
+          toastr.error("Login Failed", "An Error occured");
+        }
+    } catch (ex) {
+      toastr.error("Login Failed", "Please try again");
     //   return ex.response.data.message
     }
   

@@ -4,15 +4,15 @@ import { Navbar } from "../../containers";
 import "./resetPassword.css";
 
 import Spinner from "../../components/spinner/Spinner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { resetPassword, restoreResetPasswordInitial } from "../../Actions";
 import Swal from 'sweetalert2'
 
 
-const ResetPassword = () => {
+const ResetPassword = ({user}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const location = useLocation();
   const { resetPasswordSuccess, resetPasswordFailure } = useSelector((state) =>state.auth);
 
   const [valid, setValid] = useState(false);
@@ -26,6 +26,38 @@ const ResetPassword = () => {
     
   })
 
+  const hanldeSwal = () =>{
+    Swal.fire({
+      title: 'Please Logout',
+      icon: 'warning',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false,
+      confirmButtonText: 'Ok',
+      denyButtonText: `Don't save`,
+      confirmButtonColor: '#5e458b',
+      width: 400,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/home/dashboard")
+       
+
+
+      } 
+      // else if (result.isDenied) {
+      //   Swal.fire('Changes are not saved', '', 'info')
+      // }
+    })
+  }
+
+  useEffect(() => {
+    if(user && location.pathname === "/reset")  {
+      hanldeSwal()
+
+    }
+  })
+
+
   const handleFocus = (e) => {
     setShowPasswordDesc(false)
     if (e.target.name === 'token') {
@@ -37,6 +69,17 @@ const ResetPassword = () => {
     else if(e.target.name === 'confirmPassword'){
       setFocused({...focused, confirmPassword:true})
     }
+}
+
+const [passwordShow, setPasswordShow] = useState(false)
+
+
+const handlePasswordShow = () => {
+  setPasswordShow(true)
+}
+
+const handlePasswordHide = () =>{
+  setPasswordShow(false)
 }
 
 const initialFormState = {
@@ -179,7 +222,7 @@ const handleSwal = () =>{
     showDenyButton: false,
     showCancelButton: false,
     allowOutsideClick: false,
-    confirmButtonText: 'Proceed to login',
+    confirmButtonText: 'Proceed to Login',
     denyButtonText: `Don't save`,
     confirmButtonColor: '#5e458b',
     width: 400,
@@ -231,21 +274,21 @@ useEffect(() => {
     <>
       <Navbar />
 
-      <div className="lib-login-container">
-        <div class="lib-login-wrapper">
+      <div className="lib-reset-container">
+        <div className="lib-reset-wrapper">
           <h1>Reset Password</h1>
-          <p className="info-text">
+          <p className="reset-info-text">
                 Enter the code sent to your email address
               </p>
           <br />
-          <div className="lib-login-form" style={{ textAlign: "center" }}>
+          <div className="lib-reset-form" style={{ textAlign: "center" }}>
 
-          <div className="lib-login-input-group">
+          <div className="lib-reset-input-group">
               <input 
                 name="token"
                 type="text" 
                 placeholder="Token*" 
-                className="lib-login-email" 
+                className="lib-reset-email" 
                 value = {formValues.token}
                 onChange = {(e) => tokenHandler(e)}
                 required
@@ -253,15 +296,15 @@ useEffect(() => {
                 focused = {focused.token.toString()}
 
               />
-              <p className="login-validation-error-text">This field is required</p>
+              <p className="reset-validation-error-text">This field is required</p>
           </div>
 
-            <div className="lib-login-input-group">
+            <div className="lib-reset-input-group">
               <input 
                 name="password"
-                type="password" 
+                type={passwordShow ? "text" : "password"} 
                 placeholder="New Password*" 
-                className="lib-login-email" 
+                className="lib-reset-email" 
                 value={formValues.password}
                 onChange = {(e) => passwordHandler(e)}
                 required
@@ -271,17 +314,21 @@ useEffect(() => {
                 onFocus = {() => setShowPasswordDesc(true)}
 
               />
+                           {
+                  passwordShow ?<i className="fa fa-eye-slash toggle-pass" aria-hidden="true" onClick={() => handlePasswordHide()}></i> :<i className="fa fa-eye toggle-pass" aria-hidden="true" onClick={() =>handlePasswordShow()}></i>
+
+                }
                 {
-                  showPasswordDesc ? <p className="green-warning">Password should be 6-15 characters and include at least 1 lower case letter, 1 uppercase letter, 1 number and 1 special character!</p> :<p className="register-validation-error-text">Password is required!</p>
+                  showPasswordDesc ? <p className="green-warning">Password should be 6-15 characters and include at least 1 lower case letter, 1 uppercase letter, 1 number and 1 special character!</p> :<p className="reset-validation-error-text">Password is required!</p>
                 }            
                 </div>
 
-            <div className="lib-login-input-group">
+            <div className="lib-reset-input-group">
               <input 
                 name="confirmPassword"
-                type="password" 
+                type={passwordShow ? "text" : "password"} 
                 placeholder="Confirm New Password*" 
-                className="lib-login-email" 
+                className="lib-reset-email" 
                 value={formValues.confirmPassword}
                 onChange = {(e) => confirmPasswordHandler(e)}
                 required
@@ -289,13 +336,17 @@ useEffect(() => {
                 onBlur={(e) => handleFocus(e)}
                 focused = {focused.confirmPassword.toString()}
               />
-              <p className="login-validation-error-text">This field is required </p>
+                           {
+                  passwordShow ?<i className="fa fa-eye-slash toggle-pass" aria-hidden="true" onClick={() => handlePasswordHide()}></i> :<i className="fa fa-eye toggle-pass" aria-hidden="true" onClick={() =>handlePasswordShow()}></i>
+
+                }
+              <p className="reset-validation-error-text">This field is required </p>
               {
                 passwordMatchCheck ? <p className="password_match">Password do not match !</p> : ""
               }
             </div>
 
-            <div className="lib-login-input-group" id="btn-group">
+            <div className="lib-reset-input-group" id="btn-group">
               <button 
               disabled={formState.buttonState} 
               onClick = {() => handleSubmit()}              
@@ -320,8 +371,8 @@ useEffect(() => {
           </div>
         </div>
 
-        <div class="forgot-area">
-          <ul class="circles">
+        <div className="reset-area">
+          <ul className="circles">
             <li></li>
             <li></li>
             <li></li>

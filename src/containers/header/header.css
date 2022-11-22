@@ -56,15 +56,20 @@
 }
 .lib-store-text-wrapper {
   margin-left: 0.5rem;
+ 
 }
 
 .lib-store-text-normal {
   font-size: 0.75rem;
-  line-height: 1rem;
+  /* line-height: 1rem; */
+  margin: 0;
+  padding: 0;
 }
 
 .lib-store-text-bold {
   font-weight: 700;
+  margin: 0;
+  padding: 0;
 }
 
 .lib-header-image {

@@ -5,12 +5,14 @@ import "./forgotPassword.css";
 import { Navbar } from "../../containers";
 import { forgotPassword, restoreForgotPasswordInitial } from "../../Actions";
 import Spinner from "../../components/spinner/Spinner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 
-const ForgotPassword = () => {
+const ForgotPassword = ({user}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { forgotPasswordSuccess, forgotPasswordFailure } = useSelector((state) =>state.auth);
 
@@ -22,6 +24,36 @@ const ForgotPassword = () => {
     setFocused(true)
   }
 
+  const hanldeSwal = () =>{
+    Swal.fire({
+      title: 'Please Logout',
+      icon: 'warning',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false,
+      confirmButtonText: 'Ok',
+      denyButtonText: `Don't save`,
+      confirmButtonColor: '#5e458b',
+      width: 400,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/home/dashboard")
+       
+
+
+      } 
+      // else if (result.isDenied) {
+      //   Swal.fire('Changes are not saved', '', 'info')
+      // }
+    })
+  }
+
+  useEffect(() => {
+    if(user && location.pathname === "/forgot")  {
+      hanldeSwal()
+
+    }
+  })
 
   const initialFormState = {
     buttonState: false,
@@ -127,20 +159,20 @@ const ForgotPassword = () => {
     <>
       <Navbar />
 
-      <div className="lib-login-container">
-        <div class="lib-login-wrapper">
+      <div className="lib-forgot-container">
+        <div className="lib-forgot-wrapper">
           <h1>Forgot Password</h1>
           <p className="info-text">
             Enter the email you used to sign up and we will send you a link to reset your password
           </p>
           <br />
-          <div className="lib-login-form" style={{ textAlign: "center" }}>
-            <div className="lib-login-input-group">
+          <div className="lib-forgot-form" style={{ textAlign: "center" }}>
+            <div className="lib-forgot-input-group">
               <input 
               
               type="email" 
               placeholder="Email*" 
-              className="lib-login-email" 
+              className="lib-forgot-email" 
               value = {formValues.email}
               required
               pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
@@ -148,10 +180,10 @@ const ForgotPassword = () => {
               focused = {focused.toString()}
               onChange = {(e) => emailHandler(e)}
               />
-              <p className="login-validation-error-text">Please input your email</p>
+              <p className="forgot-validation-error-text">Please input your email</p>
             </div>
 
-            <div className="lib-login-input-group" id="btn-group">
+            <div className="lib-forgot-input-group" id="btn-group">
               <button 
                 disabled={formState.buttonState}
                 onClick = {() => handleSubmit()}              
@@ -178,8 +210,8 @@ const ForgotPassword = () => {
           </div>
         </div>
 
-        <div class="forgot-area">
-          <ul class="circles">
+        <div className="forgot-area">
+          <ul className="circles">
             <li></li>
             <li></li>
             <li></li>

@@ -23,7 +23,11 @@ import {
 
     RESET_PASSWORD,
     RESET_PASSWORD_SUCCESS,
-    RESTORE_RESET_PASSWORD_INITIAL
+    RESTORE_RESET_PASSWORD_INITIAL,
+
+    GOOGLE_LOGIN,
+    GOOGLE_LOGIN_SUCCESS,
+    RESTORE_GOOGLE_LOGIN_INITIAL,
 
 } from "../ActionTypes";
 
@@ -175,5 +179,41 @@ export const userLogin = ({
  
  export const restoreResetPasswordInitial = () =>({
  type: RESTORE_RESET_PASSWORD_INITIAL
+ })
+ 
+
+
+
+
+ 
+
+ export const googleLogin = ({
+    name,
+    email,
+    uid,
+    photo_url,
+    device,
+    country_id
+ }) => ({
+ type: GOOGLE_LOGIN,
+ payload: {
+    name,
+    email,
+    uid,
+    photo_url,
+    device,
+    country_id
+ }
+ })
+ 
+ 
+ 
+ export const googleLoginSuccess = (payload) => ({
+ type: GOOGLE_LOGIN_SUCCESS,
+ payload,
+ });
+ 
+ export const restoreGoogleLoginSuccessInitial = () =>({
+ type: RESTORE_GOOGLE_LOGIN_INITIAL
  })
  

@@ -1,34 +1,34 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, lazy, Suspense} from "react";
 import "./landingPage.css";
 
-import { Navbar, Header, Footer, Explore, DownloadApp, Community } from "../../containers";
+// import { Navbar, Header, Footer, Explore, DownloadApp, Community } from "../../containers";
 import Preloader from "../../components/preloader/Preloader";
 
-const LandingPage = () => {
+const Navbar = lazy(() => import("../../containers/navbar/Navbar"));
+const Header = lazy(() => import("../../containers/header/Header"));
+const Footer = lazy(() => import("../../containers/footer/Footer"));
+const Explore = lazy(() => import("../../containers/explore/Explore"));
+const DownloadApp = lazy(() => import("../../containers/downloadApp/DownloadApp"));
+const Community = lazy(() => import("../../containers/community/Community"));
 
-  const [loading, setLoading] = useState(true);
+const LandingPage = ({user}) => {
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
 
   return (
     <>
 
-    {
-      loading ? <Preloader /> : (
         <div className="app">
-        <Navbar />
-        <Header />
-        <Explore />
-        <DownloadApp />
-        <Community />
-        <Footer />
+          <Suspense fallback = {<Preloader /> }>
+            <Navbar user = {user} />
+            <Header />
+            <Explore />
+            <DownloadApp />
+            <Community />
+            <Footer />
+          </Suspense>
+        
       </div>
-      )
-    }
+ 
     </>
    
   );

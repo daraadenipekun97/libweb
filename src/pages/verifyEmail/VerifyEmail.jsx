@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./verifyEmail.css"
 import { Navbar } from "../../containers";
 import Preloader from "../../components/preloader/Preloader";
@@ -8,10 +8,11 @@ import Spinner from "../../components/spinner/Spinner";
 import { verifyUserEmail, restoreVerifyUserEmailInitial, resendMail, restoreResendMailInitial } from "../../Actions";
 import Swal from 'sweetalert2'
 
-const VerifyEmail = () => {
+const VerifyEmail = ({user}) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
 
   const [loading, setLoading] = useState(true);
@@ -22,13 +23,38 @@ const VerifyEmail = () => {
   const { verifyUserFailure, verifyUserSuccess, resendMailSuccess, resendMailFailure} = useSelector((state) =>state.auth);
 
 
- 
+  const hanldeSwal = () =>{
+    Swal.fire({
+      title: 'Please Logout',
+      icon: 'warning',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false,
+      confirmButtonText: 'Ok',
+      denyButtonText: `Don't save`,
+      confirmButtonColor: '#5e458b',
+      width: 400,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/home/dashboard")
+       
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
+
+      } 
+      // else if (result.isDenied) {
+      //   Swal.fire('Changes are not saved', '', 'info')
+      // }
+    })
+  }
+
+  // useEffect(() => {
+  //   if(user && location.pathname === "/verify")  {
+  //     hanldeSwal()
+
+  //   }
+  // })
+
+
 
   const handleFocus = (e) => {
     setFocused(true)
@@ -190,7 +216,7 @@ const [formValues, setFormValues] = useState({ ...initialFormValues });
 
   const resendButtonState = {
     buttonState: false,
-    buttonText: "Resend Mail",
+    buttonText: "Resend Token",
 };
 
   const [resendBtnState, setResendBtnState] = useState({ ...resendButtonState});
@@ -257,22 +283,20 @@ const [formValues, setFormValues] = useState({ ...initialFormValues });
 
     return (
       <>
-       {
-        loading ? <Preloader/> : (
-          <>
+      
     
           <div className="lib-verify-container">
-            <div class="lib-verify-wrapper">
+            <div className="lib-verify-wrapper">
               <h1>Verify Email</h1>
               <p className="info-text">
-                Enter the code sent to your email address
+                Enter the token sent to your email address
               </p>
               <br />
               <div className="lib-verify-form" style={{ textAlign: "center" }}>
                 <div className="lib-verify-input-group">
                   <input 
                     type="text" 
-                    placeholder="Code*" 
+                    placeholder="Token*" 
                     className="lib-verify-email"
                     required 
                     onBlur={handleFocus}
@@ -308,8 +332,8 @@ const [formValues, setFormValues] = useState({ ...initialFormValues });
               </div>
             </div>
     
-            <div class="forgot-area">
-              <ul class="circles">
+            <div className="verify-area">
+              <ul className="circles">
                 <li></li>
                 <li></li>
                 <li></li>
@@ -323,9 +347,7 @@ const [formValues, setFormValues] = useState({ ...initialFormValues });
               </ul>
             </div>
           </div>
-        </>
-        )
-       }
+       
        </>
       );
 }

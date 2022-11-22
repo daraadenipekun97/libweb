@@ -1,11 +1,11 @@
 import { all, call, takeEvery, fork } from "redux-saga/effects";
 import requestFunction from "../Utils/sagasGenericFunction";
 
-import {REGISTER, VERIFY_USER_EMAIL,RESEND_MAIL, LOGIN, FORGOT_PASSWORD, RESET_PASSWORD } from "../ActionTypes";
+import {REGISTER, VERIFY_USER_EMAIL,RESEND_MAIL, LOGIN, FORGOT_PASSWORD, RESET_PASSWORD, GOOGLE_LOGIN } from "../ActionTypes";
 
-import { postRegister, postVerifyUser, createSendMail, postlogin, postForgotPassword, postResetPassword } from "../Api";
+import { postRegister, postVerifyUser, createSendMail, postlogin, postForgotPassword, postResetPassword, postGoogleLogin } from "../Api";
 
-import { registerUserSuccess, verifyUserEmailSuccess, resendMailSuccess, userLoginSuccess, forgotPasswordSuccess, resetPasswordSuccess} from "../Actions";
+import { registerUserSuccess, verifyUserEmailSuccess, resendMailSuccess, userLoginSuccess, forgotPasswordSuccess, resetPasswordSuccess, googleLoginSuccess} from "../Actions";
 
 export const registerRequest = function* ({ payload }) {
   yield call(requestFunction, registerUserSuccess, postRegister, payload);
@@ -66,6 +66,15 @@ export const verifyEmailRequest = function* ({ payload }) {
 
 
 
+  export const googleLoginRequest = function* ({ payload }) {
+    yield call(requestFunction, googleLoginSuccess, postGoogleLogin, payload);
+  };
+  
+  export const googleLoginn = function* () {
+    yield takeEvery(GOOGLE_LOGIN, googleLoginRequest);
+  };
+
+
 
 
 
@@ -80,6 +89,7 @@ export default function* rootSaga() {
     fork(userLoginn),
     fork(forgotPass),
     fork(resetPass),
+    fork(googleLoginn)
 
 ]);
 }

@@ -12,6 +12,8 @@ import {
     RESTORE_FORGOT_PASSWORD_INITIAL,
     RESET_PASSWORD_SUCCESS,
     RESTORE_RESET_PASSWORD_INITIAL,
+    GOOGLE_LOGIN_SUCCESS,
+    RESTORE_GOOGLE_LOGIN_INITIAL,
 
 } from "../ActionTypes";
 
@@ -34,6 +36,9 @@ const INIT_STATE = {
 
     resetPasswordSuccess:false,
     resetPasswordFailure:false,
+
+    googleLoginSuccess:false,
+    googleLoginFailure:false,
 
 };
 
@@ -252,6 +257,42 @@ const authReducer =  (state = INIT_STATE, action) => {
         }
     }
 
+
+
+
+    case GOOGLE_LOGIN_SUCCESS: {
+        if(action.payload === true){
+
+            return {
+                ...state,
+                googleLoginSuccess: true,
+                googleLoginFailure:false,
+
+            };
+
+        }
+        else{
+
+            return {
+                ...state,
+                googleLoginSuccess: false,
+                googleLoginFailure:true
+
+            };
+
+        }
+     
+    }
+
+
+
+    case RESTORE_GOOGLE_LOGIN_INITIAL:{
+        return {
+            ...state,
+            googleLoginFailure:false,
+            googleLoginSuccess:false
+        }
+    }
 
 
     default:
