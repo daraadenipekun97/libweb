@@ -315,7 +315,7 @@ useEffect(() => {
 
               />
                            {
-                  passwordShow ?<i className="fa fa-eye-slash toggle-pass" aria-hidden="true" onClick={() => handlePasswordHide()}></i> :<i className="fa fa-eye toggle-pass" aria-hidden="true" onClick={() =>handlePasswordShow()}></i>
+                  passwordShow ?<i className="fa fa-eye-slash toggle-pass"  onClick={() => handlePasswordHide()}></i> :<i className="fa fa-eye toggle-pass"  onClick={() =>handlePasswordShow()}></i>
 
                 }
                 {
@@ -337,7 +337,7 @@ useEffect(() => {
                 focused = {focused.confirmPassword.toString()}
               />
                            {
-                  passwordShow ?<i className="fa fa-eye-slash toggle-pass" aria-hidden="true" onClick={() => handlePasswordHide()}></i> :<i className="fa fa-eye toggle-pass" aria-hidden="true" onClick={() =>handlePasswordShow()}></i>
+                  passwordShow ?<i className="fa fa-eye-slash toggle-pass"  onClick={() => handlePasswordHide()}></i> :<i className="fa fa-eye toggle-pass"  onClick={() =>handlePasswordShow()}></i>
 
                 }
               <p className="reset-validation-error-text">This field is required </p>

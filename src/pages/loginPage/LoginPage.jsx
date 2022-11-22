@@ -297,7 +297,7 @@ useEffect(() => {
 
               />
               {
-                passwordShow ? <i className="fa fa-eye-slash toggle-pass" aria-hidden="true" onClick={() => handlePasswordHide()}></i> : <i className="fa fa-eye toggle-pass" aria-hidden="true" onClick={() => handlePasswordShow()}></i>
+                passwordShow ? <i className="fa fa-eye-slash toggle-pass"  onClick={() => handlePasswordHide()}></i> : <i className="fa fa-eye toggle-pass" onClick={() => handlePasswordShow()}></i>
 
               }
               <p className="login-validation-error-text">Please input a valid password</p>
