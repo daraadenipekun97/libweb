@@ -1,34 +1,12 @@
-.book-container{
-    background-color: #e3daf0;
-    padding: 4rem 6rem;
-    min-height: 100vh;
-    /* text-align: center; */
+.book-container {
+  background-color: #e3daf0;
+  padding: 4rem 6rem;
+  min-height: 100vh;
+  /* text-align: center; */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 400px) {
-
-    .book-container{
-        padding: 4rem 0rem;
-
-    }
-
-
+  .book-container {
+    padding: 4rem 0rem;
+  }
 }

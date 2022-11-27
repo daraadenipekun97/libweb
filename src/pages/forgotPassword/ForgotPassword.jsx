@@ -1,4 +1,4 @@
-import React, {  useEffect, useState }  from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./forgotPassword.css";
@@ -6,154 +6,129 @@ import { Navbar } from "../../containers";
 import { forgotPassword, restoreForgotPasswordInitial } from "../../Actions";
 import Spinner from "../../components/spinner/Spinner";
 import { useNavigate, useLocation } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
-
-const ForgotPassword = ({user}) => {
+const ForgotPassword = ({ user }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { forgotPasswordSuccess, forgotPasswordFailure } = useSelector((state) =>state.auth);
+  const { forgotPasswordSuccess, forgotPasswordFailure } = useSelector((state) => state.auth);
 
   const [valid, setValid] = useState(false);
 
-  const [focused, setFocused] = useState(false)
+  const [focused, setFocused] = useState(false);
 
   const handleFocus = () => {
-    setFocused(true)
-  }
+    setFocused(true);
+  };
 
-  const hanldeSwal = () =>{
+  const hanldeSwal = () => {
     Swal.fire({
-      title: 'Please Logout',
-      icon: 'warning',
+      title: "Please Logout",
+      icon: "warning",
       showDenyButton: false,
       showCancelButton: false,
       allowOutsideClick: false,
-      confirmButtonText: 'Ok',
+      confirmButtonText: "Ok",
       denyButtonText: `Don't save`,
-      confirmButtonColor: '#5e458b',
+      confirmButtonColor: "#5e458b",
       width: 400,
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate("/home/dashboard")
-       
-
-
-      } 
+        navigate("/home/dashboard");
+      }
       // else if (result.isDenied) {
       //   Swal.fire('Changes are not saved', '', 'info')
       // }
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    if(user && location.pathname === "/forgot")  {
-      hanldeSwal()
-
+    if (user && location.pathname === "/forgot") {
+      hanldeSwal();
     }
-  })
+  });
 
   const initialFormState = {
     buttonState: false,
     buttonText: "Send",
-    spinner:false
+    spinner: false,
   };
-  
+
   const [formState, setFormState] = useState({ ...initialFormState });
 
   const initialFormValues = {
-    email:"",
-  }
-  
+    email: "",
+  };
+
   const [formValues, setFormValues] = useState({ ...initialFormValues });
 
-  const emailHandler = e => {
+  const emailHandler = (e) => {
     if (e) {
-        let emailValue = e.target.value;
-        e.preventDefault();
-        setFormValues({
-          ...formValues,
-          email: emailValue
-        });
-    } else {
-  
+      let emailValue = e.target.value;
+      e.preventDefault();
       setFormValues({
         ...formValues,
-        email: ""
+        email: emailValue,
       });
-  
-  
+    } else {
+      setFormValues({
+        ...formValues,
+        email: "",
+      });
     }
   };
 
-
-  const handleSubmit = () =>{
-    if (
-      formValues.email !==""
-    ) {
-  
+  const handleSubmit = () => {
+    if (formValues.email !== "") {
       setFormState({
         ...formState,
         buttonState: true,
-        buttonText:'Send',
-        spinner:true
-    
-      })
-  
-      setValid(true);
-  
-      
-    } else {
-  
-      setFocused(true)
-      
-    }
-  }
+        buttonText: "Send",
+        spinner: true,
+      });
 
+      setValid(true);
+    } else {
+      setFocused(true);
+    }
+  };
 
   useEffect(() => {
     if (valid) {
-  
-      dispatch(forgotPassword({
-        email:formValues.email,
-      }))
-      
+      dispatch(
+        forgotPassword({
+          email: formValues.email,
+        })
+      );
     }
-  
+
     return () => {
-      setValid(false)
-    }
-  }, [valid])
-
-
+      setValid(false);
+    };
+  }, [valid]);
 
   useEffect(() => {
-  
-    if(forgotPasswordFailure){
-        setFormState({...initialFormState})
-        // setFormValues({...initialFormValues})   
+    if (forgotPasswordFailure) {
+      setFormState({ ...initialFormState });
+      // setFormValues({...initialFormValues})
     }
-  
-    return () => {
-      dispatch(restoreForgotPasswordInitial())
-    }
-  }, [forgotPasswordFailure])
 
+    return () => {
+      dispatch(restoreForgotPasswordInitial());
+    };
+  }, [forgotPasswordFailure]);
 
   useEffect(() => {
     if (forgotPasswordSuccess) {
       navigate("/reset");
-
     }
-  
+
     return () => {
-      dispatch(restoreForgotPasswordInitial())
-
-    }
-  }, [forgotPasswordSuccess])
-  
+      dispatch(restoreForgotPasswordInitial());
+    };
+  }, [forgotPasswordSuccess]);
 
   return (
     <>
@@ -168,28 +143,23 @@ const ForgotPassword = ({user}) => {
           <br />
           <div className="lib-forgot-form" style={{ textAlign: "center" }}>
             <div className="lib-forgot-input-group">
-              <input 
-              
-              type="email" 
-              placeholder="Email*" 
-              className="lib-forgot-email" 
-              value = {formValues.email}
-              required
-              pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
-              onBlur={() =>handleFocus()}
-              focused = {focused.toString()}
-              onChange = {(e) => emailHandler(e)}
+              <input
+                type="email"
+                placeholder="Email*"
+                className="lib-forgot-email"
+                value={formValues.email}
+                required
+                pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+                onBlur={() => handleFocus()}
+                focused={focused.toString()}
+                onChange={(e) => emailHandler(e)}
               />
               <p className="forgot-validation-error-text">Please input your email</p>
             </div>
 
             <div className="lib-forgot-input-group" id="btn-group">
-              <button 
-                disabled={formState.buttonState}
-                onClick = {() => handleSubmit()}              
-        
-              >
-              {formState.spinner === true ? <Spinner/> : formState.buttonText}
+              <button disabled={formState.buttonState} onClick={() => handleSubmit()}>
+                {formState.spinner === true ? <Spinner /> : formState.buttonText}
               </button>
             </div>
 

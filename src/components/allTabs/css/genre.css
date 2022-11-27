@@ -1,0 +1,21 @@
+.genre-wrapper {
+  /* border: solid; */
+}
+.genre-wrapper ul {
+  list-style: none;
+}
+
+.genre-wrapper ul li {
+  padding: 1rem 0rem;
+  color: #5e458b;
+}
+
+.genre-wrapper ul li a:hover {
+  font-weight: 600;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}

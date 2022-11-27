@@ -62,7 +62,6 @@
   margin-bottom: 1rem;
 }
 
-
 .lib-login-form {
   /* border: 1px solid red; */
   /* width: 70%; */
@@ -89,8 +88,6 @@
   /* border: 1px solid red; */
 }
 
-
-
 .login-validation-error-text {
   color: red;
   transition: 0.5s;
@@ -105,14 +102,13 @@
   border: 1px solid #5e458b;
 }
 
-.lib-login-input-group input:invalid[focused="true"] ~ .login-validation-error-text{
+.lib-login-input-group input:invalid[focused="true"] ~ .login-validation-error-text {
   display: block;
 }
 
-.lib-login-input-group input:invalid[focused="true"]{
+.lib-login-input-group input:invalid[focused="true"] {
   border: 1px solid red;
 }
-
 
 .lib-login-input-group label {
   font-size: 15px;
@@ -171,18 +167,15 @@ hr {
   color: #5e458b;
 }
 
-.toggle-pass{
-
-
+.toggle-pass {
   color: #5e458b;
   float: right;
   margin-left: -25px;
   margin-top: 15px;
   position: absolute;
- 
+
   cursor: pointer;
 }
-
 
 .circles {
   position: absolute;
@@ -293,7 +286,6 @@ hr {
   }
 }
 
-
 @media screen and (max-width: 800px) {
   .lib-login-input-group {
     /* border:solid; */
@@ -309,8 +301,6 @@ hr {
     margin-bottom: 0.5rem;
   }
 }
-
-
 
 @media screen and (max-width: 769px) {
   .login-area {

@@ -1,0 +1,122 @@
+.Tabs {
+  background-color: #e3daf0;
+  padding: 4rem 6rem;
+}
+
+.nav-library {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 40%;
+  /* float: right; */
+  border-bottom: 1px solid white;
+  padding: 1rem 1rem;
+  /* border-radius: 20px; */
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.nav-library li {
+  list-style: none;
+  font-size: 0.8rem;
+  color: #5e458b;
+  font-weight: 600;
+}
+
+.nav-library li:hover {
+  border-bottom: 1px solid #5e458b;
+  cursor: pointer;
+}
+.nav-library li.active {
+  border-bottom: 1px solid #5e458b;
+}
+
+.child-tabs {
+  /* border: solid; */
+}
+
+.nav-discover {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 20%;
+  /* float: right; */
+  border-bottom: 1px solid white;
+  padding: 1rem 1rem;
+  /* border-radius: 20px; */
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  /* margin-right: 0;
+    margin-left: auto;   */
+}
+
+.nav-discover li {
+  list-style: none;
+  font-size: 0.8rem;
+  color: #5e458b;
+  font-weight: 600;
+}
+
+.nav-discover li:hover {
+  border-bottom: 1px solid #5e458b;
+  cursor: pointer;
+}
+.nav-discover li.active {
+  border-bottom: 1px solid #5e458b;
+}
+
+@media screen and (max-width: 1200px) {
+  .nav-library {
+    /* margin-right: 70px;  */
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .nav-discover {
+    /* margin-right: 70px;  */
+    width: 30%;
+    border: none;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .nav-library {
+    /* margin-right: 70px;  */
+    width: 100%;
+    border: none;
+  }
+  .nav-library li {
+    margin: 0.5rem 0;
+  }
+
+  .nav-discover {
+    /* margin-right: 70px;  */
+    width: 40%;
+    border: none;
+  }
+  .nav-discover li {
+    margin: 0.5rem 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav-library {
+    flex-direction: column;
+  }
+
+  .nav-discover {
+    width: 100%;
+    /* flex-direction: column; */
+  }
+}
+
+@media screen and (max-width: 429px) {
+  .Tabs {
+    padding: 4rem 2rem;
+  }
+}

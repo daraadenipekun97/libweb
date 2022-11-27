@@ -3,9 +3,7 @@ import "./preloader.css";
 
 const Preloader = () => {
   return (
-    <div 
-    className="page-cover"    
-    >
+    <div className="page-cover">
       <span className="loader"></span>
     </div>
   );

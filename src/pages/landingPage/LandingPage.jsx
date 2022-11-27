@@ -1,4 +1,4 @@
-import React, {useState, useEffect, lazy, Suspense} from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import "./landingPage.css";
 
 // import { Navbar, Header, Footer, Explore, DownloadApp, Community } from "../../containers";
@@ -11,26 +11,20 @@ const Explore = lazy(() => import("../../containers/explore/Explore"));
 const DownloadApp = lazy(() => import("../../containers/downloadApp/DownloadApp"));
 const Community = lazy(() => import("../../containers/community/Community"));
 
-const LandingPage = ({user}) => {
-
-
+const LandingPage = ({ user }) => {
   return (
     <>
-
-        <div className="app">
-          <Suspense fallback = {<Preloader /> }>
-            <Navbar user = {user} />
-            <Header />
-            <Explore />
-            <DownloadApp />
-            <Community />
-            <Footer />
-          </Suspense>
-        
+      <div className="app">
+        <Suspense fallback={<Preloader />}>
+          <Navbar user={user} />
+          <Header />
+          <Explore />
+          <DownloadApp />
+          <Community />
+          <Footer />
+        </Suspense>
       </div>
- 
     </>
-   
   );
 };
 

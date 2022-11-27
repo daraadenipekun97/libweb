@@ -7,18 +7,19 @@ import { PurpleButton } from "../../components/button/Button";
 
 import { AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
-const Menu = ({handleHome}) => (
-
-
-
+const Menu = ({ handleHome }) => (
   <>
     <p>
-      <a href="#" onClick={handleHome}>Home</a>
+      <a href="#" onClick={handleHome}>
+        Home
+      </a>
     </p>
     <p>
-      <a href="#" onClick={handleHome} >Discover</a>
+      <a href="#" onClick={handleHome}>
+        Discover
+      </a>
     </p>
     <p>
       <a href="signin">Sign In</a>
@@ -26,48 +27,41 @@ const Menu = ({handleHome}) => (
   </>
 );
 
-const Navbar = ({user}) => {
+const Navbar = ({ user }) => {
   const navigate = useNavigate();
 
   const [toggleMenu, setToggleMenu] = useState(false);
 
-  const handleHome = () =>{
-
-    const hanldeSwal = () =>{
+  const handleHome = () => {
+    const hanldeSwal = () => {
       Swal.fire({
-        title: 'Please Login',
-        icon: 'warning',
+        title: "Please Login",
+        icon: "warning",
         showDenyButton: false,
         showCancelButton: false,
         allowOutsideClick: false,
-        confirmButtonText: 'Ok',
+        confirmButtonText: "Ok",
         denyButtonText: `Don't save`,
-        confirmButtonColor: '#5e458b',
+        confirmButtonColor: "#5e458b",
         width: 400,
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/signin")
-         
-  
-  
-        } 
+          navigate("/signin");
+        }
         // else if (result.isDenied) {
         //   Swal.fire('Changes are not saved', '', 'info')
         // }
-      })
+      });
+    };
+
+    if (user) {
+      navigate("/home/dashboard");
+    } else {
+      hanldeSwal();
     }
 
-
-    if(user)  {
-      navigate("/home/dashboard")
-    }
-    else{
-      hanldeSwal()
-
-    }
-    
-    return false
-  }
+    return false;
+  };
 
   return (
     <div className="lib-navbar">
@@ -75,7 +69,7 @@ const Navbar = ({user}) => {
         <img src={Logo} alt="Logo" />
       </a>
       <div className="lib-navbar-links-container">
-        <Menu  handleHome={handleHome}/>
+        <Menu handleHome={handleHome} />
       </div>
       <a href="register" className="btn-wrapper">
         Get Started

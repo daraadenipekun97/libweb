@@ -1,0 +1,49 @@
+.wishlist-h4 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  /* line-height: 45px; */
+  color: #5e458b;
+  margin-bottom: 1rem;
+}
+.wishlist-subtext {
+  margin-bottom: 1rem;
+}
+
+.wishlist-form-wrapper {
+  width: 50%;
+  /* border: solid; */
+}
+
+.required_text {
+  color: red;
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.wishlist-input {
+  background-color: #ffffff;
+  border: 2px solid rgba(84, 95, 125, 0.15);
+  border-radius: 5px;
+  height: 50px;
+  padding: 0px 10px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.wishlist-btn {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 25px;
+  border: 0;
+  outline: none;
+  background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
+  color: white;
+  width: 100%;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}

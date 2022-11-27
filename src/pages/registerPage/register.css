@@ -60,9 +60,6 @@ input[type="password"] {
   margin-bottom: 0.5rem;
 }
 
-
-
-
 /* Chrome, Safari, Edge, Opera */
 #phone-num::-webkit-outer-spin-button,
 #phone-num::-webkit-inner-spin-button {
@@ -71,7 +68,7 @@ input[type="password"] {
 }
 
 /* Firefox */
-#phone-num{
+#phone-num {
   -moz-appearance: textfield;
 }
 
@@ -84,36 +81,31 @@ input[type="password"] {
   width: 250px;
   display: none;
 }
-.terms-validation-text{
-
+.terms-validation-text {
   color: red;
   transition: 0.5s;
   text-align: left;
   font-size: 10px;
   margin-bottom: 0.5rem;
   width: 250px;
-
 }
 
-.green-warning{
-
+.green-warning {
   color: green;
   transition: 1s;
   text-align: left;
   font-size: 10px;
   margin-bottom: 0.5rem;
   width: 250px;
-
 }
 
-.lib-register-input-group input:invalid[focused="true"] ~ .register-validation-error-text{
+.lib-register-input-group input:invalid[focused="true"] ~ .register-validation-error-text {
   display: block;
 }
 
-.lib-register-input-group input:invalid[focused="true"]{
+.lib-register-input-group input:invalid[focused="true"] {
   border: 1px solid red;
 }
-
 
 .lib-register-input-group input:focus {
   border: 1px solid #5e458b;
@@ -141,7 +133,6 @@ input[type="password"] {
   cursor: pointer;
 }
 
-
 .lib-register-input-group button {
   padding: 0.5rem 1rem;
   font-weight: 500;
@@ -161,7 +152,7 @@ input[type="password"] {
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   cursor: pointer;
 }
-.lib-register-input-group button:active{
+.lib-register-input-group button:active {
   transform: scale(0.98);
 }
 
@@ -185,10 +176,7 @@ hr {
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
-
-.toggle-pass{
-
-
+.toggle-pass {
   color: #5e458b;
   /* float: right; */
   margin-left: -25px;
@@ -196,7 +184,6 @@ hr {
   position: relative;
   cursor: pointer;
 }
-
 
 .area {
   background: #5e458b;
@@ -352,6 +339,4 @@ hr {
     margin: 0rem 1rem;
     padding: 1rem 1.5rem;
   }
- 
-    
 }

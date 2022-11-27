@@ -1,0 +1,21 @@
+.genre-id-container {
+  background-color: #e3daf0;
+  min-height: 100vh;
+  padding: 4rem 6rem;
+}
+
+.backbutton {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  /* border: solid; */
+}
+
+.backbutton:hover {
+  cursor: pointer;
+  font-weight: 500;
+}
+/* .backbutton:active{
+    
+    transform: scale(1.01);
+} */
