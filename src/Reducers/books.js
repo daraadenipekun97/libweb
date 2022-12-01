@@ -8,6 +8,15 @@ import {
   FETCH_KIDDIES_BOOKS_SUCCESS,
   FETCH_ALL_GENRE_SUCCESS,
   FETCH_BOOKS_BY_GENRE_SUCCESS,
+  FETCH_ALL_BOOK_NAMES_SUCCESS,
+  FETCH_BOOKS_BY_AUTHOR_SUCCESS,
+  FETCH_ALL_AUTHORS_SUCCESS,
+  FETCH_BOOKS_DETAILS_SUCCESS,
+  ADD_BOOK_TO_FAVOURITE_SUCCESS,
+  REMOVE_BOOK_FROM_FAVOURITE_SUCCESS,
+  RESTORE_FAVOURITE_INITIAL,
+  RESTORE_UNFAVOURITE_INITIAL,
+  FETCH_AUTHORS_BY_ID_SUCCESS,
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -20,6 +29,19 @@ const INIT_STATE = {
   kiddiesBooks: [],
   allGenre: [],
   booksByGenre: [],
+  allBookNames:[],
+  booksByAuthor:[],
+  allAuthors:[],
+  bookDetails:{},
+
+  addBookToFavouriteSuccess:false,
+  addBookToFavouriteFailure:false,
+
+  removeBookFromFavouriteSuccess:false,
+  removeBookFromFavouriteFailure:false,
+
+  authorById:{}
+  
 };
 
 const booksReducer = (state = INIT_STATE, action) => {
@@ -38,12 +60,35 @@ const booksReducer = (state = INIT_STATE, action) => {
       };
     }
 
+
+    case FETCH_ALL_BOOK_NAMES_SUCCESS: {
+        return {
+          ...state,
+          allBookNames: action.payload,
+        };
+      }
+
     case FETCH_BOOKS_BY_GENRE_SUCCESS: {
       return {
         ...state,
         booksByGenre: action.payload,
       };
     }
+
+    case FETCH_ALL_AUTHORS_SUCCESS: {
+        return {
+          ...state,
+          allAuthors: action.payload,
+        };
+      }
+  
+
+    case FETCH_BOOKS_BY_AUTHOR_SUCCESS: {
+        return {
+          ...state,
+          booksByAuthor: action.payload,
+        };
+      }
 
     case FETCH_ALL_TRENDING_BOOKS_UNAUTH_SUCCESS: {
       return {
@@ -86,6 +131,73 @@ const booksReducer = (state = INIT_STATE, action) => {
         allGenre: action.payload,
       };
     }
+
+    case FETCH_BOOKS_DETAILS_SUCCESS: {
+        return {
+          ...state,
+          bookDetails: action.payload,
+        };
+      }
+
+
+      case ADD_BOOK_TO_FAVOURITE_SUCCESS: {
+        if (action.payload === true) {
+          return {
+            ...state,
+            addBookToFavouriteSuccess: true,
+            addBookToFavouriteFailure: false,
+          };
+        } else {
+          return {
+            ...state,
+            addBookToFavouriteSuccess: false,
+            addBookToFavouriteFailure: true,
+          };
+        }
+      }
+  
+      case RESTORE_FAVOURITE_INITIAL: {
+        return {
+          ...state,
+          addBookToFavouriteSuccess: false,
+          addBookToFavouriteFailure: false,
+        };
+      }
+
+      
+
+
+      case REMOVE_BOOK_FROM_FAVOURITE_SUCCESS: {
+        if (action.payload === true) {
+          return {
+            ...state,
+            removeBookFromFavouriteSuccess: true,
+            removeBookFromFavouriteFailure: false,
+          };
+        } else {
+          return {
+            ...state,
+            removeBookFromFavouriteSuccess: false,
+            removeBookFromFavouriteFailure: true,
+          };
+        }
+      }
+  
+      case RESTORE_UNFAVOURITE_INITIAL: {
+        return {
+          ...state,
+          removeBookFromFavouriteSuccess: false,
+          removeBookFromFavouriteFailure: false,
+        };
+      }
+
+      case FETCH_AUTHORS_BY_ID_SUCCESS: {
+        return {
+          ...state,
+            authorById:action.payload
+        };
+      }
+
 
     default:
       return state;

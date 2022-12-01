@@ -36,6 +36,8 @@ const KiddiesPage = lazy(() => import("./pages/kiddies/Kiddies"));
 const AuthorsPage = lazy(() => import("./pages/authors/Authors"));
 const GenrePage = lazy(() => import("./pages/genre/Genre"));
 const GenreByIdPage = lazy(() => import("./pages/genre/GenreById"));
+const AllAuthorsPage = lazy(() => import("./pages/authors/AllAuthors"));
+const BooksPage = lazy(() => import("./pages/books/Books"));
 
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
@@ -66,9 +68,12 @@ function App() {
                 <Route path="newReleases" element={<NewReleasesPage />} />
                 <Route path="classics" element={<ClassicsPage />} />
                 <Route path="childrenscorner" element={<KiddiesPage />} />
-                <Route path="authors" element={<AuthorsPage />} />
+                <Route path="authors" element={<AllAuthorsPage />} />
+                <Route path="authors/:id" element={<AuthorsPage />} />
                 <Route path="genre" element={<GenrePage />} />
                 <Route path="genre/:id" element={<GenreByIdPage />} />
+                <Route path="books/:id" element={<BooksPage />} />
+
               </Route>
 
               <Route path="*" element={<NotfoundPage />} />

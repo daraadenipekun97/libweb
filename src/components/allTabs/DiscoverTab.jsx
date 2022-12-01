@@ -75,7 +75,7 @@ const DiscoverTab = () => {
   return (
     <div className="discover-container">
       <SingleBook datas={slicedTrendingBooks} searchBar={false} title="Trending Books" />
-      <SingleAuthor datas={slicedPopularAuthors} title="Popular Authors" />
+      <SingleAuthor datas={slicedPopularAuthors} title="Popular Authors" seeAllText = {true} />
       <SingleBook datas={slicedNewReleases} searchBar={false} title="New Releases Books" />
       <SingleBook datas={slicedClassicBooks} searchBar={false} title="Classic Books" />
       <SingleBook

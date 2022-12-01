@@ -5,7 +5,7 @@ import Select from "react-select";
 import moment from "moment";
 import {
   addGoals,
-  fetchAllBooks,
+  fetchAllBookNames,
   restoreAddGoalsInitial,
   fetchAllGoals,
   deleteGoal,
@@ -43,7 +43,7 @@ const Modal = ({ handleClose, show, data, clickedId }) => {
 
 const MyReadingGoals = () => {
   const dispatch = useDispatch();
-  const { allBooks } = useSelector((state) => state.books);
+  const { allBookNames } = useSelector((state) => state.books);
   const { addGoalsSuccess, addGoalsFailure, allGoals, deleteGoalsSuccess, deleteGoalsFailure } =
     useSelector((state) => state.library);
 
@@ -105,7 +105,7 @@ const MyReadingGoals = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchAllBooks());
+    dispatch(fetchAllBookNames());
     dispatch(fetchAllGoals());
     dateTypeStart.current.min = new Date(Date.now() + 1 * 24 * 60 * 60 * 1000)
       .toISOString()
@@ -180,16 +180,16 @@ const MyReadingGoals = () => {
   useEffect(() => {
     const createBooksSelect = () => {
       let booksData = [];
-      allBooks.map((allBook) => {
-        let option = { value: allBook.id, label: allBook.name };
+      allBookNames.map((allBook) => {
+        let option = { label: allBook.name };
         booksData.push(option);
       });
 
       setTheBooks(booksData);
     };
 
-    allBooks.length !== 0 && createBooksSelect();
-  }, [allBooks]);
+    allBookNames.length !== 0 && createBooksSelect();
+  }, [allBookNames]);
 
   const [booksName, setBooksName] = useState({});
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import UserNavbar from "../../components/userNavbar/UserNavbar";
@@ -7,12 +7,20 @@ import "./genreById.css";
 import { AiFillLeftCircle } from "react-icons/ai";
 import SingleBook from "../../components/singleBook/SingleBook";
 import { fetchBookByGenre } from "../../Actions";
+import SingleGenrePagination from "../../components/pagination/SingleGenrePagination";
+
+
+let PageSize = 15;
+
 
 const GenreById = () => {
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { booksByGenre } = useSelector((state) => state.books);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
 
   useEffect(() => {
     dispatch(fetchBookByGenre(params.id));
@@ -21,6 +29,13 @@ const GenreById = () => {
   const handleBack = () => {
     navigate("/home/genre");
   };
+
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return booksByGenre.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, booksByGenre]);
 
   return (
     <>
@@ -32,8 +47,19 @@ const GenreById = () => {
           <p>Back to Genre</p>
         </div>
 
-        <SingleBook datas={booksByGenre} searchBar="" title="" />
+        <SingleBook datas={currentTableData} searchBar="" title="" />
+       
+        <SingleGenrePagination
+          className="pagination-bar"
+          currentPage={currentPage}
+          totalCount={booksByGenre.length}
+          pageSize={PageSize}
+          onPageChange={page => setCurrentPage(page)}
+        
+        />
+
       </div>
+      
       <Footer />
     </>
   );

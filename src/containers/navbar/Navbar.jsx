@@ -9,7 +9,7 @@ import { AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Menu = ({ handleHome }) => (
+const Menu = ({ handleHome, handleDiscover }) => (
   <>
     <p>
       <a href="#" onClick={handleHome}>
@@ -17,7 +17,7 @@ const Menu = ({ handleHome }) => (
       </a>
     </p>
     <p>
-      <a href="#" onClick={handleHome}>
+      <a href="#" onClick={handleDiscover}>
         Discover
       </a>
     </p>
@@ -33,6 +33,19 @@ const Navbar = ({ user }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const handleHome = () => {
+  
+
+    if (user) {
+      navigate("/home/dashboard");
+    } else {
+      navigate("/");
+    }
+
+    return false;
+  };
+
+
+  const handleDiscover = () => {
     const hanldeSwal = () => {
       Swal.fire({
         title: "Please Login",
@@ -55,7 +68,7 @@ const Navbar = ({ user }) => {
     };
 
     if (user) {
-      navigate("/home/dashboard");
+      navigate("/home/discover");
     } else {
       hanldeSwal();
     }
@@ -69,7 +82,7 @@ const Navbar = ({ user }) => {
         <img src={Logo} alt="Logo" />
       </a>
       <div className="lib-navbar-links-container">
-        <Menu handleHome={handleHome} />
+        <Menu handleHome={handleHome} handleDiscover = {handleDiscover} />
       </div>
       <a href="register" className="btn-wrapper">
         Get Started

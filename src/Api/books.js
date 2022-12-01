@@ -174,3 +174,154 @@ export const getBooksByGenre = async (id) => {
     }
   }
 };
+
+
+
+
+export const getAllBookNames = async () => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerUser}all/books/name`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          return response.data.data;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not retrieve book names");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please Ensure youre logged in");
+    }
+  }
+};
+
+
+
+export const getBooksByAuthor = async (id) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerUser}authors/books/${id}`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          return response.data.data;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not retrieve book");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please Ensure youre logged in");
+    }
+  }
+};
+
+
+
+export const getAllAuthors = async () => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerUser}all/authors`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          return response.data.data;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not retrieve authors");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please Ensure youre logged in");
+    }
+  }
+};
+
+
+
+
+export const getBookDetails = async (id) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerUser}book/details/${id}`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          return response.data.data;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not retrieve book");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please Ensure youre logged in");
+    }
+  }
+};
+
+
+
+export const addFav = async (id) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerUser}book/favorite/${id}`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          toastr.success("Book Added to Favourite Successfully", "success");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not add book to favourite");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please Ensure youre logged in");
+    }
+  }
+};
+
+
+
+export const removeFav = async (id) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerUser}book/unfavorite/${id}`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          toastr.success("Book Removed from Favourite Successfully", "success");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not remove book from favourite");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please Ensure youre logged in");
+    }
+  }
+};
+
+
+
+export const getAuthorById = async (id) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`/${baseControllerUser}author/${id}`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          return response.data.data;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not add book to favourite");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please Ensure youre logged in");
+    }
+  }
+};

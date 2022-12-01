@@ -10,12 +10,15 @@ import PageHeaderText from "../pageHeaderText/PageHeaderText";
 import DiscoverTab from "../allTabs/DiscoverTab";
 import GenreTab from "../allTabs/GenreTab";
 import TrendingTab from "../allTabs/TrendingTab";
+import AboutBookTab from "../allTabs/AboutBookTab";
+import ReviewTab from "../allTabs/ReviewTab";
+
 
 const Tab = ({ tabName }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [activeTab, setActiveTab] = useState(tabName === "library" ? "MyBooks" : "Discover");
+  const [activeTab, setActiveTab] = useState(tabName === "library" ? "MyBooks" : tabName === "discover" ? "Discover" : "About");
 
   //  Functions to handle Tab Switching
   const handleBooks = () => {
@@ -47,20 +50,35 @@ const Tab = ({ tabName }) => {
       setActiveTab("");
     }
 
+
+
     // else{
     //   setActiveTab("Genre");
 
     // }
   };
 
+
+  const handleAbout = () => {
+    setActiveTab("About");
+  };
+
+  const handleReview = () => {
+    setActiveTab("Reviews");
+  };
+
   useEffect(() => {
     if (location.pathname === "/home/trending") {
       setActiveTab("trending");
     }
+    else if(location.pathname === "/home/books/id"){
+      setActiveTab("About");
+
+    }
   }, []);
 
   return (
-    <div className="Tabs">
+    <div className={activeTab === 'About'|| activeTab === 'Reviews' ? "Tabs-two" : "Tabs" }>
       {tabName === "library" ? (
         <>
           <PageHeaderText text="Library" />
@@ -93,7 +111,7 @@ const Tab = ({ tabName }) => {
             )}
           </div>
         </>
-      ) : (
+      ) : tabName === "discover" ? (
         <>
           <ul className="nav-discover">
             <li className={activeTab === "Discover" ? "active" : ""} onClick={handleDiscover}>
@@ -115,6 +133,31 @@ const Tab = ({ tabName }) => {
             )}
           </div>
         </>
+      ) : (
+
+        <>
+        
+        <ul className="nav-book">
+            <li className={activeTab === "About" ? "active" : ""} onClick={handleAbout}>
+              About This Book
+            </li>
+            <li className={activeTab === "Reviews" ? "active" : ""} onClick={handleReview}>
+              Reviews
+            </li>
+          </ul>
+
+
+        <div className="child-tabs">
+            {activeTab === "About" ? (
+              <AboutBookTab />
+            ) : activeTab === "Reviews" ? (
+              <ReviewTab />
+            ) 
+            : <></>
+            }
+          </div>
+
+          </>
       )}
     </div>
   );

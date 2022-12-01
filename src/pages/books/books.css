@@ -1,0 +1,197 @@
+.books-container{
+    background-color: #e3daf0;
+    min-height: 100vh;
+    padding: 4rem 6rem;
+}
+
+
+.backbutton {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* border: solid; */
+  }
+
+  .backbutton:hover {
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+
+  .books-container-wrapper{
+    width: 100%;
+    /* border: solid; */
+    margin: 1rem 0rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+  }
+
+  .book-and-author{
+    width: 50%;
+    /* border: 1px solid red;   */
+    display: flex;
+    flex-direction: row;
+  }
+
+
+
+.book-img{
+    /* border: solid; */
+    width: 40%;
+    /* height: 200px; */
+    height: auto;
+    margin-bottom: 1rem;
+    /* margin-right: 1rem; */
+    
+}
+
+.book-img img{
+
+    border-radius: 5px;
+    /* height: 250px; */
+    width: 100%;
+    /* object-fit: cover;
+    object-position: center; */
+
+}
+.book-details{
+    /* border: solid; */
+    width: 60%;
+    padding: 0 1rem;
+}
+
+.book-name{
+
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #5e458b;
+    margin-bottom: 0.5rem;
+
+}
+
+.author-name{
+
+    color: #78787d;
+    font-size: 15px;
+    margin: 1rem 0;
+
+}
+
+.start-reading-btn{
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 25px;
+    border: 0;
+    outline: none;
+    background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
+    color: white;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.start-reading-btn:hover{
+
+    cursor: pointer;
+    background-color: #4c3575;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+
+}
+
+.no-of-page-text{
+
+    color: #78787d;
+    font-size: 15px;
+    margin: 1rem 0;
+
+}
+
+.average-rating{
+
+    color: #78787d;
+    font-size: 15px;
+    margin: 0.2rem 0;
+
+}
+
+
+
+.about-book-review{
+    /* border: solid 1px blue; */
+    width: 45%;
+}
+
+
+
+@media screen and (max-width:1236px) {
+
+    .books-container{
+        background-color: #e3daf0;
+        min-height: 100vh;
+        padding: 4rem 2rem;
+    }
+
+    .books-container-wrapper{
+       
+        justify-content:center;
+    
+      }
+    
+      .about-book-review{
+        /* border: solid; */
+        width: 50%;
+    }
+
+    .learn-more{
+        text-align: center;
+    }
+ 
+    
+}
+
+
+@media screen and (max-width:935px) {
+
+
+    .books-container-wrapper{
+        margin-top: 1rem;
+        flex-direction: column;
+        justify-content: center;
+    
+      }
+
+      .book-and-author{
+        width: 100%;
+       
+      }
+
+      .about-book-review{
+        width: 100%;
+    }
+
+
+
+}
+
+@media screen and (max-width:425px) {
+
+    .book-and-author{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+    
+      .book-details{
+
+        width: 100%;
+        padding: 0rem 0rem;
+
+      }
+    
+}
+
+

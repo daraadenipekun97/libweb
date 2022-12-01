@@ -76,3 +76,33 @@ export const FETCH_ALL_GENRE_SUCCESS = "fetch_all_genre_success";
 
 export const FETCH_BOOKS_BY_GENRE = "fetch_books_by_genre";
 export const FETCH_BOOKS_BY_GENRE_SUCCESS = "fetch_books_by_genre_success";
+
+
+export const FETCH_BOOKS_BY_AUTHOR = "fetch_books_by_author";
+export const FETCH_BOOKS_BY_AUTHOR_SUCCESS = "fetch_books_by_author_success";
+
+
+export const FETCH_ALL_BOOK_NAMES = "fetch_all_book_names";
+export const FETCH_ALL_BOOK_NAMES_SUCCESS = "fetch_all_book_names_success";
+
+
+export const FETCH_ALL_AUTHORS = "fetch_all_author";
+export const FETCH_ALL_AUTHORS_SUCCESS = "fetch_all_author_success";
+
+
+export const FETCH_BOOKS_DETAILS = "fetch_book_details";
+export const FETCH_BOOKS_DETAILS_SUCCESS = "fetch_book_details_success";
+
+
+export const ADD_BOOK_TO_FAVOURITE = "add_book_to_favourite";
+export const ADD_BOOK_TO_FAVOURITE_SUCCESS = "add_book_to_favourite_success";
+export const RESTORE_FAVOURITE_INITIAL = "restore_favourite_initial";
+
+export const REMOVE_BOOK_FROM_FAVOURITE = "remove_book_from_favourite";
+export const REMOVE_BOOK_FROM_FAVOURITE_SUCCESS = "remove_book_from_favourite_success";
+export const RESTORE_UNFAVOURITE_INITIAL = "restore_unfavourite_initial";
+
+
+export const FETCH_AUTHORS_BY_ID = "fetch_author_by_id";
+export const FETCH_AUTHORS_BY_ID_SUCCESS = "fetch_author_by_id_success";
+

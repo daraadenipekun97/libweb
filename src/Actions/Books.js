@@ -17,6 +17,27 @@ import {
   FETCH_ALL_GENRE_SUCCESS,
   FETCH_BOOKS_BY_GENRE,
   FETCH_BOOKS_BY_GENRE_SUCCESS,
+
+  FETCH_ALL_BOOK_NAMES,
+  FETCH_ALL_BOOK_NAMES_SUCCESS,
+
+  FETCH_BOOKS_BY_AUTHOR,
+  FETCH_BOOKS_BY_AUTHOR_SUCCESS,
+  FETCH_ALL_AUTHORS,
+  FETCH_ALL_AUTHORS_SUCCESS,
+
+  FETCH_BOOKS_DETAILS,
+  FETCH_BOOKS_DETAILS_SUCCESS,
+
+  ADD_BOOK_TO_FAVOURITE,
+  ADD_BOOK_TO_FAVOURITE_SUCCESS,
+  REMOVE_BOOK_FROM_FAVOURITE,
+  REMOVE_BOOK_FROM_FAVOURITE_SUCCESS,
+  RESTORE_FAVOURITE_INITIAL,
+  RESTORE_UNFAVOURITE_INITIAL,
+
+  FETCH_AUTHORS_BY_ID,
+  FETCH_AUTHORS_BY_ID_SUCCESS
 } from "../ActionTypes";
 
 export const fetchAllTrendingBooks = () => ({
@@ -100,3 +121,96 @@ export const fetchBookByGenreSuccess = (payload) => ({
   type: FETCH_BOOKS_BY_GENRE_SUCCESS,
   payload,
 });
+
+
+
+export const fetchAllBookNames = () => ({
+  type: FETCH_ALL_BOOK_NAMES,
+});
+
+export const fetchAllBookNamesSuccess = (payload) => ({
+  type: FETCH_ALL_BOOK_NAMES_SUCCESS,
+  payload,
+});
+
+
+
+
+export const fetchBookByAuthor = (id) => ({
+  type: FETCH_BOOKS_BY_AUTHOR,
+  payload: id,
+});
+
+export const fetchBookByAuthorSuccess = (payload) => ({
+  type: FETCH_BOOKS_BY_AUTHOR_SUCCESS,
+  payload,
+});
+
+
+
+export const fetchAllAuthors = () => ({
+  type: FETCH_ALL_AUTHORS,
+});
+
+export const fetchAllAuthorsSuccess = (payload) => ({
+  type:FETCH_ALL_AUTHORS_SUCCESS,
+  payload,
+});
+
+
+
+export const fetchBookDetails = (id) => ({
+  type: FETCH_BOOKS_DETAILS,
+  payload: id,
+});
+
+export const fetchBookDetailsSuccess = (payload) => ({
+  type: FETCH_BOOKS_DETAILS_SUCCESS,
+  payload,
+});
+
+
+export const addBookToFav = (id) => ({
+  type: ADD_BOOK_TO_FAVOURITE,
+  payload: id,
+});
+
+export const addBookToFavSuccess = (payload) => ({
+  type: ADD_BOOK_TO_FAVOURITE_SUCCESS,
+  payload,
+});
+
+
+
+
+export const removeBookFromFav = (id) => ({
+  type: REMOVE_BOOK_FROM_FAVOURITE,
+  payload: id,
+});
+
+export const removeBookFromFavSuccess = (payload) => ({
+  type: REMOVE_BOOK_FROM_FAVOURITE_SUCCESS,
+  payload,
+});
+
+
+export const restoreFavouriteInitial = () => ({
+  type: RESTORE_FAVOURITE_INITIAL,
+});
+
+export const restoreUnfavouriteInitial = () => ({
+  type: RESTORE_UNFAVOURITE_INITIAL,
+});
+
+
+export const fetchAuthorsById = (id) => ({
+  type: FETCH_AUTHORS_BY_ID,
+  payload: id,
+});
+
+export const fetchAuthorsByIdSuccess = (payload) => ({
+  type: FETCH_AUTHORS_BY_ID_SUCCESS,
+  payload,
+});
+
+
