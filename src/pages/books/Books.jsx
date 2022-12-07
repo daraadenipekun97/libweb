@@ -12,7 +12,7 @@ import SingleBook from "../../components/singleBook/SingleBook";
 import { fetchBookDetails, addBookToFav, removeBookFromFav, restoreFavouriteInitial, restoreUnfavouriteInitial  } from "../../Actions";
 import Preloader from "../../components/preloader/Preloader";
 import StarRating from "../../components/starRating/StarRating";
-
+import Reader from "../../containers/Reader";
 
 const Books = () => {
 
@@ -97,6 +97,13 @@ const Books = () => {
         )
       }
 
+
+      const handleStartReading = (url) => {
+        navigate("/home/reader", {state:{
+            id: url
+        }})
+      }
+
   return (
     <>
     <UserNavbar/>
@@ -115,7 +122,10 @@ const Books = () => {
                 <div className="book-details">
                     <h1 className="book-name">{bookDetails.book.name}</h1>
                     <p className="author-name">{bookDetails.book.author.name}</p>
-                    <button className="start-reading-btn">Start Reading</button>
+                    <button className="start-reading-btn" 
+                    onClick={() =>handleStartReading(bookDetails.book.epub_data)}
+                    
+                    >Start Reading</button>
                     {
                         toggleHeart ?   <AiFillHeart size={25} color="red" onClick={() => handleRemoveFav(bookDetails.book.id)}/> :<AiOutlineHeart size={25} color="red" onClick={() => handleAddFav(bookDetails.book.id)}/>
 

@@ -4,6 +4,10 @@ import authReducer from "./auth";
 import getAllReducer from "./getAll";
 import booksReducer from "./books";
 import libraryReducer from "./library";
+import profileReducer from "./profile";
+import readersReducer from "./readers";
+
+
 
 const reducer = () =>
   combineReducers({
@@ -11,7 +15,8 @@ const reducer = () =>
     getAll: getAllReducer,
     books: booksReducer,
     library: libraryReducer,
-
+    profile: profileReducer,
+    reader: readersReducer,
     toastr: toastrReducer,
   });
 

@@ -38,6 +38,8 @@ const GenrePage = lazy(() => import("./pages/genre/Genre"));
 const GenreByIdPage = lazy(() => import("./pages/genre/GenreById"));
 const AllAuthorsPage = lazy(() => import("./pages/authors/AllAuthors"));
 const BooksPage = lazy(() => import("./pages/books/Books"));
+const ProfilePage = lazy(() => import("./pages/profile/Profile"));
+const ReaderPage = lazy(() => import("./containers/Reader"));
 
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
@@ -73,6 +75,8 @@ function App() {
                 <Route path="genre" element={<GenrePage />} />
                 <Route path="genre/:id" element={<GenreByIdPage />} />
                 <Route path="books/:id" element={<BooksPage />} />
+                <Route path="profile" element={<ProfilePage />} />
+                <Route path="reader" element={<ReaderPage />} />
 
               </Route>
 

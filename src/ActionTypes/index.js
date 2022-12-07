@@ -106,3 +106,15 @@ export const RESTORE_UNFAVOURITE_INITIAL = "restore_unfavourite_initial";
 export const FETCH_AUTHORS_BY_ID = "fetch_author_by_id";
 export const FETCH_AUTHORS_BY_ID_SUCCESS = "fetch_author_by_id_success";
 
+export const UPDATE_PROFILE = "update_profile";
+export const UPDATE_PROFILE_SUCCESS = "update_profile_success";
+export const RESTORE_UPDATE_PROFILE_INITIAL = "restore_update_profile_initial";
+
+
+
+//FOR THE READERS COMPONENT ACTION
+export const UPDATE_READERS_BOOK = "update_readers_book";
+export const UPDATE_CURRENT_PAGE = "update_current_page";
+export const CLEAR_BOOK = "clear_book";
+export const UPDATE_TOC = "update_toc";
+export const CLEAR_TOC = "clear_toc";

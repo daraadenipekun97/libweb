@@ -1,0 +1,96 @@
+.subscription-container{
+
+    background-color: white;
+    height: fit-content;
+    width: 60vw;
+    padding: 2rem 2rem;
+    border-radius: 10px;
+
+}
+
+.subscription-title{
+
+    font-weight: 600;
+    color: #5e458b;
+    margin-bottom: 1rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  }
+
+.subscription-status{
+    color: rgb(254, 164, 164);
+    margin-top: 1rem;
+    font-size: 25px;
+
+
+}
+
+.card{
+    border: solid  1px #ddd;
+    height: fit-content;
+    padding: 1rem 1rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+}
+
+.card-title{
+
+    margin-bottom: 1rem;
+    color: #5e458b;
+    font-weight: 500;
+}
+
+.card-top-text{
+    color: #5e458b ;
+    margin: 1rem 0;
+    font-size: 12px;
+}
+
+.card-middle-text{
+    color: #5e458b;
+    margin-bottom: 1rem;
+    line-height: 25px;
+
+}
+
+.card-bottom-text{
+
+    color: #5e458b;
+    margin-bottom: 1rem;
+}
+
+.select-btn{
+
+    
+    padding: 0.5rem 0.5rem;
+    font-weight: 600;
+    border-radius: 5px;
+    font-style: normal;
+    font-size: 12px;
+    text-align: center;
+    border: 0;
+    outline: none;
+    background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
+    color: white;
+    width: 15%;
+
+
+}
+
+
+@media screen and (max-width:500px) {
+
+    .subscription-container{
+
+      
+        width: 100%;
+      
+    
+    }
+
+}

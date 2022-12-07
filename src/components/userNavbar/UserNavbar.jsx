@@ -70,7 +70,7 @@ const UserNavbar = () => {
         <div className="profile_dropdown">
           <ul>
             <li>
-              <a href="#">
+              <a href="/home/profile">
                 {userDataLogin !== null
                   ? userDataLogin.user.name
                   : userRegData !== null

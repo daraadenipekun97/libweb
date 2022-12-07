@@ -5,9 +5,9 @@ import "./authors.css";
 import bookImg from "../../assets/images/wolesoyinka.jpg"
 import { Footer } from "../../containers";
 import SingleBook from "../../components/singleBook/SingleBook";
-import { fetchBookByAuthor } from "../../Actions";
+import { fetchBookByAuthor, fetchAuthorsById } from "../../Actions";
 import { useParams } from "react-router-dom";
-
+import Avatar from "../../assets/images/avatar.png"
 
 const Authors = () => {
 
@@ -15,12 +15,17 @@ const Authors = () => {
 
   const dispatch = useDispatch();
 
-  const { booksByAuthor } = useSelector((state) => state.books);
+  const { booksByAuthor, authorById } = useSelector((state) => state.books);
 
 
   useEffect(() => {
     dispatch(fetchBookByAuthor(params.id));
+    dispatch(fetchAuthorsById(params.id))
   }, [dispatch]);
+
+  
+
+  
 
   return (
     <>
@@ -31,12 +36,14 @@ const Authors = () => {
 
           <div className="author-wrapper">
               <div className="img-wrapper">
-                 <img src={bookImg} alt="" />
+                  {
+                    authorById.image_data ? <img src={authorById.image_data} alt={authorById.name ? authorById.name: ""} /> :<img src={Avatar} alt='No Author Image' />
+                  }
               </div>
               <div className="author-desc">
-                  <h1>George Howell</h1>
+                  <h1>{authorById.name ? authorById.name : ""}</h1>
                   <p>About the author</p>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit voluptate vel libero voluptas consequatur quos vero est harum tempore quo.</p>
+                  <p>{authorById.about ? authorById.about : ""}</p>
               </div>
           </div>
           <SingleBook datas={booksByAuthor} searchBar="" title="Authors Book" />
