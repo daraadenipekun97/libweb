@@ -4,7 +4,7 @@ import "./profileTab.css";
 import { AiOutlineUser, AiOutlineWallet, AiOutlineInteraction, AiOutlineLock, AiOutlineLogout } from "react-icons/ai";
 
 import Bio from "../allProfileTab/Bio";
-import Wallet from "../allProfileTab/Wallet";
+import WalletTab from "../allProfileTab/WalletTab";
 import Subscription from "../allProfileTab/Subscription";
 import ChangePassword from "../allProfileTab/ChangePassword"
 
@@ -54,7 +54,7 @@ const ProfileTab = () => {
         {activeTab === "Bio" ? (
               <Bio />
             ) : activeTab === "Wallet" ? (
-                <Wallet/>
+                <WalletTab/>
                 ) : activeTab === "Sub" ? (
                     <Subscription/>
                     ) : activeTab === "Password" ? (

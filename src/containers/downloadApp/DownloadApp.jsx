@@ -6,9 +6,9 @@ const DownloadApp = () => {
     <div className="lib-download-app-container">
       <div className="lib-download-app-wrapper">
         <div className="lib-download-app-left-content">
-          <p className="lib-download-app-top-text">Download The App</p>
+          <p className="lib-download-app-top-text">Download the app today</p>
           <h1 className="lib-download-app-middle-text">
-            Join our 200,000+ users on MyLibriBook App
+            There are thousands of users using MyLibri Books
           </h1>
           <p className="lib-download-app-bottom-text">All your favorite books in one place</p>
 

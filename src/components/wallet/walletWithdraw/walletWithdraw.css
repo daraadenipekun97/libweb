@@ -1,0 +1,84 @@
+.wallet-withdraw-container{
+
+    background-color: white;
+    height: 100%;
+    min-height: fit-content;
+    width: 49%;
+    padding: 2rem 2rem;
+    border-radius: 10px;
+
+}
+
+.wallet-withdraw-container h4{
+    font-weight: 600;
+    color: #5e458b;
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+.wallet-withdraw-container p {
+    
+    font-weight: 400;
+    color: #78787d;
+    font-size: 15px;
+    margin-bottom: 0.5rem;
+}
+
+
+.amount-input{
+
+    background-color: #ffffff;
+    border: 2px solid rgba(84, 95, 125, 0.15);
+    border-radius: 5px;
+    height: 50px;
+    padding-left: 10px;
+    outline: none;
+    width: 100%;
+    margin: 0.5rem 0;
+
+}
+
+.amount-input:focus{
+    border: 1px solid #5e458b;
+
+}
+
+.amount-input::-webkit-outer-spin-button,
+.amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.submit-amount-btn{
+
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 25px;
+    border: 0;
+    outline: none;
+    background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
+    color: white;
+    width: 100%;
+    margin: 0.5rem 0;
+    cursor: pointer;
+
+
+}
+
+@media screen and (max-width:634px){
+
+    .wallet-withdraw-container{
+
+        background-color: white;
+        height: 100%;
+        min-height: fit-content;
+        width: 100%;
+        padding: 2rem 2rem;
+        border-radius: 10px;
+    
+    }
+
+}

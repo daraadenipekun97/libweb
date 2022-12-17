@@ -163,7 +163,11 @@ const VerifyEmail = ({ user }) => {
         code: "",
       });
 
-      handleSwal();
+      // handleSwal();
+
+      //removing the swal and doing the navigation right away
+      navigate("/home/dashboard");
+
     }
 
     return () => {

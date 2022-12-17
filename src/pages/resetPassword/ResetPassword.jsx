@@ -217,7 +217,11 @@ const ResetPassword = ({ user }) => {
       setFormState({ ...initialFormState });
       // setFormValues({...initialFormValues});
 
-      handleSwal();
+      // handleSwal();
+
+      //removing the swal and navigating to sign in right away
+      navigate("/signin");
+
     }
 
     return () => {

@@ -1,0 +1,100 @@
+.wallet-account-container{
+    background-color: white;
+    height: fit-content;
+    width: 49%;
+    padding: 2rem 2rem;
+    border-radius: 10px;
+    height: 100%;
+    
+}
+
+.wallet-account-heading{
+    font-weight: 600;
+    color: #5e458b;
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+.account-number-input{
+
+    background-color: #ffffff;
+    border: 2px solid rgba(84, 95, 125, 0.15);
+    border-radius: 5px;
+    height: 50px;
+    padding-left: 10px;
+    outline: none;
+    width: 100%;
+    margin: 0.5rem 0;
+
+}
+
+.account-number-input:focus{
+    border: 1px solid #5e458b;
+
+}
+
+.account-number-input::-webkit-outer-spin-button,
+.account-number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.submit-account-btn{
+
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 25px;
+    border: 0;
+    outline: none;
+    background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
+    color: white;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+
+
+}
+
+
+.wallet-account-container p{
+    font-weight: 400;
+    color: #78787d;
+    font-size: 15px;
+    margin: 0.2rem 0;
+    
+}
+
+.account-details{
+
+
+    font-weight: 600;
+    color: #5e458b;
+    font-size: 17px;
+    margin-bottom: .5rem;
+
+}
+
+hr{
+
+    border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  margin-bottom: 1rem;
+
+}
+
+@media screen and (max-width:634px){
+
+    .wallet-account-container{
+      
+        width: 100%;
+        margin-bottom: 1rem;
+        
+    }
+
+}

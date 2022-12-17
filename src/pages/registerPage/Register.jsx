@@ -379,7 +379,11 @@ const Register = ({ user }) => {
     if (registerSuccess === true) {
       // setFormValues({...initialFormValues})
       setFormState({ ...initialFormState });
-      handleSwal();
+      // handleSwal();  
+
+      //removing the swal and doing the navigation right away
+      navigate("/verify");
+      window.location.reload();
     }
 
     return () => {

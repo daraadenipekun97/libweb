@@ -118,3 +118,36 @@ export const UPDATE_CURRENT_PAGE = "update_current_page";
 export const CLEAR_BOOK = "clear_book";
 export const UPDATE_TOC = "update_toc";
 export const CLEAR_TOC = "clear_toc";
+
+
+
+export const FETCH_PROFILE = "fetch_profile";
+export const FETCH_PROFILE_SUCCESS = "fetch_profile_success";
+
+export const ADD_BANK = "add_bank";
+export const ADD_BANK_SUCCESS = "add_bank_success";
+export const RESTORE_ADD_BANK_INITIAL = "restore_add_bank_initial";
+
+export const FETCH_ALL_BANKS = "fetch_all_banks";
+export const FETCH_ALL_BANKS_SUCCESS = "fetch_all_banks_success";
+
+export const FETCH_WALLET_DETAILS = "fetch_wallet_details";
+export const FETCH_WALLET_DETAILS_SUCCESS = "fetch_wallet_details_success";
+
+export const WITHDRAW_FUNDS = "withdraw_funds";
+export const WITHDRAW_FUNDS_SUCCESS = "withdraw_funds_success";
+export const RESTORE_WITHDRAW_FUNDS_INITIAL = "restore_withdraw_fund_initial"
+
+
+export const CANCEL_TRIAL = "cancel_trial";
+export const CANCEL_TRIAL_SUCCESS = "cancel_trial_success";
+export const RESTORE_CANCEL_TRIAL_INITIAL = "restore_cancel_trial_initial";
+
+
+export const CANCEL_SUBSCRIPTION = "cancel_subscription";
+export const CANCEL_SUBSCRIPTION_SUCCESS = "cancel_subscription_success";
+export const RESTORE_CANCEL_SUBSCRIPTION_INITIAL = "restore_cancel_subscription_initial";
+
+export const WEB_PURCHASE = "web_purchase";
+export const WEB_PURCHASE_SUCCESS = "web_purchase_success";
+export const RESTORE_WEB_PURCHASE_INITIAL = "restore_web_purchase_initial";

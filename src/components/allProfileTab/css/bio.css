@@ -66,6 +66,10 @@ input:focus {
     margin-bottom: 0.5rem;
   }
 
+  option{
+    padding: 10px 0px;
+  }
+
   .profile-validation-error-text{
 
     color: red;
@@ -78,6 +82,16 @@ input:focus {
 
   }
 
+  .select-validation-error-text{
+
+    color: red;
+    transition: 0.5s;
+    text-align: left;
+    font-size: 10px;
+    margin-bottom: 0.5rem;
+    width: fit-content;
+  }
+
 
  input:invalid[focused="true"] ~ .profile-validation-error-text {
     display: block;
@@ -87,6 +101,9 @@ input:focus {
     border: 1px solid red;
   }
 
+  input:disabled, select:disabled {
+    cursor: not-allowed;
+  }
 
   .bio-button{
 
