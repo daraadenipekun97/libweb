@@ -1,19 +1,20 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import Spinner from '../spinner/Spinner';
 
 
 import "./starRating.css";
 
-const StarRating = () => {
+const StarRating = ({bookDetails, averageRating}) => {
 
-    const { bookDetails  } = useSelector((state) => state.books);
+    // const { bookDetails  } = useSelector((state) => state.books);
 
 
-    if (Object.keys(bookDetails).length === 0) {
+    if (bookDetails === null || bookDetails === "No Rating") {
         return (
     
-            <Spinner/>
+            // <Spinner/> 
+            <p>No Rating</p>
     
         )
       }
@@ -23,51 +24,51 @@ const StarRating = () => {
           <div className="rating">
 
             {
-                bookDetails.rating >= 1 && bookDetails.rating < 2 ? (
+                bookDetails >= 1 && bookDetails < 2 ? (
                     <>
-                        <i class="fa fa-star rate" aria-hidden="true"></i>
-                        <i class="fa fa-star unrate" aria-hidden="true"></i>
-                        <i class="fa fa-star unrate" aria-hidden="true"></i>
-                        <i class="fa fa-star unrate" aria-hidden="true"></i>
-                        <i class="fa fa-star unrate" aria-hidden="true"></i>
+                        <i className="fa fa-star rate" aria-hidden="true"></i>
+                        <i className="fa fa-star unrate" aria-hidden="true"></i>
+                        <i className="fa fa-star unrate" aria-hidden="true"></i>
+                        <i className="fa fa-star unrate" aria-hidden="true"></i>
+                        <i className="fa fa-star unrate" aria-hidden="true"></i>
                     </>
-                ):   bookDetails.rating >= 2 && bookDetails.rating < 3  ? (
+                ):   bookDetails >= 2 && bookDetails < 3  ? (
 
                     <>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star unrate" aria-hidden="true"></i>
-                    <i class="fa fa-star unrate" aria-hidden="true"></i>
-                    <i class="fa fa-star unrate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star unrate" aria-hidden="true"></i>
+                    <i className="fa fa-star unrate" aria-hidden="true"></i>
+                    <i className="fa fa-star unrate" aria-hidden="true"></i>
                 </>
-                ): bookDetails.rating >= 3 && bookDetails.rating < 4 ? (
+                ): bookDetails >= 3 && bookDetails < 4 ? (
 
                     <>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star unrate" aria-hidden="true"></i>
-                    <i class="fa fa-star unrate" aria-hidden="true"></i>
-                </>
-
-                ): bookDetails.rating >= 4 && bookDetails.rating < 5 ? (
-
-                    <>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star unrate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star unrate" aria-hidden="true"></i>
+                    <i className="fa fa-star unrate" aria-hidden="true"></i>
                 </>
 
-                ): bookDetails.rating >= 5 ? (
+                ): bookDetails >= 4 && bookDetails < 5 ? (
 
                     <>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
-                    <i class="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star unrate" aria-hidden="true"></i>
+                </>
+
+                ): bookDetails >= 5 ? (
+
+                    <>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
+                    <i className="fa fa-star rate" aria-hidden="true"></i>
                 </>
 
                 ):""
@@ -75,9 +76,11 @@ const StarRating = () => {
              
 
 
+                {
+                    averageRating ?   <p className="average-rating">{bookDetails !== null ? `(${bookDetails}.0 Average Rating)`: "No Average Rating"}</p> : <></>
 
+                }
 
-              <p className="average-rating">{bookDetails.rating !== null ? `(${bookDetails.rating}.0 Average Rating)`: "No Average Rating"}</p>
 
 
           </div>

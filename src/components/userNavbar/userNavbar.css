@@ -39,8 +39,9 @@
   padding: 0.5rem;
 }
 
-.navbar-links li:hover {
+.active, .navbar-links li:hover {
   border-bottom: 1px solid #5e458b;
+  margin: 0rem 0.2rem;
 }
 
 .toggle-button {
@@ -93,6 +94,8 @@
   color: white;
   width: fit-content;
   height: 35px;
+  cursor: pointer;
+
 }
 
 .profile {

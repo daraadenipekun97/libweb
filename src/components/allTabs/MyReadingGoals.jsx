@@ -386,7 +386,7 @@ const MyReadingGoals = () => {
       <h4 className="reading-goals-h4">All Goals</h4>
 
       <div className="table-wrapper">
-        <table class="content-table">
+        <table className="content-table">
           <thead>
             <tr>
               <th>Title</th>

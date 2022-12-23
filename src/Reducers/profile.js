@@ -13,7 +13,11 @@ import {
     RESTORE_CANCEL_SUBSCRIPTION_INITIAL,
     RESTORE_CANCEL_TRIAL_INITIAL,
     WEB_PURCHASE_SUCCESS,
-    RESTORE_WEB_PURCHASE_INITIAL
+    RESTORE_WEB_PURCHASE_INITIAL,
+
+    FETCH_SUBSCRIPTION_DETAILS_SUCCESS,
+    CHANGE_PASSWORD_SUCCESS,
+    RESTORE_CHANGE_PASSWORD_INITIAL
   } from "../ActionTypes";
 
 
@@ -37,6 +41,11 @@ import {
 
     webPurchaseSuccess:false,
     webPurchaseFailure:false,
+
+    subscriptionDetails:{},
+    passwordChangeSuccess:false,
+    passwordChangeFailure:false,
+
 
   };
 
@@ -199,6 +208,13 @@ import {
             };
           }
 
+          case FETCH_SUBSCRIPTION_DETAILS_SUCCESS: {
+            return {
+              ...state,
+              subscriptionDetails: action.payload,
+             
+            };
+          }
 
           case WEB_PURCHASE_SUCCESS: {
             if (action.payload === true) {
@@ -225,6 +241,31 @@ import {
             };
           }
 
+
+          case CHANGE_PASSWORD_SUCCESS: {
+            if (action.payload === true) {
+              return {
+                ...state,
+                passwordChangeSuccess: true,
+                passwordChangeFailure: false,
+              };
+            } else {
+              return {
+                ...state,
+                passwordChangeSuccess: false,
+                passwordChangeFailure: true,
+              };
+            }
+          }
+
+
+          case RESTORE_CHANGE_PASSWORD_INITIAL: {
+            return {
+              ...state,
+              passwordChangeFailure: false,
+              passwordChangeSuccess: false,
+            };
+          }
 
 
 

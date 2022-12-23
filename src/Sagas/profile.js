@@ -11,7 +11,9 @@ import {
     WITHDRAW_FUNDS,
     CANCEL_SUBSCRIPTION,
     CANCEL_TRIAL,
-    WEB_PURCHASE
+    WEB_PURCHASE,
+    FETCH_SUBSCRIPTION_DETAILS,
+    CHANGE_PASSWORD,
   } from "../ActionTypes";
 
 
@@ -26,6 +28,8 @@ import {
    cancelTrial,
    cancelSub,
    makeWebPurchase,
+   getSubscriptionDetails,
+   changePass
   } from "../Api";
   
 
@@ -38,7 +42,9 @@ import {
     withdrawFundsSuccess,
     cancelTrialSuccess,
     cancelSubscriptionSuccess,
-    webPurchaseSuccess
+    webPurchaseSuccess,
+    fetchSubscriptionDetailsSuccess,
+    changePasswordSuccess
   } from "../Actions";
 
 
@@ -133,6 +139,25 @@ import {
   };
 
 
+  export const fetchSubDetailsRequest = function* ({ payload }) {
+    yield call(requestFunction, fetchSubscriptionDetailsSuccess, getSubscriptionDetails, payload);
+  };
+  
+  export const fetchSubDetaillss = function* () {
+    yield takeEvery(FETCH_SUBSCRIPTION_DETAILS, fetchSubDetailsRequest);
+  };
+
+
+
+
+  export const changePasswordRequest = function* ({ payload }) {
+    yield call(requestFunction, changePasswordSuccess, changePass, payload);
+  };
+  
+  export const changePasswordd = function* () {
+    yield takeEvery(CHANGE_PASSWORD, changePasswordRequest);
+  };
+
 
 
 
@@ -146,7 +171,9 @@ import {
       fork(withdrawFundss),
       fork(cancelTriiall),
       fork(cancelSubs),
-      fork(webPurchasseee)
+      fork(webPurchasseee),
+      fork(fetchSubDetaillss),
+      fork(changePasswordd)
     ]);
   }
   

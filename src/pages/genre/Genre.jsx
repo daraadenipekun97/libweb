@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import UserNavbar from "../../components/userNavbar/UserNavbar";
 import { Footer } from "../../containers";
 import "./genre.css";
 import { useNavigate } from "react-router-dom";
 import GenreTab from "../../components/allTabs/GenreTab";
+import { fetchAllGenre } from "../../Actions";
+
 
 const Genre = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState("Genre");
+
+  const { allGenre } = useSelector((state) => state.books);
+
+  useEffect(() => {
+    dispatch(fetchAllGenre());
+  }, [dispatch]);
+
 
   const handleDiscover = () => {
     navigate("/home/discover");
@@ -31,7 +43,7 @@ const Genre = () => {
           </li>
         </ul>
 
-        <GenreTab />
+        <GenreTab allGenre = {allGenre} />
       </div>
       <Footer />
     </>

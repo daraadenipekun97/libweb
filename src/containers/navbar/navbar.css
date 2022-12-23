@@ -31,8 +31,8 @@
   margin: 0 1rem;
 }
 
-.lib-navbar-links-container p:hover {
-  color: #5e458b;
+.active, .lib-navbar-links-container p:hover {
+  color: #5e458b !important;
   cursor: pointer;
   border-bottom: 1px solid #5e458b;
 }

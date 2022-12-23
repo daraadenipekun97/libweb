@@ -103,6 +103,10 @@ export const REMOVE_BOOK_FROM_FAVOURITE_SUCCESS = "remove_book_from_favourite_su
 export const RESTORE_UNFAVOURITE_INITIAL = "restore_unfavourite_initial";
 
 
+export const ADD_REVIEW = "add_review";
+export const ADD_REVIEW_SUCCESS = "add_review_success";
+export const RESTORE_ADD_REVIEW_INITIAL = "restore_add_review_initial";
+
 export const FETCH_AUTHORS_BY_ID = "fetch_author_by_id";
 export const FETCH_AUTHORS_BY_ID_SUCCESS = "fetch_author_by_id_success";
 
@@ -151,3 +155,18 @@ export const RESTORE_CANCEL_SUBSCRIPTION_INITIAL = "restore_cancel_subscription_
 export const WEB_PURCHASE = "web_purchase";
 export const WEB_PURCHASE_SUCCESS = "web_purchase_success";
 export const RESTORE_WEB_PURCHASE_INITIAL = "restore_web_purchase_initial";
+
+export const FETCH_SUBSCRIPTION_DETAILS = "fetch_subscription_details";
+export const FETCH_SUBSCRIPTION_DETAILS_SUCCESS = "fetch_subscription_details_success";
+
+export const CHANGE_PASSWORD = "change_password";
+export const CHANGE_PASSWORD_SUCCESS = "change_password_success";
+export const RESTORE_CHANGE_PASSWORD_INITIAL = "restore_change_password_initial";
+
+export const SEARCH_BOOK = "search_book";
+export const SEARCH_BOOK_SUCCESS = "search_book_success";
+export const RESTORE_SEARCH_BOOK_INITIAL = "restore_search_book_initial";
+
+
+export const READ_BOOK = "read_book";
+export const READ_BOOK_SUCCESS = "read_book_success";

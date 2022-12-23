@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import "./navbar.css";
 
@@ -9,9 +10,32 @@ import { AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Menu = ({ handleHome, handleDiscover }) => (
-  <>
-    <p>
+const Menu = ({ handleHome, handleDiscover }) => {
+  const dispatch = useDispatch();
+
+  const [activeTab, setActiveTab] = useState('home');
+
+
+  useEffect(() => {
+
+    if (window.location.pathname === "/") {
+      setActiveTab('home')
+
+    }
+    else if(window.location.pathname === "/signin"){
+      setActiveTab('signin')
+
+    }
+   
+  
+   
+  }, [dispatch, window.location.pathname])
+
+
+  return (
+
+    <>
+    <p className={activeTab === "home" ? "active" : ""}>
       <a href="#" onClick={handleHome}>
         Home
       </a>
@@ -21,14 +45,18 @@ const Menu = ({ handleHome, handleDiscover }) => (
         Discover
       </a>
     </p>
-    <p>
+    <p className={activeTab === "signin" ? "active" : ""}>
       <a href="signin">Sign In</a>
     </p>
   </>
-);
+
+  )
+  
+};
 
 const Navbar = ({ user }) => {
   const navigate = useNavigate();
+
 
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -44,6 +72,7 @@ const Navbar = ({ user }) => {
     return false;
   };
 
+ 
 
   const handleDiscover = () => {
     const hanldeSwal = () => {
@@ -75,6 +104,8 @@ const Navbar = ({ user }) => {
 
     return false;
   };
+
+
 
   return (
     <div className="lib-navbar">

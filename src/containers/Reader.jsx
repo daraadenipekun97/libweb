@@ -9,6 +9,8 @@ import ViewerWrapper from '../components/readerComponents/commons/ViewWrapper'
 import ReaderHeader from './ReaderHeader'
 import ReaderFooter from './ReaderFooter'
 import Nav from "../containers/menu/Nav"
+import Option from '../containers/menu/Option'
+import Learning from "../containers/menu/Note"
 
 //epubviewer
 import { ReactEpubViewer } from 'react-epub-viewer'
@@ -35,6 +37,10 @@ const Reader = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const viewerRef = useRef(null);
+    const optionRef = useRef(null);
+    const learningRef = useRef(null);
+
+
     const navRef = useRef(null);
   
 
@@ -46,6 +52,9 @@ const Reader = () => {
 
 
     const [navControl, onNavToggle] = useMenu(navRef, 300);
+    const [optionControl, onOptionToggle, emitEvent] = useMenu(optionRef, 300);
+    const [learningControl, onLearningToggle] = useMenu(learningRef, 300);
+
    
 
 
@@ -54,7 +63,7 @@ const Reader = () => {
 
     const [bookStyle, setBookStyle] = useState({
         fontFamily: 'Origin',
-        fontSize: 12,
+        fontSize: 18,
         lineHeight: 1.4,
         marginHorizontal: 15,
         marginVertical: 5
@@ -73,6 +82,9 @@ const Reader = () => {
       const onBookInfoChange = (book) => dispatch(updateReadersBook(book));
       const onPageChange = (page) => dispatch(updateCurrentPage(page));
       const onTocChange = (toc) => dispatch(updateToc(toc));
+      const onBookStyleChange = (bookStyle_) => setBookStyle(bookStyle_);
+      const onBookOptionChange = (bookOption_) => setBookOption(bookOption_);
+
 
       
       const onPageMove = (type) => {
@@ -93,7 +105,7 @@ const Reader = () => {
 
     console.log("url is " + location.state.id)
  
-
+    const sharedLink = localStorage.getItem('book')
 
   return (
     <>
@@ -102,6 +114,10 @@ const Reader = () => {
             <ReaderHeader
             
             onNavToggle={onNavToggle}
+            onOptionToggle={onOptionToggle}
+            onLearningToggle={onLearningToggle}
+
+
           
 
 
@@ -134,6 +150,26 @@ const Reader = () => {
 			onToggle={onNavToggle}
 			onLocation={onLocationChange}
 			ref={navRef}
+		/>
+
+<Option 
+			control={optionControl}
+			bookStyle={bookStyle}
+			bookOption={bookOption}
+			bookFlow={bookOption.flow}
+			onToggle={onOptionToggle} 
+			emitEvent={emitEvent}
+			onBookStyleChange={onBookStyleChange}
+			onBookOptionChange={onBookOptionChange}
+			ref={optionRef}
+		/>
+
+<Learning 
+			control={learningControl}
+			onToggle={onLearningToggle}
+			ref={learningRef}
+      link = {sharedLink}
+
 		/>
 
     </>

@@ -17,6 +17,7 @@ import {
   RESTORE_FAVOURITE_INITIAL,
   RESTORE_UNFAVOURITE_INITIAL,
   FETCH_AUTHORS_BY_ID_SUCCESS,
+  SEARCH_BOOK_SUCCESS,
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -40,7 +41,8 @@ const INIT_STATE = {
   removeBookFromFavouriteSuccess:false,
   removeBookFromFavouriteFailure:false,
 
-  authorById:{}
+  authorById:{},
+  searchedBooks:[]
   
 };
 
@@ -195,6 +197,13 @@ const booksReducer = (state = INIT_STATE, action) => {
         return {
           ...state,
             authorById:action.payload
+        };
+      }
+
+      case SEARCH_BOOK_SUCCESS: {
+        return {
+          ...state,
+          searchedBooks: action.payload,
         };
       }
 

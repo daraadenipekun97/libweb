@@ -8,6 +8,9 @@ import {
   SEND_WISHLIST_SUCCESS,
   RESTORE_SEND_WISHLIST_INITIAL,
   FETCH_MY_FAVORITES_SUCCESS,
+  ADD_REVIEW_SUCCESS,
+  RESTORE_ADD_REVIEW_INITIAL,
+  READ_BOOK_SUCCESS
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -22,7 +25,11 @@ const INIT_STATE = {
   sendWishlistSuccess: false,
   sendWishlistFailure: false,
 
+  addReviewSuccess: false,
+  addReviewFailure: false,
+
   myFavorites: [],
+  readBookSuccess:false
 };
 
 const libraryReducer = (state = INIT_STATE, action) => {
@@ -117,6 +124,37 @@ const libraryReducer = (state = INIT_STATE, action) => {
         ...state,
         sendWishlistFailure: false,
         sendWishlistSuccess: false,
+      };
+    }
+
+    case ADD_REVIEW_SUCCESS: {
+      if (action.payload === true) {
+        return {
+          ...state,
+          addReviewSuccess: true,
+          addReviewFailure: false,
+        };
+      } else {
+        return {
+          ...state,
+          addReviewSuccess: false,
+          addReviewFailure: true,
+        };
+      }
+    }
+
+    case RESTORE_ADD_REVIEW_INITIAL: {
+      return {
+        ...state,
+        addReviewSuccess: false,
+        addReviewFailure: false,
+      };
+    }
+
+    case READ_BOOK_SUCCESS: {
+      return {
+        ...state,
+        readBookSuccess: action.payload,
       };
     }
 

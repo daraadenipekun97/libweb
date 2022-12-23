@@ -17,7 +17,8 @@ import {
   FETCH_BOOKS_DETAILS,
   ADD_BOOK_TO_FAVOURITE,
   REMOVE_BOOK_FROM_FAVOURITE,
-  FETCH_AUTHORS_BY_ID
+  FETCH_AUTHORS_BY_ID,
+  SEARCH_BOOK
 } from "../ActionTypes";
 
 import {
@@ -37,6 +38,7 @@ import {
   addFav,
   removeFav,
   getAuthorById,
+  searchAllBooks
 } from "../Api";
 
 import {
@@ -55,7 +57,8 @@ import {
   fetchBookDetailsSuccess,
   fetchAuthorsByIdSuccess,
   addBookToFavSuccess,
-  removeBookFromFavSuccess
+  removeBookFromFavSuccess,
+  searchBookSuccess
 } from "../Actions";
 
 export const fetchTrendingBooksRequest = function* ({ payload }) {
@@ -199,6 +202,15 @@ export const fetchAuthorrById = function* () {
 };
 
 
+export const searchBookRequest = function* ({ payload }) {
+  yield call(requestFunction, searchBookSuccess, searchAllBooks, payload);
+};
+
+export const searchBookss = function* () {
+  yield takeEvery(SEARCH_BOOK, searchBookRequest);
+};
+
+
 export default function* rootSaga() {
   yield all([
     fork(fetchTrending),
@@ -216,6 +228,7 @@ export default function* rootSaga() {
     fork(fetchBookDetailss),
     fork(addBookToFavss),
     fork(removeBookFromFavss),
-    fork(fetchAuthorrById)
+    fork(fetchAuthorrById),
+    fork(searchBookss),
   ]);
 }

@@ -9,7 +9,7 @@ import bookImg from "../../assets/images/wolesoyinka.jpg"
 import { AiFillHeart, AiOutlineHeart, AiFillStar } from "react-icons/ai";
 import { Footer } from "../../containers";
 import SingleBook from "../../components/singleBook/SingleBook";
-import { fetchBookDetails, addBookToFav, removeBookFromFav, restoreFavouriteInitial, restoreUnfavouriteInitial  } from "../../Actions";
+import { fetchBookDetails, addBookToFav, removeBookFromFav, restoreFavouriteInitial, restoreUnfavouriteInitial, readBook, fetchSubscriptionDetails  } from "../../Actions";
 import Preloader from "../../components/preloader/Preloader";
 import StarRating from "../../components/starRating/StarRating";
 import Reader from "../../containers/Reader";
@@ -20,12 +20,36 @@ const Books = () => {
     const params = useParams();
     const dispatch = useDispatch();
     const { bookDetails, addBookToFavouriteSuccess, addBookToFavouriteFailure , removeBookFromFavouriteSuccess, removeBookFromFavouriteFailure } = useSelector((state) => state.books);
+    const { subscriptionDetails } = useSelector((state) => state.profile);
+
 
     const [toggleHeart, setToggleHeart] = useState(false);
 
     useEffect(() => {
         dispatch(fetchBookDetails(params.id));
+        dispatch(fetchSubscriptionDetails());
+        // console.log('current URL 👉️', window.location.href);
+        // console.log('current Pathname 👉️', window.location.pathname);
+
+        
+        
       }, [dispatch]);
+
+      useEffect(() => {
+        
+        let pathname = window.location.pathname
+        let slicedPathname = pathname.slice(0, 12)
+        console.log(slicedPathname)
+
+        if(slicedPathname === "/home/books/"){
+          localStorage.setItem('book', window.location.href);
+        }
+      
+       
+      }, [dispatch, window.location.pathname])
+      
+
+      
     
 
     const handleBack = () => {
@@ -38,14 +62,15 @@ const Books = () => {
       }
 
       const handleAddFav = (id) => {
-        debugger
+        
         dispatch(addBookToFav(id))
       }
+      
 
       useEffect(() => {
         
         if(addBookToFavouriteSuccess){
-            setToggleHeart(true)
+          dispatch(fetchBookDetails(params.id));
         }
       
         return () => {
@@ -56,7 +81,7 @@ const Books = () => {
       useEffect(() => {
         
         if(addBookToFavouriteFailure){
-            setToggleHeart(false)
+          dispatch(fetchBookDetails(params.id));
         }
       
         return () => {
@@ -68,7 +93,7 @@ const Books = () => {
       useEffect(() => {
         
         if(removeBookFromFavouriteSuccess){
-            setToggleHeart(false)
+          dispatch(fetchBookDetails(params.id));
         }
       
         return () => {
@@ -80,13 +105,16 @@ const Books = () => {
       useEffect(() => {
         
         if(removeBookFromFavouriteFailure){
-            setToggleHeart(true)
+          dispatch(fetchBookDetails(params.id));
         }
       
         return () => {
           dispatch(restoreUnfavouriteInitial())
         }
       }, [removeBookFromFavouriteFailure])
+
+
+      
 
 
       
@@ -98,10 +126,19 @@ const Books = () => {
       }
 
 
-      const handleStartReading = (url) => {
+      const handleStartReading = (url, bookId) => {
+        // if(subscriptionDetails.xyz !== null){
+        //   //navigate to reader
+        // }
+        // else{
+
+        //   navigate("/home/subscription")
+
+        // }
         navigate("/home/reader", {state:{
             id: url
         }})
+        dispatch(readBook(bookId))
       }
 
   return (
@@ -123,15 +160,15 @@ const Books = () => {
                     <h1 className="book-name">{bookDetails.book.name}</h1>
                     <p className="author-name">{bookDetails.book.author.name}</p>
                     <button className="start-reading-btn" 
-                    onClick={() =>handleStartReading(bookDetails.book.epub_data)}
+                    onClick={() =>handleStartReading(bookDetails.book.epub_data, bookDetails.book.id)}
                     
                     >Start Reading</button>
                     {
-                        toggleHeart ?   <AiFillHeart size={25} color="red" onClick={() => handleRemoveFav(bookDetails.book.id)}/> :<AiOutlineHeart size={25} color="red" onClick={() => handleAddFav(bookDetails.book.id)}/>
+                        bookDetails.book.favorite ?   <AiFillHeart size={25} color="red" onClick={() => handleRemoveFav(bookDetails.book.id)}/> :<AiOutlineHeart size={25} color="red" onClick={() => handleAddFav(bookDetails.book.id)}/>
 
                     }
         
-                    <StarRating/>
+                    <StarRating bookDetails = {bookDetails.rating} averageRating = {true}/>
                     <p className="no-of-page-text">{`${bookDetails.book.pages} Pages`}</p>
 
                 </div>

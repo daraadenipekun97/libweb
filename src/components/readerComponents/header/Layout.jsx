@@ -23,7 +23,11 @@ export const AutoLayout = styled.div`
   & > div {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    margin-left:20px;
+   & > div{
+    margin-right:50px
+   }
   }
   & > div:last-child {
     margin-right: 8px;

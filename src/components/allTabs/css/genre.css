@@ -19,3 +19,7 @@ hr {
   background: #333;
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
+.spinner{
+  text-align: center;
+  padding-top: 1rem;
+}

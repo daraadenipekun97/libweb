@@ -48,6 +48,37 @@ export const createGoals = async (body) => {
   }
 };
 
+
+
+
+export const createReview = async (body) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.post(`${baseControllerUser}review/200`, body);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          toastr.success("Review Added Successful", "success");
+          return response.data.status;
+        } else {
+          toastr.error("Couldnt add review", "Please try again");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("An Error Occured", "Please try again");
+      }
+    } catch (ex) {
+      toastr.error("An Error Occured", "Please try again");
+      //   return ex.response.data.message
+    }
+  }
+};
+
+
+
+
+
 export const getAllGoals = async () => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -123,6 +154,27 @@ export const getMyFavorites = async () => {
         }
       } else {
         toastr.error("An Error occured", "Could not retrieve favorites ");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please Ensure youre logged in");
+    }
+  }
+};
+
+
+export const readBookCurrentlyReading = async (id) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseController}book/read/${id}`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          // toastr.success("Reading Goal Deleted Successful", "success");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not read book ");
       }
     } catch (ex) {
       toastr.error("An Error occurred", "Please Ensure youre logged in");

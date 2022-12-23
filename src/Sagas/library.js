@@ -8,6 +8,8 @@ import {
   DELETE_GOAL,
   SEND_WISHLIST,
   FETCH_MY_FAVORITES,
+  ADD_REVIEW,
+  READ_BOOK
 } from "../ActionTypes";
 
 import {
@@ -17,6 +19,8 @@ import {
   deleteGoals,
   sendWishlists,
   getMyFavorites,
+  createReview,
+  readBookCurrentlyReading,
 } from "../Api";
 
 import {
@@ -26,6 +30,8 @@ import {
   deleteGoalSuccess,
   sendWishlistSuccess,
   fetchMyFavoritesSuccess,
+  addReviewSuccess,
+  readBookSuccess
 } from "../Actions";
 
 export const fetchMyBooksRequest = function* ({ payload }) {
@@ -76,6 +82,24 @@ export const sendWishlistss = function* () {
   yield takeEvery(SEND_WISHLIST, sendWishlistRequest);
 };
 
+export const addReviewRequest = function* ({ payload }) {
+  yield call(requestFunction, addReviewSuccess, createReview, payload);
+};
+
+export const addRevieww = function* () {
+  yield takeEvery(ADD_REVIEW, addReviewRequest);
+};
+
+
+export const readBookRequest = function* ({ payload }) {
+  yield call(requestFunction, readBookSuccess, readBookCurrentlyReading, payload);
+};
+
+export const readBookCurently = function* () {
+  yield takeEvery(READ_BOOK, readBookRequest);
+};
+
+
 export default function* rootSaga() {
   yield all([
     fork(fetchMyBookss),
@@ -84,5 +108,7 @@ export default function* rootSaga() {
     fork(deleteReadingGoalsss),
     fork(sendWishlistss),
     fork(fetchMyFavs),
+    fork(addRevieww),
+    fork(readBookCurently)
   ]);
 }

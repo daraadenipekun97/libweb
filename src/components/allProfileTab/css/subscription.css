@@ -30,6 +30,23 @@ hr {
 
 }
 
+.subscription-status-green{
+    color: green;
+    margin-top: 1rem;
+    font-size: 25px;
+    margin-bottom: 0.5rem;
+
+
+}
+
+.sub-note{
+
+    margin: 0.5rem 0rem;
+    color: #78787d;
+    font-weight: 500;
+
+}
+
 .card{
     border: solid  1px #ddd;
     height: fit-content;
@@ -81,6 +98,86 @@ hr {
 
 
 }
+
+
+
+.button-24 {
+    background:rgb(183, 2, 2);
+    border: 1px solid rgb(183, 2, 2);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .button-24:hover,
+  .button-24:active {
+    background-color: white;
+    background-position: 0 0;
+    color: rgb(183, 2, 2);
+  }
+  
+  .button-24:active {
+    opacity: .5;
+  }
+
+
+  .btn-reactivate{
+
+
+    background:green;
+    border: 1px solid green;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+ 
+
+  }
+
+  .btn-reactivate:hover,
+  .btn-reactivate:active {
+    background-color: white;
+    background-position: 0 0;
+    color: green;
+  }
+  
+  .btn-reactivate:active {
+    opacity: .5;
+  }
+
 
 
 @media screen and (max-width:500px) {

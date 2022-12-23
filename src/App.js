@@ -42,6 +42,7 @@ const ProfilePage = lazy(() => import("./pages/profile/Profile"));
 const ReaderPage = lazy(() => import("./containers/Reader"));
 const WalletPage = lazy(() => import("./pages/wallet/Wallet"));
 const SubscriptionPage = lazy(() => import("./pages/subscription/Subscription"));
+const SearchPage = lazy(() => import("./pages/search/Search"));
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
 function App() {
@@ -80,6 +81,7 @@ function App() {
                 <Route path="reader" element={<ReaderPage />} />
                 <Route path="subscription" element={<SubscriptionPage />} />
                 <Route path="wallet" element={<WalletPage />} />
+                <Route path="search/:id" element={<SearchPage />} />
 
               </Route>
 

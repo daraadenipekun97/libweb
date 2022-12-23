@@ -10,7 +10,6 @@ import { useState, useEffect } from 'react'
 import { webPurchase, restoreWebPurchaseInitial } from '../../Actions';
 
 
-
 const Subscription = () => {
 
   const dispatch = useDispatch();
@@ -48,7 +47,10 @@ const Subscription = () => {
         onSuccess(transaction){
           let message = `Payment Complete! Reference ${transaction.reference}`
           alert(message)
-          dispatch(webPurchase());          
+         dispatch(webPurchase({
+            trxref: transaction.trxref,
+            reference: transaction.reference 
+         }));          
         },
         onCancel(){
           alert('you have canceled the transaction')
@@ -70,8 +72,10 @@ const Subscription = () => {
         onSuccess(transaction){
           let message = `Payment Complete! Reference ${transaction.reference}`
           alert(message)
-          dispatch(webPurchase());
-        },
+          dispatch(webPurchase({
+            trxref: transaction.trxref,
+            reference: transaction.reference 
+         }));          },
         onCancel(){
           alert('you have canceled the transaction')
         }
@@ -92,8 +96,10 @@ const Subscription = () => {
         onSuccess(transaction){
           let message = `Payment Complete! Reference ${transaction.reference}`
           alert(message)
-          dispatch(webPurchase());
-
+          dispatch(webPurchase({
+            trxref: transaction.trxref,
+            reference: transaction.reference 
+         }));  
         },
         onCancel(){
           alert('you have canceled the transaction')
@@ -116,8 +122,10 @@ const Subscription = () => {
         onSuccess(transaction){
           let message = `Payment Complete! Reference ${transaction.reference}`
           alert(message)
-          dispatch(webPurchase());
-
+          dispatch(webPurchase({
+            trxref: transaction.trxref,
+            reference: transaction.reference 
+         }));  
           
         },
         onCancel(){
@@ -141,8 +149,10 @@ const Subscription = () => {
         onSuccess(transaction){
           let message = `Payment Complete! Reference ${transaction.reference}`
           alert(message)
-          dispatch(webPurchase());
-
+          dispatch(webPurchase({
+            trxref: transaction.trxref,
+            reference: transaction.reference 
+         }));  
         },
         onCancel(){
           alert('you have canceled the transaction')

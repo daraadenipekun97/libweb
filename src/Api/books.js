@@ -325,3 +325,29 @@ export const getAuthorById = async (id) => {
     }
   }
 };
+
+
+
+export const searchAllBooks = async (body) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.post(`${baseControllerUser}book/search`, body);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          // toastr.success("Review Added Successful", "success");
+          return response.data.data;
+        } else {
+          toastr.error("An Error Occured", "Please try again");
+          // return response.data.status;
+        }
+      } else {
+        toastr.error("An Error Occured", "Please try again");
+      }
+    } catch (ex) {
+      toastr.error("An Error Occured", "Please try again");
+      //   return ex.response.data.message
+    }
+  }
+};

@@ -162,7 +162,7 @@ export const createBankDetails = async (body) => {
       try {
         const response = await api.get(`${baseControllerSubscription}trial`);
         if (typeof response !== "undefined") {
-          if (response.status === 200) {
+          if (response.status === 200 && response.data.status === true) {
             toastr.success("Trial Subscription Cancelled Successfully", "success");
             return response.data.status;
           }
@@ -184,7 +184,7 @@ export const createBankDetails = async (body) => {
       try {
         const response = await api.get(`${baseControllerSubscription}subscription`);
         if (typeof response !== "undefined") {
-          if (response.status === 200) {
+          if (response.status === 200 && response.data.status === true) {
             toastr.success("Subscription Cancelled Successfully", "success");
             return response.data.status;
           }
@@ -199,12 +199,32 @@ export const createBankDetails = async (body) => {
 
 
 
-  export const makeWebPurchase = async () => {
+  export const getSubscriptionDetails = async () => {
     if (navigator.onLine === false) {
       toastr.error("No Internet Connection", "Please try again");
     } else {
       try {
-        const response = await api.get(`${baseControllerPayment}callbackTest`);
+        const response = await api.get(`${baseController}subscription/details`);
+        if (typeof response !== "undefined") {
+          if (response.status === 200 && response.data.status) {
+            return response.data.data;
+          }
+        } else {
+          toastr.error("An Error occured", "Could not retrieve subscription details");
+        }
+      } catch (ex) {
+        toastr.error("An Error occurred", "Please Ensure youre logged in");
+      }
+    }
+  };
+
+
+  export const makeWebPurchase = async (param) => {
+    if (navigator.onLine === false) {
+      toastr.error("No Internet Connection", "Please try again");
+    } else {
+      try {
+        const response = await api.get(`${baseControllerPayment}callbackTest?trxref=${param.trxref}&reference=${param.reference}`);
         console.log(response)
         if (typeof response !== "undefined") {
           if (response.status === 200) {
@@ -215,7 +235,33 @@ export const createBankDetails = async (body) => {
           toastr.error("An Error occured", "Could not process your subscription");
         }
       } catch (ex) {
-        toastr.error("An Error occurred", "Please Ensure youre logged in");
+        toastr.error("An Error occurred", `${ex.response.data.message}`);
+      }
+    }
+  };
+
+
+
+  export const changePass = async (body) => {
+    if (navigator.onLine === false) {
+      toastr.error("No Internet Connection", "Please try again");
+    } else {
+      try {
+        const response = await api.post(`${baseController}update/password`, body);
+        if (typeof response !== "undefined") {
+          if (response.status === 200 && response.data.status === true) {
+            toastr.success("Password Updated Successful", "success");
+            return response.data.status;
+          } else {
+            toastr.error("Something went wrong", `${response.data.message}`);
+            return response.data.status;
+          }
+        } else {
+          toastr.error("Password Update", "An Error occured");
+        }
+      } catch (ex) {
+        toastr.error("Password Update", `${ex.response.data.message}`);
+        return ex.response.data.message
       }
     }
   };

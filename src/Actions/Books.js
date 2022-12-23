@@ -37,7 +37,11 @@ import {
   RESTORE_UNFAVOURITE_INITIAL,
 
   FETCH_AUTHORS_BY_ID,
-  FETCH_AUTHORS_BY_ID_SUCCESS
+  FETCH_AUTHORS_BY_ID_SUCCESS,
+
+  SEARCH_BOOK,
+  SEARCH_BOOK_SUCCESS,
+  RESTORE_SEARCH_BOOK_INITIAL,
 } from "../ActionTypes";
 
 export const fetchAllTrendingBooks = () => ({
@@ -211,6 +215,23 @@ export const fetchAuthorsById = (id) => ({
 export const fetchAuthorsByIdSuccess = (payload) => ({
   type: FETCH_AUTHORS_BY_ID_SUCCESS,
   payload,
+});
+
+
+export const searchBooks = ({ search, }) => ({
+  type: SEARCH_BOOK,
+  payload: {
+    search,
+  },
+});
+
+export const searchBookSuccess = (payload) => ({
+  type: SEARCH_BOOK_SUCCESS,
+  payload,
+});
+
+export const restoreSearchBookInitial = () => ({
+  type: RESTORE_SEARCH_BOOK_INITIAL,
 });
 
 

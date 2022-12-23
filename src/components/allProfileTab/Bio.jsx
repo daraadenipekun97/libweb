@@ -388,10 +388,10 @@ useEffect(() => {
 
                     
                     >
-                    <option value="No Country" disabled><em>No Country</em></option>
+                    <option value="No Country" disabled>No Country</option>
                     {
                       countries.map((country) => {
-                        return <option value={country.id}>{country.name}</option>
+                        return <option value={country.id} key = {country.id}>{country.name}</option>
                       } )
                     }
                   </select>
@@ -421,7 +421,7 @@ useEffect(() => {
 
                     
                     >
-                    <option value="No Gender" disabled><em>No Gender Selected</em> </option>
+                    <option value="No Gender" disabled>No Gender Selected</option>
                     <option value="male" >Male</option>
                     <option value="female">Female</option>
                   </select>

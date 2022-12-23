@@ -25,7 +25,14 @@ import {
 
     WEB_PURCHASE,
     WEB_PURCHASE_SUCCESS,
-    RESTORE_WEB_PURCHASE_INITIAL
+    RESTORE_WEB_PURCHASE_INITIAL,
+
+    FETCH_SUBSCRIPTION_DETAILS,
+    FETCH_SUBSCRIPTION_DETAILS_SUCCESS,
+
+    CHANGE_PASSWORD,
+    CHANGE_PASSWORD_SUCCESS,
+    RESTORE_CHANGE_PASSWORD_INITIAL,
     
   } from "../ActionTypes";
  
@@ -172,9 +179,20 @@ import {
   });
 
 
+  export const fetchSubscriptionDetails = () => ({
+    type: FETCH_SUBSCRIPTION_DETAILS,
+  });
+  
+  export const fetchSubscriptionDetailsSuccess = (payload) => ({
+    type:FETCH_SUBSCRIPTION_DETAILS_SUCCESS,
+    payload,
+  });
 
-  export const webPurchase = () => ({
+
+
+  export const webPurchase = (param) => ({
     type: WEB_PURCHASE,
+    payload:param
   });
 
   export const webPurchaseSuccess = (payload) => ({
@@ -185,6 +203,31 @@ import {
 
   export const restoreWebPurchaseInitial = () => ({
     type: RESTORE_WEB_PURCHASE_INITIAL,
+  });
+
+
+
+  export const changePassword = ({ 
+    current_password,
+    password
+    
+   }) => ({
+    type: CHANGE_PASSWORD,
+    payload: {
+      password,
+      current_password
+        
+       
+    },
+  });
+  
+  export const changePasswordSuccess = (payload) => ({
+    type: CHANGE_PASSWORD_SUCCESS,
+    payload,
+  });
+
+  export const restoreChangePasswordInitial = () => ({
+    type: RESTORE_CHANGE_PASSWORD_INITIAL,
   });
 
 

@@ -1,17 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useState, useEffect} from "react";
 import "./css/genre.css";
 import Spinner from "../spinner/Spinner";
-import { fetchAllGenre } from "../../Actions";
 
-const GenreTab = () => {
-  const dispatch = useDispatch();
-  const { allGenre } = useSelector((state) => state.books);
+const GenreTab = ({allGenre}) => {
+
+  const [spinnerHide, setSpinnerHide] = useState(false)
+
 
   useEffect(() => {
-    dispatch(fetchAllGenre());
-  }, [dispatch]);
+    
+    setTimeout(() => {
+      setSpinnerHide(true)
+    }, 3000)
 
+    return () => {
+      setSpinnerHide(false)
+    }
+
+  }, [])
+ 
   return (
     <>
       <div className="genre-wrapper">
@@ -28,7 +35,9 @@ const GenreTab = () => {
               );
             })
           ) : (
-            <Spinner />
+            <div className="spinner">
+                <Spinner spinnerHide = {spinnerHide} />
+            </div>
           )}
         </ul>
       </div>
