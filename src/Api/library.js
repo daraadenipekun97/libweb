@@ -32,7 +32,7 @@ export const createGoals = async (body) => {
       const response = await api.post(`${baseControllerUser}goal/add`, body);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Reading Goal Added Successful", "success");
+          toastr.success("Reading Goal Added Successful", "");
           return response.data.status;
         } else {
           toastr.error("Couldnt add reading goal", "Please try again");
@@ -59,7 +59,7 @@ export const createReview = async (body) => {
       const response = await api.post(`${baseControllerUser}review/200`, body);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Review Added Successful", "success");
+          toastr.success("Review Added Successfully", "");
           return response.data.status;
         } else {
           toastr.error("Couldnt add review", "Please try again");
@@ -106,7 +106,7 @@ export const deleteGoals = async (id) => {
       const response = await api.get(`${baseControllerUser}goal/remove/${id}`);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Reading Goal Deleted Successful", "success");
+          toastr.success("Reading Goal Deleted Successfully", "");
           return response.data.status;
         }
       } else {
@@ -126,7 +126,7 @@ export const sendWishlists = async (body) => {
       const response = await api.post(`${baseController}wishlist`, body);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Wishlist Sent Successfully", "success");
+          toastr.success("Wishlist Sent Successfully", "");
           return response.data.status;
         } else {
           toastr.error("Couldnt send wishlist", "Please try again");

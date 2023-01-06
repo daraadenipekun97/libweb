@@ -8,8 +8,8 @@
 .author-wrapper{
 
     display: flex;
-    justify-content: space-between;
-    /* align-items: center; */
+    /* justify-content: space-between; */
+    /* align-items: flex-start; */
     flex-direction: row;
     /* border: solid; */
     width: 100%;
@@ -56,6 +56,13 @@
     line-height: 25px;
     text-align: justify;
     
+
+}
+
+.authors-books-wrapper{
+
+    max-width: 1044px;  
+    /* margin: auto; */
 
 }
 

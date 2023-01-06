@@ -5,6 +5,7 @@
 
 .lib-header {
   display: flex;
+  
 }
 
 .lib-header-content {
@@ -14,6 +15,8 @@
   align-items: flex-start;
   flex-direction: column;
   margin-right: 5rem;
+  /* border: solid; */
+
 }
 
 .lib-header-content h1 {
@@ -76,10 +79,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: solid; */
 }
 
 .lib-header-image img {
-  width: 100%;
+  width: 500px;
   height: 100%;
 }
 
@@ -111,6 +115,16 @@
   }
 }
 
+@media screen and (max-width: 560px) {
+ 
+  .lib-header-image img {
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+
 @media screen and (max-width: 440px) {
   .lib-download-app {
     flex-direction: column;
@@ -131,4 +145,6 @@
 }
 
 @media screen and (max-width: 330px) {
+
+  
 }

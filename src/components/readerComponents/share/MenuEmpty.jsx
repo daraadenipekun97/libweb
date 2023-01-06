@@ -26,13 +26,11 @@ const Content = styled.div`
   margin:10px 0px;
 
    &:hover{
-    border: solid;
-    border-radius:20px;
+    text-decoration:underline;
     padding:5px 5px;
 
    }
    &:active{
-    border:2px solid #5e458b;
     color:#5e458b;
    }
 `;

@@ -30,7 +30,7 @@ const GenreTab = ({allGenre}) => {
                   <li>
                     <a href={`/home/genre/${data.id}`}>{data.title}</a>
                   </li>
-                  <hr />
+                  <hr className="genre-hr" />
                 </>
               );
             })

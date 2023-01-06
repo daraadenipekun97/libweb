@@ -36,12 +36,12 @@ const Menu = ({ handleHome, handleDiscover }) => {
 
     <>
     <p className={activeTab === "home" ? "active" : ""}>
-      <a href="#" onClick={handleHome}>
+      <a href="" onClick={handleHome}>
         Home
       </a>
     </p>
     <p>
-      <a href="#" onClick={handleDiscover}>
+      <a href="" onClick={handleDiscover}>
         Discover
       </a>
     </p>

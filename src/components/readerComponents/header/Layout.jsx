@@ -19,14 +19,15 @@ export const AutoLayout = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid ${palette.gray1};
+  width:100%;
 
   & > div {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-left:20px;
    & > div{
-    margin-right:50px
+    margin-right:900px
    }
   }
   & > div:last-child {

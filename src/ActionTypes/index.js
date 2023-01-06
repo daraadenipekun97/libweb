@@ -170,3 +170,8 @@ export const RESTORE_SEARCH_BOOK_INITIAL = "restore_search_book_initial";
 
 export const READ_BOOK = "read_book";
 export const READ_BOOK_SUCCESS = "read_book_success";
+
+
+export const SEARCH_BOOK_UNAUTH = "search_book_unauth";
+export const SEARCH_BOOK_UNAUTH_SUCCESS = "search_book_unauth_success";
+export const RESTORE_SEARCH_BOOK_UNAUTH_INITIAL = "restore_search_book_unauth_initial";

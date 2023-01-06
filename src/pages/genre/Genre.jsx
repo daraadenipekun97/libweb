@@ -14,12 +14,43 @@ const Genre = () => {
   const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState("Genre");
+  const [genreList, setGenreList] = useState([]);
+  const [childStat, setChildStat] = useState(false);
 
   const { allGenre } = useSelector((state) => state.books);
 
+
   useEffect(() => {
     dispatch(fetchAllGenre());
+
+    const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
+    const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
+
+
+      let childStatus = userDataRegister !== null ? userDataRegister.user.child
+      : userDataLogin !== null ? userDataLogin.user.child
+      : "";
+
+      setChildStat(childStatus)
+
+
   }, [dispatch]);
+
+  useEffect(() => {
+    
+    if (allGenre.length !==0 && childStat) {
+
+      let filterGenre =  allGenre.filter(genre => genre.children === 1);
+      setGenreList(filterGenre)
+      
+    }
+    else{
+      setGenreList(allGenre)
+    }
+  
+   
+  }, [allGenre])
+  
 
 
   const handleDiscover = () => {
@@ -43,7 +74,7 @@ const Genre = () => {
           </li>
         </ul>
 
-        <GenreTab allGenre = {allGenre} />
+        <GenreTab allGenre = {genreList} />
       </div>
       <Footer />
     </>

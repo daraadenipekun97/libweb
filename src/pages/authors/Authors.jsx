@@ -46,7 +46,9 @@ const Authors = () => {
                   <p>{authorById.about ? authorById.about : ""}</p>
               </div>
           </div>
-          <SingleBook datas={booksByAuthor} searchBar="" title="Authors Book" />
+          <div className="authors-books-wrapper">
+            <SingleBook datas={booksByAuthor} searchBar="" title="Authors Book" />
+          </div>
       </div>
 
       <Footer/>

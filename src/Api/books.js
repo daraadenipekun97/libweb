@@ -1,5 +1,7 @@
 import api from "../Service";
 import { toastr } from "react-redux-toastr";
+import { Navigate } from "react-router-dom";
+
 
 const baseControllerUser = "api/user/";
 const baseControllerServices = "api/services/";
@@ -37,7 +39,7 @@ export const getTrendingBooksUnauth = async () => {
         toastr.error("An Error occured", "Could not retrieve trending books");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please try again");
+       toastr.error("An Error occurred", `${ex.response.data.message}`);
     }
   }
 };
@@ -271,7 +273,7 @@ export const addFav = async (id) => {
       const response = await api.get(`${baseControllerUser}book/favorite/${id}`);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Book Added to Favourite Successfully", "success");
+          toastr.success("Book Added to Favourite Successfully", "");
           return response.data.status;
         }
       } else {
@@ -293,7 +295,7 @@ export const removeFav = async (id) => {
       const response = await api.get(`${baseControllerUser}book/unfavorite/${id}`);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Book Removed from Favourite Successfully", "success");
+          toastr.success("Book Removed from Favourite Successfully", "");
           return response.data.status;
         }
       } else {
@@ -329,6 +331,7 @@ export const getAuthorById = async (id) => {
 
 
 export const searchAllBooks = async (body) => {
+
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
   } else {
@@ -348,6 +351,37 @@ export const searchAllBooks = async (body) => {
     } catch (ex) {
       toastr.error("An Error Occured", "Please try again");
       //   return ex.response.data.message
+      let localPart =  window.location.href.slice(0, window.location.href.indexOf('/home'));
+      window.location.replace(`${localPart}/home/dashboard`); 
+    }
+  }
+};
+
+
+
+export const searchAllBooksUnauth = async (body) => {
+
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.post(`${baseControllerServices}book/search`, body);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          // toastr.success("Review Added Successful", "success");
+          return response.data.data;
+        } else {
+          toastr.error("An Error Occured", "Please try again");
+          // return response.data.status;
+        }
+      } else {
+        toastr.error("An Error Occured", "Please try again");
+      }
+    } catch (ex) {
+      toastr.error("An Error Occured", "Please try again");
+      //   return ex.response.data.message
+      let localPart =  window.location.href.slice(0, window.location.href.indexOf('/home'));
+      window.location.replace(`${localPart}`); 
     }
   }
 };

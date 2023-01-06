@@ -79,6 +79,7 @@ const Tab = ({ tabName }) => {
 
   return (
     <div className={activeTab === 'About'|| activeTab === 'Reviews' ? "Tabs-two" : "Tabs" }>
+      <div className="tabs-wrapper">
       {tabName === "library" ? (
         <>
           <PageHeaderText text="Library" />
@@ -159,6 +160,7 @@ const Tab = ({ tabName }) => {
 
           </>
       )}
+      </div>
     </div>
   );
 };

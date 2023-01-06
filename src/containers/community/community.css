@@ -6,6 +6,15 @@
   justify-content: space-between;
   align-items: center;
 }
+.lib-community-left-wrapper{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  /* margin-right: 5rem; */
+  /* border: solid; */
+}
 
 .lib-community-left-wrapper h1 {
   font-style: normal;
@@ -52,7 +61,7 @@
 }
 
 .lib-community-right-wrapper img {
-  width: 70%;
+  width: 500px;
   height: 70%;
 }
 
@@ -64,7 +73,11 @@
 
 @media screen and (max-width: 560px) {
   .lib-community-right-wrapper {
-    display: none;
+    /* display: none; */
+  }
+
+  .lib-community-right-wrapper img{
+    width: 100%;
   }
 }
 

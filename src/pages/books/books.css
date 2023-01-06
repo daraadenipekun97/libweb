@@ -1,6 +1,6 @@
 .books-container{
     background-color: #e3daf0;
-    min-height: 100vh;
+    height: fit-content;
     padding: 4rem 6rem;
 }
 
@@ -39,7 +39,7 @@
 
 .book-img{
     /* border: solid; */
-    width: 40%;
+    max-width: 40%;
     /* height: 200px; */
     height: auto;
     margin-bottom: 1rem;
@@ -125,6 +125,10 @@
     width: 45%;
 }
 
+.author-books-wrapper{
+    max-width: 1044px;  
+    /* margin: auto; */
+}
 
 
 @media screen and (max-width:1236px) {

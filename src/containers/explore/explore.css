@@ -3,6 +3,12 @@
   padding: 4rem 6rem;
 }
 
+.lib-explore-wrapper{
+  /* border: solid; */
+  max-width: 1044px;
+  margin: auto;
+}
+
 .lib-explore-top-items {
   /* border: solid; */
   margin-bottom: 2rem;

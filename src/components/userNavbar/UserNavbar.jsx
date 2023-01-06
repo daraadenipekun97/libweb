@@ -126,7 +126,7 @@ const UserNavbar = () => {
   return (
     <>
       <nav className="navbar">
-        <a className="logo" href="#">
+        <a className="logo" href="/home/dashboard">
           <img src={Logo} alt="" />
         </a>
         <div className="toggle-button" onClick={() => handleNavbar()}>

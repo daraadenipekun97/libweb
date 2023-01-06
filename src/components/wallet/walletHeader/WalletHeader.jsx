@@ -27,8 +27,8 @@ const WalletHeader = ({data}) => {
     <h4 className='wallet-text'>Send Invite</h4>
     <p className='invite-text'>This is your earnings so far from successful referrals. You can withdraw cash to your bank account</p>
     <div className="refferal-code-button">
-      <div className="code">
-        <span onClick={() => handleCopyReferral()} id="referral-code">{data ? data : "-"}</span><AiFillCopy color="#5e458b"/>
+      <div className="code" onClick={() => handleCopyReferral()}>
+        <span id="referral-code">{data ? data : "-"}</span><AiFillCopy color="#5e458b"/>
       </div>      
     </div>
 </div>

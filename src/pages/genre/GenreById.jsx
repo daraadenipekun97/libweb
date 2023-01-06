@@ -42,6 +42,9 @@ const GenreById = () => {
       <UserNavbar />
 
       <div className="genre-id-container">
+        <div className="genre-id-wrapper">
+
+        
         <div className="backbutton" onClick={handleBack}>
           <AiFillLeftCircle size={20} color="#78787d" /> &nbsp;
           <p>Back to Genre</p>
@@ -57,7 +60,7 @@ const GenreById = () => {
           onPageChange={page => setCurrentPage(page)}
         
         />
-
+        </div>
       </div>
       
       <Footer />

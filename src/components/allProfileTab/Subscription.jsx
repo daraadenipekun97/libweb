@@ -74,7 +74,7 @@ const Subscription = () => {
       <p className='subscription-title'>Profile/ Subscription Packages</p>
       <hr />
       {
-        Object.keys(subscriptionDetails).length > 0 ? (
+        Object.keys(subscriptionDetails).length > 0 && subscriptionDetails.subscription !== null  ? (
           <>
          
             {

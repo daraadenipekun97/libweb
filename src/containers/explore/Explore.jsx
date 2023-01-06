@@ -6,7 +6,7 @@ import { fetchAllTrendingBooksUnauth } from "../../Actions";
 
 const Explore = () => {
   const dispatch = useDispatch();
-  const { trendingBooksUnauth } = useSelector((state) => state.books);
+  const { trendingBooksUnauth, searchedBooksUnauth  } = useSelector((state) => state.books);
 
   const [slicedTrendingBooks, setSlicedTrendingBooks] = useState([]);
 
@@ -27,14 +27,28 @@ const Explore = () => {
     }
   }, [trendingBooksUnauth]);
 
+  useEffect(() => {
+    
+
+    if (Object.keys(searchedBooksUnauth).length !== 0) {
+      const slicedTrending = getMultipleRandom(searchedBooksUnauth.books, 10);
+      setSlicedTrendingBooks(slicedTrending);
+    }
+  
+  
+  }, [searchedBooksUnauth])
+  
+
   return (
     <div className="lib-explore">
+      <div className="lib-explore-wrapper">
       <div className="lib-explore-top-items">
         <h1>Get access to Africa’s Largest Libri</h1>
         <p>Explore the books you love, and also discover new and exciting authors</p>
       </div>
 
       <SingleBook searchBar={true} datas={slicedTrendingBooks} title="Trending Books" />
+      </div>
     </div>
   );
 };

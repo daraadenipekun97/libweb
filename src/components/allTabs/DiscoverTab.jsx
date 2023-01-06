@@ -22,13 +22,23 @@ const DiscoverTab = () => {
   const [slicedNewReleases, setSlicedNewReleases] = useState([]);
   const [slicedClassicBooks, setSlicedClassicBooks] = useState([]);
   const [slicedKiddiesBooks, setSlicedKiddiesBooks] = useState([]);
-
+  const [childStat, setChildStat] = useState(false)
   useEffect(() => {
     dispatch(fetchAllTrendingBooks());
     dispatch(fetchPopularAuthors());
     dispatch(fetchNewReleases());
     dispatch(fetchClassicBooks());
     dispatch(fetchKiddiesBooks());
+
+    const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
+    const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
+
+
+      let childStatus = userDataRegister !== null ? userDataRegister.user.child
+      : userDataLogin !== null ? userDataLogin.user.child
+      : "";
+
+      setChildStat(childStatus)
   }, [dispatch]);
 
   function getMultipleRandom(arr, num) {
@@ -75,7 +85,9 @@ const DiscoverTab = () => {
   return (
     <div className="discover-container">
       <SingleBook datas={slicedTrendingBooks} searchBar={false} title="Trending Books" />
-      <SingleAuthor datas={slicedPopularAuthors} title="Popular Authors" seeAllText = {true} />
+      {
+        childStat ?  <></> : <SingleAuthor datas={slicedPopularAuthors} title="Popular Authors" seeAllText = {true} />
+      }
       <SingleBook datas={slicedNewReleases} searchBar={false} title="New Releases Books" />
       <SingleBook datas={slicedClassicBooks} searchBar={false} title="Classic Books" />
       <SingleBook

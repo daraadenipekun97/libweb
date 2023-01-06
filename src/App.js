@@ -43,6 +43,10 @@ const ReaderPage = lazy(() => import("./containers/Reader"));
 const WalletPage = lazy(() => import("./pages/wallet/Wallet"));
 const SubscriptionPage = lazy(() => import("./pages/subscription/Subscription"));
 const SearchPage = lazy(() => import("./pages/search/Search"));
+const AboutUsPage = lazy(() => import("./pages/aboutUs/AboutUs"));
+const FAQPage = lazy(() => import("./pages/faq/Faq"));
+const PrivacyPolicyPage = lazy(() => import("./pages/privacy/PrivacyPolicy"));
+const TermsOfUsePage = lazy(() => import("./pages/privacy/TermsOfUse"));
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
 function App() {
@@ -64,6 +68,11 @@ function App() {
               <Route path="forgot" element={<ForgotPasswordPage user={user} />} />
               <Route path="reset" element={<ResetPasswordPage user={user} />} />
               <Route path="verify" element={<VerifyEmailPage user={user} />} />
+              <Route path="about" element={<AboutUsPage/>} />
+              <Route path="faq" element={<FAQPage/>} />
+              <Route path="privacyPolicy" element={<PrivacyPolicyPage/>} />
+              <Route path="termsOfUse" element={<TermsOfUsePage/>} />
+
               <Route path="home" element={<HomePage user={user} />}>
                 <Route path="dashboard" element={<DashboardPage />} />
                 <Route path="library" element={<LibraryPage />} />

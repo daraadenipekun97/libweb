@@ -15,10 +15,10 @@ const Footer = () => {
         <div className="lib-footer-links-div">
           <h4>Company</h4>
           <p>
-            <a href="#home">About Us</a>
+            <a href="/about">About Us</a>
           </p>
           <p>
-            <a href="#home">FAQs</a>
+            <a href="/faq">FAQs</a>
           </p>
         </div>
 
@@ -26,17 +26,29 @@ const Footer = () => {
           <h4>Social</h4>
           <div className="lib-socials-icon">
             <p>
-              <a href="#home">
+              <a 
+                href="https://www.facebook.com/mylibribooks"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <AiFillFacebook size={20} />
               </a>
             </p>
             <p>
-              <a href="#home">
+              <a 
+                href="https://www.instagram.com/mylibribooks/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <AiFillInstagram size={20} />
               </a>
             </p>
             <p>
-              <a href="#home">
+              <a 
+              href="https://twitter.com/mylibribooks"
+              target="_blank"
+              rel="noopener noreferrer"
+              >
                 <AiFillTwitterCircle size={20} />
               </a>
             </p>
@@ -46,26 +58,26 @@ const Footer = () => {
         <div className="lib-footer-links-div">
           <h4>Terms and Policy</h4>
           <p>
-            <a href="#home">Privacy Policy</a>
+            <a href="/privacyPolicy">Privacy Policy</a>
           </p>
           <p>
-            <a href="#home">Terms of Use</a>
+            <a href="/termsOfUse">Terms of Use</a>
           </p>
         </div>
 
         <div className="lib-footer-links-div">
           <h4>Contact Us</h4>
           <p>
-            <a href="#home">Assistance</a>
+            <a href="mailto: support@mylibribooks.com">Assistance</a>
           </p>
           <p>
-            <a href="#home">Complaints</a>
+            <a href="mailto: complaints@mylibribooks.com">Complaints</a>
           </p>
           <p>
-            <a href="#home">Enquiries</a>
+            <a href="mailto: enquiries@mylibribooks.com">Enquiries</a>
           </p>
           <p>
-            <a href="#home">Feedback & Suggestion</a>
+            <a href="mailto: suggestions@mylibribooks.com">Feedback & Suggestion</a>
           </p>
         </div>
       </div>

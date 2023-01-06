@@ -4,6 +4,13 @@
   padding: 4rem 6rem;
 }
 
+.genre-id-wrapper{
+  
+  max-width: 1044px;  
+  margin: auto;
+
+}
+
 .backbutton {
   display: flex;
   justify-content: start;
@@ -19,3 +26,14 @@
     
     transform: scale(1.01);
 } */
+
+
+@media screen and (max-width: 425px) {
+
+  .genre-id-container {
+  
+    padding: 4rem 2rem;
+  }
+  
+ 
+}

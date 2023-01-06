@@ -17,7 +17,7 @@ export const postRegister = async (body) => {
         if (response.status === 200 && response.data.status === true) {
           localStorage.clear();
           localStorage.setItem("userRegData", JSON.stringify(response.data));
-          toastr.success("Registration Successful", "success");
+          toastr.success("Registration Successful", "");
           return response.data;
         } else {
           toastr.error("Something went wrong", `${response.data.message}`);
@@ -40,7 +40,7 @@ export const postVerifyUser = async (body) => {
       const response = await api.post(`${baseController}verify`, body);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Email Verification Successful", "success");
+          toastr.success("Email Verification Successful", "");
           return response.data.status;
         } else {
           toastr.error("Couldnt verify your  email", "Please try again");
@@ -64,7 +64,7 @@ export const createSendMail = async () => {
       const response = await api.get(`${baseController}resend`);
       if (typeof response !== "undefined") {
         if (response.status === 200) {
-          toastr.success("Email Resent Successfully", "success");
+          toastr.success("Email Resent Successfully", "");
           return response.data.status;
         } else {
           toastr.error("Oops", "Resending Email Failed");
@@ -136,7 +136,7 @@ export const postResetPassword = async (body) => {
       const response = await api.post(`${baseController}reset`, body);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Reset Password Successful", "success");
+          toastr.success("Reset Password Successful", "");
           return response.data.status;
         } else {
           toastr.error(
@@ -165,7 +165,7 @@ export const postGoogleLogin = async (body) => {
         if (response.status === 200 && response.data.status === true) {
           localStorage.clear();
           localStorage.setItem("userLoginData", JSON.stringify(response.data));
-          toastr.success("Login Successful", "success");
+          toastr.success("Login Successful", "");
           return response.data.status;
         } else {
           toastr.error("Couldnt Login you in", "Please try again");

@@ -1,6 +1,18 @@
 .Tabs {
   background-color: #e3daf0;
   padding: 4rem 6rem;
+  /* border: solid; */
+
+
+ 
+}
+
+.tabs-wrapper{
+  /* border: solid; */
+  max-width: 1044px;
+  margin: auto;
+
+
 }
 
 .Tabs-two {

@@ -37,11 +37,11 @@ const WalletTab = () => {
         <h4 className='wallet-text'>Send Invite</h4>
         <p className='invite-text'>Invite your friends and family to MyLibri Books by copying the referral code below and sending it to them</p>
         <div className="refferal-code-button">
-          <div className="code">
+          <div className="code" onClick={() => handleCopyReferral()}>
             {
               Object.keys(walletDetails).length !==0 ?   
               <>
-                <span onClick={() => handleCopyReferral()} id="referral-code">{walletDetails !== null ? walletDetails.user.referral_code : "-"}</span><AiFillCopy color="#5e458b"/>
+                <span id="referral-code">{walletDetails !== null ? walletDetails.user.referral_code : "-"}</span><AiFillCopy color="#5e458b"/>
               </>
               : "-"
             }

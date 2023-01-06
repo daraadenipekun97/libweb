@@ -18,7 +18,7 @@ export const updateProfile = async (body) => {
         const response = await api.post(`${baseController}update`, body);
         if (typeof response !== "undefined") {
           if (response.status === 200 && response.data.status === true) {
-            toastr.success("Update Profile", "success");
+            toastr.success("Profile Updated Successfully", "");
             return response.data.status;
           } else {
             toastr.error("Something went wrong", `${response.data.message}`);
@@ -67,7 +67,7 @@ export const createBankDetails = async (body) => {
         const response = await api.post(`${baseControllerBank}save`, body);
         if (typeof response !== "undefined") {
           if (response.status === 200) {
-            toastr.success("Bank Details Saved Successfully", "success");
+            toastr.success("Bank Details Saved Successfully", "");
             return response.data.message;
           } else {
             toastr.error("Something went wrong", `${response.data.message}`);
@@ -136,7 +136,7 @@ export const createBankDetails = async (body) => {
         const response = await api.post(`${baseControllerWallet}withdraw`, body);
         if (typeof response !== "undefined") {
           if (response.status === 200) {
-            toastr.success("Wallet Withdrawal Successful", "success");
+            toastr.success("Wallet Withdrawal Successful", "");
             return response.data.message;
           } else {
             toastr.error("Something went wrong", `${response.data.message}`);
@@ -163,7 +163,7 @@ export const createBankDetails = async (body) => {
         const response = await api.get(`${baseControllerSubscription}trial`);
         if (typeof response !== "undefined") {
           if (response.status === 200 && response.data.status === true) {
-            toastr.success("Trial Subscription Cancelled Successfully", "success");
+            toastr.success("Trial Subscription Cancelled Successfully", "");
             return response.data.status;
           }
         } else {
@@ -185,7 +185,7 @@ export const createBankDetails = async (body) => {
         const response = await api.get(`${baseControllerSubscription}subscription`);
         if (typeof response !== "undefined") {
           if (response.status === 200 && response.data.status === true) {
-            toastr.success("Subscription Cancelled Successfully", "success");
+            toastr.success("Subscription Cancelled Successfully", "");
             return response.data.status;
           }
         } else {
@@ -228,7 +228,7 @@ export const createBankDetails = async (body) => {
         console.log(response)
         if (typeof response !== "undefined") {
           if (response.status === 200) {
-            toastr.success("You have successfully subscribed", "success");
+            toastr.success("You have successfully subscribed", "");
             return response.data.status;
           }
         } else {
@@ -250,7 +250,7 @@ export const createBankDetails = async (body) => {
         const response = await api.post(`${baseController}update/password`, body);
         if (typeof response !== "undefined") {
           if (response.status === 200 && response.data.status === true) {
-            toastr.success("Password Updated Successful", "success");
+            toastr.success("Password Updated Successfully", "");
             return response.data.status;
           } else {
             toastr.error("Something went wrong", `${response.data.message}`);

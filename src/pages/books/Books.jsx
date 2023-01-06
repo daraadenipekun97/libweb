@@ -13,6 +13,7 @@ import { fetchBookDetails, addBookToFav, removeBookFromFav, restoreFavouriteInit
 import Preloader from "../../components/preloader/Preloader";
 import StarRating from "../../components/starRating/StarRating";
 import Reader from "../../containers/Reader";
+import { toastr } from "react-redux-toastr";
 
 const Books = () => {
 
@@ -28,10 +29,12 @@ const Books = () => {
     useEffect(() => {
         dispatch(fetchBookDetails(params.id));
         dispatch(fetchSubscriptionDetails());
-        // console.log('current URL 👉️', window.location.href);
-        // console.log('current Pathname 👉️', window.location.pathname);
+        //  console.log('current URL 👉️', window.location.href);
+        //  console.log('current Pathname 👉️', window.location.pathname);
 
+      
         
+          
         
       }, [dispatch]);
 
@@ -39,7 +42,7 @@ const Books = () => {
         
         let pathname = window.location.pathname
         let slicedPathname = pathname.slice(0, 12)
-        console.log(slicedPathname)
+        // console.log(slicedPathname)
 
         if(slicedPathname === "/home/books/"){
           localStorage.setItem('book', window.location.href);
@@ -127,20 +130,71 @@ const Books = () => {
 
 
       const handleStartReading = (url, bookId) => {
-        // if(subscriptionDetails.xyz !== null){
-        //   //navigate to reader
-        // }
-        // else{
+        debugger
+        let expiryDate = subscriptionDetails.expiry_date !== null ? new Date(new Date(subscriptionDetails.expiry_date).toDateString()) : "";
 
-        //   navigate("/home/subscription")
+        if(subscriptionDetails.expiry_date !== null){
+          //navigate to reader
 
-        // }
-        navigate("/home/reader", {state:{
-            id: url
-        }})
-        dispatch(readBook(bookId))
+          let todaysDate=new Date();
+
+            if (todaysDate.valueOf() < expiryDate.valueOf() && subscriptionDetails.subscription.title === "Trial" ) {
+              
+                if(subscriptionDetails.cancel_trial === 0){
+
+                  navigate("/home/reader", {state:{
+                    id: url
+                }})
+                dispatch(readBook(bookId))
+
+                }
+                else{
+                  // toastr.warning('You cant read this book because your subscription is canceled', 'Please subscribe or reactive your subscription');
+                  navigate("/home/subscription")
+
+                }
+
+            }
+            else if(todaysDate.valueOf() > expiryDate.valueOf() && subscriptionDetails.subscription.title === "Trial"){
+              navigate("/home/subscription")
+
+            }
+
+
+            
+            
+            if(todaysDate.valueOf() < expiryDate.valueOf() && subscriptionDetails.subscription.title !== "Trial"){
+
+              if(subscriptionDetails.cancel_subscription === 0){
+
+                navigate("/home/reader", {state:{
+                  id: url
+              }})
+              dispatch(readBook(bookId))
+
+              }
+              else{
+
+                // toastr.warning('You cant read this book because your subscription is canceled', 'Please subscribe or reactive your subscription');
+                navigate("/home/subscription")
+
+              }
+
+            }
+            else if(todaysDate.valueOf() > expiryDate.valueOf() && subscriptionDetails.subscription.title !== "Trial"){
+
+              // toastr.warning('You cant read this book because you do not have an active subscription', 'Please subscribe')
+              navigate("/home/subscription")
+    
+            }
+         
+        }
+        
+      
       }
 
+      let filterAuthorBooks =  bookDetails.book.author.books.filter(book => book.id != bookDetails.book.id)
+     
   return (
     <>
     <UserNavbar/>
@@ -180,7 +234,9 @@ const Books = () => {
             
         </div>
         
-        <SingleBook datas = {bookDetails.book.author.books} searchBar = {false} title = "Author's Book"/>
+        <div className="author-books-wrapper">
+         <SingleBook datas = {filterAuthorBooks} searchBar = {false} title = "Author's Book"/>
+        </div>
 
     </div>
     <Footer/>
