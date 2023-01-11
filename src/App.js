@@ -6,7 +6,7 @@ import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
 import store from "./Store";
 import { Provider } from "react-redux";
 import Preloader from "./components/preloader/Preloader";
-
+import MessengerChat from "./plugin/MessengerChat";
 // import {
 //   LandingPage,
 //   LoginPage,
@@ -110,14 +110,9 @@ function App() {
           closeOnToastrClick
         />
       </Provider>
-      <div id="fb-root"></div>
-      <div class="fb-customerchat"
-        attribution="install_email"
-        attribution_version="biz_inbox"
-        page_id="101688624658632"
-        theme_color="#5e458b"
-        >
-      </div>
+
+      <MessengerChat />
+      
     </>
   );
 }
