@@ -110,6 +110,7 @@ function App() {
           closeOnToastrClick
         />
       </Provider>
+      <div id="fb-root"></div>
       <div class="fb-customerchat"
         attribution="install_email"
         attribution_version="biz_inbox"
