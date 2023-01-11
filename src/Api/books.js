@@ -254,6 +254,11 @@ export const getBookDetails = async (id) => {
         if (response.status === 200 && response.data.status === true) {
           return response.data.data;
         }
+        else if(response.status === 200 && response.data.status === false){
+          toastr.error('An Error Occured', `${response.data.message}`)
+          let localPart =  window.location.href.slice(0, window.location.href.indexOf('/home'));
+          window.location.replace(`${localPart}`);
+        }
       } else {
         toastr.error("An Error occured", "Could not retrieve book");
       }

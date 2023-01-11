@@ -68,10 +68,10 @@ function App() {
               <Route path="forgot" element={<ForgotPasswordPage user={user} />} />
               <Route path="reset" element={<ResetPasswordPage user={user} />} />
               <Route path="verify" element={<VerifyEmailPage user={user} />} />
-              <Route path="about" element={<AboutUsPage/>} />
-              <Route path="faq" element={<FAQPage/>} />
-              <Route path="privacyPolicy" element={<PrivacyPolicyPage/>} />
-              <Route path="termsOfUse" element={<TermsOfUsePage/>} />
+              <Route path="about" element={<AboutUsPage user={user}/>} />
+              <Route path="faq" element={<FAQPage user={user}/>} />
+              <Route path="privacyPolicy" element={<PrivacyPolicyPage user={user}/>} />
+              <Route path="termsOfUse" element={<TermsOfUsePage user={user}/>} />
 
               <Route path="home" element={<HomePage user={user} />}>
                 <Route path="dashboard" element={<DashboardPage />} />
@@ -110,6 +110,13 @@ function App() {
           closeOnToastrClick
         />
       </Provider>
+      <div class="fb-customerchat"
+        attribution="install_email"
+        attribution_version="biz_inbox"
+        page_id="101688624658632"
+        theme_color="#5e458b"
+        >
+      </div>
     </>
   );
 }
