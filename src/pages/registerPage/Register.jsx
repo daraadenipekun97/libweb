@@ -391,6 +391,19 @@ const Register = ({ user }) => {
     };
   }, [registerSuccess]);
 
+
+  const handleTermsNavigate = () => {
+    navigate("/termsOfUse")
+  }
+
+  const handlePolicyNavigate = () => {
+    navigate("/privacyPolicy")
+  }
+
+  const handleLoginNavigate = () => {
+    navigate("/signin");
+  }
+
   return (
     <>
       <Navbar />
@@ -536,9 +549,9 @@ const Register = ({ user }) => {
 
             <div className="lib-register-input-group" id="checkbx">
               <label htmlFor="terms">
-                <input type="checkbox" id="terms" required onChange={(e) => termsHandler(e)} />I
-                agree to the <a href="#home">Terms and Conditions</a> and to the{" "}
-                <a href="#home">Privacy Policy</a>
+                <input type="checkbox" id="terms" required onChange={(e) => termsHandler(e)} />
+                I agree to the <span className="policy_terms_link" onClick={handleTermsNavigate}>Terms and Conditions</span> and to the{" "}
+                <span className="policy_terms_link" onClick={handlePolicyNavigate}>Privacy Policy</span>
                 {checkedError === true ? (
                   <p className="terms-validation-text">
                     Accept the terms and condition to register
@@ -562,7 +575,7 @@ const Register = ({ user }) => {
             <br />
 
             <p className="lib-register-login-here">
-              Already have an account? <a href="signin">Login</a>
+              Already have an account? <span onClick={handleLoginNavigate}>Login</span>
             </p>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import {
   fetchProfile,
   fetchSubscriptionDetails,
@@ -15,6 +17,8 @@ import Spinner from "../spinner/Spinner";
 
 const Subscription = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const {
     profileData,
@@ -62,6 +66,10 @@ const Subscription = () => {
       dispatch(restoreCancelSubscriptionInitial());
     };
   }, [cancelSubscriptionSuccess, cancelSubscriptionFailure]);
+
+  const handleSelectNavigate = () => {
+    navigate("/home/subscription")
+  }
 
   return (
     <div className="subscription-container">
@@ -157,9 +165,9 @@ const Subscription = () => {
         {Object.keys(subscriptionDetails).length > 0 ? (
           <></>
         ) : (
-          <a href="/home/subscription" className="select-btn">
-            Select
-          </a>
+          <div  className="select-btn" onClick={handleSelectNavigate}>
+  Select
+</div>  
         )}
       </div>
 
@@ -175,9 +183,9 @@ const Subscription = () => {
         {Object.keys(subscriptionDetails).length > 0 ? (
           <></>
         ) : (
-          <a href="/home/subscription" className="select-btn">
-            Select
-          </a>
+          <div  className="select-btn" onClick={handleSelectNavigate}>
+  Select
+</div>  
         )}
       </div>
 
@@ -193,9 +201,9 @@ const Subscription = () => {
         {Object.keys(subscriptionDetails).length > 0 ? (
           <></>
         ) : (
-          <a href="/home/subscription" className="select-btn">
-            Select
-          </a>
+          <div  className="select-btn" onClick={handleSelectNavigate}>
+  Select
+</div>  
         )}
       </div>
 
@@ -209,11 +217,11 @@ const Subscription = () => {
         </p>
         <h3 className="card-bottom-text">N11,200/ 12 Months</h3>
         {Object.keys(subscriptionDetails).length > 0 ? (
-          <></>
-        ) : (
-          <a href="/home/subscription" className="select-btn">
+          <></>      
+          ) : (
+            <div  className="select-btn" onClick={handleSelectNavigate}>
             Select
-          </a>
+          </div>  
         )}
       </div>
     </div>

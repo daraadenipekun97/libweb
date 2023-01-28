@@ -17,6 +17,7 @@ const Authors = () => {
   const { booksByAuthor, authorById } = useSelector((state) => state.books);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchBookByAuthor(params.id));
     dispatch(fetchAuthorsById(params.id));
   }, [dispatch]);

@@ -228,6 +228,10 @@ const ResetPassword = ({ user }) => {
     };
   }, [resetPasswordSuccess]);
 
+  const handleSignUpNavigation = () => {
+    navigate("/register")
+  }
+
   return (
     <>
       <Navbar />
@@ -319,7 +323,7 @@ const ResetPassword = ({ user }) => {
             <br />
 
             <p style={{ color: "#5e458b" }}>
-              Dont have an account? <a href="register">Sign up</a>
+              Dont have an account? <span onClick={handleSignUpNavigation} className="sign_up_text">Sign up</span>
             </p>
           </div>
         </div>

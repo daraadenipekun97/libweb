@@ -15,10 +15,12 @@
 .see-all-text {
   color: #78787d;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .see-all-text:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .author-gallery-wrapper {

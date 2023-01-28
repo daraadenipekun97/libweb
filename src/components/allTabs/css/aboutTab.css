@@ -66,12 +66,15 @@
   outline: none;
   background: transparent;
   color: #5e458b;
-  width: 100%;
+  width: fit-content;
   height: fit-content;
   padding: 0.2rem;
+  cursor: pointer;
+
 }
 .learn-more:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1236px) {

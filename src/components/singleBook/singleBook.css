@@ -85,10 +85,12 @@ button:active {
 .see-all-text {
   color: #78787d;
   font-weight: 600;
+  
 }
 
 .see-all-text:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .lib-book-gallery-wrapper-opacity {

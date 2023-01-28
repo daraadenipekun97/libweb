@@ -165,8 +165,20 @@ input[type="password"] {
   color: #5e458b;
 }
 
-.lib-register-wrapper p a:hover {
+.lib-register-login-here span:hover{
+  cursor: pointer;
   text-decoration: underline;
+}
+
+
+
+.policy_terms_link:hover{
+
+  text-decoration: underline;
+  cursor: pointer;
+
+
+
 }
 
 hr {

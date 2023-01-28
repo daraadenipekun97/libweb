@@ -10,8 +10,9 @@
   color: #5e458b;
 }
 
-.genre-wrapper ul li a:hover {
+.genre-wrapper ul li:hover {
   font-weight: 600;
+  cursor: pointer;
 }
 .genre-hr {
   border: 0;

@@ -1,3 +1,7 @@
+.logo{
+  cursor: pointer;
+}
+
 .logo img {
   object-fit: contain;
   width: 200px;
@@ -30,19 +34,20 @@
 
 .navbar-links li {
   list-style: none;
-}
-
-.navbar-links li a {
   display: block;
   text-decoration: none;
   color: #5e458b;
   padding: 0.5rem;
+  cursor: pointer;
 }
+
+
 
 .active,
 .navbar-links li:hover {
   border-bottom: 1px solid #5e458b;
   margin: 0rem 0.2rem;
+  cursor: pointer;
 }
 
 .toggle-button {
@@ -72,7 +77,7 @@
   background-color: #ffffff;
   border: 2px solid rgba(84, 95, 125, 0.15);
   border-radius: 5px;
-  height: 35px;
+  height: 35px !important;
   padding-left: 10px;
   outline: none;
   width: 100%;

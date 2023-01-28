@@ -39,6 +39,7 @@ const Books = () => {
   const [toggleHeart, setToggleHeart] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchBookDetails(params.id));
     dispatch(fetchSubscriptionDetails());
     //  console.log('current URL 👉️', window.location.href);

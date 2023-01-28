@@ -93,7 +93,7 @@ function App() {
                 <Route path="search/:id" element={<SearchPage />} />
               </Route>
 
-              <Route path="*" element={<NotfoundPage />} />
+              <Route path="*" element={<NotfoundPage user={user} />} />
             </Routes>
           </Suspense>
         </BrowserRouter>

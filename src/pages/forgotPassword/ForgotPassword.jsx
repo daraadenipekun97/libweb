@@ -130,6 +130,10 @@ const ForgotPassword = ({ user }) => {
     };
   }, [forgotPasswordSuccess]);
 
+  const handleSignup = () => {
+    navigate("/register")
+  }
+
   return (
     <>
       <Navbar />
@@ -174,8 +178,8 @@ const ForgotPassword = ({ user }) => {
             <p>Or</p>
 
             <br />
-            <p>
-              Dont have an account? <a href="register">Sign up</a>
+            <p style={{color:"#5e458b"}}>
+              Dont have an account? <span onClick={handleSignup} className="signup_link">Sign up</span>
             </p>
           </div>
         </div>

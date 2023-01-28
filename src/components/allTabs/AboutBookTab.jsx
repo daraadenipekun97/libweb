@@ -2,8 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Spinner from "../spinner/Spinner";
 import "./css/aboutTab.css";
+import { useNavigate } from "react-router-dom";
+
 
 const AboutBookTab = () => {
+  const navigate = useNavigate();
+
   const { bookDetails } = useSelector((state) => state.books);
 
   if (Object.keys(bookDetails).length === 0) {
@@ -15,6 +19,10 @@ const AboutBookTab = () => {
   function truncateText(text) {
     const trimmed = text.substring(0, length);
     return trimmed;
+  }
+
+  const handleLearnMore = (id) => {
+      navigate(`/home/authors/${id}`)
   }
 
   return (
@@ -29,9 +37,9 @@ const AboutBookTab = () => {
           <div className="author-name-desc">
             <h1>{bookDetails.book.author.name}</h1>
             <p>{truncateText(bookDetails.book.author.about)}...</p>
-            <a href={`/home/authors/${bookDetails.book.author.id}`} className="learn-more">
+            <div className="learn-more" onClick={() => handleLearnMore(bookDetails.book.author.id)}>
               Learn More
-            </a>
+            </div>
           </div>
         </div>
       </div>

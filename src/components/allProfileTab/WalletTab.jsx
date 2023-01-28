@@ -3,9 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import "./css/wallet.css";
 import { AiFillCopy } from "react-icons/ai";
 import { fetchWalletDetails } from "../../Actions";
+import { useNavigate } from "react-router-dom";
 
 const WalletTab = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const { walletDetails } = useSelector((state) => state.profile);
 
@@ -23,6 +26,10 @@ const WalletTab = () => {
     /* Alert the copied text */
     alert("Copied the referral code: " + copyText.innerHTML);
   };
+
+  const handleWalletNavigate = () => {
+    navigate("/home/wallet");
+  }
 
   return (
     <div className="wallet-wrapper">
@@ -44,9 +51,9 @@ const WalletTab = () => {
             "-"
           )}
         </div>
-        <a href="/home/wallet" className="view-wallet">
+        <div className="view-wallet" onClick={handleWalletNavigate}>
           View Wallet
-        </a>
+        </div>
       </div>
     </div>
   );

@@ -81,6 +81,7 @@ hr {
   background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
   color: white;
   width: 15%;
+  cursor: pointer;
 }
 
 .button-24 {

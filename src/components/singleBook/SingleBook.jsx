@@ -132,13 +132,39 @@ const SingleBook = ({ datas, searchBar, title }) => {
       setShow(true);
     } else {
       navigate(`/home/books/${id}`);
-      window.location.reload();
+      //uncomment the ccode below window.location.reload() to prevent the previously 
+      //viewed book from showing when a new book is clicked
+      // window.location.reload(); 
     }
   };
 
   const handleClose = () => {
     setShow(false);
   };
+
+  const handleSeeAll = () => {
+
+    if (title === "Trending Books") {
+      navigate("/home/trending")
+    } else if(title === "New Releases Books") {
+
+      navigate("/home/newReleases")
+      
+    }
+    else if(title === "Classic Books"){
+      navigate("/home/classics")
+    }
+
+    else if(title === "Educational & Kiddies Books"){
+      navigate("/home/childrenscorner")
+    }
+    else if(title === "Author's Book"){
+      navigate("/home/discover")
+    }
+    else{
+
+    }
+  }
 
   return (
     <div className="lib-book-gallery">
@@ -162,24 +188,13 @@ const SingleBook = ({ datas, searchBar, title }) => {
             </div>
           </div>
         ) : searchBar === false ? (
-          <a
-            href={
-              title === "Trending Books"
-                ? "/home/trending"
-                : title === "New Releases Books"
-                ? "/home/newReleases"
-                : title === "Classic Books"
-                ? "/home/classics"
-                : title === "Educational & Kiddies Books"
-                ? "/home/childrenscorner"
-                : title === "Author's Book"
-                ? "/home/discover"
-                : ""
-            }
+          <p
+            
             className="see-all-text"
+            onClick={handleSeeAll}
           >
             See All
-          </a>
+          </p>
         ) : (
           ""
         )}

@@ -44,7 +44,7 @@
 
 .view-wallet {
   padding: 0.5rem 0.5rem;
-  font-weight: 400;
+  font-weight: 600;
   border-radius: 5px;
   font-style: normal;
   font-size: 12px;
@@ -54,6 +54,7 @@
   background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
   color: white;
   width: 15%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 655px) {

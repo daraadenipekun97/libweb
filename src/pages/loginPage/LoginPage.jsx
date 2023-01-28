@@ -220,6 +220,14 @@ const LoginPage = ({ user }) => {
     };
   }, [loginFailure]);
 
+  const handleForgotPassNavigate = () => {
+    navigate("/forgot")
+  }
+
+  const handleSignup = () => {
+    navigate("/register")
+  }
+
   return (
     <>
       <Navbar />
@@ -268,9 +276,9 @@ const LoginPage = ({ user }) => {
 
             <br />
 
-            <a href="forgot" className="login-forgot-password">
+            <p className="login-forgot-password" onClick={handleForgotPassNavigate}>
               Forgot Password?
-            </a>
+            </p>
 
             <br />
 
@@ -301,7 +309,7 @@ const LoginPage = ({ user }) => {
             />
 
             <p className="lib-login-p-tag">
-              Dont have an account? <a href="register">Sign up</a>
+              Dont have an account? <span  onClick={handleSignup}>Sign up</span>
             </p>
           </div>
         </div>

@@ -10,7 +10,7 @@ import { AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Menu = ({ handleHome, handleDiscover }) => {
+const Menu = ({ handleHome, handleDiscover, handleSignin }) => {
   const dispatch = useDispatch();
 
   const [activeTab, setActiveTab] = useState("home");
@@ -25,18 +25,14 @@ const Menu = ({ handleHome, handleDiscover }) => {
 
   return (
     <>
-      <p className={activeTab === "home" ? "active" : ""}>
-        <a href="" onClick={handleHome}>
+      <p className={activeTab === "home" ? "active" : ""}  onClick={handleHome}>
           Home
-        </a>
       </p>
-      <p>
-        <a href="" onClick={handleDiscover}>
+      <p onClick={handleDiscover}>
           Discover
-        </a>
       </p>
-      <p className={activeTab === "signin" ? "active" : ""}>
-        <a href="signin">Sign In</a>
+      <p className={activeTab === "signin" ? "active" : ""}    onClick={handleSignin}>
+        Sign In
       </p>
     </>
   );
@@ -54,8 +50,11 @@ const Navbar = ({ user }) => {
       navigate("/");
     }
 
-    return false;
   };
+
+  const handleSignin = () =>{
+    navigate("/signin")
+  }
 
   const handleDiscover = () => {
     const hanldeSwal = () => {
@@ -85,20 +84,27 @@ const Navbar = ({ user }) => {
       hanldeSwal();
     }
 
-    return false;
   };
+
+  const handleHomeNav = () => {
+    navigate("/");
+  }
+
+  const handleGetStarted = () =>{
+    navigate("/register")
+  }
 
   return (
     <div className="lib-navbar">
-      <a href="/" className="lib-navbar-logo">
+      <div className="lib-navbar-logo" onClick={handleHomeNav}>
         <img src={Logo} alt="Logo" />
-      </a>
-      <div className="lib-navbar-links-container">
-        <Menu handleHome={handleHome} handleDiscover={handleDiscover} />
       </div>
-      <a href="register" className="btn-wrapper">
+      <div className="lib-navbar-links-container">
+        <Menu handleHome={handleHome} handleDiscover={handleDiscover} handleSignin = {handleSignin}/>
+      </div>
+      <div className="btn-wrapper" onClick={handleGetStarted}>
         Get Started
-      </a>
+      </div>
       <div className="lib-navbar-menu ">
         {toggleMenu ? (
           <AiOutlineCloseCircle size={27} color="#5e458b" onClick={() => setToggleMenu(false)} />
@@ -108,8 +114,8 @@ const Navbar = ({ user }) => {
         {toggleMenu && (
           <div className="lib-navbar-menu-container scale-up-center">
             <div className="lib-navbar-menu-container-links">
-              <Menu />
-              <PurpleButton text="Get Started" />
+              <Menu handleHome={handleHome} handleDiscover={handleDiscover} handleSignin = {handleSignin} />
+              <PurpleButton text="Get Started" onClickFunction={handleGetStarted} />
             </div>
           </div>
         )}

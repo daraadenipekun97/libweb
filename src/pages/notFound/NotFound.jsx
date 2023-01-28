@@ -3,8 +3,9 @@ import UserNavbar from "../../components/userNavbar/UserNavbar";
 import "./notFound.css";
 import NotFoundImage from "../../assets/images/clip-exclamation-mark.png";
 import { useNavigate } from "react-router-dom";
+import { Footer, Navbar } from "../../containers";
 
-const NotFound = () => {
+const NotFound = ({user}) => {
   const navigate = useNavigate();
 
   const handleHomeNavigate = () => {
@@ -13,7 +14,7 @@ const NotFound = () => {
 
   return (
     <>
-      <UserNavbar />
+      {user ? <UserNavbar /> : <Navbar />}
       <div className="not-found-wrapper">
         <div className="not-found-container">
           <img src={NotFoundImage} alt="" />
@@ -24,6 +25,7 @@ const NotFound = () => {
           </button>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

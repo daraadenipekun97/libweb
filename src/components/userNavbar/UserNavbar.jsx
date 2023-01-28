@@ -63,6 +63,10 @@ const UserNavbar = () => {
     // toastr.success("Logout Successful", "See you later");
   };
 
+  const handleProfileNavigate = () => {
+    navigate("/home/profile")
+  }
+
   const searchTextHandler = (e) => {
     if (e) {
       let searchValue = e.target.value;
@@ -100,12 +104,29 @@ const UserNavbar = () => {
     }
   }, [dispatch, window.location.pathname]);
 
+
+  const handleHome = () => {
+      navigate("/home/dashboard")
+  }
+
+  const handleLibrary = () => {
+    navigate("/home/library")
+  }
+
+  const handleDiscover = () => {
+    navigate("/home/discover")
+  }
+
+  const handleDashboard = () => {
+    navigate("/home/dashboard")
+  }
+
   return (
     <>
       <nav className="navbar">
-        <a className="logo" href="/home/dashboard">
+        <div className="logo" onClick={handleDashboard}>
           <img src={Logo} alt="" />
-        </a>
+        </div>
         <div className="toggle-button" onClick={() => handleNavbar()}>
           <span className="bar"></span>
           <span className="bar"></span>
@@ -114,14 +135,12 @@ const UserNavbar = () => {
 
         <div className="profile_dropdown">
           <ul>
-            <li>
-              <a href="/home/profile">
+            <li onClick={handleProfileNavigate}>
                 {userDataLogin !== null
                   ? userDataLogin.user.name
                   : userRegData !== null
                   ? userRegData.user.name
                   : ""}
-              </a>
             </li>
             <li onClick={handleLogout}>Log out</li>
           </ul>
@@ -129,14 +148,14 @@ const UserNavbar = () => {
 
         <div className="navbar-links">
           <ul>
-            <li className={activeTab === "dashboard" ? "active" : ""}>
-              <a href="/home/dashboard">Home</a>
+            <li className={activeTab === "dashboard" ? "active" : ""} onClick = {handleHome}>
+              Home
             </li>
-            <li className={activeTab === "lib" ? "active" : ""}>
-              <a href="/home/library">My Library</a>
+            <li className={activeTab === "lib" ? "active" : ""} onClick = {handleLibrary}>
+              My Library
             </li>
-            <li className={activeTab === "discover" ? "active" : ""}>
-              <a href="/home/discover">Discover</a>
+            <li className={activeTab === "discover" ? "active" : ""} onClick = {handleDiscover}>
+              Discover
             </li>
           </ul>
           <div className="search">

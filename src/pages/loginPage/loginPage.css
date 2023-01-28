@@ -152,6 +152,11 @@
   color: #5e458b;
 }
 
+.lib-login-p-tag span:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .lib-login-wrapper p a:hover {
   text-decoration: underline;
 }
@@ -165,6 +170,13 @@ hr {
 
 .login-forgot-password {
   color: #5e458b;
+  cursor: pointer;
+  
+ 
+}
+
+.login-forgot-password:hover{
+  text-decoration: underline;
 }
 
 .toggle-pass {
