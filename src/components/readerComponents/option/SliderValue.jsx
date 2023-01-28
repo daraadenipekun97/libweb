@@ -1,39 +1,32 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import palette from '../../../lib/styles/palette'
-import * as styles from '../../../lib/styles/styles'
+import palette from "../../../lib/styles/palette";
+import * as styles from "../../../lib/styles/styles";
 
-const SliderValue = ({ 
-  active, 
-  minValue, 
-  maxValue, 
-  defaultValue, 
-  step, 
-  onChange 
-}) => {
-  const percentage = Math.round((defaultValue - minValue) / (maxValue - minValue) * 100);
+const SliderValue = ({ active, minValue, maxValue, defaultValue, step, onChange }) => {
+  const percentage = Math.round(((defaultValue - minValue) / (maxValue - minValue)) * 100);
 
-  return (<>
-    <Icon>-</Icon>
-    <SliderWrapper>
-      <SliderBackground />
-      <SliderBar 
-        active={active}
-        percentage={percentage}
-      />
-      <Slider
-        type="range" 
-        min={minValue}
-        max={maxValue}
-        defaultValue={defaultValue}
-        step={step}
-        onChange={onChange}
-        active={active}
-        disabled={!active} />
-    </SliderWrapper>
-    <Icon>+</Icon>
-  </>);
-}
+  return (
+    <>
+      <Icon>-</Icon>
+      <SliderWrapper>
+        <SliderBackground />
+        <SliderBar active={active} percentage={percentage} />
+        <Slider
+          type="range"
+          min={minValue}
+          max={maxValue}
+          defaultValue={defaultValue}
+          step={step}
+          onChange={onChange}
+          active={active}
+          disabled={!active}
+        />
+      </SliderWrapper>
+      <Icon>+</Icon>
+    </>
+  );
+};
 
 const SliderWrapper = styled.div`
   flex-grow: 1;
@@ -56,14 +49,11 @@ const SliderBar = styled.div`
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  width: ${({ percentage }) => percentage + '%'};
+  width: ${({ percentage }) => percentage + "%"};
   height: 6px;
   border-radius: 6px 0 0 6px;
-  background-color: ${props => props.active
-    ? palette.blue4
-    : palette.gray2
-  };
-	z-index: 1;
+  background-color: ${(props) => (props.active ? palette.blue4 : palette.gray2)};
+  z-index: 1;
 `;
 
 const Slider = styled.input`
@@ -75,7 +65,7 @@ const Slider = styled.input`
   margin: 0;
   z-index: 2;
   outline: none;
-  
+
   &::-webkit-slider-thumb {
     appearance: none;
     width: 18px;
@@ -83,30 +73,19 @@ const Slider = styled.input`
     border-radius: 18px;
     box-shadow: ${styles.boxShadow.regular};
     background-color: white;
-    transition: .2s ${styles.transition};
+    transition: 0.2s ${styles.transition};
     transition-property: box-shadow, background-color;
-    border: ${props => props.active
-      ? `2px solid ${palette.blue3}`
-      : `2px solid ${palette.gray4}`
-    };
-    cursor: ${props => props.active
-        ? 'pointer'
-        : ''
-      };;
+    border: ${(props) =>
+      props.active ? `2px solid ${palette.blue3}` : `2px solid ${palette.gray4}`};
+    cursor: ${(props) => (props.active ? "pointer" : "")};
 
     &:hover {
-      background-color: ${props => props.active
-        ? palette.blue1
-        : ''
-      };
+      background-color: ${(props) => (props.active ? palette.blue1 : "")};
     }
 
     &:active {
       box-shadow: none;
-      background-color: ${props => props.active
-        ? palette.blue3
-        : ''
-      };
+      background-color: ${(props) => (props.active ? palette.blue3 : "")};
     }
   }
 
@@ -124,5 +103,4 @@ const Icon = styled.span`
   line-height: 20px;
 `;
 
-
-export default SliderValue
+export default SliderValue;

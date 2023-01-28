@@ -68,10 +68,10 @@ function App() {
               <Route path="forgot" element={<ForgotPasswordPage user={user} />} />
               <Route path="reset" element={<ResetPasswordPage user={user} />} />
               <Route path="verify" element={<VerifyEmailPage user={user} />} />
-              <Route path="about" element={<AboutUsPage user={user}/>} />
-              <Route path="faq" element={<FAQPage user={user}/>} />
-              <Route path="privacyPolicy" element={<PrivacyPolicyPage user={user}/>} />
-              <Route path="termsOfUse" element={<TermsOfUsePage user={user}/>} />
+              <Route path="about" element={<AboutUsPage user={user} />} />
+              <Route path="faq" element={<FAQPage user={user} />} />
+              <Route path="privacyPolicy" element={<PrivacyPolicyPage user={user} />} />
+              <Route path="termsOfUse" element={<TermsOfUsePage user={user} />} />
 
               <Route path="home" element={<HomePage user={user} />}>
                 <Route path="dashboard" element={<DashboardPage />} />
@@ -91,7 +91,6 @@ function App() {
                 <Route path="subscription" element={<SubscriptionPage />} />
                 <Route path="wallet" element={<WalletPage />} />
                 <Route path="search/:id" element={<SearchPage />} />
-
               </Route>
 
               <Route path="*" element={<NotfoundPage />} />
@@ -112,7 +111,6 @@ function App() {
       </Provider>
 
       <MessengerChat />
-      
     </>
   );
 }

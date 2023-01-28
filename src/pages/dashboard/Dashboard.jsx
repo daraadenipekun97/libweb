@@ -6,41 +6,38 @@ import "./dashboard.css";
 import { fetchAllTrendingBooks, fetchSubscriptionDetails } from "../../Actions";
 import { Footer, Header } from "../../containers";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import {  useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 const Modal = ({ handleClose, show, handleNavigate }) => {
   const showHideClassName = show ? "main-modal-bg display-block" : "main-modal-bg display-none";
 
- 
-
   return (
     <div className={showHideClassName}>
       <div className="modal-main">
-          <>
-            <h4 className="modal-title">Trial <span style={{float:"right"}}><AiOutlineCloseCircle size={20} color="#5e458b" onClick={handleClose} /></span></h4>
-            <p className="modal-text">Great to have you here!</p>
-            <p className="modal-text">Get Started with ₦100 for 7 days</p>
-
-          </>
-      
+        <>
+          <h4 className="modal-title">
+            Trial{" "}
+            <span style={{ float: "right" }}>
+              <AiOutlineCloseCircle size={20} color="#5e458b" onClick={handleClose} />
+            </span>
+          </h4>
+          <p className="modal-text">Great to have you here!</p>
+          <p className="modal-text">Get Started with ₦100 for 7 days</p>
+        </>
 
         <hr />
-       <div className="btn-modal-wrapper">
-       <button className="modal-btn" onClick={handleClose}>
-          No
-        </button>
-        <button className="modal-btn-start-trial" onClick={handleNavigate}>
-          Start Trial
-        </button>
-       </div>
-       
+        <div className="btn-modal-wrapper">
+          <button className="modal-btn" onClick={handleClose}>
+            No
+          </button>
+          <button className="modal-btn-start-trial" onClick={handleNavigate}>
+            Start Trial
+          </button>
+        </div>
       </div>
     </div>
   );
 };
-
-
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -52,46 +49,31 @@ const Dashboard = () => {
   const [slicedTrendingBooks, setSlicedTrendingBooks] = useState([]);
   const [show, setShow] = useState(false);
 
-
   useEffect(() => {
     dispatch(fetchAllTrendingBooks());
     dispatch(fetchSubscriptionDetails());
-
-
   }, []);
 
   useEffect(() => {
-    
     if (subscriptionDetails.subscription === null) {
-
-
       setShow(true);
 
+      // let loaded = parseInt(localStorage.getItem('loaded'), 10),
+      //   loaded_numb = loaded ? loaded + 1 : 1;
+      // localStorage.setItem('loaded', loaded_numb);
+      // if (loaded_numb === 2 || loaded_numb === 1) {
+      //   setShow(true);
 
-          // let loaded = parseInt(localStorage.getItem('loaded'), 10),
-          //   loaded_numb = loaded ? loaded + 1 : 1;
-          // localStorage.setItem('loaded', loaded_numb);
-          // if (loaded_numb === 2 || loaded_numb === 1) {
-          //   setShow(true);
+      // } else {
+      //   setTimeout(() => {setShow(true);}, 300000)
 
-          // } else {
-          //   setTimeout(() => {setShow(true);}, 300000)
-
-          // }
-          
-        
-    }
-    else{
-
+      // }
+    } else {
       // localStorage.removeItem('loaded');
 
       setShow(false);
-
     }
-  
- 
-  }, [subscriptionDetails])
-  
+  }, [subscriptionDetails]);
 
   const handleClose = () => {
     setShow(false);
@@ -124,7 +106,7 @@ const Dashboard = () => {
         </div>
       </div>
       <Footer />
-      <Modal handleClose={handleClose} show={show} handleNavigate = {handleNavigate} />
+      <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
     </>
   );
 };

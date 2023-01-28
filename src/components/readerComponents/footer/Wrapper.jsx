@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import palette from '../../../lib/styles/palette'
+import palette from "../../../lib/styles/palette";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -13,7 +13,6 @@ const Wrapper = styled.div`
   justify-content: center;
   background-color: ${palette.white};
   border-top: 2px solid ${palette.gray1};
-
 `;
 
-export default Wrapper
+export default Wrapper;

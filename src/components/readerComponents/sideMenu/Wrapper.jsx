@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 // components
-import CloseBtn from '../../../components/readerComponents/sideMenu/CloseBtn'
+import CloseBtn from "../../../components/readerComponents/sideMenu/CloseBtn";
 // lib
-import * as styles from '../../../lib/styles/styles'
-import zIndex from '../../../lib/styles/zIndex'
-import palette from '../../../lib/styles/palette'
+import * as styles from "../../../lib/styles/styles";
+import zIndex from "../../../lib/styles/zIndex";
+import palette from "../../../lib/styles/palette";
 
 const Wrapper = ({ title, show, onClose, children }, ref) => {
   return (
@@ -16,8 +16,8 @@ const Wrapper = ({ title, show, onClose, children }, ref) => {
       </Header>
       {children}
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.div`
   display: flex;
@@ -29,14 +29,11 @@ const Container = styled.div`
   top: 0;
   right: 0;
   z-index: ${zIndex.menu};
-  box-shadow: -4px 0 8px 0 rgba(0,0,0,.16);
+  box-shadow: -4px 0 8px 0 rgba(0, 0, 0, 0.16);
   background-color: ${palette.white};
   border-radius: 16px 0 0 16px;
-  transform: ${({ show }) => show 
-    ? `translateX(0px) scale(1)`
-    : `translateX(420px) scale(.9)`
-  };
-  transition: .4s ${styles.transition};
+  transform: ${({ show }) => (show ? `translateX(0px) scale(1)` : `translateX(420px) scale(.9)`)};
+  transition: 0.4s ${styles.transition};
   overflow-y: auto;
   ${styles.scrollbar(0)};
 `;
@@ -56,6 +53,4 @@ const Header = styled.div`
   }
 `;
 
-
-
-export default React.forwardRef(Wrapper)
+export default React.forwardRef(Wrapper);

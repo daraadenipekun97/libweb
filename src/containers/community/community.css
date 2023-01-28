@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.lib-community-left-wrapper{
+.lib-community-left-wrapper {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -76,7 +76,7 @@
     /* display: none; */
   }
 
-  .lib-community-right-wrapper img{
+  .lib-community-right-wrapper img {
     width: 100%;
   }
 }

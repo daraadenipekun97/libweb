@@ -9,7 +9,7 @@ import {
   SEND_WISHLIST,
   FETCH_MY_FAVORITES,
   ADD_REVIEW,
-  READ_BOOK
+  READ_BOOK,
 } from "../ActionTypes";
 
 import {
@@ -31,7 +31,7 @@ import {
   sendWishlistSuccess,
   fetchMyFavoritesSuccess,
   addReviewSuccess,
-  readBookSuccess
+  readBookSuccess,
 } from "../Actions";
 
 export const fetchMyBooksRequest = function* ({ payload }) {
@@ -90,7 +90,6 @@ export const addRevieww = function* () {
   yield takeEvery(ADD_REVIEW, addReviewRequest);
 };
 
-
 export const readBookRequest = function* ({ payload }) {
   yield call(requestFunction, readBookSuccess, readBookCurrentlyReading, payload);
 };
@@ -98,7 +97,6 @@ export const readBookRequest = function* ({ payload }) {
 export const readBookCurently = function* () {
   yield takeEvery(READ_BOOK, readBookRequest);
 };
-
 
 export default function* rootSaga() {
   yield all([
@@ -109,6 +107,6 @@ export default function* rootSaga() {
     fork(sendWishlistss),
     fork(fetchMyFavs),
     fork(addRevieww),
-    fork(readBookCurently)
+    fork(readBookCurently),
   ]);
 }

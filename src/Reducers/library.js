@@ -10,7 +10,7 @@ import {
   FETCH_MY_FAVORITES_SUCCESS,
   ADD_REVIEW_SUCCESS,
   RESTORE_ADD_REVIEW_INITIAL,
-  READ_BOOK_SUCCESS
+  READ_BOOK_SUCCESS,
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -29,7 +29,7 @@ const INIT_STATE = {
   addReviewFailure: false,
 
   myFavorites: [],
-  readBookSuccess:false
+  readBookSuccess: false,
 };
 
 const libraryReducer = (state = INIT_STATE, action) => {

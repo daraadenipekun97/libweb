@@ -221,7 +221,6 @@ const ResetPassword = ({ user }) => {
 
       //removing the swal and navigating to sign in right away
       navigate("/signin");
-
     }
 
     return () => {

@@ -5,7 +5,6 @@
 
 .lib-header {
   display: flex;
-  
 }
 
 .lib-header-content {
@@ -16,7 +15,6 @@
   flex-direction: column;
   margin-right: 5rem;
   /* border: solid; */
-
 }
 
 .lib-header-content h1 {
@@ -116,14 +114,11 @@
 }
 
 @media screen and (max-width: 560px) {
- 
   .lib-header-image img {
     width: 100%;
     height: 100%;
   }
-
 }
-
 
 @media screen and (max-width: 440px) {
   .lib-download-app {
@@ -145,6 +140,4 @@
 }
 
 @media screen and (max-width: 330px) {
-
-  
 }

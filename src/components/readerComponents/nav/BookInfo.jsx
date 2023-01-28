@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-const BookInfo = ({src="", title ,publisher, author}) => {
+const BookInfo = ({ src = "", title, publisher, author }) => {
   return (
     <Container>
       <BookImg src={src} alt={title} />
@@ -11,7 +11,7 @@ const BookInfo = ({src="", title ,publisher, author}) => {
       </BookContent>
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   display: flex;
@@ -40,6 +40,4 @@ const Info = styled.div`
   margin-bottom: 4px;
 `;
 
-
-
-export default BookInfo
+export default BookInfo;

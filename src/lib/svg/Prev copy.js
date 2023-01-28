@@ -11,10 +11,7 @@ function SvgPrev(props) {
         </style>
       </defs>
       <g id="prev_svg__\uB808\uC774\uC5B4_2" data-name="\uB808\uC774\uC5B4 2">
-        <g
-          id="prev_svg__\uB808\uC774\uC5B4_1-2"
-          data-name="\uB808\uC774\uC5B4 1"
-        >
+        <g id="prev_svg__\uB808\uC774\uC5B4_1-2" data-name="\uB808\uC774\uC5B4 1">
           <path fill="none" d="M0 0h44v44H0z" opacity={0.3} />
           <path className="prev_svg__cls-3" d="M12 22L32 2M12 22l20 20" />
         </g>

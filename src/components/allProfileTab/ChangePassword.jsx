@@ -4,9 +4,7 @@ import { changePassword, restoreChangePasswordInitial } from "../../Actions";
 import Spinner from "../spinner/Spinner";
 import "./css/changePassword.css";
 
-
 const ChangePassword = () => {
-
   const dispatch = useDispatch();
   const { passwordChangeFailure, passwordChangeSuccess } = useSelector((state) => state.profile);
 
@@ -22,7 +20,7 @@ const ChangePassword = () => {
   });
 
   const handleFocus = (e) => {
-    setShowPasswordDesc(false)
+    setShowPasswordDesc(false);
     if (e.target.name === "oldPassword") {
       setFocused({ ...focused, oldPassword: true });
     } else if (e.target.name === "newPassword") {
@@ -60,7 +58,6 @@ const ChangePassword = () => {
 
   const [formValues, setFormValues] = useState({ ...initialFormValues });
 
-
   const oldPasswordHandler = (e) => {
     if (e) {
       let passwordVal = e.target.value;
@@ -95,7 +92,6 @@ const ChangePassword = () => {
     }
   };
 
-
   const confirmPasswordHandler = (e) => {
     setPasswordMatchCheck(false);
     if (e) {
@@ -112,7 +108,6 @@ const ChangePassword = () => {
       });
     }
   };
-
 
   const handleSubmit = () => {
     if (
@@ -141,8 +136,6 @@ const ChangePassword = () => {
     }
   };
 
-
-
   useEffect(() => {
     if (valid) {
       dispatch(
@@ -158,7 +151,6 @@ const ChangePassword = () => {
     };
   }, [valid]);
 
-
   useEffect(() => {
     if (passwordChangeFailure) {
       setFormState({ ...initialFormState });
@@ -172,15 +164,13 @@ const ChangePassword = () => {
   useEffect(() => {
     if (passwordChangeSuccess) {
       setFormState({ ...initialFormState });
-      setFormValues({...initialFormValues})
+      setFormValues({ ...initialFormValues });
       setFocused({
-          ...focused,
-          oldPassword: false,
-          newPassword: false,
-          confirmNewPassword: false,
-      })
-     
-
+        ...focused,
+        oldPassword: false,
+        newPassword: false,
+        confirmNewPassword: false,
+      });
     }
 
     return () => {
@@ -189,101 +179,98 @@ const ChangePassword = () => {
   }, [passwordChangeSuccess]);
 
   return (
-    <div className='bio-wrapper'>
-      <p className='bio-wrapper-text'>Change Your Password</p>
+    <div className="bio-wrapper">
+      <p className="bio-wrapper-text">Change Your Password</p>
       <div className="bio-form">
+        <div className="input-group-old-password">
+          <input
+            name="oldPassword"
+            type={passwordShow ? "text" : "password"}
+            placeholder="Current Password*"
+            className="change-password-input"
+            value={formValues.current_password}
+            onChange={(e) => oldPasswordHandler(e)}
+            required
+            onBlur={(e) => handleFocus(e)}
+            focused={focused.oldPassword.toString()}
+          />
 
-      <div className="input-group-old-password">
-
-      <input
-          name="oldPassword"
-          type={passwordShow ? "text" : "password"}
-          placeholder="Current Password*"
-          className='change-password-input'
-          value = {formValues.current_password}
-          onChange={(e) => oldPasswordHandler(e)}
-          required
-          onBlur={(e) => handleFocus(e)}
-          focused={focused.oldPassword.toString()}
-
-
-            />
-
-              {passwordShow ? (
-                <i className="fa fa-eye-slash toggle-pass" onClick={() => handlePasswordHide()}></i>
-              ) : (
-                <i className="fa fa-eye toggle-pass" onClick={() => handlePasswordShow()}></i>
-              )}
+          {passwordShow ? (
+            <i className="fa fa-eye-slash toggle-pass" onClick={() => handlePasswordHide()}></i>
+          ) : (
+            <i className="fa fa-eye toggle-pass" onClick={() => handlePasswordShow()}></i>
+          )}
 
           <p className="reset-validation-error-text">Password is required!</p>
-
-
-            </div>
-
-        <div className="input-group">
-              <div className="input-group-wrapper-left">
-                <input
-                  name="newPassword"
-                  className='change-password-input'
-                  type={passwordShow ? "text" : "password"}
-                  placeholder="New Password*"
-                  value={formValues.password}
-                  required
-                  pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$"
-                  onBlur={(e) => handleFocus(e)}
-                  focused={focused.newPassword.toString()}
-                  onFocus={() => setShowPasswordDesc(true)}
-                  onChange={(e) => passwordHandler(e)}
-
-                />
-              {passwordShow ? (
-                <i className="fa fa-eye-slash toggle-pass" onClick={() => handlePasswordHide()}></i>
-              ) : (
-                <i className="fa fa-eye toggle-pass" onClick={() => handlePasswordShow()}></i>
-              )}
-              {showPasswordDesc ? (
-                <p className="green-warning">
-                  Password should be 6-15 characters and include at least 1 lower case letter, 1
-                  uppercase letter, 1 number and 1 special character!
-                </p>
-              ) : (
-                <p className="reset-validation-error-text">Password is required!</p>
-              )}              
-              </div>
-
-              <div className="input-group-wrapper-right">
-                <input
-                  name="confirmNewPassword"
-                  className='change-password-input'
-                  type={passwordShow ? "text" : "password"}
-                  placeholder="Confirm Password*"
-                  value={formValues.confirmPassword}
-                  required
-                  onChange={(e) => confirmPasswordHandler(e)}
-                  pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$"
-                  onBlur={(e) => handleFocus(e)}
-                  focused={focused.confirmNewPassword.toString()}
-
-
-
-                />
-                {passwordShow ? (
-                <i className="fa fa-eye-slash toggle-pass" onClick={() => handlePasswordHide()}></i>
-              ) : (
-                <i className="fa fa-eye toggle-pass" onClick={() => handlePasswordShow()}></i>
-              )}
-              <p className="reset-validation-error-text">This field is required </p>
-              {passwordMatchCheck ? <p className="password_match">Password do not match !</p> : ""}              </div>
-
-              
         </div>
 
-        <button disabled={formState.buttonState} onClick={() => handleSubmit()} className= "bio-button">
-                {formState.spinner === true ? <Spinner /> : formState.buttonText}
-              </button>
+        <div className="input-group">
+          <div className="input-group-wrapper-left">
+            <input
+              name="newPassword"
+              className="change-password-input"
+              type={passwordShow ? "text" : "password"}
+              placeholder="New Password*"
+              value={formValues.password}
+              required
+              pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$"
+              onBlur={(e) => handleFocus(e)}
+              focused={focused.newPassword.toString()}
+              onFocus={() => setShowPasswordDesc(true)}
+              onChange={(e) => passwordHandler(e)}
+            />
+            {passwordShow ? (
+              <i className="fa fa-eye-slash toggle-pass" onClick={() => handlePasswordHide()}></i>
+            ) : (
+              <i className="fa fa-eye toggle-pass" onClick={() => handlePasswordShow()}></i>
+            )}
+            {showPasswordDesc ? (
+              <p className="green-warning">
+                Password should be 6-15 characters and include at least 1 lower case letter, 1
+                uppercase letter, 1 number and 1 special character!
+              </p>
+            ) : (
+              <p className="reset-validation-error-text">Password is required!</p>
+            )}
+          </div>
+
+          <div className="input-group-wrapper-right">
+            <input
+              name="confirmNewPassword"
+              className="change-password-input"
+              type={passwordShow ? "text" : "password"}
+              placeholder="Confirm Password*"
+              value={formValues.confirmPassword}
+              required
+              onChange={(e) => confirmPasswordHandler(e)}
+              pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$"
+              onBlur={(e) => handleFocus(e)}
+              focused={focused.confirmNewPassword.toString()}
+            />
+            {passwordShow ? (
+              <i className="fa fa-eye-slash toggle-pass" onClick={() => handlePasswordHide()}></i>
+            ) : (
+              <i className="fa fa-eye toggle-pass" onClick={() => handlePasswordShow()}></i>
+            )}
+            <p className="reset-validation-error-text">This field is required </p>
+            {passwordMatchCheck ? (
+              <p className="password_match">Password do not match !</p>
+            ) : (
+              ""
+            )}{" "}
+          </div>
+        </div>
+
+        <button
+          disabled={formState.buttonState}
+          onClick={() => handleSubmit()}
+          className="bio-button"
+        >
+          {formState.spinner === true ? <Spinner /> : formState.buttonText}
+        </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ChangePassword
+export default ChangePassword;

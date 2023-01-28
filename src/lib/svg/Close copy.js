@@ -11,10 +11,7 @@ function SvgClose(props) {
         </style>
       </defs>
       <g id="close_svg__\uB808\uC774\uC5B4_2" data-name="\uB808\uC774\uC5B4 2">
-        <g
-          id="close_svg__\uB808\uC774\uC5B4_1-2"
-          data-name="\uB808\uC774\uC5B4 1"
-        >
+        <g id="close_svg__\uB808\uC774\uC5B4_1-2" data-name="\uB808\uC774\uC5B4 1">
           <path fill="none" d="M0 0h48v48H0z" opacity={0.2} />
           <path className="close_svg__cls-3" d="M4 4l40 40M4 44L44 4" />
         </g>

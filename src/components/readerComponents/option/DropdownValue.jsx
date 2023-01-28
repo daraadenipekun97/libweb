@@ -1,24 +1,20 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import * as styles from '../../../lib/styles/styles';
-import palette from '../../../lib/styles/palette';
+import * as styles from "../../../lib/styles/styles";
+import palette from "../../../lib/styles/palette";
 // icons
-import { DownIcon } from '../../../lib/svg'
+import { DownIcon } from "../../../lib/svg";
 
 const DropdownValue = ({ value, isDropdown, onClick }) => {
   return (
-    <Container 
-      onClick={onClick}
-      isDropdown={isDropdown}
-      title="Select font"
-    >
+    <Container onClick={onClick} isDropdown={isDropdown} title="Select font">
       <Content>{value}</Content>
       <Icon isDropdown={isDropdown}>
         <DownIcon />
       </Icon>
     </Container>
   );
-}
+};
 
 const Container = styled.button`
   display: flex;
@@ -28,28 +24,25 @@ const Container = styled.button`
   width: 100%;
   height: 40px;
   background-color: ${palette.white};
-  border: ${({isDropdown}) => isDropdown
-    ? `2px solid ${palette.blue3}`
-    : `2px solid ${palette.gray1}`
-  };
-  border-radius: ${({isDropdown}) => isDropdown
-    ? "20px 20px 0 0"
-    : "20px"
-  };
+  border: ${({ isDropdown }) =>
+    isDropdown ? `2px solid ${palette.blue3}` : `2px solid ${palette.gray1}`};
+  border-radius: ${({ isDropdown }) => (isDropdown ? "20px 20px 0 0" : "20px")};
   box-sizing: border-box;
   padding: 0px 16px;
   cursor: pointer;
   z-index: 4;
-  transition: .1s ${styles.transition};
+  transition: 0.1s ${styles.transition};
   text-align: left;
   outline: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border: 2px solid ${palette.blue3};
 
     & > div {
       opacity: 1;
-      filter: invert(40%) sepia(85%) saturate(1256%) hue-rotate(210deg) brightness(113%) contrast(101%);
+      filter: invert(40%) sepia(85%) saturate(1256%) hue-rotate(210deg) brightness(113%)
+        contrast(101%);
     }
   }
 `;
@@ -64,17 +57,12 @@ const Icon = styled.div`
   display: flex;
   width: 12px;
   height: 12px;
-  opacity: .3;
-  
+  opacity: 0.3;
+
   & > svg {
     transform-origin: center;
-    transform: ${({isDropdown}) => isDropdown
-      ? 'rotate(180deg)'
-      : 'rotate(0deg)'
-    };
+    transform: ${({ isDropdown }) => (isDropdown ? "rotate(180deg)" : "rotate(0deg)")};
   }
 `;
 
-
-
-export default DropdownValue
+export default DropdownValue;

@@ -19,7 +19,7 @@ import {
   REMOVE_BOOK_FROM_FAVOURITE,
   FETCH_AUTHORS_BY_ID,
   SEARCH_BOOK,
-  SEARCH_BOOK_UNAUTH
+  SEARCH_BOOK_UNAUTH,
 } from "../ActionTypes";
 
 import {
@@ -61,7 +61,7 @@ import {
   addBookToFavSuccess,
   removeBookFromFavSuccess,
   searchBookSuccess,
-  searchBooksUnauthSuccess
+  searchBooksUnauthSuccess,
 } from "../Actions";
 
 export const fetchTrendingBooksRequest = function* ({ payload }) {
@@ -136,8 +136,6 @@ export const fetchBooksByGenree = function* () {
   yield takeEvery(FETCH_BOOKS_BY_GENRE, fetchBooksByGenreRequest);
 };
 
-
-
 export const fetchAllBooksNamesRequest = function* ({ payload }) {
   yield call(requestFunction, fetchAllBookNamesSuccess, getAllBookNames, payload);
 };
@@ -145,8 +143,6 @@ export const fetchAllBooksNamesRequest = function* ({ payload }) {
 export const fetchAllBookNamess = function* () {
   yield takeEvery(FETCH_ALL_BOOK_NAMES, fetchAllBooksNamesRequest);
 };
-
-
 
 export const fetchBooksByAuthorRequest = function* ({ payload }) {
   yield call(requestFunction, fetchBookByAuthorSuccess, getBooksByAuthor, payload);
@@ -156,9 +152,6 @@ export const fetchBooksByAuthorr = function* () {
   yield takeEvery(FETCH_BOOKS_BY_AUTHOR, fetchBooksByAuthorRequest);
 };
 
-
-
-
 export const fetchAllAuthorsRequest = function* ({ payload }) {
   yield call(requestFunction, fetchAllAuthorsSuccess, getAllAuthors, payload);
 };
@@ -166,7 +159,6 @@ export const fetchAllAuthorsRequest = function* ({ payload }) {
 export const fetchAllAuthorss = function* () {
   yield takeEvery(FETCH_ALL_AUTHORS, fetchAllAuthorsRequest);
 };
-
 
 export const fetchBookDetailRequest = function* ({ payload }) {
   yield call(requestFunction, fetchBookDetailsSuccess, getBookDetails, payload);
@@ -176,8 +168,6 @@ export const fetchBookDetailss = function* () {
   yield takeEvery(FETCH_BOOKS_DETAILS, fetchBookDetailRequest);
 };
 
-
-
 export const addBookToFavouriteRequest = function* ({ payload }) {
   yield call(requestFunction, addBookToFavSuccess, addFav, payload);
 };
@@ -185,7 +175,6 @@ export const addBookToFavouriteRequest = function* ({ payload }) {
 export const addBookToFavss = function* () {
   yield takeEvery(ADD_BOOK_TO_FAVOURITE, addBookToFavouriteRequest);
 };
-
 
 export const removeBookFromFavRequest = function* ({ payload }) {
   yield call(requestFunction, removeBookFromFavSuccess, removeFav, payload);
@@ -195,7 +184,6 @@ export const removeBookFromFavss = function* () {
   yield takeEvery(REMOVE_BOOK_FROM_FAVOURITE, removeBookFromFavRequest);
 };
 
-
 export const fetchAuthorByIdRequest = function* ({ payload }) {
   yield call(requestFunction, fetchAuthorsByIdSuccess, getAuthorById, payload);
 };
@@ -203,7 +191,6 @@ export const fetchAuthorByIdRequest = function* ({ payload }) {
 export const fetchAuthorrById = function* () {
   yield takeEvery(FETCH_AUTHORS_BY_ID, fetchAuthorByIdRequest);
 };
-
 
 export const searchBookRequest = function* ({ payload }) {
   yield call(requestFunction, searchBookSuccess, searchAllBooks, payload);
@@ -213,7 +200,6 @@ export const searchBookss = function* () {
   yield takeEvery(SEARCH_BOOK, searchBookRequest);
 };
 
-
 export const searchBookUnauthRequest = function* ({ payload }) {
   yield call(requestFunction, searchBooksUnauthSuccess, searchAllBooksUnauth, payload);
 };
@@ -221,7 +207,6 @@ export const searchBookUnauthRequest = function* ({ payload }) {
 export const searchBookssUnauth = function* () {
   yield takeEvery(SEARCH_BOOK_UNAUTH, searchBookUnauthRequest);
 };
-
 
 export default function* rootSaga() {
   yield all([
@@ -242,6 +227,6 @@ export default function* rootSaga() {
     fork(removeBookFromFavss),
     fork(fetchAuthorrById),
     fork(searchBookss),
-    fork(searchBookssUnauth)
+    fork(searchBookssUnauth),
   ]);
 }

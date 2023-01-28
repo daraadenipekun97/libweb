@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import palette from '../../../lib/styles/palette'
-import zIndex from '../../../lib/styles/zIndex'
+import palette from "../../../lib/styles/palette";
+import zIndex from "../../../lib/styles/zIndex";
 
 const Wrapper = styled.div`
   position: sticky;
@@ -13,4 +13,4 @@ const Wrapper = styled.div`
   z-index: ${zIndex.header};
 `;
 
-export default Wrapper
+export default Wrapper;

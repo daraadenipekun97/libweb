@@ -13,43 +13,29 @@ const TrendingTab = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-
   useEffect(() => {
     dispatch(fetchAllTrendingBooks());
   }, [dispatch]);
 
-
-
   const currentTableData = useMemo(() => {
-    debugger
+    debugger;
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return trendingBooks.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, trendingBooks]);
 
-  
-
-
-
-
-
-
-
-
   return (
     <>
-
-        <SingleBook datas={currentTableData} searchBar="" title="Trending Books" />
-        <Pagination
+      <SingleBook datas={currentTableData} searchBar="" title="Trending Books" />
+      <Pagination
         className="pagination-bar"
         currentPage={currentPage}
         totalCount={trendingBooks.length}
         pageSize={PageSize}
-        onPageChange={page => setCurrentPage(page)}
+        onPageChange={(page) => setCurrentPage(page)}
       />
-
     </>
-  )
+  );
 };
 
 export default TrendingTab;

@@ -2,7 +2,6 @@ import api from "../Service";
 import { toastr } from "react-redux-toastr";
 import { Navigate } from "react-router-dom";
 
-
 const baseControllerUser = "api/user/";
 const baseControllerServices = "api/services/";
 
@@ -39,7 +38,7 @@ export const getTrendingBooksUnauth = async () => {
         toastr.error("An Error occured", "Could not retrieve trending books");
       }
     } catch (ex) {
-       toastr.error("An Error occurred", `${ex.response.data.message}`);
+      toastr.error("An Error occurred", `${ex.response.data.message}`);
     }
   }
 };
@@ -177,9 +176,6 @@ export const getBooksByGenre = async (id) => {
   }
 };
 
-
-
-
 export const getAllBookNames = async () => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -198,8 +194,6 @@ export const getAllBookNames = async () => {
     }
   }
 };
-
-
 
 export const getBooksByAuthor = async (id) => {
   if (navigator.onLine === false) {
@@ -220,8 +214,6 @@ export const getBooksByAuthor = async (id) => {
   }
 };
 
-
-
 export const getAllAuthors = async () => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -241,9 +233,6 @@ export const getAllAuthors = async () => {
   }
 };
 
-
-
-
 export const getBookDetails = async (id) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -253,10 +242,9 @@ export const getBookDetails = async (id) => {
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
           return response.data.data;
-        }
-        else if(response.status === 200 && response.data.status === false){
-          toastr.error('An Error Occured', `${response.data.message}`)
-          let localPart =  window.location.href.slice(0, window.location.href.indexOf('/home'));
+        } else if (response.status === 200 && response.data.status === false) {
+          toastr.error("An Error Occured", `${response.data.message}`);
+          let localPart = window.location.href.slice(0, window.location.href.indexOf("/home"));
           window.location.replace(`${localPart}`);
         }
       } else {
@@ -267,8 +255,6 @@ export const getBookDetails = async (id) => {
     }
   }
 };
-
-
 
 export const addFav = async (id) => {
   if (navigator.onLine === false) {
@@ -290,8 +276,6 @@ export const addFav = async (id) => {
   }
 };
 
-
-
 export const removeFav = async (id) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -312,8 +296,6 @@ export const removeFav = async (id) => {
   }
 };
 
-
-
 export const getAuthorById = async (id) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -333,10 +315,7 @@ export const getAuthorById = async (id) => {
   }
 };
 
-
-
 export const searchAllBooks = async (body) => {
-
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
   } else {
@@ -356,16 +335,13 @@ export const searchAllBooks = async (body) => {
     } catch (ex) {
       toastr.error("An Error Occured", "Please try again");
       //   return ex.response.data.message
-      let localPart =  window.location.href.slice(0, window.location.href.indexOf('/home'));
-      window.location.replace(`${localPart}/home/dashboard`); 
+      let localPart = window.location.href.slice(0, window.location.href.indexOf("/home"));
+      window.location.replace(`${localPart}/home/dashboard`);
     }
   }
 };
 
-
-
 export const searchAllBooksUnauth = async (body) => {
-
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
   } else {
@@ -385,8 +361,8 @@ export const searchAllBooksUnauth = async (body) => {
     } catch (ex) {
       toastr.error("An Error Occured", "Please try again");
       //   return ex.response.data.message
-      let localPart =  window.location.href.slice(0, window.location.href.indexOf('/home'));
-      window.location.replace(`${localPart}`); 
+      let localPart = window.location.href.slice(0, window.location.href.indexOf("/home"));
+      window.location.replace(`${localPart}`);
     }
   }
 };

@@ -14,13 +14,11 @@ import {
   RESTORE_SEND_WISHLIST_INITIAL,
   FETCH_MY_FAVORITES,
   FETCH_MY_FAVORITES_SUCCESS,
-
   ADD_REVIEW,
   ADD_REVIEW_SUCCESS,
   RESTORE_ADD_REVIEW_INITIAL,
-
   READ_BOOK,
-  READ_BOOK_SUCCESS
+  READ_BOOK_SUCCESS,
 } from "../ActionTypes";
 
 export const fetchMyBooks = () => ({
@@ -100,8 +98,6 @@ export const restoreSendWishlistInitial = () => ({
   type: RESTORE_SEND_WISHLIST_INITIAL,
 });
 
-
-
 export const addReview = ({ review, rating }) => ({
   type: ADD_REVIEW,
   payload: {
@@ -118,7 +114,6 @@ export const addReviewSuccess = (payload) => ({
 export const restoreAddReviewInitial = () => ({
   type: RESTORE_ADD_REVIEW_INITIAL,
 });
-
 
 export const readBook = (id) => ({
   type: READ_BOOK,

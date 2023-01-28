@@ -18,7 +18,7 @@ import {
   RESTORE_UNFAVOURITE_INITIAL,
   FETCH_AUTHORS_BY_ID_SUCCESS,
   SEARCH_BOOK_SUCCESS,
-  SEARCH_BOOK_UNAUTH_SUCCESS
+  SEARCH_BOOK_UNAUTH_SUCCESS,
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -31,21 +31,20 @@ const INIT_STATE = {
   kiddiesBooks: [],
   allGenre: [],
   booksByGenre: [],
-  allBookNames:[],
-  booksByAuthor:[],
-  allAuthors:[],
-  bookDetails:{},
+  allBookNames: [],
+  booksByAuthor: [],
+  allAuthors: [],
+  bookDetails: {},
 
-  addBookToFavouriteSuccess:false,
-  addBookToFavouriteFailure:false,
+  addBookToFavouriteSuccess: false,
+  addBookToFavouriteFailure: false,
 
-  removeBookFromFavouriteSuccess:false,
-  removeBookFromFavouriteFailure:false,
+  removeBookFromFavouriteSuccess: false,
+  removeBookFromFavouriteFailure: false,
 
-  authorById:{},
-  searchedBooks:[],
-  searchedBooksUnauth:{}
-  
+  authorById: {},
+  searchedBooks: [],
+  searchedBooksUnauth: {},
 };
 
 const booksReducer = (state = INIT_STATE, action) => {
@@ -64,13 +63,12 @@ const booksReducer = (state = INIT_STATE, action) => {
       };
     }
 
-
     case FETCH_ALL_BOOK_NAMES_SUCCESS: {
-        return {
-          ...state,
-          allBookNames: action.payload,
-        };
-      }
+      return {
+        ...state,
+        allBookNames: action.payload,
+      };
+    }
 
     case FETCH_BOOKS_BY_GENRE_SUCCESS: {
       return {
@@ -80,19 +78,18 @@ const booksReducer = (state = INIT_STATE, action) => {
     }
 
     case FETCH_ALL_AUTHORS_SUCCESS: {
-        return {
-          ...state,
-          allAuthors: action.payload,
-        };
-      }
-  
+      return {
+        ...state,
+        allAuthors: action.payload,
+      };
+    }
 
     case FETCH_BOOKS_BY_AUTHOR_SUCCESS: {
-        return {
-          ...state,
-          booksByAuthor: action.payload,
-        };
-      }
+      return {
+        ...state,
+        booksByAuthor: action.payload,
+      };
+    }
 
     case FETCH_ALL_TRENDING_BOOKS_UNAUTH_SUCCESS: {
       return {
@@ -137,85 +134,80 @@ const booksReducer = (state = INIT_STATE, action) => {
     }
 
     case FETCH_BOOKS_DETAILS_SUCCESS: {
+      return {
+        ...state,
+        bookDetails: action.payload,
+      };
+    }
+
+    case ADD_BOOK_TO_FAVOURITE_SUCCESS: {
+      if (action.payload === true) {
         return {
           ...state,
-          bookDetails: action.payload,
+          addBookToFavouriteSuccess: true,
+          addBookToFavouriteFailure: false,
         };
-      }
-
-
-      case ADD_BOOK_TO_FAVOURITE_SUCCESS: {
-        if (action.payload === true) {
-          return {
-            ...state,
-            addBookToFavouriteSuccess: true,
-            addBookToFavouriteFailure: false,
-          };
-        } else {
-          return {
-            ...state,
-            addBookToFavouriteSuccess: false,
-            addBookToFavouriteFailure: true,
-          };
-        }
-      }
-  
-      case RESTORE_FAVOURITE_INITIAL: {
+      } else {
         return {
           ...state,
           addBookToFavouriteSuccess: false,
-          addBookToFavouriteFailure: false,
+          addBookToFavouriteFailure: true,
         };
       }
+    }
 
-      
+    case RESTORE_FAVOURITE_INITIAL: {
+      return {
+        ...state,
+        addBookToFavouriteSuccess: false,
+        addBookToFavouriteFailure: false,
+      };
+    }
 
-
-      case REMOVE_BOOK_FROM_FAVOURITE_SUCCESS: {
-        if (action.payload === true) {
-          return {
-            ...state,
-            removeBookFromFavouriteSuccess: true,
-            removeBookFromFavouriteFailure: false,
-          };
-        } else {
-          return {
-            ...state,
-            removeBookFromFavouriteSuccess: false,
-            removeBookFromFavouriteFailure: true,
-          };
-        }
-      }
-  
-      case RESTORE_UNFAVOURITE_INITIAL: {
+    case REMOVE_BOOK_FROM_FAVOURITE_SUCCESS: {
+      if (action.payload === true) {
+        return {
+          ...state,
+          removeBookFromFavouriteSuccess: true,
+          removeBookFromFavouriteFailure: false,
+        };
+      } else {
         return {
           ...state,
           removeBookFromFavouriteSuccess: false,
-          removeBookFromFavouriteFailure: false,
+          removeBookFromFavouriteFailure: true,
         };
       }
+    }
 
-      case FETCH_AUTHORS_BY_ID_SUCCESS: {
-        return {
-          ...state,
-            authorById:action.payload
-        };
-      }
+    case RESTORE_UNFAVOURITE_INITIAL: {
+      return {
+        ...state,
+        removeBookFromFavouriteSuccess: false,
+        removeBookFromFavouriteFailure: false,
+      };
+    }
 
-      case SEARCH_BOOK_SUCCESS: {
-        return {
-          ...state,
-          searchedBooks: action.payload,
-        };
-      }
+    case FETCH_AUTHORS_BY_ID_SUCCESS: {
+      return {
+        ...state,
+        authorById: action.payload,
+      };
+    }
 
-      case SEARCH_BOOK_UNAUTH_SUCCESS: {
-        return {
-          ...state,
-          searchedBooksUnauth: action.payload,
-        };
-      }
+    case SEARCH_BOOK_SUCCESS: {
+      return {
+        ...state,
+        searchedBooks: action.payload,
+      };
+    }
 
+    case SEARCH_BOOK_UNAUTH_SUCCESS: {
+      return {
+        ...state,
+        searchedBooksUnauth: action.payload,
+      };
+    }
 
     default:
       return state;

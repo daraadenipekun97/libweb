@@ -8,12 +8,9 @@ import SingleBook from "../../components/singleBook/SingleBook";
 import { fetchClassicBooks } from "../../Actions";
 import Pagination from "../../components/pagination/Pagination";
 
-
 let PageSize = 30;
 
-
 const Classics = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("Discover");
@@ -21,11 +18,9 @@ const Classics = () => {
 
   const { classicBooks } = useSelector((state) => state.books);
 
-
   useEffect(() => {
     dispatch(fetchClassicBooks());
   }, [dispatch]);
-
 
   const handleDiscover = () => {
     navigate("/home/discover");
@@ -35,18 +30,16 @@ const Classics = () => {
     navigate("/home/genre");
   };
 
-  
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return classicBooks.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, classicBooks]);
 
-
   return (
     <>
-          <UserNavbar />
-          <div className="classic-container">
+      <UserNavbar />
+      <div className="classic-container">
         <ul className="nav-discover">
           <li className={activeTab === "Discover" ? "active" : ""} onClick={handleDiscover}>
             Discover
@@ -54,22 +47,20 @@ const Classics = () => {
           <li className={activeTab === "Genre" ? "active" : ""} onClick={handleGenre}>
             Genre
           </li>
-      </ul>
+        </ul>
 
-      <SingleBook datas={currentTableData} searchBar="" title="  Classics Books" />
-      <Pagination
+        <SingleBook datas={currentTableData} searchBar="" title="  Classics Books" />
+        <Pagination
           className="pagination-bar"
           currentPage={currentPage}
           totalCount={classicBooks.length}
           pageSize={PageSize}
-          onPageChange={page => setCurrentPage(page)}
-        
+          onPageChange={(page) => setCurrentPage(page)}
         />
-    </div>
-    <Footer />
-
+      </div>
+      <Footer />
     </>
-  )
+  );
 };
 
 export default Classics;

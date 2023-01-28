@@ -26,7 +26,7 @@ const Footer = () => {
           <h4>Social</h4>
           <div className="lib-socials-icon">
             <p>
-              <a 
+              <a
                 href="https://www.facebook.com/mylibribooks"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -35,7 +35,7 @@ const Footer = () => {
               </a>
             </p>
             <p>
-              <a 
+              <a
                 href="https://www.instagram.com/mylibribooks/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -44,11 +44,7 @@ const Footer = () => {
               </a>
             </p>
             <p>
-              <a 
-              href="https://twitter.com/mylibribooks"
-              target="_blank"
-              rel="noopener noreferrer"
-              >
+              <a href="https://twitter.com/mylibribooks" target="_blank" rel="noopener noreferrer">
                 <AiFillTwitterCircle size={20} />
               </a>
             </p>

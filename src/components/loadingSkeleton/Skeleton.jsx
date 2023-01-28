@@ -1,12 +1,8 @@
-import React from 'react'
-import "./skeleton.css"
+import React from "react";
+import "./skeleton.css";
 
 const Skeleton = () => {
-  return (
-    <div className="card-image loading">
+  return <div className="card-image loading"></div>;
+};
 
-    </div>
-  )
-}
-
-export default Skeleton
+export default Skeleton;

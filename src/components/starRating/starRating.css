@@ -1,23 +1,18 @@
-.rating{
-
-
-
+.rating {
 }
 
-.rate{
-    font-size: 23px;
-    color: goldenrod;
-    margin-right: 0.5rem;
-        /* background: linear-gradient(to right, #1c87c9 50%, red 50%);
+.rate {
+  font-size: 23px;
+  color: goldenrod;
+  margin-right: 0.5rem;
+  /* background: linear-gradient(to right, #1c87c9 50%, red 50%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent; */
 }
 
-
-.unrate{
-    font-size: 23px;
-    color: #c4c4c4;
-    margin-right: 0.5rem;
-
+.unrate {
+  font-size: 23px;
+  color: #c4c4c4;
+  margin-right: 0.5rem;
 }

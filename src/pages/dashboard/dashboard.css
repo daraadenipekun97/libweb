@@ -4,18 +4,14 @@
   min-height: fit-content;
   /* text-align: center; */
   /* border: solid; */
-
 }
 
 /* this style help with the zoom and centering */
-.books-wrapper{
-
+.books-wrapper {
   /* border: solid; */
-  max-width: 1044px;  
+  max-width: 1044px;
   margin: auto;
-
 }
-
 
 /* MODAL STYLES */
 
@@ -58,9 +54,8 @@
   color: #78787d;
 }
 
-.btn-modal-wrapper{
+.btn-modal-wrapper {
   float: right;
-
 }
 
 .modal-btn {
@@ -79,8 +74,7 @@
   cursor: pointer;
 }
 
-.modal-btn-start-trial{
-
+.modal-btn-start-trial {
   margin: 0.8rem 0.5rem;
   padding: 0.3rem 0.5rem;
   font-weight: 500;
@@ -95,7 +89,6 @@
   width: fit-content;
   cursor: pointer;
   background-color: #5e458b;
-
 }
 
 hr {
@@ -104,7 +97,6 @@ hr {
   background: #78787d;
   margin-top: 1rem;
 }
-
 
 @media screen and (max-width: 400px) {
   .book-container {

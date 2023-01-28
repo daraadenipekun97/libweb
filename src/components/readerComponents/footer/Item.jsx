@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import palette from '../../../lib/styles/palette'
+import palette from "../../../lib/styles/palette";
 
 const Item = ({ text }) => {
   return (
@@ -8,7 +8,7 @@ const Item = ({ text }) => {
       <span>{text}</span>
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   height: 100%;
@@ -27,7 +27,5 @@ const Container = styled.div`
     white-space: nowrap;
   }
 `;
-
-
 
 export default Item;

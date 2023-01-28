@@ -1,14 +1,14 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from "styled-components";
 // icons
-import { 
+import {
   ScrollHorizontalIcon,
   ScrollVerticalIcon,
   BookCloseIcon,
-  BookOpenIcon
-} from '../../../lib/svg'
+  BookOpenIcon,
+} from "../../../lib/svg";
 // lib
-import * as styles from '../../../lib/styles/styles';
-import palette from '../../../lib/styles/palette';
+import * as styles from "../../../lib/styles/styles";
+import palette from "../../../lib/styles/palette";
 
 const ControlIconBtn = ({ type, alt, active, isSelected, onClick }) => {
   let HeaderIcon = null;
@@ -26,24 +26,19 @@ const ControlIconBtn = ({ type, alt, active, isSelected, onClick }) => {
       HeaderIcon = BookCloseIcon;
       break;
   }
-  
+
   const onClickBtn = () => {
     if (active) onClick();
-  }
+  };
 
   return (
-    <Btn 
-      onClick={onClickBtn} 
-      isSelected={isSelected}
-      active={active}
-      title={alt}
-    >
+    <Btn onClick={onClickBtn} isSelected={isSelected} active={active} title={alt}>
       <Icon>
         <HeaderIcon />
       </Icon>
     </Btn>
   );
-}
+};
 
 const Btn = styled.button`
   position: relative;
@@ -53,19 +48,13 @@ const Btn = styled.button`
   align-items: center;
   justify-content: center;
   z-index: 0;
-  transition: .3s ${styles.transition};
-  opacity: ${({active}) => active
-    ? '1'
-    : '.3'
-  };
-  cursor: ${({active}) => active
-    ? 'pointer'
-    : 'default'
-  };
+  transition: 0.3s ${styles.transition};
+  opacity: ${({ active }) => (active ? "1" : ".3")};
+  cursor: ${({ active }) => (active ? "pointer" : "default")};
   outline: none;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     right: 0;
@@ -74,34 +63,25 @@ const Btn = styled.button`
     margin: auto;
     z-index: -1;
     border-radius: 30px;
-    width: ${({isSelected}) => isSelected
-      ? '32px'
-      : '8px'
-    };
-    height: ${({isSelected}) => isSelected
-      ? '32px'
-      : '8px'
-    };
-    opacity: ${({active, isSelected}) => active && isSelected
-      ? '.7'
-      : '0'
-    };
-    transition: .1s ${styles.transition};
+    width: ${({ isSelected }) => (isSelected ? "32px" : "8px")};
+    height: ${({ isSelected }) => (isSelected ? "32px" : "8px")};
+    opacity: ${({ active, isSelected }) => (active && isSelected ? ".7" : "0")};
+    transition: 0.1s ${styles.transition};
     background-color: ${palette.blue1};
   }
 
-  &:focus, &:hover {
-    ${({active}) => active
-      ? css`
-        &:before {
-          width: 32px;
-          height: 32px;
-          opacity: 1;
-        }
-      `
-      : ""
-    };
-    
+  &:focus,
+  &:hover {
+    ${({ active }) =>
+      active
+        ? css`
+            &:before {
+              width: 32px;
+              height: 32px;
+              opacity: 1;
+            }
+          `
+        : ""};
   }
 `;
 
@@ -109,12 +89,11 @@ const Icon = styled.div`
   width: 16px;
   height: 16px;
 
-  & > div, & > svg {
+  & > div,
+  & > svg {
     width: 16px;
     height: 16px;
   }
 `;
 
-
-
-export default ControlIconBtn
+export default ControlIconBtn;

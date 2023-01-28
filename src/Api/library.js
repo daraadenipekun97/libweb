@@ -48,9 +48,6 @@ export const createGoals = async (body) => {
   }
 };
 
-
-
-
 export const createReview = async (body) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -74,10 +71,6 @@ export const createReview = async (body) => {
     }
   }
 };
-
-
-
-
 
 export const getAllGoals = async () => {
   if (navigator.onLine === false) {
@@ -160,7 +153,6 @@ export const getMyFavorites = async () => {
     }
   }
 };
-
 
 export const readBookCurrentlyReading = async (id) => {
   if (navigator.onLine === false) {

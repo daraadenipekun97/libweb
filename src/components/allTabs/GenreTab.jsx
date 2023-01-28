@@ -1,24 +1,20 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./css/genre.css";
 import Spinner from "../spinner/Spinner";
 
-const GenreTab = ({allGenre}) => {
-
-  const [spinnerHide, setSpinnerHide] = useState(false)
-
+const GenreTab = ({ allGenre }) => {
+  const [spinnerHide, setSpinnerHide] = useState(false);
 
   useEffect(() => {
-    
     setTimeout(() => {
-      setSpinnerHide(true)
-    }, 3000)
+      setSpinnerHide(true);
+    }, 3000);
 
     return () => {
-      setSpinnerHide(false)
-    }
+      setSpinnerHide(false);
+    };
+  }, []);
 
-  }, [])
- 
   return (
     <>
       <div className="genre-wrapper">
@@ -36,7 +32,7 @@ const GenreTab = ({allGenre}) => {
             })
           ) : (
             <div className="spinner">
-                <Spinner spinnerHide = {spinnerHide} />
+              <Spinner spinnerHide={spinnerHide} />
             </div>
           )}
         </ul>

@@ -31,7 +31,8 @@
   margin: 0 1rem;
 }
 
-.active, .lib-navbar-links-container p:hover {
+.active,
+.lib-navbar-links-container p:hover {
   color: #5e458b !important;
   cursor: pointer;
   border-bottom: 1px solid #5e458b;

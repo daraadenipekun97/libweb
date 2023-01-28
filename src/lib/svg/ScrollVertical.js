@@ -10,14 +10,8 @@ function SvgScrollVertical(props) {
           }
         </style>
       </defs>
-      <g
-        id="scrollVertical_svg__\uB808\uC774\uC5B4_2"
-        data-name="\uB808\uC774\uC5B4 2"
-      >
-        <g
-          id="scrollVertical_svg__\uB808\uC774\uC5B4_1-2"
-          data-name="\uB808\uC774\uC5B4 1"
-        >
+      <g id="scrollVertical_svg__\uB808\uC774\uC5B4_2" data-name="\uB808\uC774\uC5B4 2">
+        <g id="scrollVertical_svg__\uB808\uC774\uC5B4_1-2" data-name="\uB808\uC774\uC5B4 1">
           <path fill="none" d="M0 0h48v48H0z" opacity={0.2} />
           <circle className="scrollVertical_svg__cls-3" cx={24} cy={24} r={5} />
           <path

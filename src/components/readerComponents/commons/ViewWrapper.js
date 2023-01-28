@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import * as styles from '../../../lib/styles/styles'
+import * as styles from "../../../lib/styles/styles";
 
 const ViewerWrapper = styled.div`
   position: relative;
@@ -9,8 +9,8 @@ const ViewerWrapper = styled.div`
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  background-color:white;
+  background-color: white;
   ${styles.scrollbar(0)};
 `;
 
-export default ViewerWrapper
+export default ViewerWrapper;

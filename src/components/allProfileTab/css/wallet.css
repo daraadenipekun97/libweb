@@ -1,105 +1,81 @@
-.wallet-wrapper{
-    background-color: white;
-    height: fit-content;
-    width: 60vw;
-    padding: 2rem 2rem;
-    border-radius: 10px;
+.wallet-wrapper {
+  background-color: white;
+  height: fit-content;
+  width: 60vw;
+  padding: 2rem 2rem;
+  border-radius: 10px;
 }
 
-.wallet-text{
-    font-weight: 600;
-    color: #5e458b;
-    font-size: 20px;
-    margin-bottom: 1rem;
+.wallet-text {
+  font-weight: 600;
+  color: #5e458b;
+  font-size: 20px;
+  margin-bottom: 1rem;
 }
-.invite-text{
-
-    font-weight: 400;
-    color: #5e458b;
-    font-size: 12px;
-    margin-bottom: 1rem;
-
+.invite-text {
+  font-weight: 400;
+  color: #5e458b;
+  font-size: 12px;
+  margin-bottom: 1rem;
 }
 
-.refferal-code-button{
+.refferal-code-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.code {
+  cursor: pointer;
+}
+
+.code:hover {
+  padding: 0.1rem 0.1rem;
+  border: 1px solid whitesmoke;
+  border-radius: 20px;
+}
+
+.code span {
+  font-weight: 700;
+  color: #5e458b;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.view-wallet {
+  padding: 0.5rem 0.5rem;
+  font-weight: 400;
+  border-radius: 5px;
+  font-style: normal;
+  font-size: 12px;
+  text-align: center;
+  border: 0;
+  outline: none;
+  background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
+  color: white;
+  width: 15%;
+}
+
+@media screen and (max-width: 655px) {
+  .wallet-wrapper {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .wallet-wrapper {
+    width: 80vw;
+  }
+
+  .refferal-code-button {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-}
-.code{
-    cursor: pointer;
-}
+  }
 
-.code:hover{
-
-    padding: 0.1rem 0.1rem;
-    border: 1px solid whitesmoke;
-    border-radius: 20px;
-
-}
-
-.code span{
-
-    font-weight: 700;
-    color: #5e458b;
-    font-size: 20px;
-    cursor: pointer;
-
-}
-
-.view-wallet{
-
-    padding: 0.5rem 0.5rem;
-    font-weight: 400;
-    border-radius: 5px;
-    font-style: normal;
-    font-size: 12px;
-    text-align: center;
-    border: 0;
-    outline: none;
-    background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
-    color: white;
-    width: 15%;
-
-}
-
-@media screen and (max-width:655px) {
-    
-    .wallet-wrapper{
-     
-        width: 80vw;
-      
-    }
-
-}
-
-@media screen and (max-width:500px) {
-    
-    .wallet-wrapper{
-     
-        width: 80vw;
-      
-    }
-
-
-    .refferal-code-button{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-  
-
-
-    .view-wallet{
-
-       
-      
-        width: 100%;
-        margin-top: 1rem;
-    
-    }
-
+  .view-wallet {
+    width: 100%;
+    margin-top: 1rem;
+  }
 }

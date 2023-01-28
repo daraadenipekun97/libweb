@@ -8,15 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { toastr } from "react-redux-toastr";
 import { useDispatch } from "react-redux";
 
-
 const UserNavbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
   const initialFormValues = {
     search: "",
-    
   };
 
   const [formValues, setFormValues] = useState({ ...initialFormValues });
@@ -67,7 +64,6 @@ const UserNavbar = () => {
   };
 
   const searchTextHandler = (e) => {
-
     if (e) {
       let searchValue = e.target.value;
       e.preventDefault();
@@ -83,45 +79,26 @@ const UserNavbar = () => {
     }
   };
 
-
-    const handleSearch = () =>{
-
-      if(formValues.search !==""){
-        navigate(`/home/search/${formValues.search}`);
-        setFormValues({...initialFormValues})
-
-      }
-      else{
-        toastr.warning("Search Book", 'Please enter a search term')
-      }
+  const handleSearch = () => {
+    if (formValues.search !== "") {
+      navigate(`/home/search/${formValues.search}`);
+      setFormValues({ ...initialFormValues });
+    } else {
+      toastr.warning("Search Book", "Please enter a search term");
     }
+  };
 
-    const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState("dashboard");
 
-
-    useEffect(() => {
-
-      if (window.location.pathname === "/home/dashboard") {
-        setActiveTab('dashboard')
-
-      }
-      else if(window.location.pathname === "/home/library"){
-        setActiveTab('lib')
-
-      }
-      else if(window.location.pathname === "/home/discover"){
-        setActiveTab('discover')
-      }
-      
-    
-     
-    }, [dispatch, window.location.pathname])
-    
-
- 
-  
-
-  
+  useEffect(() => {
+    if (window.location.pathname === "/home/dashboard") {
+      setActiveTab("dashboard");
+    } else if (window.location.pathname === "/home/library") {
+      setActiveTab("lib");
+    } else if (window.location.pathname === "/home/discover") {
+      setActiveTab("discover");
+    }
+  }, [dispatch, window.location.pathname]);
 
   return (
     <>
@@ -163,16 +140,15 @@ const UserNavbar = () => {
             </li>
           </ul>
           <div className="search">
-            <input 
-            type="text"
-             placeholder="search for a book" 
-             onChange={(e) => searchTextHandler(e)}
-             value={formValues.search}
-
-
-             
-             />
-            <button className="search_btn" onClick={() => handleSearch()}>Search</button>
+            <input
+              type="text"
+              placeholder="search for a book"
+              onChange={(e) => searchTextHandler(e)}
+              value={formValues.search}
+            />
+            <button className="search_btn" onClick={() => handleSearch()}>
+              Search
+            </button>
           </div>
           <div className="profile" onClick={() => handleProfile()}>
             <img src={Avatar} alt="" className="profile_pic" />

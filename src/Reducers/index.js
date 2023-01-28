@@ -7,8 +7,6 @@ import libraryReducer from "./library";
 import profileReducer from "./profile";
 import readersReducer from "./readers";
 
-
-
 const reducer = () =>
   combineReducers({
     auth: authReducer,

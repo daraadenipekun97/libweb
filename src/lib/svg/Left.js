@@ -11,15 +11,9 @@ function SvgLeft(props) {
         </style>
       </defs>
       <g id="left_svg__\uB808\uC774\uC5B4_2" data-name="\uB808\uC774\uC5B4 2">
-        <g
-          id="left_svg__\uB808\uC774\uC5B4_1-2"
-          data-name="\uB808\uC774\uC5B4 1"
-        >
+        <g id="left_svg__\uB808\uC774\uC5B4_1-2" data-name="\uB808\uC774\uC5B4 1">
           <path fill="none" d="M0 0h48v48H0z" opacity={0.2} />
-          <path
-            className="left_svg__cls-3"
-            d="M4 24L18.5 9.5M18.5 38.5L4 24M44 24H4"
-          />
+          <path className="left_svg__cls-3" d="M4 24L18.5 9.5M18.5 38.5L4 24M44 24H4" />
         </g>
       </g>
     </svg>

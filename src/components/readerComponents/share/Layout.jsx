@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Layout = styled.div`
   flex-grow: 1;
@@ -8,4 +8,4 @@ const Layout = styled.div`
   padding: 24px 10px;
 `;
 
-export default Layout
+export default Layout;

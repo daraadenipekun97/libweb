@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const OptionTitle = styled.div`
   font-size: 14px;
@@ -6,4 +6,4 @@ const OptionTitle = styled.div`
   margin-bottom: 16px;
 `;
 
-export default OptionTitle
+export default OptionTitle;

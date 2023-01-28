@@ -77,22 +77,17 @@ export const FETCH_ALL_GENRE_SUCCESS = "fetch_all_genre_success";
 export const FETCH_BOOKS_BY_GENRE = "fetch_books_by_genre";
 export const FETCH_BOOKS_BY_GENRE_SUCCESS = "fetch_books_by_genre_success";
 
-
 export const FETCH_BOOKS_BY_AUTHOR = "fetch_books_by_author";
 export const FETCH_BOOKS_BY_AUTHOR_SUCCESS = "fetch_books_by_author_success";
-
 
 export const FETCH_ALL_BOOK_NAMES = "fetch_all_book_names";
 export const FETCH_ALL_BOOK_NAMES_SUCCESS = "fetch_all_book_names_success";
 
-
 export const FETCH_ALL_AUTHORS = "fetch_all_author";
 export const FETCH_ALL_AUTHORS_SUCCESS = "fetch_all_author_success";
 
-
 export const FETCH_BOOKS_DETAILS = "fetch_book_details";
 export const FETCH_BOOKS_DETAILS_SUCCESS = "fetch_book_details_success";
-
 
 export const ADD_BOOK_TO_FAVOURITE = "add_book_to_favourite";
 export const ADD_BOOK_TO_FAVOURITE_SUCCESS = "add_book_to_favourite_success";
@@ -101,7 +96,6 @@ export const RESTORE_FAVOURITE_INITIAL = "restore_favourite_initial";
 export const REMOVE_BOOK_FROM_FAVOURITE = "remove_book_from_favourite";
 export const REMOVE_BOOK_FROM_FAVOURITE_SUCCESS = "remove_book_from_favourite_success";
 export const RESTORE_UNFAVOURITE_INITIAL = "restore_unfavourite_initial";
-
 
 export const ADD_REVIEW = "add_review";
 export const ADD_REVIEW_SUCCESS = "add_review_success";
@@ -114,16 +108,12 @@ export const UPDATE_PROFILE = "update_profile";
 export const UPDATE_PROFILE_SUCCESS = "update_profile_success";
 export const RESTORE_UPDATE_PROFILE_INITIAL = "restore_update_profile_initial";
 
-
-
 //FOR THE READERS COMPONENT ACTION
 export const UPDATE_READERS_BOOK = "update_readers_book";
 export const UPDATE_CURRENT_PAGE = "update_current_page";
 export const CLEAR_BOOK = "clear_book";
 export const UPDATE_TOC = "update_toc";
 export const CLEAR_TOC = "clear_toc";
-
-
 
 export const FETCH_PROFILE = "fetch_profile";
 export const FETCH_PROFILE_SUCCESS = "fetch_profile_success";
@@ -140,13 +130,11 @@ export const FETCH_WALLET_DETAILS_SUCCESS = "fetch_wallet_details_success";
 
 export const WITHDRAW_FUNDS = "withdraw_funds";
 export const WITHDRAW_FUNDS_SUCCESS = "withdraw_funds_success";
-export const RESTORE_WITHDRAW_FUNDS_INITIAL = "restore_withdraw_fund_initial"
-
+export const RESTORE_WITHDRAW_FUNDS_INITIAL = "restore_withdraw_fund_initial";
 
 export const CANCEL_TRIAL = "cancel_trial";
 export const CANCEL_TRIAL_SUCCESS = "cancel_trial_success";
 export const RESTORE_CANCEL_TRIAL_INITIAL = "restore_cancel_trial_initial";
-
 
 export const CANCEL_SUBSCRIPTION = "cancel_subscription";
 export const CANCEL_SUBSCRIPTION_SUCCESS = "cancel_subscription_success";
@@ -167,10 +155,8 @@ export const SEARCH_BOOK = "search_book";
 export const SEARCH_BOOK_SUCCESS = "search_book_success";
 export const RESTORE_SEARCH_BOOK_INITIAL = "restore_search_book_initial";
 
-
 export const READ_BOOK = "read_book";
 export const READ_BOOK_SUCCESS = "read_book_success";
-
 
 export const SEARCH_BOOK_UNAUTH = "search_book_unauth";
 export const SEARCH_BOOK_UNAUTH_SUCCESS = "search_book_unauth_success";

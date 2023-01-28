@@ -167,7 +167,6 @@ const VerifyEmail = ({ user }) => {
 
       //removing the swal and doing the navigation right away
       navigate("/home/dashboard");
-
     }
 
     return () => {

@@ -1,10 +1,10 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import palette from '../../../lib/styles/palette'
+import palette from "../../../lib/styles/palette";
 
 const MenuEmpty = ({ text }) => {
   return <Content>{text}</Content>;
-}
+};
 
 const Content = styled.div`
   flex-grow: 1;
@@ -16,6 +16,4 @@ const Content = styled.div`
   font-size: 14px;
 `;
 
-
-
-export default MenuEmpty
+export default MenuEmpty;

@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import * as styles from '../../../lib/styles/styles'
-import palette from '../../../lib/styles/palette'
+import * as styles from "../../../lib/styles/styles";
+import palette from "../../../lib/styles/palette";
 
 const NavItem = ({ message, onClick }) => {
   return (
@@ -9,7 +9,7 @@ const NavItem = ({ message, onClick }) => {
       <span>{message}</span>
     </Content>
   );
-}
+};
 
 const Content = styled.button`
   width: 100%;
@@ -21,15 +21,15 @@ const Content = styled.button`
   cursor: pointer;
   background-color: ${palette.gray0};
   outline: none;
-  border:none;
+  border: none;
 
-  
   & > span {
-    transition: .2s ${styles.transition};
+    transition: 0.2s ${styles.transition};
     font-size: 14px;
   }
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     & > span {
       color: ${palette.blue3};
       margin-left: 12px;
@@ -41,6 +41,4 @@ const Content = styled.button`
   }
 `;
 
-
-
-export default NavItem
+export default NavItem;

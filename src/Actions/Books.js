@@ -17,32 +17,25 @@ import {
   FETCH_ALL_GENRE_SUCCESS,
   FETCH_BOOKS_BY_GENRE,
   FETCH_BOOKS_BY_GENRE_SUCCESS,
-
   FETCH_ALL_BOOK_NAMES,
   FETCH_ALL_BOOK_NAMES_SUCCESS,
-
   FETCH_BOOKS_BY_AUTHOR,
   FETCH_BOOKS_BY_AUTHOR_SUCCESS,
   FETCH_ALL_AUTHORS,
   FETCH_ALL_AUTHORS_SUCCESS,
-
   FETCH_BOOKS_DETAILS,
   FETCH_BOOKS_DETAILS_SUCCESS,
-
   ADD_BOOK_TO_FAVOURITE,
   ADD_BOOK_TO_FAVOURITE_SUCCESS,
   REMOVE_BOOK_FROM_FAVOURITE,
   REMOVE_BOOK_FROM_FAVOURITE_SUCCESS,
   RESTORE_FAVOURITE_INITIAL,
   RESTORE_UNFAVOURITE_INITIAL,
-
   FETCH_AUTHORS_BY_ID,
   FETCH_AUTHORS_BY_ID_SUCCESS,
-
   SEARCH_BOOK,
   SEARCH_BOOK_SUCCESS,
   RESTORE_SEARCH_BOOK_INITIAL,
-
   SEARCH_BOOK_UNAUTH,
   SEARCH_BOOK_UNAUTH_SUCCESS,
   RESTORE_SEARCH_BOOK_UNAUTH_INITIAL,
@@ -130,8 +123,6 @@ export const fetchBookByGenreSuccess = (payload) => ({
   payload,
 });
 
-
-
 export const fetchAllBookNames = () => ({
   type: FETCH_ALL_BOOK_NAMES,
 });
@@ -140,9 +131,6 @@ export const fetchAllBookNamesSuccess = (payload) => ({
   type: FETCH_ALL_BOOK_NAMES_SUCCESS,
   payload,
 });
-
-
-
 
 export const fetchBookByAuthor = (id) => ({
   type: FETCH_BOOKS_BY_AUTHOR,
@@ -154,18 +142,14 @@ export const fetchBookByAuthorSuccess = (payload) => ({
   payload,
 });
 
-
-
 export const fetchAllAuthors = () => ({
   type: FETCH_ALL_AUTHORS,
 });
 
 export const fetchAllAuthorsSuccess = (payload) => ({
-  type:FETCH_ALL_AUTHORS_SUCCESS,
+  type: FETCH_ALL_AUTHORS_SUCCESS,
   payload,
 });
-
-
 
 export const fetchBookDetails = (id) => ({
   type: FETCH_BOOKS_DETAILS,
@@ -177,7 +161,6 @@ export const fetchBookDetailsSuccess = (payload) => ({
   payload,
 });
 
-
 export const addBookToFav = (id) => ({
   type: ADD_BOOK_TO_FAVOURITE,
   payload: id,
@@ -187,9 +170,6 @@ export const addBookToFavSuccess = (payload) => ({
   type: ADD_BOOK_TO_FAVOURITE_SUCCESS,
   payload,
 });
-
-
-
 
 export const removeBookFromFav = (id) => ({
   type: REMOVE_BOOK_FROM_FAVOURITE,
@@ -201,7 +181,6 @@ export const removeBookFromFavSuccess = (payload) => ({
   payload,
 });
 
-
 export const restoreFavouriteInitial = () => ({
   type: RESTORE_FAVOURITE_INITIAL,
 });
@@ -209,7 +188,6 @@ export const restoreFavouriteInitial = () => ({
 export const restoreUnfavouriteInitial = () => ({
   type: RESTORE_UNFAVOURITE_INITIAL,
 });
-
 
 export const fetchAuthorsById = (id) => ({
   type: FETCH_AUTHORS_BY_ID,
@@ -221,8 +199,7 @@ export const fetchAuthorsByIdSuccess = (payload) => ({
   payload,
 });
 
-
-export const searchBooks = ({ search, }) => ({
+export const searchBooks = ({ search }) => ({
   type: SEARCH_BOOK,
   payload: {
     search,
@@ -238,8 +215,7 @@ export const restoreSearchBookInitial = () => ({
   type: RESTORE_SEARCH_BOOK_INITIAL,
 });
 
-
-export const searchBooksUnauth = ({ search, }) => ({
+export const searchBooksUnauth = ({ search }) => ({
   type: SEARCH_BOOK_UNAUTH,
   payload: {
     search,
@@ -254,5 +230,3 @@ export const searchBooksUnauthSuccess = (payload) => ({
 export const restoreSearchBooksUnauthInitial = () => ({
   type: RESTORE_SEARCH_BOOK_UNAUTH_INITIAL,
 });
-
-

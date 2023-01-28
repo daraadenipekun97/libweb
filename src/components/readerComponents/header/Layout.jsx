@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import palette from '../../../lib/styles/palette'
-import zIndex from '../../../lib/styles/zIndex'
+import palette from "../../../lib/styles/palette";
+import zIndex from "../../../lib/styles/zIndex";
 
 const Layout = styled.div`
   display: flex;
@@ -19,20 +19,20 @@ export const AutoLayout = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid ${palette.gray1};
-  width:100%;
+  width: 100%;
 
   & > div {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-left:20px;
-   & > div{
-    margin-right:900px
-   }
+    margin-left: 20px;
+    & > div {
+      margin-right: 900px;
+    }
   }
   & > div:last-child {
     margin-right: 8px;
   }
 `;
 
-export default Layout
+export default Layout;

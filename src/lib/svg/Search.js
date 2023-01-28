@@ -11,10 +11,7 @@ function SvgSearch(props) {
         </style>
       </defs>
       <g id="search_svg__\uB808\uC774\uC5B4_2" data-name="\uB808\uC774\uC5B4 2">
-        <g
-          id="search_svg__\uB808\uC774\uC5B4_1-2"
-          data-name="\uB808\uC774\uC5B4 1"
-        >
+        <g id="search_svg__\uB808\uC774\uC5B4_1-2" data-name="\uB808\uC774\uC5B4 1">
           <path fill="none" d="M0 0h48v48H0z" opacity={0.2} />
           <circle className="search_svg__cls-3" cx={17} cy={17} r={14} />
           <path className="search_svg__cls-3" d="M44 44L27 27" />

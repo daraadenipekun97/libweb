@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import * as styles from '../../../lib/styles/styles'
+import * as styles from "../../../lib/styles/styles";
 // icons
-import { CloseIcon } from '../../../lib/svg/index'
+import { CloseIcon } from "../../../lib/svg/index";
 
 const CloseBtn = ({ onClick }) => {
   return (
@@ -10,7 +10,7 @@ const CloseBtn = ({ onClick }) => {
       <Icon />
     </Btn>
   );
-}
+};
 
 const Btn = styled.button`
   position: relative;
@@ -20,13 +20,13 @@ const Btn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: .1s ${styles.transition};
+  transition: 0.1s ${styles.transition};
   outline: none;
-  border:none;
-  background:transparent
-
-  &:focus, &:hover {
-    filter: invert(40%) sepia(85%) saturate(1256%) hue-rotate(210deg) brightness(113%) contrast(101%);
+  border: none;
+  background:transparent &:focus,
+  &:hover {
+    filter: invert(40%) sepia(85%) saturate(1256%) hue-rotate(210deg) brightness(113%)
+      contrast(101%);
   }
 `;
 
@@ -34,7 +34,5 @@ const Icon = styled(CloseIcon)`
   width: 18px;
   height: 18px;
 `;
-
-
 
 export default CloseBtn;

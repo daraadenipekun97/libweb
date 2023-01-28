@@ -10,21 +10,10 @@ function SvgScrollHorizontal(props) {
           }
         </style>
       </defs>
-      <g
-        id="scrollHorizontal_svg__\uB808\uC774\uC5B4_2"
-        data-name="\uB808\uC774\uC5B4 2"
-      >
-        <g
-          id="scrollHorizontal_svg__\uB808\uC774\uC5B4_1-2"
-          data-name="\uB808\uC774\uC5B4 1"
-        >
+      <g id="scrollHorizontal_svg__\uB808\uC774\uC5B4_2" data-name="\uB808\uC774\uC5B4 2">
+        <g id="scrollHorizontal_svg__\uB808\uC774\uC5B4_1-2" data-name="\uB808\uC774\uC5B4 1">
           <path fill="none" d="M0 0h48v48H0z" opacity={0.2} />
-          <circle
-            className="scrollHorizontal_svg__cls-3"
-            cx={24}
-            cy={24}
-            r={5}
-          />
+          <circle className="scrollHorizontal_svg__cls-3" cx={24} cy={24} r={5} />
           <path
             className="scrollHorizontal_svg__cls-3"
             d="M3 24l12-12M3 24l12 12M45 24L33 12M45 24L33 36"

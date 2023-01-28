@@ -7,21 +7,23 @@ import { useNavigate } from "react-router-dom";
 const NotFound = () => {
   const navigate = useNavigate();
 
-  const handleHomeNavigate =() =>{
-    navigate("/home/dashboard")
-  }
+  const handleHomeNavigate = () => {
+    navigate("/home/dashboard");
+  };
 
   return (
     <>
-    <UserNavbar />
-    <div className="not-found-wrapper">
+      <UserNavbar />
+      <div className="not-found-wrapper">
         <div className="not-found-container">
           <img src={NotFoundImage} alt="" />
           <h1 className="not-found-h1">404</h1>
           <p className="not-found-p">Sorry we couldnt find this page</p>
-          <button className="not-found-back" onClick={() => handleHomeNavigate()}>Back to Home</button>
+          <button className="not-found-back" onClick={() => handleHomeNavigate()}>
+            Back to Home
+          </button>
         </div>
-    </div>
+      </div>
     </>
   );
 };

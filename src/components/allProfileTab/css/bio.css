@@ -1,154 +1,134 @@
-.bio-wrapper{
-    background-color: white;
-    height: fit-content;
-    width: 60vw;
-    padding: 2rem 2rem;
-    border-radius: 10px;
-
+.bio-wrapper {
+  background-color: white;
+  height: fit-content;
+  width: 60vw;
+  padding: 2rem 2rem;
+  border-radius: 10px;
 }
 
-.bio-wrapper-text{
-
-    font-weight: 500;
-    color: #5e458b;
-
+.bio-wrapper-text {
+  font-weight: 500;
+  color: #5e458b;
 }
 .input-group-wrapper-left {
-    width: 50%;
-    margin-right: 0.25rem;
-  }
-
-  .input-group-wrapper-right {
-    width: 50%;
-  }
-
-.bio-form{
-    margin-top: 0.5rem;
-
+  width: 50%;
+  margin-right: 0.25rem;
 }
 
-.input-group{
-    display: flex;
-    justify-content: space-between;
+.input-group-wrapper-right {
+  width: 50%;
+}
 
+.bio-form {
+  margin-top: 0.5rem;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
 }
 
 input[type="text"],
 input[type="date"],
 input[type="email"],
-input[type="date"], input[type="number"], input[type="password"] {
-
-    background-color: #ffffff;
-    border: 2px solid rgba(84, 95, 125, 0.15);
-    border-radius: 5px;
-    height: 50px;
-    padding-left: 10px;
-    outline: none;
-    width: 100%;
-    margin-bottom: 0.5rem;
-
+input[type="date"],
+input[type="number"],
+input[type="password"] {
+  background-color: #ffffff;
+  border: 2px solid rgba(84, 95, 125, 0.15);
+  border-radius: 5px;
+  height: 50px;
+  padding-left: 10px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 input:focus {
-    border: 1px solid #5e458b;
-  }
+  border: 1px solid #5e458b;
+}
 
+.gender-select {
+  background-color: #ffffff;
+  border: 2px solid rgba(84, 95, 125, 0.15);
+  border-radius: 5px;
+  height: 50px;
+  padding-left: 10px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
 
-  .gender-select{
+option {
+  padding: 10px 0px;
+}
 
-    background-color: #ffffff;
-    border: 2px solid rgba(84, 95, 125, 0.15);
-    border-radius: 5px;
-    height: 50px;
-    padding-left: 10px;
-    outline: none;
+.profile-validation-error-text {
+  color: red;
+  transition: 0.5s;
+  text-align: left;
+  font-size: 10px;
+  margin-bottom: 0.5rem;
+  width: fit-content;
+  display: none;
+}
+
+.select-validation-error-text {
+  color: red;
+  transition: 0.5s;
+  text-align: left;
+  font-size: 10px;
+  margin-bottom: 0.5rem;
+  width: fit-content;
+}
+
+input:invalid[focused="true"] ~ .profile-validation-error-text {
+  display: block;
+}
+
+input:invalid[focused="true"] {
+  border: 1px solid red;
+}
+
+input:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
+
+.bio-button {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 25px;
+  border: 0;
+  outline: none;
+  background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
+  color: white;
+  width: 100%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .bio-wrapper {
+    background-color: white;
     width: 100%;
-    margin-bottom: 0.5rem;
+    padding: 2rem 2rem;
   }
+}
 
-  option{
-    padding: 10px 0px;
+@media screen and (max-width: 400px) {
+  .input-group {
+    justify-content: space-between;
+    flex-direction: column;
   }
-
-  .profile-validation-error-text{
-
-    color: red;
-    transition: 0.5s;
-    text-align: left;
-    font-size: 10px;
-    margin-bottom: 0.5rem;
-    width: fit-content;
-    display: none;
-
-  }
-
-  .select-validation-error-text{
-
-    color: red;
-    transition: 0.5s;
-    text-align: left;
-    font-size: 10px;
-    margin-bottom: 0.5rem;
-    width: fit-content;
-  }
-
-
- input:invalid[focused="true"] ~ .profile-validation-error-text {
-    display: block;
-  }
-  
- input:invalid[focused="true"] {
-    border: 1px solid red;
-  }
-
-  input:disabled, select:disabled {
-    cursor: not-allowed;
-  }
-
-  .bio-button{
-
-    padding: 0.5rem 1rem;
-    font-weight: 500;
-    border-radius: 5px;
-    font-style: normal;
-    font-size: 18px;
-    line-height: 25px;
-    border: 0;
-    outline: none;
-    background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
-    color: white;
+  .input-group-wrapper-left {
     width: 100%;
-    cursor: pointer;
-
+    margin-right: 0rem;
   }
 
-
-  @media screen and (max-width:1024px) {
-
-    .bio-wrapper{
-        background-color: white;
-        width: 100%;
-        padding: 2rem 2rem;
-    }
-
+  .input-group-wrapper-right {
+    width: 100%;
   }
-
-
-  @media screen and (max-width:400px) {
-
-    .input-group{
-        justify-content: space-between;
-        flex-direction: column;
-      
-    
-    }
-    .input-group-wrapper-left {
-        width: 100%;
-        margin-right: 0rem;
-      }
-    
-      .input-group-wrapper-right {
-        width: 100%;
-      }
-
-  }
+}

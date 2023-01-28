@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 // lib
-import * as styles from '../../../lib/styles/styles'
-import palette from '../../../lib/styles/palette'
+import * as styles from "../../../lib/styles/styles";
+import palette from "../../../lib/styles/palette";
 
 const ControlBtn = ({ message, onClick }) => {
   return <Btn onClick={() => onClick()}>{message}</Btn>;
-}
+};
 
 const Btn = styled.button`
   height: 100%;
@@ -14,12 +14,11 @@ const Btn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: .1s ${styles.transition};
+  transition: 0.1s ${styles.transition};
   outline: none;
-  border:none;
-  background:transparent
-
-  &:focus, &:hover {
+  border: none;
+  background:transparent &:focus,
+  &:hover {
     color: ${palette.blue3};
   }
 
@@ -28,6 +27,4 @@ const Btn = styled.button`
   }
 `;
 
-
-
-export default ControlBtn
+export default ControlBtn;

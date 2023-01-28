@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import GenreTab from "../../components/allTabs/GenreTab";
 import { fetchAllGenre } from "../../Actions";
 
-
 const Genre = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,39 +18,30 @@ const Genre = () => {
 
   const { allGenre } = useSelector((state) => state.books);
 
-
   useEffect(() => {
     dispatch(fetchAllGenre());
 
     const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
     const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
 
+    let childStatus =
+      userDataRegister !== null
+        ? userDataRegister.user.child
+        : userDataLogin !== null
+        ? userDataLogin.user.child
+        : "";
 
-      let childStatus = userDataRegister !== null ? userDataRegister.user.child
-      : userDataLogin !== null ? userDataLogin.user.child
-      : "";
-
-      setChildStat(childStatus)
-
-
+    setChildStat(childStatus);
   }, [dispatch]);
 
   useEffect(() => {
-    
-    if (allGenre.length !==0 && childStat) {
-
-      let filterGenre =  allGenre.filter(genre => genre.children === 1);
-      setGenreList(filterGenre)
-      
+    if (allGenre.length !== 0 && childStat) {
+      let filterGenre = allGenre.filter((genre) => genre.children === 1);
+      setGenreList(filterGenre);
+    } else {
+      setGenreList(allGenre);
     }
-    else{
-      setGenreList(allGenre)
-    }
-  
-   
-  }, [allGenre])
-  
-
+  }, [allGenre]);
 
   const handleDiscover = () => {
     navigate("/home/discover");
@@ -74,7 +64,7 @@ const Genre = () => {
           </li>
         </ul>
 
-        <GenreTab allGenre = {genreList} />
+        <GenreTab allGenre={genreList} />
       </div>
       <Footer />
     </>
