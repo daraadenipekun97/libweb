@@ -80,7 +80,7 @@ hr {
   outline: none;
   background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
   color: white;
-  width: 15%;
+  width: fit-content;
   cursor: pointer;
 }
 

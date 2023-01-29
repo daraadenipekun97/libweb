@@ -8,14 +8,14 @@ import SubImage from "../../assets/images/Subscription.png";
 import { AiFillAlert } from "react-icons/ai";
 import PaystackPop from "@paystack/inline-js";
 import { useState, useEffect } from "react";
-import { webPurchase, restoreWebPurchaseInitial } from "../../Actions";
+import { webPurchase, restoreWebPurchaseInitial, fetchSubscriptionDetails } from "../../Actions";
 
 
 const Subscription = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { webPurchaseFailure, webPurchaseSuccess } = useSelector((state) => state.profile);
+  const { webPurchaseFailure, webPurchaseSuccess,subscriptionDetails } = useSelector((state) => state.profile);
 
   const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
   const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
@@ -28,6 +28,12 @@ const Subscription = () => {
 
   const [firstName, setFirstName] = useState(spliteNameArray[0]);
   const [lastName, setLastName] = useState(spliteNameArray[1]);
+
+  // useEffect(() => {
+  //   dispatch(fetchSubscriptionDetails());
+  // }, [dispatch]);
+
+  // let trialCheck = Object.keys(subscriptionDetails).length > 0 && subscriptionDetails.subscription.title !== null ?  subscriptionDetails.subscription.title : ""
 
   const payWithPaystackTrial = (e) => {
     e.preventDefault();
