@@ -17,6 +17,7 @@ import {
   restoreUnfavouriteInitial,
   readBook,
   fetchSubscriptionDetails,
+  restoreFetchBookDetails
 } from "../../Actions";
 import Preloader from "../../components/preloader/Preloader";
 import StarRating from "../../components/starRating/StarRating";
@@ -39,12 +40,16 @@ const Books = () => {
   const [toggleHeart, setToggleHeart] = useState(false);
 
   useEffect(() => {
+    debugger
     window.scrollTo(0, 0);
     dispatch(fetchBookDetails(params.id));
     dispatch(fetchSubscriptionDetails());
     //  console.log('current URL 👉️', window.location.href);
     //  console.log('current Pathname 👉️', window.location.pathname);
-  }, [dispatch]);
+  }, [dispatch, params.id]);
+
+ 
+  
 
   useEffect(() => {
     let pathname = window.location.pathname;
@@ -57,11 +62,12 @@ const Books = () => {
   }, [dispatch, window.location.pathname]);
 
   const handleBack = () => {
+     dispatch(restoreFetchBookDetails())
     navigate("/home/trending");
   };
 
   const handleRemoveFav = (id) => {
-    dispatch(removeBookFromFav(id));
+    // dispatch(removeBookFromFav(id));
     setToggleHeart(false);
   };
 
@@ -108,6 +114,9 @@ const Books = () => {
       dispatch(restoreUnfavouriteInitial());
     };
   }, [removeBookFromFavouriteFailure]);
+
+ 
+  
 
   if (Object.keys(bookDetails).length === 0) {
     return <Preloader />;
@@ -186,6 +195,7 @@ const Books = () => {
         </div>
 
         <div className="books-container-wrapper">
+          
           <div className="book-and-author">
             <div className="book-img">
               <img src={bookDetails.book.image_data} alt="" />

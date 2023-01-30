@@ -25,6 +25,7 @@ import {
   FETCH_ALL_AUTHORS_SUCCESS,
   FETCH_BOOKS_DETAILS,
   FETCH_BOOKS_DETAILS_SUCCESS,
+  RESTORE_FETCH_BOOKS_DETAILS,
   ADD_BOOK_TO_FAVOURITE,
   ADD_BOOK_TO_FAVOURITE_SUCCESS,
   REMOVE_BOOK_FROM_FAVOURITE,
@@ -159,6 +160,10 @@ export const fetchBookDetails = (id) => ({
 export const fetchBookDetailsSuccess = (payload) => ({
   type: FETCH_BOOKS_DETAILS_SUCCESS,
   payload,
+});
+
+export const restoreFetchBookDetails = () => ({
+  type: RESTORE_FETCH_BOOKS_DETAILS,
 });
 
 export const addBookToFav = (id) => ({

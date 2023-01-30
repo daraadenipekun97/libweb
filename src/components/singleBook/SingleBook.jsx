@@ -123,8 +123,6 @@ const SingleBook = ({ datas, searchBar, title }) => {
   // }
 
   const handleBookNavigate = (id) => {
-    debugger;
-
     if (
       childStat &&
       (title === "Trending Books" || title === "New Releases Books" || title === "Classic Books")

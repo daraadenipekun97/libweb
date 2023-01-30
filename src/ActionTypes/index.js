@@ -88,6 +88,7 @@ export const FETCH_ALL_AUTHORS_SUCCESS = "fetch_all_author_success";
 
 export const FETCH_BOOKS_DETAILS = "fetch_book_details";
 export const FETCH_BOOKS_DETAILS_SUCCESS = "fetch_book_details_success";
+export const RESTORE_FETCH_BOOKS_DETAILS = "restore_fetch_books_details";
 
 export const ADD_BOOK_TO_FAVOURITE = "add_book_to_favourite";
 export const ADD_BOOK_TO_FAVOURITE_SUCCESS = "add_book_to_favourite_success";
