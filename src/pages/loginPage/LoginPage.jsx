@@ -264,7 +264,7 @@ const LoginPage = ({ user }) => {
 
   const rememberHandler = (e) => {
     let cookieEmail = formValues.email
-    document.cookie="email="+cookieEmail+"; path=http://localhost:3000";
+    document.cookie="email="+cookieEmail+"; path=https://libweb.vercel.app/";
 
 
   };
