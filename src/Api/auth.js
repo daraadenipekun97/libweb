@@ -40,14 +40,14 @@ export const postVerifyUser = async (body) => {
       const response = await api.post(`${baseController}verify`, body);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Email Verification Successful", "");
+          toastr.success("Email Verification Successful", "Please login back");
           return response.data.status;
         } else {
           toastr.error("Couldnt verify your  email", "Please try again");
           return response.data.status;
         }
       } else {
-        toastr.error("Verification", "An Error occured");
+        toastr.error("Email Verification", "An Error occured");
       }
     } catch (ex) {
       toastr.error("Email Verification Failed", "Please try again");
@@ -80,6 +80,7 @@ export const createSendMail = async () => {
 };
 
 export const postlogin = async (body) => {
+  debugger
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
   } else {
@@ -99,7 +100,8 @@ export const postlogin = async (body) => {
         toastr.error("Login", "Login Failed");
       }
     } catch (ex) {
-      toastr.error("Login", "An error occured");
+      toastr.error("Login", `${ex.message}`);
+      return ex.message
     }
   }
 };

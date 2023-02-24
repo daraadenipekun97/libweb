@@ -39,6 +39,7 @@ const SingleBook = ({ datas, searchBar, title }) => {
   const [spinnerHide, setSpinnerHide] = useState(false);
   const [show, setShow] = useState(false);
   const [childStat, setChildStat] = useState(false);
+  const [emailVerifiedStatus, setEmailVertifiedStatus] = useState(false)
   const initialFormValues = {
     search: "",
   };
@@ -62,22 +63,27 @@ const SingleBook = ({ datas, searchBar, title }) => {
 
     setChildStat(childStatus);
 
-    // function padTo2Digits(num) {
-    //   return num.toString().padStart(2, '0');
-    // }
 
-    // function formatDate(date) {
-    //   return [
-    //     date.getFullYear(),
-    //     padTo2Digits(date.getMonth() + 1),
-    //     padTo2Digits(date.getDate()),
-    //   ].join('-');
-    // }
+    if(userDataRegister !== null){
+      if (userDataRegister.user.email_verified_at) {
+        setEmailVertifiedStatus(true)
+      }
+      else{
 
-    // let dateString = formatDate(new Date())
+      }
+    }
 
-    // let age = getYearDiffWithMonth(new Date(dob), new Date(dateString))
-    // setUserAge(age);
+    if(userDataLogin !== null){
+      if (userDataLogin.user.email_verified_at) {
+        setEmailVertifiedStatus(true)
+      }
+      else{
+
+      }
+    }
+
+
+   
 
     return () => {
       setSpinnerHide(false);
@@ -123,13 +129,20 @@ const SingleBook = ({ datas, searchBar, title }) => {
   // }
 
   const handleBookNavigate = (id) => {
+
+    
     if (
       childStat &&
       (title === "Trending Books" || title === "New Releases Books" || title === "Classic Books")
     ) {
       setShow(true);
     } else {
-      navigate(`/home/books/${id}`);
+      if(emailVerifiedStatus){
+        navigate(`/home/books/${id}`);
+      }
+      else{
+          navigate("/verify")
+      }
       //uncomment the ccode below window.location.reload() to prevent the previously 
       //viewed book from showing when a new book is clicked
       // window.location.reload(); 

@@ -7,6 +7,7 @@ import store from "./Store";
 import { Provider } from "react-redux";
 import Preloader from "./components/preloader/Preloader";
 import MessengerChat from "./plugin/MessengerChat";
+import ErrorBoundary from "./components/ErrorBoundary";
 // import {
 //   LandingPage,
 //   LoginPage,
@@ -18,6 +19,8 @@ import MessengerChat from "./plugin/MessengerChat";
 //   DashboardPage,
 //   NotfoundPage
 // } from "./pages";
+
+
 
 const LandingPage = lazy(() => import("./pages/landingPage/LandingPage"));
 const LoginPage = lazy(() => import("./pages/loginPage/LoginPage"));
@@ -60,6 +63,7 @@ function App() {
     <>
       <Provider store={store}>
         <BrowserRouter>
+        <ErrorBoundary>
           <Suspense fallback={<Preloader />}>
             <Routes>
               <Route path="/" element={<LandingPage user={user} />} />
@@ -96,6 +100,9 @@ function App() {
               <Route path="*" element={<NotfoundPage user={user} />} />
             </Routes>
           </Suspense>
+          </ErrorBoundary>
+
+
         </BrowserRouter>
         <ReduxToastr
           timeOut={4000}

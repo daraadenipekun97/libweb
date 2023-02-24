@@ -293,7 +293,9 @@ const Register = ({ user }) => {
       formValues.phone !== "" &&
       formValues.dob !== "" &&
       countryId.label !== "" &&
-      termsCheckBox === true
+      termsCheckBox === true &&  
+      /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(formValues.password)
+
     ) {
       setFormState({
         ...formState,
@@ -404,6 +406,13 @@ const Register = ({ user }) => {
     navigate("/signin");
   }
 
+  const handleKeyPress = (e) =>{
+    let keyCode = (e.keyCode ? e.keyCode : e.which);
+    if (keyCode > 47 && keyCode < 58) {
+      e.preventDefault();
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -422,6 +431,9 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.firstname.toString()}
                   onChange={(e) => firstnameHandler(e)}
+                  onKeyDown={(e) => handleKeyPress(e)}
+                  onKeyUp={(e) => handleKeyPress(e)}
+
                 />
                 <p className="register-validation-error-text">firstname is required</p>
               </div>
@@ -436,6 +448,8 @@ const Register = ({ user }) => {
                   onBlur={handleFocus}
                   focused={focused.lastname.toString()}
                   onChange={(e) => lastnameHandler(e)}
+                  onKeyDown={(e) => handleKeyPress(e)}
+                  onKeyUp={(e) => handleKeyPress(e)}
                 />
                 <p className="register-validation-error-text">lastname is required</p>
               </div>

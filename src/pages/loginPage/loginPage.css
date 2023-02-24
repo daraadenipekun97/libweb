@@ -189,6 +189,19 @@ hr {
   cursor: pointer;
 }
 
+.remember{
+  font-size: 0.8rem !important;
+  color:#78787d;
+  
+}
+.lib-login-input-group-checkbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+
 .circles {
   position: absolute;
   top: 0;

@@ -12,7 +12,7 @@ const SingleGenrePagination = (props) => {
     pageSize,
   });
 
-  if (currentPage === 0) {
+  if (currentPage === 0 || paginationRange.length < 2) {
     return null;
   }
 
@@ -35,7 +35,7 @@ const SingleGenrePagination = (props) => {
       >
         <div className="arrow left" />
       </li>
-      {/* {paginationRange.map(pageNumber => {
+       {paginationRange.map(pageNumber => {
           if (pageNumber === DOTS) {
             return <li className="pagination-item dots">&#8230;</li>;
           }
@@ -50,7 +50,7 @@ const SingleGenrePagination = (props) => {
               {pageNumber}
             </li>
           );
-        })} */}
+        })} 
       <li
         className={classnames("pagination-item", {
           disabled: currentPage === lastPage,

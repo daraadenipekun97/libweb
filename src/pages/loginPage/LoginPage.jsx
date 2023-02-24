@@ -27,11 +27,45 @@ const LoginPage = ({ user }) => {
   const [valid, setValid] = useState(false);
   const [googleLoginStatus, setGoogleLoginStatus] = useState(false);
 
+
+
+  const getCookie = (cname) => {
+    debugger
+    let name  = cname + "=";
+    let decodeCookie = decodeURIComponent(document.cookie);
+    let ca = decodeCookie.split(';');
+    for(let i = 0; i< ca.length; i++){
+      let c = ca[i];
+      while (c.charAt(0) == ''){
+        c = c.substring(1);
+      }
+
+      if(c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+      return "";
+  }
+
+
+  
+  const getCookieData = () => {
+    let  userEmail = getCookie('email'); 
+
+    setFormValues({
+      ...formValues,
+      email: userEmail,
+    });
+
+    }
+
   useEffect(() => {
+    
     if (user && location.pathname === "/signin") {
       navigate("/home/dashboard");
     }
-  });
+    getCookieData()
+  }, [dispatch]);
 
   const [focused, setFocused] = useState({
     email: false,
@@ -101,7 +135,6 @@ const LoginPage = ({ user }) => {
   };
 
   useEffect(() => {
-    debugger;
     if (googleLoginSuccess) {
       navigate("/home/dashboard");
       window.location.reload();
@@ -228,6 +261,14 @@ const LoginPage = ({ user }) => {
     navigate("/register")
   }
 
+
+  const rememberHandler = (e) => {
+    let cookieEmail = formValues.email
+    document.cookie="email="+cookieEmail+"; path=http://localhost:3000";
+
+
+  };
+
   return (
     <>
       <Navbar />
@@ -247,6 +288,7 @@ const LoginPage = ({ user }) => {
                 onBlur={(e) => handleFocus(e)}
                 focused={focused.email.toString()}
                 onChange={(e) => emailHandler(e)}
+                value={formValues.email}
               />
               <p className="login-validation-error-text">Please input a valid email</p>
               <input
@@ -268,7 +310,15 @@ const LoginPage = ({ user }) => {
               <p className="login-validation-error-text">Please input a valid password</p>
             </div>
 
+            <div className="lib-login-input-group-checkbox">
+            <input type="checkbox" id="remember" onClick={(e) => rememberHandler(e)} />
+            <label htmlFor="remember" className="remember">
+              Remember me
+              </label>
+            </div>
+
             <div className="lib-login-input-group" id="btn-group">
+
               <button disabled={formState.buttonState} onClick={() => handleLogin()}>
                 {formState.spinner === true ? <Spinner /> : formState.buttonText}
               </button>

@@ -19,3 +19,8 @@
     -webkit-transform: rotate(360deg);
   }
 }
+
+
+.no-data-text{
+  color: #78787d;
+}

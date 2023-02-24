@@ -86,22 +86,7 @@ const Bio = () => {
     dispatch(fetchProfile());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (Object.keys(profileData).length !== 0) {
-      const spliteNameArray = profileData.name.split(" ");
-
-      setFormValues({
-        ...formValues,
-        firstname: spliteNameArray[0],
-        lastname: spliteNameArray[1],
-        phone: profileData.phone !== null ? profileData.phone : "",
-        dob: profileData.dob !== null ? profileData.dob : "",
-        country_id: profileData.country.id !== null ? profileData.country.id : "No Country",
-        gender: profileData.gender !== null ? profileData.gender : "No Gender",
-        email: profileData.email !== null ? profileData.email : "",
-      });
-    }
-  }, [profileData]);
+ 
 
   const firstnameHandler = (e) => {
     if (e) {
@@ -248,6 +233,33 @@ const Bio = () => {
     };
   }, [updateProfileSuccess]);
 
+
+  useEffect(() => {
+    if (Object.keys(profileData).length !== 0) {
+      const spliteNameArray = profileData.name !== null ? profileData.name.split(" ") : "";
+
+      setFormValues({
+        ...formValues,
+        firstname: spliteNameArray !=="" ? spliteNameArray[0] : "",
+        lastname: spliteNameArray!=="" ? spliteNameArray[1] : "",
+        phone: profileData.phone !== null ? profileData.phone : "",
+        dob: profileData.dob !== null ? profileData.dob : "",
+        country_id: profileData.country.id !== null ? profileData.country.id : "No Country",
+        gender: profileData.gender !== null ? profileData.gender : "No Gender",
+        email: profileData.email !== null ? profileData.email : "",
+      });
+    }
+  }, [profileData]);
+
+
+  const handleKeyPress = (e) =>{
+    debugger
+    let keyCode = (e.keyCode ? e.keyCode : e.which);
+    if (keyCode > 47 && keyCode < 58) {
+      e.preventDefault();
+    }
+  }
+
   return (
     <div className="bio-wrapper">
       <p className="bio-wrapper-text">You Can Modify Your Name And Gender</p>
@@ -277,6 +289,8 @@ const Bio = () => {
               onChange={(e) => firstnameHandler(e)}
               onBlur={(e) => handleFocus(e)}
               focused={focused.firstname.toString()}
+              onKeyDown={(e) => handleKeyPress(e)}
+              onKeyUp={(e) => handleKeyPress(e)}
             />
             <p className="profile-validation-error-text">firstname is required</p>
           </div>
@@ -292,6 +306,8 @@ const Bio = () => {
               onChange={(e) => lastnameHandler(e)}
               onBlur={(e) => handleFocus(e)}
               focused={focused.lastname.toString()}
+              onKeyDown={(e) => handleKeyPress(e)}
+              onKeyUp={(e) => handleKeyPress(e)}
             />
             <p className="profile-validation-error-text">lastname is required</p>
           </div>

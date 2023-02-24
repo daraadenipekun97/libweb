@@ -179,6 +179,9 @@ const Books = () => {
         navigate("/home/subscription");
       }
     }
+    else{
+        navigate("/home/subscription");
+    }
   };
 
   let filterAuthorBooks = bookDetails.book.author.books.filter(

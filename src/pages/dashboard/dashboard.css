@@ -74,6 +74,11 @@
   cursor: pointer;
 }
 
+
+.modal-btn:active{
+  color: white;
+}
+
 .modal-btn-start-trial {
   margin: 0.8rem 0.5rem;
   padding: 0.3rem 0.5rem;
@@ -90,6 +95,8 @@
   cursor: pointer;
   background-color: #5e458b;
 }
+
+
 
 hr {
   border: 0;

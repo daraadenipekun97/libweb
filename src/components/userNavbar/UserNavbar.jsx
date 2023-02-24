@@ -161,7 +161,7 @@ const UserNavbar = () => {
           <div className="search">
             <input
               type="text"
-              placeholder="search for a book"
+              placeholder="Book,Genre,Author"
               onChange={(e) => searchTextHandler(e)}
               value={formValues.search}
             />

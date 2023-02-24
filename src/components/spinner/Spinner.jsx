@@ -3,7 +3,7 @@ import "./spinner.css";
 
 const Spinner = ({ spinnerHide }) => {
   if (spinnerHide) {
-    return <p>No data found</p>;
+    return <p className="no-data-text">Oops! Nothing here yet.</p>;
   }
 
   return <div id="loading"></div>;

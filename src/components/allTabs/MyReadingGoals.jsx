@@ -115,6 +115,8 @@ const MyReadingGoals = () => {
       .split("T")[0];
   }, [dispatch]);
 
+
+
   const initialFormState = {
     buttonState: false,
     buttonText: "Create Goal",
@@ -319,6 +321,14 @@ const MyReadingGoals = () => {
       dispatch(restoreDeleteGoalInitial());
     };
   }, [deleteGoalsFailure]);
+
+
+  useEffect(() => {
+
+    dateTypeStart.current.max = formValues.end_date
+
+
+  },[formValues.end_date])
 
   return (
     <>

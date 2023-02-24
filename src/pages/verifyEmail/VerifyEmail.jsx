@@ -4,6 +4,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./verifyEmail.css";
 import { Navbar } from "../../containers";
 import Spinner from "../../components/spinner/Spinner";
+import { gapi } from "gapi-script";
+
 import {
   verifyUserEmail,
   restoreVerifyUserEmailInitial,
@@ -17,11 +19,27 @@ const VerifyEmail = ({ user }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  
+
   const [focused, setFocused] = useState(false);
   const [valid, setValid] = useState(false);
 
   const { verifyUserFailure, verifyUserSuccess, resendMailSuccess, resendMailFailure } =
     useSelector((state) => state.auth);
+
+
+
+    const clientId = "218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com";
+
+    useEffect(() => {
+      const initClient = () => {
+        gapi.auth2.init({
+          clientId: clientId,
+          scope: "profile email",
+        });
+      };
+      gapi.load("client:auth2", initClient);
+    });
 
   const hanldeSwal = () => {
     Swal.fire({
@@ -130,23 +148,36 @@ const VerifyEmail = ({ user }) => {
 
   const handleSwal = () => {
     Swal.fire({
-      title: "Email Verification Success",
+      title: "Please Login again",
       icon: "success",
       showDenyButton: false,
       showCancelButton: false,
       allowOutsideClick: false,
-      confirmButtonText: "Proceed to Dashboard",
+      confirmButtonText: "Okay",
       denyButtonText: `Don't save`,
       confirmButtonColor: "#5e458b",
       width: 400,
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate("/home/dashboard");
+        navigate("/signin");
       }
       // else if (result.isDenied) {
       //   Swal.fire('Changes are not saved', '', 'info')
       // }
     });
+  };
+
+
+  const handleLogout = () => {
+    const auth2 = gapi.auth2.getAuthInstance();
+
+    if (auth2 != null) {
+      auth2.signOut().then(auth2.disconnect().then(console.log("LOGOUT SUCCESSFUL")));
+    }
+
+    localStorage.clear();
+    navigate("/");
+    // toastr.success("Logout Successful", "See you later");
   };
 
   useEffect(() => {
@@ -163,10 +194,21 @@ const VerifyEmail = ({ user }) => {
         code: "",
       });
 
-      // handleSwal();
+     
 
-      //removing the swal and doing the navigation right away
-      navigate("/home/dashboard");
+      // navigate("/home/dashboard");
+
+      //user is logged out if email verification is succesful
+      handleLogout()
+      
+   
+
+      //  handleSwal();
+      window.location.reload();
+
+
+      
+
     }
 
     return () => {
