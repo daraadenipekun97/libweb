@@ -114,7 +114,11 @@ const ChangePassword = () => {
       formValues.current_password !== "" &&
       formValues.password !== "" &&
       formValues.confirmPassword !== "" &&
-      formValues.password === formValues.confirmPassword
+      formValues.password === formValues.confirmPassword &&
+      /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(formValues.password) &&
+      /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(formValues.confirmPassword)
+
+
     ) {
       setFormState({
         ...formState,
