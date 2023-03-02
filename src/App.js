@@ -1,5 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import "./App.css";
+import { ThemeProvider } from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReduxToastr from "react-redux-toastr";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
@@ -20,6 +21,20 @@ import ErrorBoundary from "./components/ErrorBoundary";
 //   NotfoundPage
 // } from "./pages";
 
+const LightTheme = {
+  pageBackground: "white",
+  textColor:"#dc658b"
+}
+
+const DarkTheme = {
+  pageBackground: "#282c36",
+  textColor:"white"
+}
+
+const themes = {
+  light: LightTheme,
+  dark: DarkTheme
+}
 
 
 const LandingPage = lazy(() => import("./pages/landingPage/LandingPage"));
@@ -53,6 +68,10 @@ const TermsOfUsePage = lazy(() => import("./pages/privacy/TermsOfUse"));
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
 function App() {
+
+  const [theme, setTheme] = useState("light");
+
+
   const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
   const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
 
@@ -91,7 +110,14 @@ function App() {
                 <Route path="genre/:id" element={<GenreByIdPage />} />
                 <Route path="books/:id" element={<BooksPage />} />
                 <Route path="profile" element={<ProfilePage />} />
-                <Route path="reader" element={<ReaderPage />} />
+                <Route path="reader" element={
+
+                
+                <ThemeProvider theme={themes[theme]}>
+                  <ReaderPage theme={theme} setTheme={setTheme}  />
+                </ThemeProvider>
+
+                } />
                 <Route path="subscription" element={<SubscriptionPage />} />
                 <Route path="wallet" element={<WalletPage />} />
                 <Route path="search/:id" element={<SearchPage />} />

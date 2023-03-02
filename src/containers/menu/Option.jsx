@@ -18,6 +18,9 @@ const Option = (
     emitEvent,
     onBookStyleChange,
     onBookOptionChange,
+    theme,
+    changeToLight,
+    changeToDark
   },
   ref
 ) => {
@@ -155,6 +158,25 @@ const Option = (
                 isSelected={!viewType.spread}
                 onClick={() => onClickViewType(false)}
               />
+            </ControlIconBtnWrapper>
+
+            <ControlIconBtnWrapper title="Theme">
+              <ControlIconBtn
+                type="Light"
+                alt="Light Mode"
+                active={true}
+                isSelected={theme === "light" ? true : false}
+                onClick={() => changeToLight()}
+              />
+
+            <ControlIconBtn
+                type="Dark"
+                alt="Dark Mode"
+                active={true}
+                isSelected={theme === "dark" ? true : false}
+                onClick={() => changeToDark()}
+              />
+            
             </ControlIconBtnWrapper>
             <OptionDropdown
               title="Font"

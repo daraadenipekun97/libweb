@@ -13,6 +13,8 @@ import ScrollHorizontalIcon from "./ScrollHorizontal";
 import ScrollVerticalIcon from "./ScrollVertical";
 import SearchIcon from "./Search";
 import CopyIcon from "./Copy";
+import LightIcon from "./Light";
+import DarkIcon from  "./Dark";
 
 export {
   MenuIcon,
@@ -30,4 +32,6 @@ export {
   ScrollVerticalIcon,
   SearchIcon,
   CopyIcon,
+  LightIcon,
+  DarkIcon
 };

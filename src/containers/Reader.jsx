@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 //components
 import ViewerWrapper from "../components/readerComponents/commons/ViewWrapper";
 
@@ -28,7 +27,10 @@ import Spinner from "../components/spinner/Spinner";
 import { updateCurrentPage, updateReadersBook, updateToc } from "../Actions";
 import { useLocation } from "react-router-dom";
 
-const Reader = () => {
+
+
+
+const Reader = ({theme, setTheme}) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const viewerRef = useRef(null);
@@ -36,6 +38,7 @@ const Reader = () => {
   const learningRef = useRef(null);
 
   const navRef = useRef(null);
+
 
   const currentLocation = useSelector((state) => state.reader.currentLocation);
 
@@ -81,8 +84,26 @@ const Reader = () => {
 
   const sharedLink = localStorage.getItem("book");
 
+  const changeToLight = () => {
+      if(theme === "dark"){
+        setTheme("light")
+      }
+      else{
+        setTheme("light")
+      }
+  }
+
+  const changeToDark = () => {
+    if(theme === "light"){
+      setTheme("dark")
+    }
+    else{
+      setTheme("dark")
+    }
+}
   return (
     <>
+
       <ViewerWrapper>
         <ReaderHeader
           onNavToggle={onNavToggle}
@@ -120,6 +141,9 @@ const Reader = () => {
         onBookStyleChange={onBookStyleChange}
         onBookOptionChange={onBookOptionChange}
         ref={optionRef}
+        theme={theme}
+        changeToLight={changeToLight}
+        changeToDark={changeToDark}
       />
 
       <Learning
@@ -128,6 +152,7 @@ const Reader = () => {
         ref={learningRef}
         link={sharedLink}
       />
+
     </>
   );
 };
