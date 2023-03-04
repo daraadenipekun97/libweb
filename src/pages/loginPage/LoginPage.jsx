@@ -29,22 +29,20 @@ const LoginPage = ({ user }) => {
 
 
 
-  const getCookie = (cname) => {
-    debugger
-    let name  = cname + "=";
-    let decodeCookie = decodeURIComponent(document.cookie);
-    let ca = decodeCookie.split(';');
-    for(let i = 0; i< ca.length; i++){
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
       let c = ca[i];
-      while (c.charAt(0) == ''){
+      while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
-
-      if(c.indexOf(name) == 0) {
+      if (c.indexOf(name) == 0) {
         return c.substring(name.length, c.length);
       }
     }
-      return "";
+    return "";
   }
 
 
