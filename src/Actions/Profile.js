@@ -39,11 +39,10 @@ export const fetchProfileSuccess = (payload) => ({
   payload,
 });
 
-export const updateProfile = ({ firstname, lastname, phone, dob, country_id, gender }) => ({
+export const updateProfile = ({ fullname, phone, dob, country_id, gender }) => ({
   type: UPDATE_PROFILE,
   payload: {
-    firstname,
-    lastname,
+    fullname,
     phone,
     dob,
     country_id,

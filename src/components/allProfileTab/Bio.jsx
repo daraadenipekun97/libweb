@@ -193,8 +193,7 @@ const Bio = () => {
     if (valid) {
       dispatch(
         updateProfile({
-          firstname: formValues.firstname,
-          lastname: formValues.lastname,
+          fullname: `${formValues.firstname} ${formValues.lastname}`,
           phone: formValues.phone,
           dob: formValues.dob,
           country_id: formValues.country_id,
