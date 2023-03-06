@@ -309,7 +309,7 @@ const LoginPage = ({ user }) => {
             </div>
 
             <div className="lib-login-input-group-checkbox">
-            <input type="checkbox" id="remember" onClick={(e) => rememberHandler(e)} />
+            <input type="checkbox" id="remember" onClick={(e) => rememberHandler(e)} /> &nbsp;
             <label htmlFor="remember" className="remember">
               Remember me
               </label>

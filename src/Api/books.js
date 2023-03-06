@@ -251,7 +251,9 @@ export const getBookDetails = async (id) => {
         toastr.error("An Error occured", "Could not retrieve book");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Something went wrong");
+      let localPart = window.location.href.slice(0, window.location.href.indexOf("/home"));
+      window.location.replace(`${localPart}`);
     }
   }
 };
