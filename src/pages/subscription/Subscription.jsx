@@ -28,7 +28,7 @@ const Subscription = () => {
 
   const [firstName, setFirstName] = useState(spliteNameArray[0]);
   const [lastName, setLastName] = useState(spliteNameArray[1]);
-
+  const [dashboardModalState, setDashboardModalState] = useState(true);
   // useEffect(() => {
   //   dispatch(fetchSubscriptionDetails());
   // }, [dispatch]);
@@ -53,8 +53,14 @@ const Subscription = () => {
             reference: transaction.reference,
           })
         );
-        dispatch(fetchSubscriptionDetails());
-        navigate("/home/dashboard")
+
+        setDashboardModalState(false)
+
+         navigate("/home/dashboard", {
+            state: {
+              id: dashboardModalState,
+            },
+          });
 
       },
       onCancel() {
@@ -82,8 +88,13 @@ const Subscription = () => {
           })
         );
 
-        dispatch(fetchSubscriptionDetails());
-        navigate("/home/dashboard")
+        setDashboardModalState(false)
+
+         navigate("/home/dashboard", {
+            state: {
+              id: dashboardModalState,
+            },
+          });
 
       },
       onCancel() {
@@ -110,8 +121,13 @@ const Subscription = () => {
             reference: transaction.reference,
           })
         );
-        dispatch(fetchSubscriptionDetails());
-        navigate("/home/dashboard")
+        setDashboardModalState(false)
+
+         navigate("/home/dashboard", {
+            state: {
+              id: dashboardModalState,
+            },
+          });
       },
       onCancel() {
         alert("you have canceled the transaction");
@@ -138,8 +154,13 @@ const Subscription = () => {
           })
         );
 
-        dispatch(fetchSubscriptionDetails());
-        navigate("/home/dashboard")
+        setDashboardModalState(false)
+
+        navigate("/home/dashboard", {
+           state: {
+             id: dashboardModalState,
+           },
+         });
       },
       onCancel() {
         alert("you have canceled the transaction");
@@ -166,8 +187,13 @@ const Subscription = () => {
           })
         );
 
-        dispatch(fetchSubscriptionDetails());
-        navigate("/home/dashboard")
+        setDashboardModalState(false)
+
+        navigate("/home/dashboard", {
+           state: {
+             id: dashboardModalState,
+           },
+         });
       },
       onCancel() {
         alert("you have canceled the transaction");

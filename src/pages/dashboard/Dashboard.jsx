@@ -6,7 +6,7 @@ import "./dashboard.css";
 import { fetchAllTrendingBooks, fetchSubscriptionDetails } from "../../Actions";
 import { Footer, Header } from "../../containers";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Modal = ({ handleClose, show, handleNavigate }) => {
   const showHideClassName = show ? "main-modal-bg display-block" : "main-modal-bg display-none";
@@ -42,6 +42,7 @@ const Modal = ({ handleClose, show, handleNavigate }) => {
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { trendingBooks } = useSelector((state) => state.books);
   const { subscriptionDetails } = useSelector((state) => state.profile);
@@ -52,15 +53,25 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(fetchAllTrendingBooks());
     dispatch(fetchSubscriptionDetails());
-  }, []);
+  }, [dispatch]);
+
+
 
   useEffect(() => {
-    if (subscriptionDetails.subscription === null) {
-      setShow(true);
-    } else {
+    debugger
+    if (subscriptionDetails.subscription === null && location.state === null ) {
+        setShow(true);
+    } 
+    else if(subscriptionDetails.subscription === null && location.state.id === false){
+        setShow(false)
+    }
+    
+    else {
       setShow(false);
     }
-  }, [subscriptionDetails]);
+  }, [subscriptionDetails.subscription]);
+
+  
 
   const handleClose = () => {
     setShow(false);

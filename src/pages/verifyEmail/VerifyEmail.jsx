@@ -13,6 +13,7 @@ import {
   restoreResendMailInitial,
 } from "../../Actions";
 import Swal from "sweetalert2";
+import UserNavbar from "../../components/userNavbar/UserNavbar";
 
 const VerifyEmail = ({ user }) => {
   const dispatch = useDispatch();
@@ -265,6 +266,8 @@ const VerifyEmail = ({ user }) => {
 
   return (
     <>
+          {user ? <UserNavbar /> : <Navbar />}
+
       <div className="lib-verify-container">
         <div className="lib-verify-wrapper">
           <h1>Verify Email</h1>

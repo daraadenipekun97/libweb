@@ -406,9 +406,10 @@ const Register = ({ user }) => {
     navigate("/signin");
   }
 
+
   const handleKeyPress = (e) =>{
     let keyCode = (e.keyCode ? e.keyCode : e.which);
-    if (keyCode > 47 && keyCode < 58) {
+    if ((keyCode > 47 && keyCode < 58 ) || keyCode == 32 || e.shiftKey || keyCode == 106 || keyCode == 107 || keyCode == 110 || keyCode == 111 || keyCode == 186 || keyCode == 187 || keyCode == 188 || (keyCode >= 190 &&  keyCode < 222)) {
       e.preventDefault();
     }
   }

@@ -105,8 +105,26 @@ hr {
   margin-top: 1rem;
 }
 
+@media screen and (max-width: 920px) {
+
+  .modal-main{
+
+    width: 50% !important;
+
+  }
+  
+}
+
 @media screen and (max-width: 400px) {
   .book-container {
     padding: 4rem 0rem;
   }
+
+  .modal-main{
+
+    width: 80% !important;
+
+  }
+  
+
 }
