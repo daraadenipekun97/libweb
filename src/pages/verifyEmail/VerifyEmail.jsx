@@ -40,6 +40,8 @@ const VerifyEmail = ({ user }) => {
         });
       };
       gapi.load("client:auth2", initClient);
+
+      window.scrollTo(0,300)
     });
 
   const hanldeSwal = () => {

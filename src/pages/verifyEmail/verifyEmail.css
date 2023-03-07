@@ -13,6 +13,7 @@
   background-color: white;
   border-radius: 20px;
   padding: 2rem 3rem;
+  /* border: solid; */
 }
 
 .lib-verify-wrapper h1 {
@@ -135,7 +136,7 @@
 
 .verify-area {
   background: #5e458b;
-  background: -webkit-linear-gradient(to left, #e3daf0, #5e458b);
+  background: linear-gradient( #e3daf0, #5e458b) !important;
   width: 100%;
   height: 100vh;
   z-index: -1;
@@ -250,6 +251,17 @@
   }
 }
 
+@media screen and (max-width: 1000px) {
+
+  .lib-verify-wrapper{
+    top: 80vh;
+  }
+
+  .verify-area {
+    height: 150vh;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .lib-verify-input-group {
     /* border:solid; */
@@ -264,7 +276,7 @@
 
 @media screen and (max-width: 769px) {
   .verify-area {
-    height: 110vh;
+    height: 200vh;
   }
 }
 

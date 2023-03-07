@@ -15,7 +15,7 @@
 
 /* MODAL STYLES */
 
-.main-modal-bg {
+.main-modal-bg-dashboard {
   position: fixed;
   top: 0;
   left: 0;
@@ -24,7 +24,7 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.modal-main {
+.modal-main-dashboard {
   position: fixed;
   background: white;
   width: 30%;
@@ -43,22 +43,22 @@
   display: none;
 }
 
-.modal-title {
+.modal-title-dashboard {
   padding: 1rem;
   color: #5e458b;
   font-size: 18px;
 }
 
-.modal-text {
+.modal-text-dashboard {
   padding: 0.5rem 1rem;
   color: #78787d;
 }
 
-.btn-modal-wrapper {
+.btn-modal-wrapper-dashboard {
   float: right;
 }
 
-.modal-btn {
+.modal-btn-dashboard {
   margin: 0.8rem 0.5rem;
   padding: 0.3rem 1rem;
   font-weight: 500;
@@ -75,11 +75,11 @@
 }
 
 
-.modal-btn:active{
+.modal-btn-dashboard:active{
   color: white;
 }
 
-.modal-btn-start-trial {
+.modal-btn-start-trial-dashboard {
   margin: 0.8rem 0.5rem;
   padding: 0.3rem 0.5rem;
   font-weight: 500;
@@ -107,9 +107,19 @@ hr {
 
 @media screen and (max-width: 920px) {
 
-  .modal-main{
+  .modal-main-dashboard{
 
     width: 50% !important;
+
+  }
+  
+}
+
+@media screen and (max-width: 550px) {
+
+  .modal-main-dashboard{
+
+    width: 70% !important;
 
   }
   
@@ -120,7 +130,7 @@ hr {
     padding: 4rem 0rem;
   }
 
-  .modal-main{
+  .modal-main-dashboard{
 
     width: 80% !important;
 

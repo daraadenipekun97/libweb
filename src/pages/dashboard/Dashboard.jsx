@@ -9,28 +9,28 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Modal = ({ handleClose, show, handleNavigate }) => {
-  const showHideClassName = show ? "main-modal-bg display-block" : "main-modal-bg display-none";
+  const showHideClassName = show ? "main-modal-bg-dashboard display-block" : "main-modal-bg-dashboard display-none";
 
   return (
     <div className={showHideClassName}>
-      <div className="modal-main">
+      <div className="modal-main-dashboard">
         <>
-          <h4 className="modal-title">
+          <h4 className="modal-title-dashboard">
             Trial{" "}
             <span style={{ float: "right" }}>
               <AiOutlineCloseCircle size={20} color="#5e458b" onClick={handleClose} />
             </span>
           </h4>
-          <p className="modal-text">Great to have you here!</p>
-          <p className="modal-text">Get Started with ₦100 for 7 days</p>
+          <p className="modal-text-dashboard">Great to have you here!</p>
+          <p className="modal-text-dashboard">Get Started with ₦100 for 7 days</p>
         </>
 
         <hr />
-        <div className="btn-modal-wrapper">
-          <button className="modal-btn" onClick={handleClose}>
+        <div className="btn-modal-wrapper-dashboard">
+          <button className="modal-btn-dashboard" onClick={handleClose}>
             No
           </button>
-          <button className="modal-btn-start-trial" onClick={handleNavigate}>
+          <button className="modal-btn-start-trial-dashboard" onClick={handleNavigate}>
             Start Trial
           </button>
         </div>
