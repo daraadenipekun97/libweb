@@ -57,20 +57,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (subscriptionDetails.subscription === null) {
       setShow(true);
-
-      // let loaded = parseInt(localStorage.getItem('loaded'), 10),
-      //   loaded_numb = loaded ? loaded + 1 : 1;
-      // localStorage.setItem('loaded', loaded_numb);
-      // if (loaded_numb === 2 || loaded_numb === 1) {
-      //   setShow(true);
-
-      // } else {
-      //   setTimeout(() => {setShow(true);}, 300000)
-
-      // }
     } else {
-      // localStorage.removeItem('loaded');
-
       setShow(false);
     }
   }, [subscriptionDetails]);

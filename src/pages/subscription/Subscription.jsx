@@ -53,6 +53,7 @@ const Subscription = () => {
             reference: transaction.reference,
           })
         );
+        dispatch(fetchSubscriptionDetails());
         navigate("/home/dashboard")
 
       },
@@ -81,6 +82,7 @@ const Subscription = () => {
           })
         );
 
+        dispatch(fetchSubscriptionDetails());
         navigate("/home/dashboard")
 
       },
@@ -108,6 +110,7 @@ const Subscription = () => {
             reference: transaction.reference,
           })
         );
+        dispatch(fetchSubscriptionDetails());
         navigate("/home/dashboard")
       },
       onCancel() {
@@ -134,6 +137,8 @@ const Subscription = () => {
             reference: transaction.reference,
           })
         );
+
+        dispatch(fetchSubscriptionDetails());
         navigate("/home/dashboard")
       },
       onCancel() {
@@ -160,6 +165,8 @@ const Subscription = () => {
             reference: transaction.reference,
           })
         );
+
+        dispatch(fetchSubscriptionDetails());
         navigate("/home/dashboard")
       },
       onCancel() {

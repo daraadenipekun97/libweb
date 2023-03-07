@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toastr } from "react-redux-toastr";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,8 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 // import BookImg from "../../assets/images/wolesoyinka.jpg";
 import Spinner from "../spinner/Spinner";
 import PageHeaderText from "../pageHeaderText/PageHeaderText";
-import { searchBooksUnauth } from "../../Actions";
+import { searchBooksUnauth, fetchProfile } from "../../Actions";
+
 
 const Modal = ({ handleClose, show }) => {
   const showHideClassName = show ? "main-modal-bg display-block" : "main-modal-bg display-none";
@@ -36,10 +37,15 @@ const SingleBook = ({ datas, searchBar, title }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { profileData } = useSelector(
+    (state) => state.profile
+  );
+
   const [spinnerHide, setSpinnerHide] = useState(false);
   const [show, setShow] = useState(false);
   const [childStat, setChildStat] = useState(false);
   const [emailVerifiedStatus, setEmailVertifiedStatus] = useState(false)
+  const [userLoggedIn, setUserLoggedIn] = useState(false)
   const initialFormValues = {
     search: "",
   };
@@ -54,6 +60,12 @@ const SingleBook = ({ datas, searchBar, title }) => {
     const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
     const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
 
+    if(userDataRegister || userDataLogin){
+      setUserLoggedIn(true)
+      dispatch(fetchProfile());
+
+    }
+
     let childStatus =
       userDataRegister !== null
         ? userDataRegister.user.child
@@ -64,26 +76,6 @@ const SingleBook = ({ datas, searchBar, title }) => {
     setChildStat(childStatus);
 
 
-    if(userDataRegister !== null){
-      if (userDataRegister.user.email_verified_at) {
-        setEmailVertifiedStatus(true)
-      }
-      else{
-
-      }
-    }
-
-    if(userDataLogin !== null){
-      if (userDataLogin.user.email_verified_at) {
-        setEmailVertifiedStatus(true)
-      }
-      else{
-
-      }
-    }
-
-
-   
 
     return () => {
       setSpinnerHide(false);
@@ -137,17 +129,24 @@ const SingleBook = ({ datas, searchBar, title }) => {
     ) {
       setShow(true);
     } else {
-      if(emailVerifiedStatus){
         navigate(`/home/books/${id}`);
-      }
-      else{
-          navigate("/verify")
-      }
-      //uncomment the ccode below window.location.reload() to prevent the previously 
+      //uncomment the ccode below  to prevent the previously 
       //viewed book from showing when a new book is clicked
+
       // window.location.reload(); 
     }
   };
+
+  const handleVerifyNavigate = () => {
+    navigate("/verify")
+
+  }
+
+  const handleSignInNavigate = () => {
+
+    navigate("/signin")
+
+  }
 
   const handleClose = () => {
     setShow(false);
@@ -226,7 +225,14 @@ const SingleBook = ({ datas, searchBar, title }) => {
               return (
                 <div
                   className="lib-gallery-box"
-                  onClick={() => handleBookNavigate(data.id)}
+                  onClick={() => 
+                    userLoggedIn && profileData.email_verified_at ? 
+                    handleBookNavigate(data.id)
+                    
+                    : userLoggedIn && profileData.email_verified_at === null ? handleVerifyNavigate()
+                     :
+                     handleSignInNavigate()
+                  }
                   key={data.id}
                 >
                   <div className="img-div">

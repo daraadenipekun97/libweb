@@ -110,14 +110,14 @@ function App() {
                 <Route path="genre/:id" element={<GenreByIdPage />} />
                 <Route path="books/:id" element={<BooksPage />} />
                 <Route path="profile" element={<ProfilePage />} />
-                <Route path="reader" element={
+                {/* <Route path="reader" element={
 
                 
                 <ThemeProvider theme={themes[theme]}>
                   <ReaderPage theme={theme} setTheme={setTheme}  />
                 </ThemeProvider>
 
-                } />
+                } /> */}
                 <Route path="subscription" element={<SubscriptionPage />} />
                 <Route path="wallet" element={<WalletPage />} />
                 <Route path="search/:id" element={<SearchPage />} />

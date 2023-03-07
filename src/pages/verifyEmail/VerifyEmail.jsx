@@ -196,15 +196,15 @@ const VerifyEmail = ({ user }) => {
 
      
 
-      // navigate("/home/dashboard");
+       navigate("/home/dashboard");
 
       //user is logged out if email verification is succesful
-      handleLogout()
+      // handleLogout()
       
    
 
       //  handleSwal();
-      window.location.reload();
+      // window.location.reload();
 
 
       

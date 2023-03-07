@@ -162,11 +162,13 @@ const Books = () => {
         subscriptionDetails.subscription.title !== "Trial"
       ) {
         if (subscriptionDetails.cancel_subscription === 0) {
-          navigate("/home/reader", {
-            state: {
-              id: url,
-            },
-          });
+          // navigate("/home/reader", {
+          //   state: {
+          //     id: url,
+          //   },
+          // });
+
+          window.location.href = `https://libreader.vercel.app/#${url}`
           dispatch(readBook(bookId));
         } else {
           // toastr.warning('You cant read this book because your subscription is canceled', 'Please subscribe or reactive your subscription');
