@@ -4,7 +4,7 @@ import UserNavbar from "../../components/userNavbar/UserNavbar";
 import SingleBook from "../../components/singleBook/SingleBook";
 import "./dashboard.css";
 import { fetchAllTrendingBooks, fetchSubscriptionDetails } from "../../Actions";
-import { Footer, Header } from "../../containers";
+import { Community, Footer, Header } from "../../containers";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -49,6 +49,7 @@ const Dashboard = () => {
 
   const [slicedTrendingBooks, setSlicedTrendingBooks] = useState([]);
   const [show, setShow] = useState(false);
+  
 
   useEffect(() => {
     dispatch(fetchAllTrendingBooks());
@@ -103,6 +104,7 @@ const Dashboard = () => {
           <SingleBook datas={slicedTrendingBooks} searchBar={false} title="Trending Books" />
         </div>
       </div>
+      <Community/>
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
     </>

@@ -19,7 +19,7 @@ export const getTrendingBooks = async () => {
         toastr.error("An Error occured", "Could not retrieve trending books");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -57,7 +57,7 @@ export const getAllBooks = async () => {
         toastr.error("An Error occured", "Could not retrieve books");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -76,7 +76,7 @@ export const getPopularAuthors = async () => {
         toastr.error("An Error occured", "Could not retrieve authors");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -95,7 +95,7 @@ export const getNewReleases = async () => {
         toastr.error("An Error occured", "Could not retrieve books");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -114,7 +114,7 @@ export const getClassicBooks = async () => {
         toastr.error("An Error occured", "Could not retrieve books");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -133,7 +133,7 @@ export const getKiddiesBook = async () => {
         toastr.error("An Error occured", "Could not retrieve books");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -152,7 +152,7 @@ export const getAllGenre = async () => {
         toastr.error("An Error occured", "Could not retrieve genre");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -171,7 +171,7 @@ export const getBooksByGenre = async (id) => {
         toastr.error("An Error occured", "Could not retrieve book");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -190,7 +190,7 @@ export const getAllBookNames = async () => {
         toastr.error("An Error occured", "Could not retrieve book names");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -209,7 +209,7 @@ export const getBooksByAuthor = async (id) => {
         toastr.error("An Error occured", "Could not retrieve book");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -228,7 +228,7 @@ export const getAllAuthors = async () => {
         toastr.error("An Error occured", "Could not retrieve authors");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -273,7 +273,7 @@ export const addFav = async (id) => {
         toastr.error("An Error occured", "Could not add book to favourite");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -293,7 +293,7 @@ export const removeFav = async (id) => {
         toastr.error("An Error occured", "Could not remove book from favourite");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -312,7 +312,7 @@ export const getAuthorById = async (id) => {
         toastr.error("An Error occured", "Could not add book to favourite");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };

@@ -40,7 +40,7 @@ export const postVerifyUser = async (body) => {
       const response = await api.post(`${baseController}verify`, body);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Email Verification Successful", "Please login back");
+          toastr.success("Email Verification Successful", "");
           return response.data.status;
         } else {
           toastr.error("Couldnt verify your  email", "Please try again");

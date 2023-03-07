@@ -19,7 +19,7 @@ export const getMyBooks = async () => {
         toastr.error("An Error occured", "Could not retrieve books");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -86,7 +86,7 @@ export const getAllGoals = async () => {
         toastr.error("An Error occured", "Could not retrieve reading goals ");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -106,7 +106,7 @@ export const deleteGoals = async (id) => {
         toastr.error("An Error occured", "Could not delete reading goals ");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -149,7 +149,7 @@ export const getMyFavorites = async () => {
         toastr.error("An Error occured", "Could not retrieve favorites ");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -169,7 +169,7 @@ export const readBookCurrentlyReading = async (id) => {
         toastr.error("An Error occured", "Could not read book ");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };

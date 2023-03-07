@@ -44,7 +44,7 @@ export const getProfile = async () => {
         toastr.error("An Error occured", "Could not retrieve profile");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -87,7 +87,7 @@ export const getAllBanks = async () => {
         toastr.error("An Error occured", "Could not retrieve profile");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -106,7 +106,7 @@ export const getWalletDetails = async () => {
         toastr.error("An Error occured", "Could not retrieve wallet");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -150,7 +150,7 @@ export const cancelTrial = async () => {
         toastr.error("An Error occured", "Could not cancel Trial Subscription");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -170,7 +170,7 @@ export const cancelSub = async () => {
         toastr.error("An Error occured", "Could not cancel Subscription");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
@@ -189,7 +189,7 @@ export const getSubscriptionDetails = async () => {
         toastr.error("An Error occured", "Could not retrieve subscription details");
       }
     } catch (ex) {
-      toastr.error("An Error occurred", "Please Ensure youre logged in");
+      toastr.error("An Error occurred", "Please try again");
     }
   }
 };
