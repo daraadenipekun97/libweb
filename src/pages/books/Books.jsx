@@ -67,6 +67,7 @@ const Books = () => {
   };
 
   const handleRemoveFav = (id) => {
+    debugger
      dispatch(removeBookFromFav(id));
     // setToggleHeart(false);
   };
