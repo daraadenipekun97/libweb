@@ -23,19 +23,18 @@ import ErrorBoundary from "./components/ErrorBoundary";
 
 const LightTheme = {
   pageBackground: "white",
-  textColor:"#dc658b"
-}
+  textColor: "#dc658b",
+};
 
 const DarkTheme = {
   pageBackground: "#282c36",
-  textColor:"white"
-}
+  textColor: "white",
+};
 
 const themes = {
   light: LightTheme,
-  dark: DarkTheme
-}
-
+  dark: DarkTheme,
+};
 
 const LandingPage = lazy(() => import("./pages/landingPage/LandingPage"));
 const LoginPage = lazy(() => import("./pages/loginPage/LoginPage"));
@@ -68,9 +67,7 @@ const TermsOfUsePage = lazy(() => import("./pages/privacy/TermsOfUse"));
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
 function App() {
-
   const [theme, setTheme] = useState("light");
-
 
   const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
   const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
@@ -82,35 +79,35 @@ function App() {
     <>
       <Provider store={store}>
         <BrowserRouter>
-        <ErrorBoundary>
-          <Suspense fallback={<Preloader />}>
-            <Routes>
-              <Route path="/" element={<LandingPage user={user} />} />
-              <Route path="signin" element={<LoginPage user={user} />} />
-              <Route path="register" element={<RegisterPage user={user} />} />
-              <Route path="forgot" element={<ForgotPasswordPage user={user} />} />
-              <Route path="reset" element={<ResetPasswordPage user={user} />} />
-              <Route path="verify" element={<VerifyEmailPage user={user} />} />
-              <Route path="about" element={<AboutUsPage user={user} />} />
-              <Route path="faq" element={<FAQPage user={user} />} />
-              <Route path="privacyPolicy" element={<PrivacyPolicyPage user={user} />} />
-              <Route path="termsOfUse" element={<TermsOfUsePage user={user} />} />
+          <ErrorBoundary>
+            <Suspense fallback={<Preloader />}>
+              <Routes>
+                <Route path="/" element={<LandingPage user={user} />} />
+                <Route path="signin" element={<LoginPage user={user} />} />
+                <Route path="register" element={<RegisterPage user={user} />} />
+                <Route path="forgot" element={<ForgotPasswordPage user={user} />} />
+                <Route path="reset" element={<ResetPasswordPage user={user} />} />
+                <Route path="verify" element={<VerifyEmailPage user={user} />} />
+                <Route path="about" element={<AboutUsPage user={user} />} />
+                <Route path="faq" element={<FAQPage user={user} />} />
+                <Route path="privacyPolicy" element={<PrivacyPolicyPage user={user} />} />
+                <Route path="termsOfUse" element={<TermsOfUsePage user={user} />} />
 
-              <Route path="home" element={<HomePage user={user} />}>
-                <Route path="dashboard" element={<DashboardPage />} />
-                <Route path="library" element={<LibraryPage />} />
-                <Route path="discover" element={<DiscoverPage />} />
-                <Route path="trending" element={<TrendingPage />} />
-                <Route path="newReleases" element={<NewReleasesPage />} />
-                <Route path="classics" element={<ClassicsPage />} />
-                <Route path="childrenscorner" element={<KiddiesPage />} />
-                <Route path="authors" element={<AllAuthorsPage />} />
-                <Route path="authors/:id" element={<AuthorsPage />} />
-                <Route path="genre" element={<GenrePage />} />
-                <Route path="genre/:id" element={<GenreByIdPage />} />
-                <Route path="books/:id" element={<BooksPage />} />
-                <Route path="profile" element={<ProfilePage />} />
-                {/* <Route path="reader" element={
+                <Route path="home" element={<HomePage user={user} />}>
+                  <Route path="dashboard" element={<DashboardPage />} />
+                  <Route path="library" element={<LibraryPage />} />
+                  <Route path="discover" element={<DiscoverPage />} />
+                  <Route path="trending" element={<TrendingPage />} />
+                  <Route path="newReleases" element={<NewReleasesPage />} />
+                  <Route path="classics" element={<ClassicsPage />} />
+                  <Route path="childrenscorner" element={<KiddiesPage />} />
+                  <Route path="authors" element={<AllAuthorsPage />} />
+                  <Route path="authors/:id" element={<AuthorsPage />} />
+                  <Route path="genre" element={<GenrePage />} />
+                  <Route path="genre/:id" element={<GenreByIdPage />} />
+                  <Route path="books/:id" element={<BooksPage />} />
+                  <Route path="profile" element={<ProfilePage />} />
+                  {/* <Route path="reader" element={
 
                 
                 <ThemeProvider theme={themes[theme]}>
@@ -118,17 +115,15 @@ function App() {
                 </ThemeProvider>
 
                 } /> */}
-                <Route path="subscription" element={<SubscriptionPage />} />
-                <Route path="wallet" element={<WalletPage />} />
-                <Route path="search/:id" element={<SearchPage />} />
-              </Route>
+                  <Route path="subscription" element={<SubscriptionPage />} />
+                  <Route path="wallet" element={<WalletPage />} />
+                  <Route path="search/:id" element={<SearchPage />} />
+                </Route>
 
-              <Route path="*" element={<NotfoundPage user={user} />} />
-            </Routes>
-          </Suspense>
+                <Route path="*" element={<NotfoundPage user={user} />} />
+              </Routes>
+            </Suspense>
           </ErrorBoundary>
-
-
         </BrowserRouter>
         <ReduxToastr
           timeOut={4000}

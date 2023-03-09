@@ -11,7 +11,6 @@ const SingleAuthor = ({ datas, title, seeAllText }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const [spinnerHide, setSpinnerHide] = useState(false);
 
   useEffect(() => {
@@ -25,12 +24,12 @@ const SingleAuthor = ({ datas, title, seeAllText }) => {
   }, [dispatch]);
 
   const handleSeeAllAuthors = () => {
-    navigate("/home/authors")
-  }
+    navigate("/home/authors");
+  };
 
   const handleAuthorNavigate = (id) => {
-      navigate(`/home/authors/${id}`)
-  }
+    navigate(`/home/authors/${id}`);
+  };
 
   return (
     <div className="author-gallery">
@@ -50,10 +49,14 @@ const SingleAuthor = ({ datas, title, seeAllText }) => {
           {datas.length !== 0 ? (
             datas.map((data) => {
               return (
-                  <div className="author-gallery-box" key={data.id} onClick = {() => handleAuthorNavigate(data.id)}>
-                    <LazyLoadImage effect="blur" src={data.image_data} alt={data.name} />
-                    <p className="author-name">{data.name}</p>
-                  </div>
+                <div
+                  className="author-gallery-box"
+                  key={data.id}
+                  onClick={() => handleAuthorNavigate(data.id)}
+                >
+                  <LazyLoadImage effect="blur" src={data.image_data} alt={data.name} />
+                  <p className="author-name">{data.name}</p>
+                </div>
               );
             })
           ) : (

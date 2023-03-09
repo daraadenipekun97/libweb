@@ -1,6 +1,6 @@
 .login-area {
   background: #5e458b;
-  background: linear-gradient( #e3daf0, #5e458b) !important;
+  background: linear-gradient(#e3daf0, #5e458b) !important;
   width: 100%;
   height: 100vh;
   z-index: -1;
@@ -152,7 +152,7 @@
   color: #5e458b;
 }
 
-.lib-login-p-tag span:hover{
+.lib-login-p-tag span:hover {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -171,11 +171,9 @@ hr {
 .login-forgot-password {
   color: #5e458b;
   cursor: pointer;
-  
- 
 }
 
-.login-forgot-password:hover{
+.login-forgot-password:hover {
   text-decoration: underline;
 }
 
@@ -189,18 +187,15 @@ hr {
   cursor: pointer;
 }
 
-.remember{
+.remember {
   font-size: 0.8rem !important;
-  color:#78787d;
-  
+  color: #78787d;
 }
-.lib-login-input-group-checkbox{
+.lib-login-input-group-checkbox {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
 }
-
 
 .circles {
   position: absolute;

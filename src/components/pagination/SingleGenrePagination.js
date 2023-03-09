@@ -35,22 +35,22 @@ const SingleGenrePagination = (props) => {
       >
         <div className="arrow left" />
       </li>
-       {paginationRange.map(pageNumber => {
-          if (pageNumber === DOTS) {
-            return <li className="pagination-item dots">&#8230;</li>;
-          }
-  
-          return (
-            <li
-              className={classnames('pagination-item', {
-                selected: pageNumber === currentPage
-              })}
-              onClick={() => onPageChange(pageNumber)}
-            >
-              {pageNumber}
-            </li>
-          );
-        })} 
+      {paginationRange.map((pageNumber) => {
+        if (pageNumber === DOTS) {
+          return <li className="pagination-item dots">&#8230;</li>;
+        }
+
+        return (
+          <li
+            className={classnames("pagination-item", {
+              selected: pageNumber === currentPage,
+            })}
+            onClick={() => onPageChange(pageNumber)}
+          >
+            {pageNumber}
+          </li>
+        );
+      })}
       <li
         className={classnames("pagination-item", {
           disabled: currentPage === lastPage,

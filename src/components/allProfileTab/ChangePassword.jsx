@@ -117,8 +117,6 @@ const ChangePassword = () => {
       formValues.password === formValues.confirmPassword &&
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_)){6,15}/.test(formValues.password) &&
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_)){6,15}/.test(formValues.confirmPassword)
-
-
     ) {
       setFormState({
         ...formState,
@@ -136,7 +134,7 @@ const ChangePassword = () => {
         confirmNewPassword: true,
       });
 
-       setPasswordMatchCheck(true);
+      setPasswordMatchCheck(true);
     }
   };
 
@@ -257,11 +255,13 @@ const ChangePassword = () => {
               <i className="fa fa-eye toggle-pass" onClick={() => handlePasswordShow()}></i>
             )}
             <p className="reset-validation-error-text">This field must fufill password format</p>
-            {formValues.password !== formValues.confirmPassword && formValues.confirmPassword !==""  && formValues.password !=="" ? (
+            {formValues.password !== formValues.confirmPassword &&
+            formValues.confirmPassword !== "" &&
+            formValues.password !== "" ? (
               <p className="password_match">Password do not match!</p>
             ) : (
               ""
-            )}{" "} 
+            )}{" "}
           </div>
         </div>
 

@@ -10,12 +10,13 @@ import PaystackPop from "@paystack/inline-js";
 import { useState, useEffect } from "react";
 import { webPurchase, restoreWebPurchaseInitial, fetchSubscriptionDetails } from "../../Actions";
 
-
 const Subscription = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { webPurchaseFailure, webPurchaseSuccess,subscriptionDetails } = useSelector((state) => state.profile);
+  const { webPurchaseFailure, webPurchaseSuccess, subscriptionDetails } = useSelector(
+    (state) => state.profile
+  );
 
   const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
   const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
@@ -54,14 +55,13 @@ const Subscription = () => {
           })
         );
 
-        setDashboardModalState(false)
+        setDashboardModalState(false);
 
-         navigate("/home/dashboard", {
-            state: {
-              id: dashboardModalState,
-            },
-          });
-
+        navigate("/home/dashboard", {
+          state: {
+            id: dashboardModalState,
+          },
+        });
       },
       onCancel() {
         alert("you have canceled the transaction");
@@ -88,14 +88,13 @@ const Subscription = () => {
           })
         );
 
-        setDashboardModalState(false)
+        setDashboardModalState(false);
 
-         navigate("/home/dashboard", {
-            state: {
-              id: dashboardModalState,
-            },
-          });
-
+        navigate("/home/dashboard", {
+          state: {
+            id: dashboardModalState,
+          },
+        });
       },
       onCancel() {
         alert("you have canceled the transaction");
@@ -121,13 +120,13 @@ const Subscription = () => {
             reference: transaction.reference,
           })
         );
-        setDashboardModalState(false)
+        setDashboardModalState(false);
 
-         navigate("/home/dashboard", {
-            state: {
-              id: dashboardModalState,
-            },
-          });
+        navigate("/home/dashboard", {
+          state: {
+            id: dashboardModalState,
+          },
+        });
       },
       onCancel() {
         alert("you have canceled the transaction");
@@ -154,13 +153,13 @@ const Subscription = () => {
           })
         );
 
-        setDashboardModalState(false)
+        setDashboardModalState(false);
 
         navigate("/home/dashboard", {
-           state: {
-             id: dashboardModalState,
-           },
-         });
+          state: {
+            id: dashboardModalState,
+          },
+        });
       },
       onCancel() {
         alert("you have canceled the transaction");
@@ -187,13 +186,13 @@ const Subscription = () => {
           })
         );
 
-        setDashboardModalState(false)
+        setDashboardModalState(false);
 
         navigate("/home/dashboard", {
-           state: {
-             id: dashboardModalState,
-           },
-         });
+          state: {
+            id: dashboardModalState,
+          },
+        });
       },
       onCancel() {
         alert("you have canceled the transaction");
@@ -214,7 +213,6 @@ const Subscription = () => {
   useEffect(() => {
     if (webPurchaseFailure) {
       console.log("web purchase failure");
-
     }
 
     return () => {

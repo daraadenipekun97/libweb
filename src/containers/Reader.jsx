@@ -27,10 +27,7 @@ import Spinner from "../components/spinner/Spinner";
 import { updateCurrentPage, updateReadersBook, updateToc } from "../Actions";
 import { useLocation } from "react-router-dom";
 
-
-
-
-const Reader = ({theme, setTheme}) => {
+const Reader = ({ theme, setTheme }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const viewerRef = useRef(null);
@@ -38,7 +35,6 @@ const Reader = ({theme, setTheme}) => {
   const learningRef = useRef(null);
 
   const navRef = useRef(null);
-
 
   const currentLocation = useSelector((state) => state.reader.currentLocation);
 
@@ -85,25 +81,22 @@ const Reader = ({theme, setTheme}) => {
   const sharedLink = localStorage.getItem("book");
 
   const changeToLight = () => {
-      if(theme === "dark"){
-        setTheme("light")
-      }
-      else{
-        setTheme("light")
-      }
-  }
+    if (theme === "dark") {
+      setTheme("light");
+    } else {
+      setTheme("light");
+    }
+  };
 
   const changeToDark = () => {
-    if(theme === "light"){
-      setTheme("dark")
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("dark");
     }
-    else{
-      setTheme("dark")
-    }
-}
+  };
   return (
     <>
-
       <ViewerWrapper>
         <ReaderHeader
           onNavToggle={onNavToggle}
@@ -152,7 +145,6 @@ const Reader = ({theme, setTheme}) => {
         ref={learningRef}
         link={sharedLink}
       />
-
     </>
   );
 };

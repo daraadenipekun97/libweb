@@ -70,35 +70,23 @@
 }
 
 @media screen and (max-width: 1040px) {
-
   .author-gallery-box {
     width: 200px;
   }
-
-
 }
 
 @media screen and (max-width: 987px) {
-
   .author-gallery-box {
     width: 150px;
   }
-
-
 }
 
 @media screen and (max-width: 941px) {
-
   .author-gallery-box {
     width: 120px;
     /* border: solid; */
   }
-
-
 }
-
-
-
 
 @media screen and (max-width: 769px) {
   .author-gallery-inner-wrapper {

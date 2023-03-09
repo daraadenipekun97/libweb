@@ -4,13 +4,8 @@
   padding: 4rem 6rem;
 }
 
-
 @media (max-width: 768px) {
-
   .search-container {
- 
     padding: 4rem 2rem;
   }
-  
-
 }

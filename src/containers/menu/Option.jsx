@@ -20,7 +20,7 @@ const Option = (
     onBookOptionChange,
     theme,
     changeToLight,
-    changeToDark
+    changeToDark,
   },
   ref
 ) => {
@@ -169,14 +169,13 @@ const Option = (
                 onClick={() => changeToLight()}
               />
 
-            <ControlIconBtn
+              <ControlIconBtn
                 type="Dark"
                 alt="Dark Mode"
                 active={true}
                 isSelected={theme === "dark" ? true : false}
                 onClick={() => changeToDark()}
               />
-            
             </ControlIconBtnWrapper>
             <OptionDropdown
               title="Font"

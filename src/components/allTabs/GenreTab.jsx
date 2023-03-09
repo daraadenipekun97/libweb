@@ -3,11 +3,9 @@ import "./css/genre.css";
 import Spinner from "../spinner/Spinner";
 import { useNavigate } from "react-router-dom";
 
-
 const GenreTab = ({ allGenre }) => {
   const [spinnerHide, setSpinnerHide] = useState(false);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -20,8 +18,8 @@ const GenreTab = ({ allGenre }) => {
   }, []);
 
   const handleGenreNavigate = (id) => {
-    navigate(`/home/genre/${id}`)
-  }
+    navigate(`/home/genre/${id}`);
+  };
 
   return (
     <>
@@ -31,9 +29,7 @@ const GenreTab = ({ allGenre }) => {
             allGenre.map((data) => {
               return (
                 <>
-                  <li onClick={() => handleGenreNavigate(data.id)}>
-                    {data.title}
-                  </li>
+                  <li onClick={() => handleGenreNavigate(data.id)}>{data.title}</li>
                   <hr className="genre-hr" />
                 </>
               );

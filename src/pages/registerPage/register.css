@@ -165,20 +165,14 @@ input[type="password"] {
   color: #5e458b;
 }
 
-.lib-register-login-here span:hover{
+.lib-register-login-here span:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-
-
-.policy_terms_link:hover{
-
+.policy_terms_link:hover {
   text-decoration: underline;
   cursor: pointer;
-
-
-
 }
 
 hr {
@@ -199,7 +193,7 @@ hr {
 
 .area {
   background: #5e458b;
-  background: linear-gradient( #e3daf0, #5e458b) !important;
+  background: linear-gradient(#e3daf0, #5e458b) !important;
   width: 100%;
   height: 120vh;
   z-index: -1;

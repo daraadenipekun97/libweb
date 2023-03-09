@@ -4,7 +4,6 @@ import Spinner from "../spinner/Spinner";
 import "./css/aboutTab.css";
 import { useNavigate } from "react-router-dom";
 
-
 const AboutBookTab = () => {
   const navigate = useNavigate();
 
@@ -22,8 +21,8 @@ const AboutBookTab = () => {
   }
 
   const handleLearnMore = (id) => {
-      navigate(`/home/authors/${id}`)
-  }
+    navigate(`/home/authors/${id}`);
+  };
 
   return (
     <>

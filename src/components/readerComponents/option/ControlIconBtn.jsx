@@ -6,7 +6,7 @@ import {
   BookCloseIcon,
   BookOpenIcon,
   LightIcon,
-  DarkIcon
+  DarkIcon,
 } from "../../../lib/svg";
 // lib
 import * as styles from "../../../lib/styles/styles";
@@ -26,11 +26,11 @@ const ControlIconBtn = ({ type, alt, active, isSelected, onClick }) => {
       break;
     case "BookClose":
       HeaderIcon = BookCloseIcon;
-      break
-    case "Light" :
+      break;
+    case "Light":
       HeaderIcon = LightIcon;
       break;
-      case "Dark" :
+    case "Dark":
       HeaderIcon = DarkIcon;
       break;
   }

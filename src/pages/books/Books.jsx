@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./books.css";
 import Tab from "../../components/tab/Tab";
 import bookImg from "../../assets/images/wolesoyinka.jpg";
-import { AiFillHeart, AiOutlineHeart, AiFillStar } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { Footer } from "../../containers";
 import SingleBook from "../../components/singleBook/SingleBook";
 import {
@@ -17,7 +17,7 @@ import {
   restoreUnfavouriteInitial,
   readBook,
   fetchSubscriptionDetails,
-  restoreFetchBookDetails
+  restoreFetchBookDetails,
 } from "../../Actions";
 import Preloader from "../../components/preloader/Preloader";
 import StarRating from "../../components/starRating/StarRating";
@@ -48,9 +48,6 @@ const Books = () => {
     //  console.log('current Pathname 👉️', window.location.pathname);
   }, [dispatch, params.id]);
 
- 
-  
-
   useEffect(() => {
     let pathname = window.location.pathname;
     let slicedPathname = pathname.slice(0, 12);
@@ -62,13 +59,13 @@ const Books = () => {
   }, [dispatch, window.location.pathname]);
 
   const handleBack = () => {
-     dispatch(restoreFetchBookDetails())
+    dispatch(restoreFetchBookDetails());
     navigate("/home/trending");
   };
 
   const handleRemoveFav = (id) => {
-    debugger
-     dispatch(removeBookFromFav(id));
+    debugger;
+    dispatch(removeBookFromFav(id));
     // setToggleHeart(false);
   };
 
@@ -116,9 +113,6 @@ const Books = () => {
     };
   }, [removeBookFromFavouriteFailure]);
 
- 
-  
-
   if (Object.keys(bookDetails).length === 0) {
     return <Preloader />;
   }
@@ -144,7 +138,7 @@ const Books = () => {
           //     id: url,
           //   },
           // });
-          window.location.href = `https://libreader.vercel.app/#${url}`
+          window.location.href = `https://libreader.vercel.app/#${url}`;
           dispatch(readBook(bookId));
         } else {
           // toastr.warning('You cant read this book because your subscription is canceled', 'Please subscribe or reactive your subscription');
@@ -168,7 +162,7 @@ const Books = () => {
           //   },
           // });
 
-          window.location.href = `https://libreader.vercel.app/#${url}`
+          window.location.href = `https://libreader.vercel.app/#${url}`;
           dispatch(readBook(bookId));
         } else {
           // toastr.warning('You cant read this book because your subscription is canceled', 'Please subscribe or reactive your subscription');
@@ -181,9 +175,8 @@ const Books = () => {
         // toastr.warning('You cant read this book because you do not have an active subscription', 'Please subscribe')
         navigate("/home/subscription");
       }
-    }
-    else{
-        navigate("/home/subscription");
+    } else {
+      navigate("/home/subscription");
     }
   };
 
@@ -201,7 +194,6 @@ const Books = () => {
         </div>
 
         <div className="books-container-wrapper">
-          
           <div className="book-and-author">
             <div className="book-img">
               <img src={bookDetails.book.image_data} alt="" />
@@ -222,11 +214,11 @@ const Books = () => {
                   onClick={() => handleRemoveFav(bookDetails.book.id)}
                 />
               ) : (
-                <AiOutlineHeart
-                  size={25}
-                  color="red"
-                  onClick={() => handleAddFav(bookDetails.book.id)}
-                />
+               
+                <div style={{color:'red', border:"solid"}}
+                onClick={() => handleAddFav(bookDetails.book.id)}                
+                >Hello
+                </div>
               )}
 
               <StarRating bookDetails={bookDetails.rating} averageRating={true} />

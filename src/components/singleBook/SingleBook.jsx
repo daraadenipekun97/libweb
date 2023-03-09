@@ -12,7 +12,6 @@ import Spinner from "../spinner/Spinner";
 import PageHeaderText from "../pageHeaderText/PageHeaderText";
 import { searchBooksUnauth, fetchProfile } from "../../Actions";
 
-
 const Modal = ({ handleClose, show }) => {
   const showHideClassName = show ? "main-modal-bg display-block" : "main-modal-bg display-none";
 
@@ -37,15 +36,13 @@ const SingleBook = ({ datas, searchBar, title }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { profileData } = useSelector(
-    (state) => state.profile
-  );
+  const { profileData } = useSelector((state) => state.profile);
 
   const [spinnerHide, setSpinnerHide] = useState(false);
   const [show, setShow] = useState(false);
   const [childStat, setChildStat] = useState(false);
-  const [emailVerifiedStatus, setEmailVertifiedStatus] = useState(false)
-  const [userLoggedIn, setUserLoggedIn] = useState(false)
+  const [emailVerifiedStatus, setEmailVertifiedStatus] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
   const initialFormValues = {
     search: "",
   };
@@ -60,10 +57,9 @@ const SingleBook = ({ datas, searchBar, title }) => {
     const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
     const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
 
-    if(userDataRegister || userDataLogin){
-      setUserLoggedIn(true)
+    if (userDataRegister || userDataLogin) {
+      setUserLoggedIn(true);
       dispatch(fetchProfile());
-
     }
 
     let childStatus =
@@ -74,8 +70,6 @@ const SingleBook = ({ datas, searchBar, title }) => {
         : "";
 
     setChildStat(childStatus);
-
-
 
     return () => {
       setSpinnerHide(false);
@@ -121,60 +115,46 @@ const SingleBook = ({ datas, searchBar, title }) => {
   // }
 
   const handleBookNavigate = (id) => {
-
-    
     // if (
     //   childStat &&
     //   (title === "Trending Books" || title === "New Releases Books" || title === "Classic Books")
     // ) {
     //   setShow(true);
     // } else {
-        navigate(`/home/books/${id}`);
-      //uncomment the ccode below  to prevent the previously 
-      //viewed book from showing when a new book is clicked
+    navigate(`/home/books/${id}`);
+    //uncomment the ccode below  to prevent the previously
+    //viewed book from showing when a new book is clicked
 
-      // window.location.reload(); 
+    // window.location.reload();
     //}
   };
 
   const handleVerifyNavigate = () => {
-    navigate("/verify")
-
-  }
+    navigate("/verify");
+  };
 
   const handleSignInNavigate = () => {
-
-    navigate("/signin")
-
-  }
+    navigate("/signin");
+  };
 
   const handleClose = () => {
     setShow(false);
   };
 
   const handleSeeAll = () => {
-
     if (title === "Trending Books") {
-      navigate("/home/trending")
-    } else if(title === "New Releases Books") {
-
-      navigate("/home/newReleases")
-      
+      navigate("/home/trending");
+    } else if (title === "New Releases Books") {
+      navigate("/home/newReleases");
+    } else if (title === "Classic Books") {
+      navigate("/home/classics");
+    } else if (title === "Educational & Kiddies Books") {
+      navigate("/home/childrenscorner");
+    } else if (title === "Author's Book") {
+      navigate("/home/discover");
+    } else {
     }
-    else if(title === "Classic Books"){
-      navigate("/home/classics")
-    }
-
-    else if(title === "Educational & Kiddies Books"){
-      navigate("/home/childrenscorner")
-    }
-    else if(title === "Author's Book"){
-      navigate("/home/discover")
-    }
-    else{
-
-    }
-  }
+  };
 
   return (
     <div className="lib-book-gallery">
@@ -198,11 +178,7 @@ const SingleBook = ({ datas, searchBar, title }) => {
             </div>
           </div>
         ) : searchBar === false ? (
-          <p
-            
-            className="see-all-text"
-            onClick={handleSeeAll}
-          >
+          <p className="see-all-text" onClick={handleSeeAll}>
             See All
           </p>
         ) : (
@@ -211,7 +187,7 @@ const SingleBook = ({ datas, searchBar, title }) => {
       </div>
       <div
         className="lib-book-gallery-wrapper"
-        
+
         // {
         //   childStat &&
         //   (title === "Trending Books" ||
@@ -227,13 +203,12 @@ const SingleBook = ({ datas, searchBar, title }) => {
               return (
                 <div
                   className="lib-gallery-box"
-                  onClick={() => 
-                    userLoggedIn && profileData.email_verified_at ? 
-                    handleBookNavigate(data.id)
-                    
-                    : userLoggedIn && profileData.email_verified_at === null ? handleVerifyNavigate()
-                     :
-                     handleSignInNavigate()
+                  onClick={() =>
+                    userLoggedIn && profileData.email_verified_at
+                      ? handleBookNavigate(data.id)
+                      : userLoggedIn && profileData.email_verified_at === null
+                      ? handleVerifyNavigate()
+                      : handleSignInNavigate()
                   }
                   key={data.id}
                 >

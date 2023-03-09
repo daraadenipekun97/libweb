@@ -25,13 +25,11 @@ const Menu = ({ handleHome, handleDiscover, handleSignin }) => {
 
   return (
     <>
-      <p className={activeTab === "home" ? "active" : ""}  onClick={handleHome}>
-          Home
+      <p className={activeTab === "home" ? "active" : ""} onClick={handleHome}>
+        Home
       </p>
-      <p onClick={handleDiscover}>
-          Discover
-      </p>
-      <p className={activeTab === "signin" ? "active" : ""}    onClick={handleSignin}>
+      <p onClick={handleDiscover}>Discover</p>
+      <p className={activeTab === "signin" ? "active" : ""} onClick={handleSignin}>
         Sign In
       </p>
     </>
@@ -49,12 +47,11 @@ const Navbar = ({ user }) => {
     } else {
       navigate("/");
     }
-
   };
 
-  const handleSignin = () =>{
-    navigate("/signin")
-  }
+  const handleSignin = () => {
+    navigate("/signin");
+  };
 
   const handleDiscover = () => {
     const hanldeSwal = () => {
@@ -83,16 +80,15 @@ const Navbar = ({ user }) => {
     } else {
       hanldeSwal();
     }
-
   };
 
   const handleHomeNav = () => {
     navigate("/");
-  }
+  };
 
-  const handleGetStarted = () =>{
-    navigate("/register")
-  }
+  const handleGetStarted = () => {
+    navigate("/register");
+  };
 
   return (
     <div className="lib-navbar">
@@ -100,7 +96,7 @@ const Navbar = ({ user }) => {
         <img src={Logo} alt="Logo" />
       </div>
       <div className="lib-navbar-links-container">
-        <Menu handleHome={handleHome} handleDiscover={handleDiscover} handleSignin = {handleSignin}/>
+        <Menu handleHome={handleHome} handleDiscover={handleDiscover} handleSignin={handleSignin} />
       </div>
       <div className="btn-wrapper" onClick={handleGetStarted}>
         Get Started
@@ -114,7 +110,11 @@ const Navbar = ({ user }) => {
         {toggleMenu && (
           <div className="lib-navbar-menu-container scale-up-center">
             <div className="lib-navbar-menu-container-links">
-              <Menu handleHome={handleHome} handleDiscover={handleDiscover} handleSignin = {handleSignin} />
+              <Menu
+                handleHome={handleHome}
+                handleDiscover={handleDiscover}
+                handleSignin={handleSignin}
+              />
               <PurpleButton text="Get Started" onClickFunction={handleGetStarted} />
             </div>
           </div>

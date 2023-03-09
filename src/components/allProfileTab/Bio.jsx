@@ -86,8 +86,6 @@ const Bio = () => {
     dispatch(fetchProfile());
   }, [dispatch]);
 
- 
-
   const firstnameHandler = (e) => {
     if (e) {
       let nameValue = e.target.value;
@@ -170,8 +168,6 @@ const Bio = () => {
         formValues.gender !== "No Gender" &&
         /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.firstname) &&
         /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.lastname)
-  
-
       ) {
         setFormState({
           ...formState,
@@ -236,15 +232,14 @@ const Bio = () => {
     };
   }, [updateProfileSuccess]);
 
-
   useEffect(() => {
     if (Object.keys(profileData).length !== 0) {
       const spliteNameArray = profileData.name !== null ? profileData.name.split(" ") : "";
 
       setFormValues({
         ...formValues,
-        firstname: spliteNameArray !=="" ? spliteNameArray[0] : "",
-        lastname: spliteNameArray!=="" ? spliteNameArray[1] : "",
+        firstname: spliteNameArray !== "" ? spliteNameArray[0] : "",
+        lastname: spliteNameArray !== "" ? spliteNameArray[1] : "",
         phone: profileData.phone !== null ? profileData.phone : "",
         dob: profileData.dob !== null ? profileData.dob : "",
         country_id: profileData.country.id !== null ? profileData.country.id : "No Country",
@@ -254,14 +249,27 @@ const Bio = () => {
     }
   }, [profileData]);
 
-
-  const handleKeyPress = (e) =>{
-    debugger
-    let keyCode = (e.keyCode ? e.keyCode : e.which);
-    if ((keyCode > 47 && keyCode < 58 ) || keyCode == 32 || e.shiftKey || keyCode == 106 || keyCode == 107 || keyCode == 110 || keyCode == 111 || keyCode == 186 || keyCode == 187 || keyCode == 188 || (keyCode >= 190 &&  keyCode < 222) || (keyCode >= 96 && keyCode <=105) || keyCode == 144) {
+  const handleKeyPress = (e) => {
+    debugger;
+    let keyCode = e.keyCode ? e.keyCode : e.which;
+    if (
+      (keyCode > 47 && keyCode < 58) ||
+      keyCode == 32 ||
+      e.shiftKey ||
+      keyCode == 106 ||
+      keyCode == 107 ||
+      keyCode == 110 ||
+      keyCode == 111 ||
+      keyCode == 186 ||
+      keyCode == 187 ||
+      keyCode == 188 ||
+      (keyCode >= 190 && keyCode < 222) ||
+      (keyCode >= 96 && keyCode <= 105) ||
+      keyCode == 144
+    ) {
       e.preventDefault();
     }
-  }
+  };
 
   return (
     <div className="bio-wrapper">

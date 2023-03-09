@@ -74,8 +74,7 @@
   cursor: pointer;
 }
 
-
-.modal-btn-dashboard:active{
+.modal-btn-dashboard:active {
   color: white;
 }
 
@@ -96,8 +95,6 @@
   background-color: #5e458b;
 }
 
-
-
 hr {
   border: 0;
   height: 0.5px;
@@ -106,23 +103,15 @@ hr {
 }
 
 @media screen and (max-width: 920px) {
-
-  .modal-main-dashboard{
-
+  .modal-main-dashboard {
     width: 50% !important;
-
   }
-  
 }
 
 @media screen and (max-width: 550px) {
-
-  .modal-main-dashboard{
-
+  .modal-main-dashboard {
     width: 70% !important;
-
   }
-  
 }
 
 @media screen and (max-width: 400px) {
@@ -130,11 +119,7 @@ hr {
     padding: 4rem 0rem;
   }
 
-  .modal-main-dashboard{
-
+  .modal-main-dashboard {
     width: 80% !important;
-
   }
-  
-
 }

@@ -27,15 +27,13 @@ const LoginPage = ({ user }) => {
   const [valid, setValid] = useState(false);
   const [googleLoginStatus, setGoogleLoginStatus] = useState(false);
 
-
-
   function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
       let c = ca[i];
-      while (c.charAt(0) == ' ') {
+      while (c.charAt(0) == " ") {
         c = c.substring(1);
       }
       if (c.indexOf(name) == 0) {
@@ -45,24 +43,20 @@ const LoginPage = ({ user }) => {
     return "";
   }
 
-
-  
   const getCookieData = () => {
-    let  userEmail = getCookie('email'); 
+    let userEmail = getCookie("email");
 
     setFormValues({
       ...formValues,
       email: userEmail,
     });
-
-    }
+  };
 
   useEffect(() => {
-    
     if (user && location.pathname === "/signin") {
       navigate("/home/dashboard");
     }
-    getCookieData()
+    getCookieData();
   }, [dispatch]);
 
   const [focused, setFocused] = useState({
@@ -252,19 +246,16 @@ const LoginPage = ({ user }) => {
   }, [loginFailure]);
 
   const handleForgotPassNavigate = () => {
-    navigate("/forgot")
-  }
+    navigate("/forgot");
+  };
 
   const handleSignup = () => {
-    navigate("/register")
-  }
-
+    navigate("/register");
+  };
 
   const rememberHandler = (e) => {
-    let cookieEmail = formValues.email
-    document.cookie="email="+cookieEmail+"; path=https://libweb.vercel.app/";
-
-
+    let cookieEmail = formValues.email;
+    document.cookie = "email=" + cookieEmail + "; path=https://libweb.vercel.app/";
   };
 
   return (
@@ -309,14 +300,13 @@ const LoginPage = ({ user }) => {
             </div>
 
             <div className="lib-login-input-group-checkbox">
-            <input type="checkbox" id="remember" onClick={(e) => rememberHandler(e)} /> &nbsp;
-            <label htmlFor="remember" className="remember">
-              Remember me
+              <input type="checkbox" id="remember" onClick={(e) => rememberHandler(e)} /> &nbsp;
+              <label htmlFor="remember" className="remember">
+                Remember me
               </label>
             </div>
 
             <div className="lib-login-input-group" id="btn-group">
-
               <button disabled={formState.buttonState} onClick={() => handleLogin()}>
                 {formState.spinner === true ? <Spinner /> : formState.buttonText}
               </button>
@@ -357,7 +347,7 @@ const LoginPage = ({ user }) => {
             />
 
             <p className="lib-login-p-tag">
-              Dont have an account? <span  onClick={handleSignup}>Sign up</span>
+              Dont have an account? <span onClick={handleSignup}>Sign up</span>
             </p>
           </div>
         </div>

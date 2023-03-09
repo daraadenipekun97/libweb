@@ -5,7 +5,7 @@ import NotFoundImage from "../../assets/images/clip-exclamation-mark.png";
 import { useNavigate } from "react-router-dom";
 import { Footer, Navbar } from "../../containers";
 
-const NotFound = ({user}) => {
+const NotFound = ({ user }) => {
   const navigate = useNavigate();
 
   const handleHomeNavigate = () => {
@@ -25,7 +25,7 @@ const NotFound = ({user}) => {
           </button>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

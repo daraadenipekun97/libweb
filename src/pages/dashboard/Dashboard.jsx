@@ -9,7 +9,9 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Modal = ({ handleClose, show, handleNavigate }) => {
-  const showHideClassName = show ? "main-modal-bg-dashboard display-block" : "main-modal-bg-dashboard display-none";
+  const showHideClassName = show
+    ? "main-modal-bg-dashboard display-block"
+    : "main-modal-bg-dashboard display-none";
 
   return (
     <div className={showHideClassName}>
@@ -49,30 +51,22 @@ const Dashboard = () => {
 
   const [slicedTrendingBooks, setSlicedTrendingBooks] = useState([]);
   const [show, setShow] = useState(false);
-  
 
   useEffect(() => {
     dispatch(fetchAllTrendingBooks());
     dispatch(fetchSubscriptionDetails());
   }, [dispatch]);
 
-
-
   useEffect(() => {
-    debugger
-    if (subscriptionDetails.subscription === null && location.state === null ) {
-        setShow(true);
-    } 
-    else if(subscriptionDetails.subscription === null && location.state.id === false){
-        setShow(false)
-    }
-    
-    else {
+    debugger;
+    if (subscriptionDetails.subscription === null && location.state === null) {
+      setShow(true);
+    } else if (subscriptionDetails.subscription === null && location.state.id === false) {
+      setShow(false);
+    } else {
       setShow(false);
     }
   }, [subscriptionDetails.subscription]);
-
-  
 
   const handleClose = () => {
     setShow(false);
@@ -104,7 +98,7 @@ const Dashboard = () => {
           <SingleBook datas={slicedTrendingBooks} searchBar={false} title="Trending Books" />
         </div>
       </div>
-      <Community/>
+      <Community />
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
     </>

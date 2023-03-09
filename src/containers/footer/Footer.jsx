@@ -15,10 +15,14 @@ const Footer = () => {
         <div className="lib-footer-links-div">
           <h4>Company</h4>
           <p>
-            <a href="/about" target="_blank">About Us</a>
+            <a href="/about" target="_blank">
+              About Us
+            </a>
           </p>
           <p>
-            <a href="/faq" target="_blank">FAQs</a>
+            <a href="/faq" target="_blank">
+              FAQs
+            </a>
           </p>
         </div>
 
@@ -54,10 +58,14 @@ const Footer = () => {
         <div className="lib-footer-links-div">
           <h4>Terms and Policy</h4>
           <p>
-            <a href="/privacyPolicy" target="_blank">Privacy Policy</a>
+            <a href="/privacyPolicy" target="_blank">
+              Privacy Policy
+            </a>
           </p>
           <p>
-            <a href="/termsOfUse" target="_blank">Terms of Use</a>
+            <a href="/termsOfUse" target="_blank">
+              Terms of Use
+            </a>
           </p>
         </div>
 

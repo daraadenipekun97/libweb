@@ -286,7 +286,6 @@ const Register = ({ user }) => {
   const [countryError, setCountryError] = useState(false);
 
   const handleRegister = () => {
-   
     if (
       formValues.firstname !== "" &&
       formValues.lastname !== "" &&
@@ -295,12 +294,10 @@ const Register = ({ user }) => {
       formValues.phone !== "" &&
       formValues.dob !== "" &&
       countryId.label !== "" &&
-      termsCheckBox === true &&  
+      termsCheckBox === true &&
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_)){6,15}/.test(formValues.password) &&
       /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.firstname) &&
       /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.lastname)
-
-
     ) {
       setFormState({
         ...formState,
@@ -398,26 +395,38 @@ const Register = ({ user }) => {
     };
   }, [registerSuccess]);
 
-
   const handleTermsNavigate = () => {
-    navigate("/termsOfUse")
-  }
+    navigate("/termsOfUse");
+  };
 
   const handlePolicyNavigate = () => {
-    navigate("/privacyPolicy")
-  }
+    navigate("/privacyPolicy");
+  };
 
   const handleLoginNavigate = () => {
     navigate("/signin");
-  }
+  };
 
-
-  const handleKeyPress = (e) =>{
-    let keyCode = (e.keyCode ? e.keyCode : e.which);
-    if ((keyCode > 47 && keyCode < 58 ) || keyCode == 32 || e.shiftKey || keyCode == 106 || keyCode == 107 || keyCode == 110 || keyCode == 111 || keyCode == 186 || keyCode == 187 || keyCode == 188 || (keyCode >= 190 &&  keyCode < 222) || (keyCode >= 96 && keyCode <=105) || keyCode == 144) {
+  const handleKeyPress = (e) => {
+    let keyCode = e.keyCode ? e.keyCode : e.which;
+    if (
+      (keyCode > 47 && keyCode < 58) ||
+      keyCode == 32 ||
+      e.shiftKey ||
+      keyCode == 106 ||
+      keyCode == 107 ||
+      keyCode == 110 ||
+      keyCode == 111 ||
+      keyCode == 186 ||
+      keyCode == 187 ||
+      keyCode == 188 ||
+      (keyCode >= 190 && keyCode < 222) ||
+      (keyCode >= 96 && keyCode <= 105) ||
+      keyCode == 144
+    ) {
       e.preventDefault();
     }
-  }
+  };
 
   return (
     <>
@@ -440,7 +449,6 @@ const Register = ({ user }) => {
                   onKeyDown={(e) => handleKeyPress(e)}
                   onKeyUp={(e) => handleKeyPress(e)}
                   // onFocus={() => setShowNameDesc(true)}
-
                 />
 
                 <p className="register-validation-error-text">firstname is required</p>
@@ -475,7 +483,6 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.email.toString()}
                   onChange={(e) => emailAddressHandler(e)}
-                  
                 />
                 <p className="register-validation-error-text">email is required(all lower case)</p>
               </div>
@@ -573,9 +580,15 @@ const Register = ({ user }) => {
 
             <div className="lib-register-input-group" id="checkbx">
               <label htmlFor="terms">
-                <input type="checkbox" id="terms" required onChange={(e) => termsHandler(e)} />
-                I agree to the <span className="policy_terms_link" onClick={handleTermsNavigate}>Terms and Conditions</span> and to the{" "}
-                <span className="policy_terms_link" onClick={handlePolicyNavigate}>Privacy Policy</span>
+                <input type="checkbox" id="terms" required onChange={(e) => termsHandler(e)} />I
+                agree to the{" "}
+                <span className="policy_terms_link" onClick={handleTermsNavigate}>
+                  Terms and Conditions
+                </span>{" "}
+                and to the{" "}
+                <span className="policy_terms_link" onClick={handlePolicyNavigate}>
+                  Privacy Policy
+                </span>
                 {checkedError === true ? (
                   <p className="terms-validation-text">
                     Accept the terms and condition to register

@@ -9,8 +9,8 @@ const ViewerWrapper = styled.div`
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  background-color: ${props => props.theme.pageBackground};
-  transition: all .5s ease;
+  background-color: ${(props) => props.theme.pageBackground};
+  transition: all 0.5s ease;
   ${styles.scrollbar(0)};
 `;
 

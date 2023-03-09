@@ -80,7 +80,7 @@ export const createSendMail = async () => {
 };
 
 export const postlogin = async (body) => {
-  debugger
+  debugger;
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
   } else {
@@ -101,7 +101,7 @@ export const postlogin = async (body) => {
       }
     } catch (ex) {
       toastr.error("Login", `${ex.message}`);
-      return ex.message
+      return ex.message;
     }
   }
 };

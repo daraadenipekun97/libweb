@@ -64,8 +64,8 @@ const UserNavbar = () => {
   };
 
   const handleProfileNavigate = () => {
-    navigate("/home/profile")
-  }
+    navigate("/home/profile");
+  };
 
   const searchTextHandler = (e) => {
     if (e) {
@@ -104,22 +104,21 @@ const UserNavbar = () => {
     }
   }, [dispatch, window.location.pathname]);
 
-
   const handleHome = () => {
-      navigate("/home/dashboard")
-  }
+    navigate("/home/dashboard");
+  };
 
   const handleLibrary = () => {
-    navigate("/home/library")
-  }
+    navigate("/home/library");
+  };
 
   const handleDiscover = () => {
-    navigate("/home/discover")
-  }
+    navigate("/home/discover");
+  };
 
   const handleDashboard = () => {
-    navigate("/home/dashboard")
-  }
+    navigate("/home/dashboard");
+  };
 
   return (
     <>
@@ -136,11 +135,11 @@ const UserNavbar = () => {
         <div className="profile_dropdown">
           <ul>
             <li onClick={handleProfileNavigate}>
-                {userDataLogin !== null
-                  ? userDataLogin.user.name
-                  : userRegData !== null
-                  ? userRegData.user.name
-                  : ""}
+              {userDataLogin !== null
+                ? userDataLogin.user.name
+                : userRegData !== null
+                ? userRegData.user.name
+                : ""}
             </li>
             <li onClick={handleLogout}>Log out</li>
           </ul>
@@ -148,13 +147,13 @@ const UserNavbar = () => {
 
         <div className="navbar-links">
           <ul>
-            <li className={activeTab === "dashboard" ? "active" : ""} onClick = {handleHome}>
+            <li className={activeTab === "dashboard" ? "active" : ""} onClick={handleHome}>
               Home
             </li>
-            <li className={activeTab === "lib" ? "active" : ""} onClick = {handleLibrary}>
+            <li className={activeTab === "lib" ? "active" : ""} onClick={handleLibrary}>
               My Library
             </li>
-            <li className={activeTab === "discover" ? "active" : ""} onClick = {handleDiscover}>
+            <li className={activeTab === "discover" ? "active" : ""} onClick={handleDiscover}>
               Discover
             </li>
           </ul>

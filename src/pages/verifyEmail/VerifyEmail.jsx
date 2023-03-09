@@ -20,29 +20,25 @@ const VerifyEmail = ({ user }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  
-
   const [focused, setFocused] = useState(false);
   const [valid, setValid] = useState(false);
 
   const { verifyUserFailure, verifyUserSuccess, resendMailSuccess, resendMailFailure } =
     useSelector((state) => state.auth);
 
+  const clientId = "218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com";
 
+  useEffect(() => {
+    const initClient = () => {
+      gapi.auth2.init({
+        clientId: clientId,
+        scope: "profile email",
+      });
+    };
+    gapi.load("client:auth2", initClient);
 
-    const clientId = "218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com";
-
-    useEffect(() => {
-      const initClient = () => {
-        gapi.auth2.init({
-          clientId: clientId,
-          scope: "profile email",
-        });
-      };
-      gapi.load("client:auth2", initClient);
-
-      window.scrollTo(0,300)
-    });
+    window.scrollTo(0, 300);
+  });
 
   const hanldeSwal = () => {
     Swal.fire({
@@ -170,7 +166,6 @@ const VerifyEmail = ({ user }) => {
     });
   };
 
-
   const handleLogout = () => {
     const auth2 = gapi.auth2.getAuthInstance();
 
@@ -197,21 +192,13 @@ const VerifyEmail = ({ user }) => {
         code: "",
       });
 
-     
-
-       navigate("/home/dashboard");
+      navigate("/home/dashboard");
 
       //user is logged out if email verification is succesful
       // handleLogout()
-      
-   
 
       //  handleSwal();
       // window.location.reload();
-
-
-      
-
     }
 
     return () => {
@@ -268,7 +255,7 @@ const VerifyEmail = ({ user }) => {
 
   return (
     <>
-          {user ? <UserNavbar /> : <Navbar />}
+      {user ? <UserNavbar /> : <Navbar />}
 
       <div className="lib-verify-container">
         <div className="lib-verify-wrapper">

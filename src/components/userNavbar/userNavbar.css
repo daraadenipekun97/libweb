@@ -1,4 +1,4 @@
-.logo{
+.logo {
   cursor: pointer;
 }
 
@@ -40,8 +40,6 @@
   padding: 0.5rem;
   cursor: pointer;
 }
-
-
 
 .active,
 .navbar-links li:hover {

@@ -19,7 +19,7 @@ import {
   FETCH_AUTHORS_BY_ID_SUCCESS,
   SEARCH_BOOK_SUCCESS,
   SEARCH_BOOK_UNAUTH_SUCCESS,
-  RESTORE_FETCH_BOOKS_DETAILS
+  RESTORE_FETCH_BOOKS_DETAILS,
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -141,13 +141,12 @@ const booksReducer = (state = INIT_STATE, action) => {
       };
     }
 
-    case RESTORE_FETCH_BOOKS_DETAILS:{
+    case RESTORE_FETCH_BOOKS_DETAILS: {
       return {
         ...state,
-        bookDetails:{}
-      }
+        bookDetails: {},
+      };
     }
-
 
     case ADD_BOOK_TO_FAVOURITE_SUCCESS: {
       if (action.payload === true) {

@@ -9,7 +9,6 @@ const WalletTab = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const { walletDetails } = useSelector((state) => state.profile);
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const WalletTab = () => {
 
   const handleWalletNavigate = () => {
     navigate("/home/wallet");
-  }
+  };
 
   return (
     <div className="wallet-wrapper">
