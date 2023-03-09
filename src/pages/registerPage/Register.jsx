@@ -112,6 +112,7 @@ const Register = ({ user }) => {
 
   const handleFocus = (e) => {
     setShowPasswordDesc(false);
+    // setShowNameDesc(false)
     if (e.target.name === "firstname") {
       setFocused({ ...focused, firstname: true });
     } else if (e.target.name === "lastname") {
@@ -269,7 +270,7 @@ const Register = ({ user }) => {
   };
 
   const [showPasswordDesc, setShowPasswordDesc] = useState(false);
-
+  // const [showNameDesc, setShowNameDesc] = useState(false);
   const [passwordShow, setPasswordShow] = useState(false);
 
   const handlePasswordShow = () => {
@@ -285,6 +286,7 @@ const Register = ({ user }) => {
   const [countryError, setCountryError] = useState(false);
 
   const handleRegister = () => {
+   
     if (
       formValues.firstname !== "" &&
       formValues.lastname !== "" &&
@@ -294,7 +296,10 @@ const Register = ({ user }) => {
       formValues.dob !== "" &&
       countryId.label !== "" &&
       termsCheckBox === true &&  
-      /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(formValues.password)
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_)){6,15}/.test(formValues.password) &&
+      /^(?=.*[a-zA-Z])(?=.*[-'])/.test(formValues.firstname) &&
+      /^(?=.*[a-zA-Z])(?=.*[-'])/.test(formValues.lastname)
+
 
     ) {
       setFormState({
@@ -409,7 +414,7 @@ const Register = ({ user }) => {
 
   const handleKeyPress = (e) =>{
     let keyCode = (e.keyCode ? e.keyCode : e.which);
-    if ((keyCode > 47 && keyCode < 58 ) || keyCode == 32 || e.shiftKey || keyCode == 106 || keyCode == 107 || keyCode == 110 || keyCode == 111 || keyCode == 186 || keyCode == 187 || keyCode == 188 || (keyCode >= 190 &&  keyCode < 222)) {
+    if ((keyCode > 47 && keyCode < 58 ) || keyCode == 32 || e.shiftKey || keyCode == 106 || keyCode == 107 || keyCode == 110 || keyCode == 111 || keyCode == 186 || keyCode == 187 || keyCode == 188 || (keyCode >= 190 &&  keyCode < 222) || (keyCode >= 96 && keyCode <=105) || keyCode == 144) {
       e.preventDefault();
     }
   }
@@ -434,8 +439,10 @@ const Register = ({ user }) => {
                   onChange={(e) => firstnameHandler(e)}
                   onKeyDown={(e) => handleKeyPress(e)}
                   onKeyUp={(e) => handleKeyPress(e)}
+                  // onFocus={() => setShowNameDesc(true)}
 
                 />
+
                 <p className="register-validation-error-text">firstname is required</p>
               </div>
 
@@ -446,11 +453,12 @@ const Register = ({ user }) => {
                   placeholder="Lastname*"
                   value={formValues.lastname}
                   required
-                  onBlur={handleFocus}
+                  onBlur={(e) => handleFocus(e)}
                   focused={focused.lastname.toString()}
                   onChange={(e) => lastnameHandler(e)}
                   onKeyDown={(e) => handleKeyPress(e)}
                   onKeyUp={(e) => handleKeyPress(e)}
+                  // onFocus={() => setShowNameDesc(true)}
                 />
                 <p className="register-validation-error-text">lastname is required</p>
               </div>
@@ -467,6 +475,7 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.email.toString()}
                   onChange={(e) => emailAddressHandler(e)}
+                  
                 />
                 <p className="register-validation-error-text">email is required(all lower case)</p>
               </div>

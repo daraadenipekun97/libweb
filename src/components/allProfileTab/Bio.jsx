@@ -167,7 +167,11 @@ const Bio = () => {
       if (
         formValues.firstname !== "" &&
         formValues.lastname !== "" &&
-        formValues.gender !== "No Gender"
+        formValues.gender !== "No Gender" &&
+        /^(?=.*[a-zA-Z])(?=.*[-'])/.test(formValues.firstname) &&
+      /^(?=.*[a-zA-Z])(?=.*[-'])/.test(formValues.lastname)
+
+
       ) {
         setFormState({
           ...formState,
@@ -254,7 +258,7 @@ const Bio = () => {
   const handleKeyPress = (e) =>{
     debugger
     let keyCode = (e.keyCode ? e.keyCode : e.which);
-    if ((keyCode > 47 && keyCode < 58 ) || keyCode == 32 || e.shiftKey || keyCode == 106 || keyCode == 107 || keyCode == 110 || keyCode == 111 || keyCode == 186 || keyCode == 187 || keyCode == 188 || (keyCode >= 190 &&  keyCode < 222)) {
+    if ((keyCode > 47 && keyCode < 58 ) || keyCode == 32 || e.shiftKey || keyCode == 106 || keyCode == 107 || keyCode == 110 || keyCode == 111 || keyCode == 186 || keyCode == 187 || keyCode == 188 || (keyCode >= 190 &&  keyCode < 222) || (keyCode >= 96 && keyCode <=105) || keyCode == 144) {
       e.preventDefault();
     }
   }

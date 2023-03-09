@@ -123,18 +123,18 @@ const SingleBook = ({ datas, searchBar, title }) => {
   const handleBookNavigate = (id) => {
 
     
-    if (
-      childStat &&
-      (title === "Trending Books" || title === "New Releases Books" || title === "Classic Books")
-    ) {
-      setShow(true);
-    } else {
+    // if (
+    //   childStat &&
+    //   (title === "Trending Books" || title === "New Releases Books" || title === "Classic Books")
+    // ) {
+    //   setShow(true);
+    // } else {
         navigate(`/home/books/${id}`);
       //uncomment the ccode below  to prevent the previously 
       //viewed book from showing when a new book is clicked
 
       // window.location.reload(); 
-    }
+    //}
   };
 
   const handleVerifyNavigate = () => {
@@ -210,14 +210,16 @@ const SingleBook = ({ datas, searchBar, title }) => {
         )}
       </div>
       <div
-        className={
-          childStat &&
-          (title === "Trending Books" ||
-            title === "New Releases Books" ||
-            title === "Classic Books")
-            ? "lib-book-gallery-wrapper-opacity"
-            : "lib-book-gallery-wrapper"
-        }
+        className="lib-book-gallery-wrapper"
+        
+        // {
+        //   childStat &&
+        //   (title === "Trending Books" ||
+        //     title === "New Releases Books" ||
+        //     title === "Classic Books")
+        //     ? "lib-book-gallery-wrapper-opacity"
+        //     : "lib-book-gallery-wrapper"
+        // }
       >
         <div className="lib-book-gallery-inner-wrapper-two">
           {datas.length !== 0 ? (
