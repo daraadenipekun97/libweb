@@ -40,7 +40,7 @@ const Books = () => {
   const [toggleHeart, setToggleHeart] = useState(false);
 
   useEffect(() => {
-    debugger
+    // debugger
     window.scrollTo(0, 0);
     dispatch(fetchBookDetails(params.id));
     dispatch(fetchSubscriptionDetails());
@@ -67,8 +67,8 @@ const Books = () => {
   };
 
   const handleRemoveFav = (id) => {
-    // dispatch(removeBookFromFav(id));
-    setToggleHeart(false);
+     dispatch(removeBookFromFav(id));
+    // setToggleHeart(false);
   };
 
   const handleAddFav = (id) => {
@@ -123,7 +123,6 @@ const Books = () => {
   }
 
   const handleStartReading = (url, bookId) => {
-    debugger;
     let expiryDate =
       subscriptionDetails.expiry_date !== null
         ? new Date(new Date(subscriptionDetails.expiry_date).toDateString())
