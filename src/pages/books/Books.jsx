@@ -214,11 +214,11 @@ const Books = () => {
                   onClick={() => handleRemoveFav(bookDetails.book.id)}
                 />
               ) : (
-               
-                <div style={{color:'red', border:"solid"}}
-                onClick={() => handleAddFav(bookDetails.book.id)}                
-                >Hello
-                </div>
+                <AiOutlineHeart
+                  size={25}
+                  color="red"
+                  onClick={() => handleAddFav(bookDetails.book.id)}
+                />
               )}
 
               <StarRating bookDetails={bookDetails.rating} averageRating={true} />
