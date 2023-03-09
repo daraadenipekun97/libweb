@@ -297,8 +297,8 @@ const Register = ({ user }) => {
       countryId.label !== "" &&
       termsCheckBox === true &&  
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_)){6,15}/.test(formValues.password) &&
-      /^(?=.*[a-zA-Z])(?=.*[-'])/.test(formValues.firstname) &&
-      /^(?=.*[a-zA-Z])(?=.*[-'])/.test(formValues.lastname)
+      /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.firstname) &&
+      /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.lastname)
 
 
     ) {

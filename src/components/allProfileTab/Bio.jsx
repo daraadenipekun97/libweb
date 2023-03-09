@@ -168,9 +168,9 @@ const Bio = () => {
         formValues.firstname !== "" &&
         formValues.lastname !== "" &&
         formValues.gender !== "No Gender" &&
-        /^(?=.*[a-zA-Z])(?=.*[-'])/.test(formValues.firstname) &&
-      /^(?=.*[a-zA-Z])(?=.*[-'])/.test(formValues.lastname)
-
+        /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.firstname) &&
+        /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.lastname)
+  
 
       ) {
         setFormState({
