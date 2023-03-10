@@ -4,6 +4,29 @@
   padding: 1rem 1rem;
 }
 
+.no-review-height{
+
+}
+
+.no-review{
+  /* border: solid; */
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.no-review::-webkit-scrollbar {
+  width: 3px;               /* width of the entire scrollbar */
+}
+
+.no-review::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+.no-review::-webkit-scrollbar-thumb {
+  background-color: #5d418d;    /* color of the scroll thumb */
+  border-radius: 10px;       /* roundness of the scroll thumb */
+}
+
 .no-review-text {
   color: #78787d;
   font-size: 15px;
@@ -68,5 +91,9 @@
 }
 
 .horizontal-rule {
-  margin: 1rem 0rem;
+  margin: 1rem 0.5rem 1rem 0rem;
+  background-color: #78787d;
+  min-height: 1px;
+  
+ 
 }

@@ -53,7 +53,7 @@ export const createReview = async (body) => {
     toastr.error("No Internet Connection", "Please try again");
   } else {
     try {
-      const response = await api.post(`${baseControllerUser}review/200`, body);
+      const response = await api.post(`${baseControllerUser}review/${body.id}`, body);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
           toastr.success("Review Added Successfully", "");

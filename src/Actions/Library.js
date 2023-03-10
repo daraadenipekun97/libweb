@@ -98,11 +98,12 @@ export const restoreSendWishlistInitial = () => ({
   type: RESTORE_SEND_WISHLIST_INITIAL,
 });
 
-export const addReview = ({ review, rating }) => ({
+export const addReview = ({ review, rating, id }) => ({
   type: ADD_REVIEW,
   payload: {
     rating,
     review,
+    id
   },
 });
 

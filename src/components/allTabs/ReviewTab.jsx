@@ -84,6 +84,7 @@ const ReviewTab = () => {
         addReview({
           review: formValues.review,
           rating: formValues.rating,
+          id:bookDetails.book.id
         })
       );
     }
@@ -128,7 +129,9 @@ const ReviewTab = () => {
         </div>
       ) : (
         <>
-          <div className="no-review">
+          <div className={
+            bookDetails.reviews.length === 0? "no-review-height" : "no-review"
+          }>
             {bookDetails.reviews.map((review) => {
               return (
                 <>
@@ -138,7 +141,7 @@ const ReviewTab = () => {
                   />
                   <p className="review-name">{review.user ? review.user.name : "-"}</p>
                   <p className="review-text">{review.review ? review.review : "No Review"}</p>
-                  <hr className="horizontal-rule" />
+                  <div className="horizontal-rule"></div>
                 </>
               );
             })}

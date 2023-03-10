@@ -63,7 +63,7 @@ const StarRating = ({ bookDetails, averageRating }) => {
 
         {averageRating ? (
           <p className="average-rating">
-            {bookDetails !== null ? `(${bookDetails}.0 Average Rating)` : "No Average Rating"}
+            {bookDetails !== null ? `(${Math.floor(bookDetails)}.0 Average Rating)` : "No Average Rating"}
           </p>
         ) : (
           <></>
