@@ -13,10 +13,30 @@
   background-color: white;
   border-radius: 20px;
   padding: 2rem 3rem;
-  /* border: solid; */
+}
+
+.lib-verify-wrapper-user{
+
+  width: fit-content;
+  position: absolute;
+  top: 45vh;
+  /* left: 37vw; */
+  height: fit-content;
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem 3rem;
+
 }
 
 .lib-verify-wrapper h1 {
+  text-align: center;
+  color: #5e458b;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.lib-verify-wrapper-user h1 {
   text-align: center;
   color: #5e458b;
   font-size: 20px;
@@ -136,8 +156,7 @@
 
 .verify-area {
   background: #5e458b;
-  background: linear-gradient(#e3daf0, #5e458b) !important;
-  width: 100%;
+  background: linear-gradient( #e3daf0, #5e458b) !important;  width: 100%;
   height: 100vh;
   z-index: -1;
 }
@@ -251,16 +270,6 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
-  .lib-verify-wrapper {
-    top: 80vh;
-  }
-
-  .verify-area {
-    height: 150vh;
-  }
-}
-
 @media screen and (max-width: 800px) {
   .lib-verify-input-group {
     /* border:solid; */
@@ -275,12 +284,16 @@
 
 @media screen and (max-width: 769px) {
   .verify-area {
-    height: 200vh;
+    height: 110vh;
   }
 }
 
 @media screen and (max-width: 550px) {
   .lib-verify-wrapper {
+    margin: 0rem 1rem;
+    /* padding: 1rem 0.5rem; */
+  }
+  .lib-verify-wrapper-user {
     margin: 0rem 1rem;
     /* padding: 1rem 0.5rem; */
   }

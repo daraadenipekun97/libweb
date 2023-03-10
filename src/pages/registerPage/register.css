@@ -344,5 +344,6 @@ hr {
   .lib-register-wrapper {
     margin: 0rem 1rem;
     padding: 1rem 1.5rem;
+    top: 20vh ;
   }
 }

@@ -37,7 +37,7 @@ const VerifyEmail = ({ user }) => {
     };
     gapi.load("client:auth2", initClient);
 
-    window.scrollTo(0, 300);
+    // window.scrollTo(0, 300);
   });
 
   const hanldeSwal = () => {
@@ -258,7 +258,9 @@ const VerifyEmail = ({ user }) => {
       {user ? <UserNavbar /> : <Navbar />}
 
       <div className="lib-verify-container">
-        <div className="lib-verify-wrapper">
+        <div className={
+          user ? "lib-verify-wrapper-user" : "lib-verify-wrapper"
+        }>
           <h1>Verify Email</h1>
           <p className="info-text">Enter the token sent to your email address</p>
           <br />
