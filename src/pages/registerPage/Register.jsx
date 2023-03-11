@@ -286,6 +286,10 @@ const Register = ({ user }) => {
   const [countryError, setCountryError] = useState(false);
 
   const handleRegister = () => {
+
+   let b =  /[A-Z'][a-zA-Z'-]+/.test(formValues.firstname)
+   console.log("b is " + b)
+
     if (
       formValues.firstname !== "" &&
       formValues.lastname !== "" &&
@@ -296,8 +300,8 @@ const Register = ({ user }) => {
       countryId.label !== "" &&
       termsCheckBox === true &&
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_)){6,15}/.test(formValues.password) &&
-      /[A-Z'][a-zA-Z'-]+/.test(formValues.firstname) &&
-      /[A-Z'][a-zA-Z'-]+/.test(formValues.lastname)
+      /^[A-Z'][a-zA-Z'-]+$/.test(formValues.firstname) &&
+      /^[A-Z'][a-zA-Z'-]+$/.test(formValues.lastname)
     ) {
       setFormState({
         ...formState,
@@ -408,24 +412,24 @@ const Register = ({ user }) => {
   };
 
   const handleKeyPress = (e) => {
-    let keyCode = e.keyCode ? e.keyCode : e.which;
-    if (
-      (keyCode > 47 && keyCode < 58) ||
-      keyCode == 32 ||
-      e.shiftKey ||
-      keyCode == 106 ||
-      keyCode == 107 ||
-      keyCode == 110 ||
-      keyCode == 111 ||
-      keyCode == 186 ||
-      keyCode == 187 ||
-      keyCode == 188 ||
-      (keyCode >= 190 && keyCode < 222) ||
-      (keyCode >= 96 && keyCode <= 105) ||
-      keyCode == 144
-    ) {
-      e.preventDefault();
-    }
+    // let keyCode = e.keyCode ? e.keyCode : e.which;
+    // if (
+    //   (keyCode > 47 && keyCode < 58) ||
+    //   keyCode == 32 ||
+    //   e.shiftKey ||
+    //   keyCode == 106 ||
+    //   keyCode == 107 ||
+    //   keyCode == 110 ||
+    //   keyCode == 111 ||
+    //   keyCode == 186 ||
+    //   keyCode == 187 ||
+    //   keyCode == 188 ||
+    //   (keyCode >= 190 && keyCode < 222) ||
+    //   (keyCode >= 96 && keyCode <= 105) ||
+    //   keyCode == 144
+    // ) {
+    //   e.preventDefault();
+    // }
   };
 
   return (

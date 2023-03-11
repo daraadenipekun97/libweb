@@ -60,6 +60,12 @@ input[type="password"] {
   margin-bottom: 0.5rem;
 }
 
+.lib-register-input-group input[type="date"]{
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  min-height: 1.2em;
+}
+
 /* Chrome, Safari, Edge, Opera */
 #phone-num::-webkit-outer-spin-button,
 #phone-num::-webkit-inner-spin-button {
@@ -321,6 +327,10 @@ hr {
   input[type="password"] {
     margin: 0;
     margin-bottom: 0.5rem;
+  }
+
+  .lib-register-input-group input[type="date"]{
+    -webkit-min-logical-width: calc(100% - 16px) !important;
   }
 
   .lib-register-input-group-wrapper-left {
