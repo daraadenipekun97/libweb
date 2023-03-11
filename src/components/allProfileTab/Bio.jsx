@@ -166,8 +166,8 @@ const Bio = () => {
         formValues.firstname !== "" &&
         formValues.lastname !== "" &&
         formValues.gender !== "No Gender" &&
-        /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.firstname) &&
-        /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.lastname)
+        /[A-Z'][a-zA-Z'-]+/.test(formValues.firstname) &&
+        /[A-Z'][a-zA-Z'-]+/.test(formValues.lastname)
       ) {
         setFormState({
           ...formState,
@@ -302,8 +302,10 @@ const Bio = () => {
               focused={focused.firstname.toString()}
               onKeyDown={(e) => handleKeyPress(e)}
               onKeyUp={(e) => handleKeyPress(e)}
+              pattern="[A-Z'][a-zA-Z'-]+"
+
             />
-            <p className="profile-validation-error-text">firstname is required</p>
+            <p className="profile-validation-error-text">firstname is required (Uppercase first)</p>
           </div>
 
           <div className="input-group-wrapper-right">
@@ -319,8 +321,10 @@ const Bio = () => {
               focused={focused.lastname.toString()}
               onKeyDown={(e) => handleKeyPress(e)}
               onKeyUp={(e) => handleKeyPress(e)}
+              pattern="[A-Z'][a-zA-Z'-]+"
+
             />
-            <p className="profile-validation-error-text">lastname is required</p>
+            <p className="profile-validation-error-text">lastname is required (Uppercase first)</p>
           </div>
         </div>
         <div className="input-group">

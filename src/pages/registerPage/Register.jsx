@@ -296,8 +296,8 @@ const Register = ({ user }) => {
       countryId.label !== "" &&
       termsCheckBox === true &&
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_)){6,15}/.test(formValues.password) &&
-      /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.firstname) &&
-      /^(['-]?)(?=.*[a-z])([A-Z])[a-zA-Z'-]/.test(formValues.lastname)
+      /[A-Z'][a-zA-Z'-]+/.test(formValues.firstname) &&
+      /[A-Z'][a-zA-Z'-]+/.test(formValues.lastname)
     ) {
       setFormState({
         ...formState,
@@ -449,9 +449,10 @@ const Register = ({ user }) => {
                   onKeyDown={(e) => handleKeyPress(e)}
                   onKeyUp={(e) => handleKeyPress(e)}
                   // onFocus={() => setShowNameDesc(true)}
+                  pattern="[A-Z'][a-zA-Z'-]+"
                 />
 
-                <p className="register-validation-error-text">firstname is required</p>
+                <p className="register-validation-error-text">firstname is required (Uppercase first)</p>
               </div>
 
               <div className="lib-register-input-group-wrapper-right">
@@ -467,8 +468,10 @@ const Register = ({ user }) => {
                   onKeyDown={(e) => handleKeyPress(e)}
                   onKeyUp={(e) => handleKeyPress(e)}
                   // onFocus={() => setShowNameDesc(true)}
+                  pattern="[A-Z'][a-zA-Z'-]+"
+
                 />
-                <p className="register-validation-error-text">lastname is required</p>
+                <p className="register-validation-error-text">lastname is required (Uppercase first)</p>
               </div>
             </div>
             <div className="lib-register-input-group">
