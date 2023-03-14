@@ -20,6 +20,12 @@ import {
   CANCEL_TRIAL_SUCCESS,
   RESTORE_CANCEL_SUBSCRIPTION_INITIAL,
   RESTORE_CANCEL_TRIAL_INITIAL,
+  REACTIVATE_TRIAL,
+  REACTIVATE_TRIAL_SUCCESS,
+  RESTORE_REACTIVATE_TRIAL_INITIAL,
+  REACTIVATE_SUBSCRIPTION,
+  REACTIVATE_SUBSCRIPTION_SUCCESS,
+  RESTORE_REACTIVATE_SUBSCRIPTION_INITIAL,
   WEB_PURCHASE,
   WEB_PURCHASE_SUCCESS,
   RESTORE_WEB_PURCHASE_INITIAL,
@@ -134,6 +140,33 @@ export const cancelSubscriptionSuccess = (payload) => ({
 
 export const restoreCancelSubscriptionInitial = () => ({
   type: RESTORE_CANCEL_SUBSCRIPTION_INITIAL,
+});
+
+
+export const reactivateTrial = () => ({
+  type: REACTIVATE_TRIAL,
+});
+
+export const reactivateTrialSuccess = (payload) => ({
+  type: REACTIVATE_TRIAL_SUCCESS,
+  payload,
+});
+
+export const restoreReactivateTrialInitial = () => ({
+  type: RESTORE_REACTIVATE_TRIAL_INITIAL,
+});
+
+export const reactivateSubscription = () => ({
+  type: REACTIVATE_SUBSCRIPTION,
+});
+
+export const reactivateSubscriptionSuccess = (payload) => ({
+  type: REACTIVATE_SUBSCRIPTION_SUCCESS,
+  payload,
+});
+
+export const restoreReactivateSubscriptionInitial = () => ({
+  type: RESTORE_REACTIVATE_SUBSCRIPTION_INITIAL,
 });
 
 export const fetchSubscriptionDetails = () => ({

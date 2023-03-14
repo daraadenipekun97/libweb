@@ -12,6 +12,10 @@ import {
   CANCEL_TRIAL_SUCCESS,
   RESTORE_CANCEL_SUBSCRIPTION_INITIAL,
   RESTORE_CANCEL_TRIAL_INITIAL,
+  REACTIVATE_TRIAL_SUCCESS,
+  RESTORE_REACTIVATE_TRIAL_INITIAL,
+  REACTIVATE_SUBSCRIPTION_SUCCESS,
+  RESTORE_REACTIVATE_SUBSCRIPTION_INITIAL,
   WEB_PURCHASE_SUCCESS,
   RESTORE_WEB_PURCHASE_INITIAL,
   FETCH_SUBSCRIPTION_DETAILS_SUCCESS,
@@ -34,6 +38,12 @@ const INIT_STATE = {
   cancelTrailFailure: false,
   cancelSubscriptionSuccess: false,
   cancelSubscriptionFailure: false,
+
+
+  reactivateTrialSuccess: false,
+  reactivateTrailFailure: false,
+  reactivateSubscriptionSuccess: false,
+  reactivateSubscriptionFailure: false,
 
   webPurchaseSuccess: false,
   webPurchaseFailure: false,
@@ -185,6 +195,61 @@ const profileReducer = (state = INIT_STATE, action) => {
         cancelSubscriptionSuccess: false,
       };
     }
+
+
+    case REACTIVATE_TRIAL_SUCCESS: {
+      if (action.payload === true) {
+        return {
+          ...state,
+          reactivateTrialSuccess: true,
+          reactivateTrailFailure: false,
+        };
+      } else {
+        return {
+          ...state,
+          reactivateTrialSuccess: false,
+          reactivateTrailFailure: true,
+        };
+      }
+    }
+
+    case RESTORE_REACTIVATE_TRIAL_INITIAL: {
+      return {
+        ...state,
+        reactivateTrialSuccess: false,
+        reactivateTrailFailure: false,
+      };
+    }
+
+
+
+    case REACTIVATE_SUBSCRIPTION_SUCCESS: {
+      if (action.payload === true) {
+        return {
+          ...state,
+          reactivateSubscriptionSuccess: true,
+          reactivateSubscriptionFailure: false,
+        };
+      } else {
+        return {
+          ...state,
+          reactivateSubscriptionSuccess: false,
+          reactivateSubscriptionFailure: true,
+        };
+      }
+    }
+
+    case RESTORE_REACTIVATE_SUBSCRIPTION_INITIAL: {
+      return {
+        ...state,
+        reactivateSubscriptionFailure: false,
+        reactivateSubscriptionSuccess: false,
+      };
+    }
+
+
+
+
 
     case FETCH_SUBSCRIPTION_DETAILS_SUCCESS: {
       return {

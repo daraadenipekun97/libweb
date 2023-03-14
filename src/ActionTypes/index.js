@@ -141,6 +141,16 @@ export const CANCEL_SUBSCRIPTION = "cancel_subscription";
 export const CANCEL_SUBSCRIPTION_SUCCESS = "cancel_subscription_success";
 export const RESTORE_CANCEL_SUBSCRIPTION_INITIAL = "restore_cancel_subscription_initial";
 
+
+export const REACTIVATE_TRIAL = "reactivate_trial";
+export const REACTIVATE_TRIAL_SUCCESS = "reactivate_trial_success";
+export const RESTORE_REACTIVATE_TRIAL_INITIAL = "restore_reactivate_trial_initial";
+
+export const REACTIVATE_SUBSCRIPTION = "reactivate_subscription";
+export const REACTIVATE_SUBSCRIPTION_SUCCESS = "reactivate_subscription_success";
+export const RESTORE_REACTIVATE_SUBSCRIPTION_INITIAL = "restore_reactivate_subscription_initial";
+
+
 export const WEB_PURCHASE = "web_purchase";
 export const WEB_PURCHASE_SUCCESS = "web_purchase_success";
 export const RESTORE_WEB_PURCHASE_INITIAL = "restore_web_purchase_initial";

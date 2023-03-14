@@ -10,6 +10,8 @@ import {
   WITHDRAW_FUNDS,
   CANCEL_SUBSCRIPTION,
   CANCEL_TRIAL,
+  REACTIVATE_SUBSCRIPTION,
+  REACTIVATE_TRIAL,
   WEB_PURCHASE,
   FETCH_SUBSCRIPTION_DETAILS,
   CHANGE_PASSWORD,
@@ -24,6 +26,8 @@ import {
   withdrawWalletFunds,
   cancelTrial,
   cancelSub,
+  reactivateTrial,
+  reactivateSub,
   makeWebPurchase,
   getSubscriptionDetails,
   changePass,
@@ -38,6 +42,8 @@ import {
   withdrawFundsSuccess,
   cancelTrialSuccess,
   cancelSubscriptionSuccess,
+  reactivateTrialSuccess,
+  reactivateSubscriptionSuccess,
   webPurchaseSuccess,
   fetchSubscriptionDetailsSuccess,
   changePasswordSuccess,
@@ -107,6 +113,27 @@ export const cancelSubs = function* () {
   yield takeEvery(CANCEL_SUBSCRIPTION, cancelSubscriptionRequest);
 };
 
+
+
+export const reactivateTrailRequest = function* ({ payload }) {
+  yield call(requestFunction, reactivateTrialSuccess, reactivateTrial, payload);
+};
+
+export const reactivateTTriiall = function* () {
+  yield takeEvery(REACTIVATE_TRIAL, reactivateTrailRequest);
+};
+
+
+export const reactivateSubscriptionRequest = function* ({ payload }) {
+  yield call(requestFunction, reactivateSubscriptionSuccess, reactivateSub, payload);
+};
+
+export const reactivateSubs = function* () {
+  yield takeEvery(REACTIVATE_SUBSCRIPTION, reactivateSubscriptionRequest);
+};
+
+
+
 export const webPurchaseRequest = function* ({ payload }) {
   yield call(requestFunction, webPurchaseSuccess, makeWebPurchase, payload);
 };
@@ -141,8 +168,11 @@ export default function* rootSaga() {
     fork(withdrawFundss),
     fork(cancelTriiall),
     fork(cancelSubs),
+    fork(reactivateTTriiall),
+    fork(reactivateSubs),
     fork(webPurchasseee),
     fork(fetchSubDetaillss),
     fork(changePasswordd),
+
   ]);
 }

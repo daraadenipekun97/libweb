@@ -142,7 +142,9 @@ const Books = () => {
           dispatch(readBook(bookId));
         } else {
           // toastr.warning('You cant read this book because your subscription is canceled', 'Please subscribe or reactive your subscription');
-          navigate("/home/subscription");
+
+          window.location.href = `https://libreader.vercel.app/#${url}`;
+          dispatch(readBook(bookId));
         }
       } else if (
         todaysDate.valueOf() > expiryDate.valueOf() &&
@@ -165,8 +167,8 @@ const Books = () => {
           window.location.href = `https://libreader.vercel.app/#${url}`;
           dispatch(readBook(bookId));
         } else {
-          // toastr.warning('You cant read this book because your subscription is canceled', 'Please subscribe or reactive your subscription');
-          navigate("/home/subscription");
+          window.location.href = `https://libreader.vercel.app/#${url}`;
+          dispatch(readBook(bookId));
         }
       } else if (
         todaysDate.valueOf() > expiryDate.valueOf() &&

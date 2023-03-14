@@ -4,7 +4,8 @@ import { toastr } from "react-redux-toastr";
 const baseController = "api/user/profile/";
 const baseControllerBank = "api/user/profile/bank/";
 const baseControllerWallet = "api/user/wallet/";
-const baseControllerSubscription = "api/user/profile/cancel/";
+const baseControllerCancelSubscription = "api/user/profile/cancel/";
+const baseControllerReactivateSubscription = "api/user/profile/reactivate/";
 const baseControllerPayment = "api/user/payment/";
 
 export const updateProfile = async (body) => {
@@ -140,7 +141,7 @@ export const cancelTrial = async () => {
     toastr.error("No Internet Connection", "Please try again");
   } else {
     try {
-      const response = await api.get(`${baseControllerSubscription}trial`);
+      const response = await api.get(`${baseControllerCancelSubscription}trial`);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
           toastr.success("Trial Subscription Cancelled Successfully", "");
@@ -160,7 +161,7 @@ export const cancelSub = async () => {
     toastr.error("No Internet Connection", "Please try again");
   } else {
     try {
-      const response = await api.get(`${baseControllerSubscription}subscription`);
+      const response = await api.get(`${baseControllerCancelSubscription}subscription`);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
           toastr.success("Subscription Cancelled Successfully", "");
@@ -168,6 +169,51 @@ export const cancelSub = async () => {
         }
       } else {
         toastr.error("An Error occured", "Could not cancel Subscription");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please try again");
+    }
+  }
+};
+
+
+
+
+export const reactivateTrial = async () => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerReactivateSubscription}trial`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          toastr.success("Trial Subscription Reactivated Successfully", "");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not reactivate Trial Subscription");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please try again");
+    }
+  }
+};
+
+
+
+export const reactivateSub = async () => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerReactivateSubscription}subscription`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          toastr.success("Subscription Reactivated Successfully", "");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not reactivate Subscription");
       }
     } catch (ex) {
       toastr.error("An Error occurred", "Please try again");

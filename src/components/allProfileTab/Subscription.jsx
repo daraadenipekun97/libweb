@@ -9,6 +9,10 @@ import {
   restoreCancelTrialInitial,
   cancelSubscription,
   restoreCancelSubscriptionInitial,
+  reactivateSubscription,
+  reactivateTrial,
+  restoreReactivateSubscriptionInitial,
+  restoreReactivateTrialInitial
 } from "../../Actions";
 import Preloader from "../preloader/Preloader";
 import "./css/subscription.css";
@@ -26,6 +30,10 @@ const Subscription = () => {
     cancelTrailFailure,
     cancelSubscriptionSuccess,
     cancelSubscriptionFailure,
+    reactivateTrialSuccess,
+    reactivateTrailFailure,
+    reactivateSubscriptionSuccess,
+    reactivateSubscriptionFailure
   } = useSelector((state) => state.profile);
 
   const [spinnerStatus, setSpinnerStatus] = useState(false);
@@ -43,6 +51,16 @@ const Subscription = () => {
     setSpinnerStatus(true);
     dispatch(cancelSubscription());
   };
+
+  const handleReactivateTrial = () => {
+    setSpinnerStatus(true);
+    dispatch(reactivateTrial())
+  }
+
+  const handleReactivateSub = () => {
+    setSpinnerStatus(true);
+    dispatch(reactivateSubscription())
+  }
 
   useEffect(() => {
     if (cancelTrialSuccess || cancelTrailFailure) {
@@ -65,6 +83,32 @@ const Subscription = () => {
       dispatch(restoreCancelSubscriptionInitial());
     };
   }, [cancelSubscriptionSuccess, cancelSubscriptionFailure]);
+
+
+  useEffect(() => {
+    if (reactivateTrialSuccess || reactivateTrailFailure) {
+      setSpinnerStatus(false);
+      dispatch(fetchProfile());
+    }
+
+    return () => {
+      dispatch(restoreReactivateTrialInitial());
+    };
+  }, [reactivateTrialSuccess, reactivateTrailFailure]);
+
+
+  useEffect(() => {
+    if (reactivateSubscriptionSuccess || reactivateSubscriptionFailure) {
+      setSpinnerStatus(false);
+      dispatch(fetchProfile());
+    }
+
+    return () => {
+      dispatch(restoreReactivateSubscriptionInitial());
+    };
+  }, [reactivateSubscriptionSuccess, reactivateSubscriptionFailure]);
+
+
 
   const handleSelectNavigate = () => {
     navigate("/home/subscription");
@@ -154,7 +198,7 @@ const Subscription = () => {
             <button
               className="btn-reactivate"
               role="button"
-              // onClick={()=>handleCancelTrial()}
+              onClick={()=>handleReactivateTrial()}
             >
               {spinnerStatus === true ? <Spinner /> : "Reactivate Trial Plan"}
             </button>
@@ -174,7 +218,7 @@ const Subscription = () => {
             <button
               className="btn-reactivate"
               role="button"
-              // onClick={()=>handleCancelTrial()}
+               onClick={()=>handleReactivateSub()}
             >
               {spinnerStatus === true ? <Spinner /> : "Reactivate Subscription"}
             </button>
