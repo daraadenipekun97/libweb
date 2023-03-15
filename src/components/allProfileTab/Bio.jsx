@@ -80,6 +80,7 @@ const Bio = () => {
 
   const [valid, setValid] = useState(false);
   const [genderValidation, setGenderValidation] = useState(false);
+  const [disableField, setDisableField] = useState(true)
 
   useEffect(() => {
     dispatch(fetchAllCountries());
@@ -171,6 +172,23 @@ const Bio = () => {
     }
   };
 
+
+  const phoneHandler = (e) => {
+    if (e) {
+      let phoneValue = e.target.value;
+      e.preventDefault();
+      setFormValues({
+        ...formValues,
+        phone: phoneValue,
+      });
+    } else {
+      setFormValues({
+        ...formValues,
+        phone: "",
+      });
+    }
+  };
+
   const [focused, setFocused] = useState({
     firstname: false,
     lastname: false,
@@ -190,6 +208,9 @@ const Bio = () => {
     if (formType === "view") {
       setFormType("update");
       setDisabledState(false);
+      if(profileData.dob === null || profileData.country_id === null || profileData.phone === null){
+        setDisableField(false)
+      }
       setFormState({
         ...formState,
         buttonState: false,
@@ -371,7 +392,7 @@ const Bio = () => {
               placeholder="Date of Birth*"
               value={formValues.dob}
               required
-              disabled={formValues.dob !=="" ? true : false}
+              disabled={disableField}
               onChange={(e) => dobHandler(e)}
             />
           </div>
@@ -383,9 +404,11 @@ const Bio = () => {
               placeholder="Phone Number*"
               value={formValues.phone}
               required
-              disabled
+              disabled={disableField}
+              onChange={(e) => phoneHandler(e)}
+
             />
-            <p className="profile-validation-error-text">lastname is required</p>
+            <p className="profile-validation-error-text">phone number is required</p>
           </div>
         </div>
 
@@ -393,7 +416,7 @@ const Bio = () => {
           <div className="input-group-wrapper-left">
             <select className="gender-select" 
             onChange={(e) => countryHandler(e)}
-            disabled={formValues.country_id !== "No Country"  ? true : false}
+            disabled={disableField}
             value={formValues.country_id}
             
             >

@@ -54,7 +54,9 @@ const ModalRedirect = ({ showRedirectModal, handleRedirect }) => {
           <h4 className="modal-title-dashboard">
             Profile Update{" "}
           </h4>
-          <p className="modal-text-dashboard">Please update your profile (Country and Date of Birth)</p>
+          <p className="modal-text-dashboard">Please update your profile</p>
+          <p className="modal-text-dashboard">Country, Date of Birth & Phone Number</p>
+
         </>
 
         <hr />
