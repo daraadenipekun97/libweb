@@ -12,8 +12,11 @@ import {
 import Spinner from "../../components/spinner/Spinner";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
+
+import { GoogleLogin } from '@react-oauth/google';
+
 
 const LoginPage = ({ user }) => {
   const dispatch = useDispatch();
@@ -95,15 +98,7 @@ const LoginPage = ({ user }) => {
     };
     gapi.load("client:auth2", initClient);
 
-    //    gapi.load('client:auth2', function() {
-    //     debugger
-    //     const auth2 = gapi.client.init({
-    //       clientId: clientId,
-    //       scope: 'profile email'
-    //     })
-    //       const googleBtn = document.getElementById('google-btn')
-    //       auth2.attachClickHandler(googleBtn, {}, onSuccess, onFailure);
-    //  });
+   
   });
 
   const onSuccess = (res) => {
@@ -320,15 +315,24 @@ const LoginPage = ({ user }) => {
 
             <br />
 
-            <br />
-
             <hr />
 
             <br />
 
             <p className="lib-login-p-tag">Or</p>
-
+              
+              <br />
             <GoogleLogin
+              onSuccess={credentialResponse => {
+                console.log(credentialResponse);
+              }}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />
+
+              <br />
+            {/* <GoogleLogin
               clientId={clientId}
               render={(renderProps) => (
                 <button
@@ -344,7 +348,7 @@ const LoginPage = ({ user }) => {
               onFailure={onFailure}
               cookiePolicy={"single_host_origin"}
               isSignedIn={true}
-            />
+            /> */}
 
             <p className="lib-login-p-tag">
               Dont have an account? <span onClick={handleSignup}>Sign up</span>

@@ -21,6 +21,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
 //   NotfoundPage
 // } from "./pages";
 
+import { GoogleOAuthProvider } from '@react-oauth/google'
+
 const LightTheme = {
   pageBackground: "white",
   textColor: "#dc658b",
@@ -77,6 +79,7 @@ function App() {
 
   return (
     <>
+    <GoogleOAuthProvider clientId="218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com">
       <Provider store={store}>
         <BrowserRouter>
           <ErrorBoundary>
@@ -137,7 +140,7 @@ function App() {
           closeOnToastrClick
         />
       </Provider>
-
+      </GoogleOAuthProvider>
       <MessengerChat />
     </>
   );
