@@ -329,6 +329,9 @@ const LoginPage = ({ user }) => {
                 if (credentialResponse.credential != null) {
                  const USER_CREDENTIAL = jwtDecode(credentialResponse.credential);
                  console.log('user credential is' + JSON.stringify(USER_CREDENTIAL));
+                 let credentialObjJSON = JSON.stringify(USER_CREDENTIAL)
+                 let credentialObj = `JSON.parse('${credentialObjJSON}')`
+                 console.log(credentialObj)
                 }
                }
               }
