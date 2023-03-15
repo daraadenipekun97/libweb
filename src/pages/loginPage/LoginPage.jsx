@@ -307,7 +307,8 @@ const LoginPage = ({ user }) => {
             <p className="lib-login-p-tag">Or</p>
               
               <br />
-            <GoogleLogin
+              <center>
+              <GoogleLogin
               onSuccess = {credentialResponse => {
                 if (credentialResponse.credential != null) {
                  const USER_CREDENTIAL = jwtDecode(credentialResponse.credential);
@@ -331,10 +332,11 @@ const LoginPage = ({ user }) => {
                 alert('Sorry we cant log you in at this time.Login Failed');
               }}
               text="Sign in with Google"
-              width="300px"
-              logo_alignment="left"
+              logo_alignment="right"
             />
 
+              </center>
+            
               <br />
             <p className="lib-login-p-tag">
               Dont have an account? <span onClick={handleSignup}>Sign up</span>
