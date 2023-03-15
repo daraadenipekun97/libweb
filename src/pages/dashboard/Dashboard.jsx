@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import UserNavbar from "../../components/userNavbar/UserNavbar";
 import SingleBook from "../../components/singleBook/SingleBook";
 import "./dashboard.css";
-import { fetchAllTrendingBooks, fetchSubscriptionDetails } from "../../Actions";
+import { fetchAllTrendingBooks, fetchSubscriptionDetails, fetchProfile} from "../../Actions";
 import { Community, Footer, Header } from "../../containers";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
+
 
 const Modal = ({ handleClose, show, handleNavigate }) => {
   const showHideClassName = show
@@ -41,6 +42,32 @@ const Modal = ({ handleClose, show, handleNavigate }) => {
   );
 };
 
+const ModalRedirect = ({ showRedirectModal, handleRedirect }) => {
+  const showHideClassName = showRedirectModal
+    ? "main-modal-bg-dashboard display-block"
+    : "main-modal-bg-dashboard display-none";
+
+  return (
+    <div className={showHideClassName}>
+      <div className="modal-main-dashboard">
+        <>
+          <h4 className="modal-title-dashboard">
+            Profile Update{" "}
+          </h4>
+          <p className="modal-text-dashboard">Please update your profile (Country and Date of Birth)</p>
+        </>
+
+        <hr />
+        <div className="btn-modal-wrapper-dashboard">
+          <button className="modal-btn-dashboard" onClick={handleRedirect}>
+            Ok
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -48,17 +75,40 @@ const Dashboard = () => {
 
   const { trendingBooks } = useSelector((state) => state.books);
   const { subscriptionDetails } = useSelector((state) => state.profile);
+  const {
+    profileData,
+  } = useSelector((state) => state.profile);
+
 
   const [slicedTrendingBooks, setSlicedTrendingBooks] = useState([]);
   const [show, setShow] = useState(false);
+  const [showRedirectModal, setShowRedirectModal] = useState(false)
 
   useEffect(() => {
+
+    dispatch(fetchProfile());
     dispatch(fetchAllTrendingBooks());
     dispatch(fetchSubscriptionDetails());
+
+   
+
   }, [dispatch]);
 
   useEffect(() => {
-    debugger;
+
+    if(profileData){
+
+      if(profileData.dob === null || profileData.country_id === null){
+        setShowRedirectModal(true)
+      }
+
+    }else{
+
+    }
+
+  },[profileData])
+
+  useEffect(() => {
     if (subscriptionDetails.subscription === null && location.state === null) {
       setShow(true);
     } else if (subscriptionDetails.subscription === null && location.state.id === false) {
@@ -75,6 +125,11 @@ const Dashboard = () => {
   const handleNavigate = () => {
     navigate("/home/subscription");
   };
+
+  const handleRedirect = () => {
+    navigate("/home/profile");
+  };
+
 
   function getMultipleRandom(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
@@ -101,6 +156,8 @@ const Dashboard = () => {
       <Community />
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
+      <ModalRedirect  showRedirectModal={showRedirectModal} handleRedirect={handleRedirect} />
+
     </>
   );
 };
