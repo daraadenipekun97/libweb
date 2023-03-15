@@ -100,6 +100,7 @@ const Dashboard = () => {
 
       if(profileData.dob === null || profileData.country_id === null){
         setShowRedirectModal(true)
+        setShow(false)
       }
 
     }else{

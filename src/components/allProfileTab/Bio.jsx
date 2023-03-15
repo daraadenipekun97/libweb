@@ -86,6 +86,9 @@ const Bio = () => {
     dispatch(fetchProfile());
   }, [dispatch]);
 
+
+  
+
   const firstnameHandler = (e) => {
     if (e) {
       let nameValue = e.target.value;
@@ -114,6 +117,39 @@ const Bio = () => {
       setFormValues({
         ...formValues,
         lastname: "",
+      });
+    }
+  };
+
+
+  const dobHandler = (e) => {
+    if (e) {
+      let dobValue = e.target.value;
+      e.preventDefault();
+      setFormValues({
+        ...formValues,
+        dob: dobValue,
+      });
+    } else {
+      setFormValues({
+        ...formValues,
+        dob: "",
+      });
+    }
+  };
+
+  const countryHandler = (e) => {
+    if (e) {
+      let countryValue = e.target.value;
+      e.preventDefault();
+      setFormValues({
+        ...formValues,
+        country_id: countryValue,
+      });
+    } else {
+      setFormValues({
+        ...formValues,
+        country_id: 0,
       });
     }
   };
@@ -335,7 +371,8 @@ const Bio = () => {
               placeholder="Date of Birth*"
               value={formValues.dob}
               required
-              disabled
+              disabled={formValues.dob !=="" ? true : false}
+              onChange={(e) => dobHandler(e)}
             />
           </div>
 
@@ -354,7 +391,12 @@ const Bio = () => {
 
         <div className="input-group">
           <div className="input-group-wrapper-left">
-            <select className="gender-select" disabled value={formValues.country_id}>
+            <select className="gender-select" 
+            onChange={(e) => countryHandler(e)}
+            disabled={formValues.country_id !== "No Country"  ? true : false}
+            value={formValues.country_id}
+            
+            >
               <option value="No Country" disabled>
                 No Country
               </option>
