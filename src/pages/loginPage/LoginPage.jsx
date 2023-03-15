@@ -331,6 +331,8 @@ const LoginPage = ({ user }) => {
                 alert('Sorry we cant log you in at this time.Login Failed');
               }}
               text="Sign in with Google"
+              width="300px"
+              logo_alignment="left"
             />
 
               <br />
