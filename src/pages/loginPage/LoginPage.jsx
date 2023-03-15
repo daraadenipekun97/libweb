@@ -330,6 +330,7 @@ const LoginPage = ({ user }) => {
               onError={() => {
                 alert('Sorry we cant log you in at this time.Login Failed');
               }}
+              text="Sign in with Google"
             />
 
               <br />
