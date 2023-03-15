@@ -15,6 +15,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 // import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 
+import jwtDecode from 'jwt-decode'
+
 import { GoogleLogin } from '@react-oauth/google';
 
 
@@ -323,9 +325,13 @@ const LoginPage = ({ user }) => {
               
               <br />
             <GoogleLogin
-              onSuccess={credentialResponse => {
-                console.log(credentialResponse);
-              }}
+              onSuccess = {credentialResponse => {
+                if (credentialResponse.credential != null) {
+                 const USER_CREDENTIAL = jwtDecode(credentialResponse.credential);
+                 console.log('user credential is' + USER_CREDENTIAL);
+                }
+               }
+              }
               onError={() => {
                 console.log('Login Failed');
               }}
