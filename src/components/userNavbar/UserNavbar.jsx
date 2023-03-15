@@ -3,10 +3,11 @@ import "./userNavbar.css";
 import Logo from "../../assets/images/myLibriBooks.png";
 import Avatar from "../../assets/images/avatar.png";
 import { AiFillCaretDown } from "react-icons/ai";
-import { gapi } from "gapi-script";
 import { useNavigate } from "react-router-dom";
 import { toastr } from "react-redux-toastr";
 import { useDispatch } from "react-redux";
+import { googleLogout } from '@react-oauth/google';
+
 
 const UserNavbar = () => {
   const navigate = useNavigate();
@@ -18,21 +19,11 @@ const UserNavbar = () => {
 
   const [formValues, setFormValues] = useState({ ...initialFormValues });
 
-  const [profile, setProfile] = useState(false);
 
-  // const clientId = '893028334475-6o02i3mott60lp08b9tugapak12j6hr7.apps.googleusercontent.com'
+  // const clientIdLocal:3000 = '893028334475-6o02i3mott60lp08b9tugapak12j6hr7.apps.googleusercontent.com'
 
-  const clientId = "218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com";
 
-  useEffect(() => {
-    const initClient = () => {
-      gapi.auth2.init({
-        clientId: clientId,
-        scope: "profile email",
-      });
-    };
-    gapi.load("client:auth2", initClient);
-  });
+
 
   const handleProfile = () => {
     const profileBox = document.getElementsByClassName("profile_dropdown")[0];
@@ -51,16 +42,11 @@ const UserNavbar = () => {
   const userRegData = JSON.parse(localStorage.getItem("userRegData"));
 
   const handleLogout = () => {
-    const auth2 = gapi.auth2.getAuthInstance();
-
-    if (auth2 != null) {
-      auth2.signOut().then(auth2.disconnect().then(console.log("LOGOUT SUCCESSFUL")));
-    }
-
+   
+    googleLogout();
     localStorage.clear();
     navigate("/");
     window.location.reload();
-    // toastr.success("Logout Successful", "See you later");
   };
 
   const handleProfileNavigate = () => {

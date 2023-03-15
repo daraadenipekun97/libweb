@@ -103,25 +103,8 @@ const LoginPage = ({ user }) => {
    
   });
 
-  const onSuccess = (res) => {
-    debugger;
-    console.log("success:", res);
-    dispatch(
-      googleLogin({
-        name: res.profileObj.name,
-        email: res.profileObj.email,
-        uid: res.profileObj.googleId,
-        photo_url: res.profileObj.imageUrl,
-        device: "web",
-        country_id: "",
-      })
-    );
 
-    // setGoogleLoginStatus(true)
-  };
-  const onFailure = (err) => {
-    console.log("failed:", err);
-  };
+  
 
   useEffect(() => {
     if (googleLoginSuccess) {
@@ -328,37 +311,28 @@ const LoginPage = ({ user }) => {
               onSuccess = {credentialResponse => {
                 if (credentialResponse.credential != null) {
                  const USER_CREDENTIAL = jwtDecode(credentialResponse.credential);
-                 console.log('user credential is' + JSON.stringify(USER_CREDENTIAL));
                  let credentialObjJSON = JSON.stringify(USER_CREDENTIAL)
                  let credentialObj = JSON.parse(`${credentialObjJSON}`)
                  console.log(credentialObj)
+                 dispatch(
+                  googleLogin({
+                    name: credentialObj.name,
+                    email: credentialObj.email,
+                    uid: credentialObj.iat,
+                    photo_url: credentialObj.picture,
+                    device: "web",
+                    country_id: "",
+                  })
+                 )
                 }
                }
               }
               onError={() => {
-                console.log('Login Failed');
+                alert('Sorry we cant log you in at this time.Login Failed');
               }}
             />
 
               <br />
-            {/* <GoogleLogin
-              clientId={clientId}
-              render={(renderProps) => (
-                <button
-                  className="login-with-google-btn"
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                >
-                  Sign in with Google
-                </button>
-              )}
-              buttonText="Sign in with Google"
-              onSuccess={onSuccess}
-              onFailure={onFailure}
-              cookiePolicy={"single_host_origin"}
-              isSignedIn={true}
-            /> */}
-
             <p className="lib-login-p-tag">
               Dont have an account? <span onClick={handleSignup}>Sign up</span>
             </p>
