@@ -278,7 +278,7 @@ const Bio = () => {
         lastname: spliteNameArray !== "" ? spliteNameArray[1] : "",
         phone: profileData.phone !== null ? profileData.phone : "",
         dob: profileData.dob !== null ? profileData.dob : "",
-        country_id: profileData.country.id !== null ? profileData.country.id : "No Country",
+        country_id: profileData.country_id !== null ? profileData.country_id : "No Country",
         gender: profileData.gender !== null ? profileData.gender : "No Gender",
         email: profileData.email !== null ? profileData.email : "",
       });
