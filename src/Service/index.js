@@ -35,8 +35,8 @@ const token =
     : userDataLogin !== null
     ? userDataLogin.token
     : "";
-console.log(userDataRegister);
-console.log(`token is ${token}`);
+// console.log(userDataRegister);
+// console.log(`token is ${token}`);
 
 api.interceptors.request.use(function (config) {
   //   const state = typeof store !== 'undefined' ? store.getState() : { auth: {} };

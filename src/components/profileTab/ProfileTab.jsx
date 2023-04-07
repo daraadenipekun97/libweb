@@ -14,7 +14,7 @@ import Bio from "../allProfileTab/Bio";
 import WalletTab from "../allProfileTab/WalletTab";
 import Subscription from "../allProfileTab/Subscription";
 import ChangePassword from "../allProfileTab/ChangePassword";
-import { gapi } from "gapi-script";
+import { googleLogout } from '@react-oauth/google';
 
 const ProfileTab = () => {
   const navigate = useNavigate();
@@ -38,16 +38,11 @@ const ProfileTab = () => {
   };
 
   const handleLogout = () => {
-    const auth2 = gapi.auth2.getAuthInstance();
-
-    if (auth2 != null) {
-      auth2.signOut().then(auth2.disconnect().then(console.log("LOGOUT SUCCESSFUL")));
-    }
-
+    
+    googleLogout();
     localStorage.clear();
     navigate("/");
     window.location.reload();
-    // toastr.success("Logout Successful", "See you later");
   };
 
   return (

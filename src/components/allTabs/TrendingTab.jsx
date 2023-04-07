@@ -18,7 +18,6 @@ const TrendingTab = () => {
   }, [dispatch]);
 
   const currentTableData = useMemo(() => {
-    debugger;
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return trendingBooks.slice(firstPageIndex, lastPageIndex);

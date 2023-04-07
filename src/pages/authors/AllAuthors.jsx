@@ -5,19 +5,44 @@ import SingleAuthor from "../../components/singleAuthor/SingleAuthor";
 import UserNavbar from "../../components/userNavbar/UserNavbar";
 import "./allAuthors.css";
 import Pagination from "../../components/pagination/Pagination";
+import { fetchProfile } from "../../Actions";
+import ModalRedirect from "../../components/modal/ModalRedirect";
+import {  useLocation } from "react-router-dom";
 
 let PageSize = 30;
 
 const AllAuthors = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { allAuthors } = useSelector((state) => state.books);
+  const {
+    profileData,
+  } = useSelector((state) => state.profile);
+  const [showRedirectModal, setShowRedirectModal] = useState(false)
+
 
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchAllAuthors());
+    dispatch(fetchProfile());
   }, [dispatch]);
+
+  useEffect(() => {
+    if(profileData){
+
+      if(profileData.dob === null || profileData.country_id === null && (location.pathname !== "/home/profile") ){
+        setShowRedirectModal(true)
+      }else {
+
+      }
+
+    }else{
+
+    }
+
+  },[profileData])
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -38,6 +63,7 @@ const AllAuthors = () => {
           onPageChange={(page) => setCurrentPage(page)}
         />
       </div>
+      <ModalRedirect  showRedirectModal={showRedirectModal}  />
     </>
   );
 };

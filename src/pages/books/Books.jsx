@@ -40,7 +40,6 @@ const Books = () => {
   const [toggleHeart, setToggleHeart] = useState(false);
 
   useEffect(() => {
-    // debugger
     window.scrollTo(0, 0);
     dispatch(fetchBookDetails(params.id));
     dispatch(fetchSubscriptionDetails());
@@ -64,7 +63,6 @@ const Books = () => {
   };
 
   const handleRemoveFav = (id) => {
-    debugger;
     dispatch(removeBookFromFav(id));
     // setToggleHeart(false);
   };
@@ -118,6 +116,7 @@ const Books = () => {
   }
 
   const handleStartReading = (url, bookId) => {
+    debugger
     let expiryDate =
       subscriptionDetails.expiry_date !== null
         ? new Date(new Date(subscriptionDetails.expiry_date).toDateString())
@@ -133,17 +132,19 @@ const Books = () => {
         subscriptionDetails.subscription.title === "Trial"
       ) {
         if (subscriptionDetails.cancel_trial === 0) {
-          // navigate("/home/reader", {
-          //   state: {
-          //     id: url,
-          //   },
-          // });
-          window.location.href = `https://libreader.vercel.app/#${url}`;
+          navigate("/home/reader", {
+            state: {
+              id: url,
+            },
+          });
           dispatch(readBook(bookId));
         } else {
-          // toastr.warning('You cant read this book because your subscription is canceled', 'Please subscribe or reactive your subscription');
 
-          window.location.href = `https://libreader.vercel.app/#${url}`;
+          navigate("/home/reader", {
+            state: {
+              id: url,
+            },
+          });
           dispatch(readBook(bookId));
         }
       } else if (
@@ -158,16 +159,19 @@ const Books = () => {
         subscriptionDetails.subscription.title !== "Trial"
       ) {
         if (subscriptionDetails.cancel_subscription === 0) {
-          // navigate("/home/reader", {
-          //   state: {
-          //     id: url,
-          //   },
-          // });
-
-          window.location.href = `https://libreader.vercel.app/#${url}`;
+          navigate("/home/reader", {
+            state: {
+              id: url,
+            },
+          });
           dispatch(readBook(bookId));
         } else {
-          window.location.href = `https://libreader.vercel.app/#${url}`;
+
+          navigate("/home/reader", {
+            state: {
+              id: url,
+            },
+          });
           dispatch(readBook(bookId));
         }
       } else if (

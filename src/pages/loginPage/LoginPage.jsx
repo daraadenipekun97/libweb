@@ -314,7 +314,7 @@ const LoginPage = ({ user }) => {
                  const USER_CREDENTIAL = jwtDecode(credentialResponse.credential);
                  let credentialObjJSON = JSON.stringify(USER_CREDENTIAL)
                  let credentialObj = JSON.parse(`${credentialObjJSON}`)
-                 console.log(credentialObj)
+                //  console.log(credentialObj)
                  dispatch(
                   googleLogin({
                     name: credentialObj.name,

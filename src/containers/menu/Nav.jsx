@@ -17,7 +17,7 @@ const Nav = ({ control, onToggle, onLocation }, ref) => {
     onToggle();
   };
 
-  console.log(book);
+  // console.log(book);
 
   const Tocs = bookToc.map((t, idx) => (
     <NavItem key={idx} message={t.label} onClick={() => onClickItem(t.href)} />

@@ -287,8 +287,8 @@ const Register = ({ user }) => {
 
   const handleRegister = () => {
 
-   let b =  /[A-Z'][a-zA-Z'-]+/.test(formValues.firstname)
-   console.log("b is " + b)
+   //let b =  /[A-Z'][a-zA-Z'-]+/.test(formValues.firstname)
+  //  console.log("b is " + b)
 
     if (
       formValues.firstname !== "" &&

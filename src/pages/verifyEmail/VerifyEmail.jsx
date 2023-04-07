@@ -4,7 +4,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./verifyEmail.css";
 import { Navbar } from "../../containers";
 import Spinner from "../../components/spinner/Spinner";
-import { gapi } from "gapi-script";
 
 import {
   verifyUserEmail,
@@ -25,20 +24,6 @@ const VerifyEmail = ({ user }) => {
 
   const { verifyUserFailure, verifyUserSuccess, resendMailSuccess, resendMailFailure } =
     useSelector((state) => state.auth);
-
-  const clientId = "218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com";
-
-  useEffect(() => {
-    const initClient = () => {
-      gapi.auth2.init({
-        clientId: clientId,
-        scope: "profile email",
-      });
-    };
-    gapi.load("client:auth2", initClient);
-
-    // window.scrollTo(0, 300);
-  });
 
   const hanldeSwal = () => {
     Swal.fire({
@@ -166,17 +151,7 @@ const VerifyEmail = ({ user }) => {
     });
   };
 
-  const handleLogout = () => {
-    const auth2 = gapi.auth2.getAuthInstance();
 
-    if (auth2 != null) {
-      auth2.signOut().then(auth2.disconnect().then(console.log("LOGOUT SUCCESSFUL")));
-    }
-
-    localStorage.clear();
-    navigate("/");
-    // toastr.success("Logout Successful", "See you later");
-  };
 
   useEffect(() => {
     if (verifyUserSuccess === true) {
@@ -194,11 +169,7 @@ const VerifyEmail = ({ user }) => {
 
       navigate("/home/dashboard");
 
-      //user is logged out if email verification is succesful
-      // handleLogout()
-
-      //  handleSwal();
-      // window.location.reload();
+   
     }
 
     return () => {

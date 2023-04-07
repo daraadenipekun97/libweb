@@ -51,7 +51,6 @@ export const getProfile = async () => {
 };
 
 export const createBankDetails = async (body) => {
-  debugger;
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
   } else {
@@ -248,7 +247,6 @@ export const makeWebPurchase = async (param) => {
       const response = await api.get(
         `${baseControllerPayment}callbackTest?trxref=${param.trxref}&reference=${param.reference}`
       );
-      console.log(response);
       if (typeof response !== "undefined") {
         if (response.status === 200) {
           toastr.success("You have successfully subscribed", "");

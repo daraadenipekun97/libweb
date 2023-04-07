@@ -40,7 +40,7 @@ const Subscription = () => {
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({
-      key: "pk_test_60d4c7d06e3db39fe54118b4800a0432c172fe43",
+      key: "pk_live_1f30c4fc751c34322510ee08938c462aaf339bd5",
       amount: 100 * 100,
       email,
       firstName,
@@ -73,7 +73,7 @@ const Subscription = () => {
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({
-      key: "pk_test_60d4c7d06e3db39fe54118b4800a0432c172fe43",
+      key: "pk_live_1f30c4fc751c34322510ee08938c462aaf339bd5",
       amount: 1000 * 100,
       email,
       firstName,
@@ -106,7 +106,7 @@ const Subscription = () => {
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({
-      key: "pk_test_60d4c7d06e3db39fe54118b4800a0432c172fe43",
+      key: "pk_live_1f30c4fc751c34322510ee08938c462aaf339bd5",
       amount: 2500 * 100,
       email,
       firstName,
@@ -138,7 +138,7 @@ const Subscription = () => {
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({
-      key: "pk_test_60d4c7d06e3db39fe54118b4800a0432c172fe43",
+      key: "pk_live_1f30c4fc751c34322510ee08938c462aaf339bd5",
       amount: 5500 * 100,
       email,
       firstName,
@@ -171,7 +171,7 @@ const Subscription = () => {
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({
-      key: "pk_test_60d4c7d06e3db39fe54118b4800a0432c172fe43",
+      key: "pk_live_1f30c4fc751c34322510ee08938c462aaf339bd5",
       amount: 11200 * 100,
       email,
       firstName,
@@ -202,7 +202,7 @@ const Subscription = () => {
 
   useEffect(() => {
     if (webPurchaseSuccess) {
-      console.log("web purchase success");
+      // console.log("web purchase success");
     }
 
     return () => {
@@ -212,7 +212,7 @@ const Subscription = () => {
 
   useEffect(() => {
     if (webPurchaseFailure) {
-      console.log("web purchase failure");
+      // console.log("web purchase failure");
     }
 
     return () => {

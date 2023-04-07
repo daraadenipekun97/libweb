@@ -7,6 +7,7 @@ import { fetchAllTrendingBooks, fetchSubscriptionDetails, fetchProfile} from "..
 import { Community, Footer, Header } from "../../containers";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
+import ModalRedirect from "../../components/modal/ModalRedirect";
 
 
 const Modal = ({ handleClose, show, handleNavigate }) => {
@@ -42,33 +43,7 @@ const Modal = ({ handleClose, show, handleNavigate }) => {
   );
 };
 
-const ModalRedirect = ({ showRedirectModal, handleRedirect }) => {
-  const showHideClassName = showRedirectModal
-    ? "main-modal-bg-dashboard display-block"
-    : "main-modal-bg-dashboard display-none";
 
-  return (
-    <div className={showHideClassName}>
-      <div className="modal-main-dashboard">
-        <>
-          <h4 className="modal-title-dashboard">
-            Profile Update{" "}
-          </h4>
-          <p className="modal-text-dashboard">Please update your profile</p>
-          <p className="modal-text-dashboard">Country, Date of Birth & Phone Number</p>
-
-        </>
-
-        <hr />
-        <div className="btn-modal-wrapper-dashboard">
-          <button className="modal-btn-dashboard" onClick={handleRedirect}>
-            Ok
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -100,9 +75,11 @@ const Dashboard = () => {
 
     if(profileData){
 
-      if(profileData.dob === null || profileData.country_id === null){
+      if(profileData.dob === null || profileData.country_id === null && (location.pathname === "/home/dashboard" || location.pathname === "/home/profile") ){
         setShowRedirectModal(true)
         setShow(false)
+      }else {
+
       }
 
     }else{
@@ -129,9 +106,7 @@ const Dashboard = () => {
     navigate("/home/subscription");
   };
 
-  const handleRedirect = () => {
-    navigate("/home/profile");
-  };
+  
 
 
   function getMultipleRandom(arr, num) {
@@ -159,7 +134,7 @@ const Dashboard = () => {
       <Community />
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
-      <ModalRedirect  showRedirectModal={showRedirectModal} handleRedirect={handleRedirect} />
+      <ModalRedirect  showRedirectModal={showRedirectModal}  />
 
     </>
   );

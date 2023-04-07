@@ -71,12 +71,11 @@ const Reader = ({ theme, setTheme }) => {
   };
 
   const onLocationChange = (loc) => {
-    debugger;
     if (!viewerRef.current) return;
     viewerRef.current.setLocation(loc);
   };
 
-  console.log("url is " + location.state.id);
+  // console.log("url is " + location.state.id);
 
   const sharedLink = localStorage.getItem("book");
 

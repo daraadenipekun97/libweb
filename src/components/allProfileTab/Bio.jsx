@@ -253,7 +253,7 @@ const Bio = () => {
           fullname: `${formValues.firstname} ${formValues.lastname}`,
           phone: formValues.phone,
           dob: formValues.dob,
-          country_id: formValues.country_id,
+          country_id: 10,
           gender: formValues.gender,
         })
       );
@@ -280,6 +280,7 @@ const Bio = () => {
     if (updateProfileSuccess) {
       setFormState({ ...initialFormState });
       setDisabledState(true);
+      setDisableField(true)
       setFormType("view");
       dispatch(fetchProfile());
     }
@@ -307,7 +308,6 @@ const Bio = () => {
   }, [profileData]);
 
   const handleKeyPress = (e) => {
-    debugger;
     let keyCode = e.keyCode ? e.keyCode : e.which;
     if (
       (keyCode > 47 && keyCode < 58) ||

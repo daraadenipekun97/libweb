@@ -23,6 +23,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
 
 import { GoogleOAuthProvider } from '@react-oauth/google'
 
+
+
 const LightTheme = {
   pageBackground: "white",
   textColor: "#dc658b",
@@ -58,7 +60,7 @@ const GenreByIdPage = lazy(() => import("./pages/genre/GenreById"));
 const AllAuthorsPage = lazy(() => import("./pages/authors/AllAuthors"));
 const BooksPage = lazy(() => import("./pages/books/Books"));
 const ProfilePage = lazy(() => import("./pages/profile/Profile"));
-const ReaderPage = lazy(() => import("./containers/Reader"));
+const ReaderPage = lazy(() => import("./pages/Reader/Reader"));
 const WalletPage = lazy(() => import("./pages/wallet/Wallet"));
 const SubscriptionPage = lazy(() => import("./pages/subscription/Subscription"));
 const SearchPage = lazy(() => import("./pages/search/Search"));
@@ -67,6 +69,8 @@ const FAQPage = lazy(() => import("./pages/faq/Faq"));
 const PrivacyPolicyPage = lazy(() => import("./pages/privacy/PrivacyPolicy"));
 const TermsOfUsePage = lazy(() => import("./pages/privacy/TermsOfUse"));
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
+
+
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -110,14 +114,7 @@ function App() {
                   <Route path="genre/:id" element={<GenreByIdPage />} />
                   <Route path="books/:id" element={<BooksPage />} />
                   <Route path="profile" element={<ProfilePage />} />
-                  {/* <Route path="reader" element={
-
-                
-                <ThemeProvider theme={themes[theme]}>
-                  <ReaderPage theme={theme} setTheme={setTheme}  />
-                </ThemeProvider>
-
-                } /> */}
+                  <Route path="reader" element={<ReaderPage/>} />
                   <Route path="subscription" element={<SubscriptionPage />} />
                   <Route path="wallet" element={<WalletPage />} />
                   <Route path="search/:id" element={<SearchPage />} />
