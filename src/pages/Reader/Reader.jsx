@@ -8,7 +8,7 @@ const Reader = () => {
     const location = useLocation();
   return (
     <div className='wrapper'>
-        <iframe className='frame' src={`http://reada.mylibribooks.com/#${location.state.id}`} scrolling="yes"   allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+        <iframe className='frame' src={`https://reada.mylibribooks.com/#${location.state.id}`} scrolling="yes"   allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
     </div>
   )
 }
