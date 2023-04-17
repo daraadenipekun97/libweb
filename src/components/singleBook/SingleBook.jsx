@@ -6,11 +6,12 @@ import { useNavigate } from "react-router-dom";
 import "./singleBook.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { AiFillHeart, AiOutlineHeart, AiFillDelete } from "react-icons/ai";
 
 // import BookImg from "../../assets/images/wolesoyinka.jpg";
 import Spinner from "../spinner/Spinner";
 import PageHeaderText from "../pageHeaderText/PageHeaderText";
-import { searchBooksUnauth, fetchProfile } from "../../Actions";
+import { searchBooksUnauth, fetchProfile, removeBookFromFav, addBookToFav, removeFromLibrary } from "../../Actions";
 
 const Modal = ({ handleClose, show }) => {
   const showHideClassName = show ? "main-modal-bg display-block" : "main-modal-bg display-none";
@@ -32,11 +33,12 @@ const Modal = ({ handleClose, show }) => {
   );
 };
 
-const SingleBook = ({ datas, searchBar, title }) => {
+const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { profileData } = useSelector((state) => state.profile);
+ 
 
   const [spinnerHide, setSpinnerHide] = useState(false);
   const [show, setShow] = useState(false);
@@ -156,6 +158,19 @@ const SingleBook = ({ datas, searchBar, title }) => {
     }
   };
 
+
+  const handleRemoveFav = (id) => {
+    dispatch(removeBookFromFav(id));
+  };
+
+  const handleAddFav = (id) => {
+    dispatch(addBookToFav(id));
+  };
+
+  const handleRemoveFromLibrary = (id) => {
+    dispatch(removeFromLibrary(id))
+  }
+
   return (
     <div className="lib-book-gallery">
       <div className="lib-book-gallery-text">
@@ -201,8 +216,9 @@ const SingleBook = ({ datas, searchBar, title }) => {
           {datas.length !== 0 ? (
             datas.map((data) => {
               return (
+                <div>
                 <div
-                  className="lib-gallery-box"
+                  className={icon || favorite ? "lib-gallery-box-my-books" : "lib-gallery-box"}
                   onClick={() =>
                     userLoggedIn && profileData.email_verified_at
                       ? handleBookNavigate(data.id)
@@ -222,6 +238,62 @@ const SingleBook = ({ datas, searchBar, title }) => {
 
                   <p className="lib-gallery-box-author">{data.author ? data.author.name : ""}</p>
                   <h1 className="lib-gallery-box-book-name">{data.name ? data.name : ""}</h1>
+                  
+                </div>
+                  <div className="icons-container">
+                    {
+                      icon ? (
+                        <>
+
+                          {data.favorite ? (
+                            <>
+                              <AiFillHeart
+                                 title="Remove from Favorite"
+                                size={18}
+                                color="red"
+                                 onClick={() => handleRemoveFav(data.id)}
+                              />
+                              <AiFillDelete
+                                title="Delete from Library"
+                                size={18}
+                                onClick={() => handleRemoveFromLibrary(data.id)}
+                                color="grey"
+                              />
+                            </>
+                          ) : (
+                            <>
+                              <AiOutlineHeart
+                                title="Add to Favorite"
+                                size={18}
+                                color="red"
+                                onClick={() => handleAddFav(data.id)}
+                              />
+                              <AiFillDelete
+                                title="Delete from Library"
+                                size={18}
+                                onClick={() => handleRemoveFromLibrary(data.id)}
+                                color="grey"
+                              />
+                            </>
+                          )}
+
+
+
+
+                        </>
+                      ) : <></>
+                    }
+                    {
+                      favorite ? (
+                        <AiFillHeart
+                        title="Remove from Favorite"
+                       size={18}
+                       color="red"
+                        onClick={() => handleRemoveFav(data.id)}
+                     />
+                      ) : <></>
+                    }
+                  </div>
                 </div>
               );
             })

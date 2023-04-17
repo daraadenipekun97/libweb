@@ -1,7 +1,8 @@
 .subscription-page-container {
   background-color: #e3daf0;
   min-height: 100vh;
-  padding: 4rem 6rem;
+  padding: 2rem 6rem;
+  border: 1px solid #e3daf0;  
 }
 
 .subscription-top-contents {
@@ -66,7 +67,7 @@
 .sub-heading {
   font-size: 15px;
   color: #78787d;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 .subscription-plan-card-wrapper {
@@ -139,7 +140,7 @@
 
 @media screen and (max-width: 714px) {
   .subscription-page-container {
-    padding: 4rem 1rem;
+    padding: 2rem 1rem;
   }
 }
 

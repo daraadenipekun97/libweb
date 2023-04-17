@@ -8,13 +8,13 @@ import SubImage from "../../assets/images/Subscription.png";
 import { AiFillAlert } from "react-icons/ai";
 import PaystackPop from "@paystack/inline-js";
 import { useState, useEffect } from "react";
-import { webPurchase, restoreWebPurchaseInitial, fetchSubscriptionDetails } from "../../Actions";
+import { webPurchase, restoreWebPurchaseInitial, fetchProfile } from "../../Actions";
 
 const Subscription = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { webPurchaseFailure, webPurchaseSuccess, subscriptionDetails } = useSelector(
+  const { profileData,  webPurchaseFailure, webPurchaseSuccess, subscriptionDetails } = useSelector(
     (state) => state.profile
   );
 
@@ -30,9 +30,11 @@ const Subscription = () => {
   const [firstName, setFirstName] = useState(spliteNameArray[0]);
   const [lastName, setLastName] = useState(spliteNameArray[1]);
   const [dashboardModalState, setDashboardModalState] = useState(true);
-  // useEffect(() => {
-  //   dispatch(fetchSubscriptionDetails());
-  // }, [dispatch]);
+
+
+  useEffect(() => {
+    dispatch(fetchProfile());
+  }, [dispatch]);
 
   // let trialCheck = Object.keys(subscriptionDetails).length > 0 && subscriptionDetails.subscription.title !== null ?  subscriptionDetails.subscription.title : ""
 
@@ -224,7 +226,12 @@ const Subscription = () => {
     <>
       <UserNavbar />
       <div className="subscription-page-container">
-        <div className="subscription-top-contents">
+
+        {
+          Object.keys(profileData).length ==0 ?  (
+            <></>
+          ): Object.keys(profileData).length !==0 && profileData.trial_used === false ?(
+            <div className="subscription-top-contents">
           <div className="subscription-image-container">
             <img src={SubImage} alt="subscription_image" />
           </div>
@@ -236,11 +243,14 @@ const Subscription = () => {
             your account.
           </p>
         </div>
+          ):<></>
+        }
+        
 
         <div className="subscription-bottom-contents">
           <div className="card-heading-container">
             <h4 className="main-heading">Subscription Plans</h4>
-            <p className="sub-heading">Find the Plans that suit you</p>
+            <p className="sub-heading">Find the Plan that suits you</p>
           </div>
           <div className="subscription-plan-card-wrapper">
             <div className="subscription-card">

@@ -10,6 +10,7 @@ import {
   FETCH_MY_FAVORITES,
   ADD_REVIEW,
   READ_BOOK,
+  REMOVE_FROM_LIBRARY
 } from "../ActionTypes";
 
 import {
@@ -21,6 +22,7 @@ import {
   getMyFavorites,
   createReview,
   readBookCurrentlyReading,
+  removeFromLib
 } from "../Api";
 
 import {
@@ -32,6 +34,7 @@ import {
   fetchMyFavoritesSuccess,
   addReviewSuccess,
   readBookSuccess,
+  removeFromLibrarySuccess
 } from "../Actions";
 
 export const fetchMyBooksRequest = function* ({ payload }) {
@@ -98,6 +101,15 @@ export const readBookCurently = function* () {
   yield takeEvery(READ_BOOK, readBookRequest);
 };
 
+
+export const removeFromLibRequest = function* ({ payload }) {
+  yield call(requestFunction, removeFromLibrarySuccess, removeFromLib, payload);
+};
+
+export const removeFrommLibraryyy = function* () {
+  yield takeEvery(REMOVE_FROM_LIBRARY, removeFromLibRequest);
+};
+
 export default function* rootSaga() {
   yield all([
     fork(fetchMyBookss),
@@ -108,5 +120,6 @@ export default function* rootSaga() {
     fork(fetchMyFavs),
     fork(addRevieww),
     fork(readBookCurently),
+    fork(removeFrommLibraryyy)
   ]);
 }

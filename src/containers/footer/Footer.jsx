@@ -1,10 +1,19 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./footer.css";
 import Logo from "../../assets/images/myLibriBooks.png";
 
 import { AiFillFacebook, AiFillInstagram, AiFillTwitterCircle } from "react-icons/ai";
 
 const Footer = () => {
+
+  const [year, setYear] = useState("-");
+
+  useEffect(() => {
+    const footerYear =  new Date().getFullYear();
+    setYear(footerYear)
+  }, [])
+  
+
   return (
     <div className="lib-footer-container">
       <div className="lib-footer-wrapper">
@@ -86,7 +95,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="lib-footer-copyright">
-        <p>Copyright © The Libri Limited 2022.</p>
+        <p>{`Copyright © The Libri Limited ${year}`}</p>
       </div>
     </div>
   );

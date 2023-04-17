@@ -172,3 +172,7 @@ export const READ_BOOK_SUCCESS = "read_book_success";
 export const SEARCH_BOOK_UNAUTH = "search_book_unauth";
 export const SEARCH_BOOK_UNAUTH_SUCCESS = "search_book_unauth_success";
 export const RESTORE_SEARCH_BOOK_UNAUTH_INITIAL = "restore_search_book_unauth_initial";
+
+export const REMOVE_FROM_LIBRARY = "remove_from_library";
+export const REMOVE_FROM_LIBRARY_SUCCESS = "remove_from_library_success";
+export const RESTORE_REMOVE_FROM_LIBRARY_INITIAL = "remove_from_library_initial";

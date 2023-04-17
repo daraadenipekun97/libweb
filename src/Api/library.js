@@ -173,3 +173,25 @@ export const readBookCurrentlyReading = async (id) => {
     }
   }
 };
+
+
+
+export const removeFromLib = async (id) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerUser}library/remove/${id}`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          toastr.success("Book Removed Successfully", "");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not remove book");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please try again");
+    }
+  }
+};

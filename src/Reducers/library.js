@@ -11,6 +11,8 @@ import {
   ADD_REVIEW_SUCCESS,
   RESTORE_ADD_REVIEW_INITIAL,
   READ_BOOK_SUCCESS,
+  REMOVE_FROM_LIBRARY_SUCCESS,
+  RESTORE_REMOVE_FROM_LIBRARY_INITIAL
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -27,6 +29,9 @@ const INIT_STATE = {
 
   addReviewSuccess: false,
   addReviewFailure: false,
+
+  removeFromLibSuccess: false,
+  removeFromLibFailure: false,
 
   myFavorites: [],
   readBookSuccess: false,
@@ -155,6 +160,31 @@ const libraryReducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         readBookSuccess: action.payload,
+      };
+    }
+
+
+    case REMOVE_FROM_LIBRARY_SUCCESS: {
+      if (action.payload === true) {
+        return {
+          ...state,
+          removeFromLibSuccess: true,
+          removeFromLibFailure: false,
+        };
+      } else {
+        return {
+          ...state,
+          removeFromLibSuccess: false,
+          removeFromLibFailure: true,
+        };
+      }
+    }
+
+    case RESTORE_REMOVE_FROM_LIBRARY_INITIAL: {
+      return {
+        ...state,
+        removeFromLibSuccess: false,
+        removeFromLibFailure: false,
       };
     }
 

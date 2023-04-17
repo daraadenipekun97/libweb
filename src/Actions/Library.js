@@ -19,6 +19,10 @@ import {
   RESTORE_ADD_REVIEW_INITIAL,
   READ_BOOK,
   READ_BOOK_SUCCESS,
+
+  REMOVE_FROM_LIBRARY,
+  REMOVE_FROM_LIBRARY_SUCCESS,
+  RESTORE_REMOVE_FROM_LIBRARY_INITIAL
 } from "../ActionTypes";
 
 export const fetchMyBooks = () => ({
@@ -124,4 +128,20 @@ export const readBook = (id) => ({
 export const readBookSuccess = (payload) => ({
   type: READ_BOOK_SUCCESS,
   payload,
+});
+
+
+export const removeFromLibrary = (id) => ({
+  type: REMOVE_FROM_LIBRARY,
+  payload:id
+});
+
+export const removeFromLibrarySuccess = (payload) => ({
+  type: REMOVE_FROM_LIBRARY_SUCCESS,
+  payload,
+});
+
+
+export const restoreRemoveFromLibraryInitial = () => ({
+  type: RESTORE_REMOVE_FROM_LIBRARY_INITIAL,
 });

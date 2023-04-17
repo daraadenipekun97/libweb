@@ -116,7 +116,6 @@ const Books = () => {
   }
 
   const handleStartReading = (url, bookId) => {
-    debugger
     let expiryDate =
       subscriptionDetails.expiry_date !== null
         ? new Date(new Date(subscriptionDetails.expiry_date).toDateString())

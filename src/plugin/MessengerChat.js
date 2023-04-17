@@ -17,7 +17,7 @@ function MessengerChat() {
       js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
       fjs.parentNode.insertBefore(js, fjs);
     })(document, "script", "facebook-jssdk");
-    console.log("facebook sdk loaded");
+    // console.log("facebook sdk loaded");
   });
   return (
     <>
