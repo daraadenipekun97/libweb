@@ -3,10 +3,6 @@ import "./profileTab.css";
 import { useNavigate } from "react-router-dom";
 
 import {
-  AiOutlineUser,
-  AiOutlineWallet,
-  AiOutlineInteraction,
-  AiOutlineLock,
   AiOutlineLogout,
 } from "react-icons/ai";
 

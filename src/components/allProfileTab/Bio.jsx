@@ -2,11 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./css/bio.css";
 import Select from "react-select";
+import Swal from "sweetalert2";
+import { googleLogout } from '@react-oauth/google';
+import { useNavigate } from "react-router-dom";
+
+
 import {
   fetchAllCountries,
   fetchProfile,
   restoreUpdateProfileInitial,
   updateProfile,
+  deleteAccount,
+  restoredeleteAccountInitial
 } from "../../Actions";
 import Spinner from "../spinner/Spinner";
 
@@ -47,13 +54,16 @@ const customStyles = {
 
 const Bio = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { countries } = useSelector((state) => state.getAll);
-  const { profileData, updateProfileSuccess, updateProfileFailure } = useSelector(
+  const { profileData, updateProfileSuccess, updateProfileFailure, deleteAccountSuccess, deleteAccountFailure } = useSelector(
     (state) => state.profile
   );
 
   const [theCountry, setTheCountry] = useState([]);
   const [disabledState, setDisabledState] = useState(true);
+  const [btnDisabledState, setBtnDisabledState] = useState(false)
 
   const initialFormState = {
     buttonState: false,
@@ -328,7 +338,67 @@ const Bio = () => {
     }
   };
 
+
+  const deleteAccountHandler = (email) => {
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Delete Account!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setBtnDisabledState(true);
+        dispatch(deleteAccount(email))
+
+      }
+    })
+
+  }
+
+  const handleLogout = () => {
+    
+    googleLogout();
+    localStorage.clear();
+    navigate("/");
+    window.location.reload();
+  };
+
+
+  useEffect(() => {
+    
+    if(deleteAccountFailure){
+
+      setBtnDisabledState(false)
+
+    }
+  
+    return () => {
+      dispatch(restoredeleteAccountInitial())
+    }
+  }, [deleteAccountFailure])
+
+
+  useEffect(() => {
+    
+    if(deleteAccountSuccess){
+
+      handleLogout();
+      
+        
+    }
+  
+    return () => {
+      dispatch(restoredeleteAccountInitial())
+    }
+  }, [deleteAccountSuccess])
+  
+
   return (
+    <>
     <div className="bio-wrapper">
       <p className="bio-wrapper-text">You Can Modify Your Name And Gender</p>
       <div className="bio-form">
@@ -475,8 +545,17 @@ const Bio = () => {
         >
           {formState.spinner === true ? <Spinner /> : formState.buttonText}
         </button>
+
+       
       </div>
     </div>
+    <div className="delete-wrapper">
+    <p className="bio-wrapper-text">You can delete your account</p>
+    <button className="delete-button" onClick = {() => deleteAccountHandler(formValues.email)} disabled={btnDisabledState}>
+          Delete Account
+        </button>
+    </div>
+    </>
   );
 };
 

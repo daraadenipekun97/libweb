@@ -228,7 +228,7 @@ const Subscription = () => {
       <div className="subscription-page-container">
 
         {
-          Object.keys(profileData).length ==0 ?  (
+          Object.keys(profileData).length === 0 ?  (
             <></>
           ): Object.keys(profileData).length !==0 && profileData.trial_used === false ?(
             <div className="subscription-top-contents">

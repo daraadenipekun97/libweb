@@ -4,6 +4,7 @@
   width: 60vw;
   padding: 2rem 2rem;
   border-radius: 10px;
+  /* border: solid; */
 }
 
 .bio-wrapper-text {
@@ -21,6 +22,7 @@
 
 .bio-form {
   margin-top: 0.5rem;
+  /* border: 1px solid red; */
 }
 
 .input-group {
@@ -110,8 +112,50 @@ select:disabled {
   cursor: pointer;
 }
 
+.delete-wrapper {
+  background-color: white;
+  height: fit-content;
+  width: 60vw;
+  padding: 2rem 2rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+
+.delete-button{
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 25px;
+  border: 1px solid rgb(188, 2, 2);
+  outline: none;
+  background: white;
+  color: rgb(188, 2, 2);
+  width: 100%;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+.delete-button:active{
+  
+  outline: none;
+  background: rgb(188, 2, 2) !important;
+  color: white;
+  width: 100%;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1024px) {
   .bio-wrapper {
+    background-color: white;
+    width: 100%;
+    padding: 2rem 2rem;
+  }
+
+  .delete-wrapper {
     background-color: white;
     width: 100%;
     padding: 2rem 2rem;

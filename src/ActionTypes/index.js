@@ -176,3 +176,8 @@ export const RESTORE_SEARCH_BOOK_UNAUTH_INITIAL = "restore_search_book_unauth_in
 export const REMOVE_FROM_LIBRARY = "remove_from_library";
 export const REMOVE_FROM_LIBRARY_SUCCESS = "remove_from_library_success";
 export const RESTORE_REMOVE_FROM_LIBRARY_INITIAL = "remove_from_library_initial";
+
+
+export const DELETE_ACCOUNT = "delete_account";
+export const DELETE_ACCOUNT_SUCCESS = "delete_account_success";
+export const RESTORE_DELETE_ACCOUNT_INITIAL = "restore_delete_account_initial";

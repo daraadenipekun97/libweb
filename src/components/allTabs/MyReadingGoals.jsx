@@ -362,13 +362,22 @@ const MyReadingGoals = () => {
           <Select
             options={theBooks}
             styles={customStyles}
-            placeholder={"Select Book"}
+            placeholder={"Select Book*"}
             onChange={(e) => booksHandler(e)}
           />
         </div>
 
-        <div className="textfield-wrapper">
-          <textarea
+        <div className="select-book-wrapper">
+          <Select
+            options={[{value:1,label:"1 hour daily"}, {value:10, label:"10 hours weekly"}, {value:50, label:"50 hours monthly"}]}
+            styles={customStyles}
+            placeholder={"How do you intend to achieve this goal*"}
+            // onChange={(e) => booksHandler(e)}
+          />
+        </div>
+
+        {/* <div className="textfield-wrapper">
+           <textarea
             className="reading-goals-text-area"
             name="textarea"
             placeholder="How do you intend to achieve this goal? eg 10 times daily, 5 times daily"
@@ -376,7 +385,7 @@ const MyReadingGoals = () => {
             required
             value={formValues.achieve_by}
           />
-        </div>
+        </div> */}
 
         <button
           disabled={formState.buttonState}

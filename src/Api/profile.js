@@ -7,6 +7,8 @@ const baseControllerWallet = "api/user/wallet/";
 const baseControllerCancelSubscription = "api/user/profile/cancel/";
 const baseControllerReactivateSubscription = "api/user/profile/reactivate/";
 const baseControllerPayment = "api/user/payment/";
+const baseControllerServices = "api/services/";
+
 
 export const updateProfile = async (body) => {
   if (navigator.onLine === false) {
@@ -281,6 +283,32 @@ export const changePass = async (body) => {
     } catch (ex) {
       toastr.error("Password Update", `${ex.response.data.message}`);
       return ex.response.data.message;
+    }
+  }
+};
+
+
+
+export const deleteUserAccount = async (email) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerServices}delete/${email}`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          toastr.success(`${response.data.message}`, "Success");
+          return response.data.status;
+        } else {
+          toastr.error("Something went wrong", "Please try again");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("An Error Occured", "Please try again");
+      }
+    } catch (ex) {
+      toastr.error("An Error Occured", "Please try again");
+          return ex.response.data.message
     }
   }
 };

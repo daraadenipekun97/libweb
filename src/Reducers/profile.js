@@ -21,6 +21,8 @@ import {
   FETCH_SUBSCRIPTION_DETAILS_SUCCESS,
   CHANGE_PASSWORD_SUCCESS,
   RESTORE_CHANGE_PASSWORD_INITIAL,
+  DELETE_ACCOUNT_SUCCESS,
+  RESTORE_DELETE_ACCOUNT_INITIAL
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -51,6 +53,9 @@ const INIT_STATE = {
   subscriptionDetails: {},
   passwordChangeSuccess: false,
   passwordChangeFailure: false,
+
+  deleteAccountSuccess:false,
+  deleteAccountFailure:false
 };
 
 const profileReducer = (state = INIT_STATE, action) => {
@@ -303,6 +308,31 @@ const profileReducer = (state = INIT_STATE, action) => {
         ...state,
         passwordChangeFailure: false,
         passwordChangeSuccess: false,
+      };
+    }
+
+
+    case DELETE_ACCOUNT_SUCCESS: {
+      if (action.payload === true) {
+        return {
+          ...state,
+          deleteAccountSuccess: true,
+          deleteAccountFailure: false,
+        };
+      } else {
+        return {
+          ...state,
+          deleteAccountSuccess: false,
+          deleteAccountFailure: true,
+        };
+      }
+    }
+
+    case RESTORE_DELETE_ACCOUNT_INITIAL: {
+      return {
+        ...state,
+        deleteAccountSuccess: false,
+        deleteAccountFailure: false,
       };
     }
 

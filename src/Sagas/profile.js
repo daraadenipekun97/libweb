@@ -15,6 +15,7 @@ import {
   WEB_PURCHASE,
   FETCH_SUBSCRIPTION_DETAILS,
   CHANGE_PASSWORD,
+  DELETE_ACCOUNT
 } from "../ActionTypes";
 
 import {
@@ -31,6 +32,7 @@ import {
   makeWebPurchase,
   getSubscriptionDetails,
   changePass,
+  deleteUserAccount
 } from "../Api";
 
 import {
@@ -47,6 +49,7 @@ import {
   webPurchaseSuccess,
   fetchSubscriptionDetailsSuccess,
   changePasswordSuccess,
+  deleteAccountSuccess
 } from "../Actions";
 
 export const updateProfileRequest = function* ({ payload }) {
@@ -158,6 +161,16 @@ export const changePasswordd = function* () {
   yield takeEvery(CHANGE_PASSWORD, changePasswordRequest);
 };
 
+
+export const deleteAccountRequest = function* ({ payload }) {
+  yield call(requestFunction, deleteAccountSuccess, deleteUserAccount, payload);
+};
+
+export const deleteAcct = function* () {
+  yield takeEvery(DELETE_ACCOUNT, deleteAccountRequest);
+};
+
+
 export default function* rootSaga() {
   yield all([
     fork(updateProfil),
@@ -173,6 +186,7 @@ export default function* rootSaga() {
     fork(webPurchasseee),
     fork(fetchSubDetaillss),
     fork(changePasswordd),
+    fork(deleteAcct)
 
   ]);
 }
