@@ -2,6 +2,8 @@ import api from "../Service";
 import { toastr } from "react-redux-toastr";
 
 const baseController = "api/services/";
+const baseControllerAdmin = "api/admin/";
+
 
 export const getCountries = async () => {
   if (navigator.onLine === false) {
@@ -15,6 +17,26 @@ export const getCountries = async () => {
         }
       } else {
         toastr.error("An Error occured", "Could not retrieve countries");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please try again");
+    }
+  }
+};
+
+
+export const getSongs = async () => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerAdmin}dashboard/audio/all`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          return response.data.data;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not retrieve songs");
       }
     } catch (ex) {
       toastr.error("An Error occurred", "Please try again");

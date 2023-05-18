@@ -5,7 +5,6 @@ import { AiFillLeftCircle } from "react-icons/ai";
 import { useParams, useNavigate } from "react-router-dom";
 import "./books.css";
 import Tab from "../../components/tab/Tab";
-import bookImg from "../../assets/images/wolesoyinka.jpg";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { Footer } from "../../containers";
 import SingleBook from "../../components/singleBook/SingleBook";
@@ -18,11 +17,10 @@ import {
   readBook,
   fetchSubscriptionDetails,
   restoreFetchBookDetails,
+  fetchSongs
 } from "../../Actions";
 import Preloader from "../../components/preloader/Preloader";
 import StarRating from "../../components/starRating/StarRating";
-import Reader from "../../containers/Reader";
-import { toastr } from "react-redux-toastr";
 
 const Books = () => {
   const navigate = useNavigate();
@@ -37,12 +35,13 @@ const Books = () => {
   } = useSelector((state) => state.books);
   const { subscriptionDetails } = useSelector((state) => state.profile);
 
-  const [toggleHeart, setToggleHeart] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchBookDetails(params.id));
     dispatch(fetchSubscriptionDetails());
+    // dispatch(fetchSongs());
+
     //  console.log('current URL 👉️', window.location.href);
     //  console.log('current Pathname 👉️', window.location.pathname);
   }, [dispatch, params.id]);
@@ -186,7 +185,7 @@ const Books = () => {
   };
 
   let filterAuthorBooks = bookDetails.book.author.books.filter(
-    (book) => book.id != bookDetails.book.id
+    (book) => book.id !== bookDetails.book.id
   );
 
   return (

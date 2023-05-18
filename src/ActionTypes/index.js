@@ -181,3 +181,7 @@ export const RESTORE_REMOVE_FROM_LIBRARY_INITIAL = "remove_from_library_initial"
 export const DELETE_ACCOUNT = "delete_account";
 export const DELETE_ACCOUNT_SUCCESS = "delete_account_success";
 export const RESTORE_DELETE_ACCOUNT_INITIAL = "restore_delete_account_initial";
+
+
+export const FETCH_SONGS = "fetch_songs";
+export const FETCH_SONGS_SUCCESS = "fetch_songs_success";
