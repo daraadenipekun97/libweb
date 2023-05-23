@@ -36,6 +36,9 @@ const Reader = () => {
       allSongs.length !== 0 && createSongPlaylist();
     }, [allSongs]);
 
+
+
+    //test songs  data 
     const audioLists = [
       {
         name: 'Despacito',
@@ -62,13 +65,15 @@ const Reader = () => {
 
 
     
-  
+    
     
   return (
     <div className='wrapper'>
-        <iframe className='frame' src={`https://reada.mylibribooks.com/#${location.state.id}`} scrolling="yes"   allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+        {/* <iframe className='frame' src={`https://reada.mylibribooks.com/#${location.state.id}`} scrolling="yes"   allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true"></iframe> */}
+        <iframe className='frame' src={`https://libreader.vercel.app/#${location.state.id}`} scrolling="yes"   allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+
         <ReactJkMusicPlayer 
-        audioLists={audioLists}
+        audioLists={audioList}
         autoPlay={false}
         responsive
         glassBg
