@@ -40,7 +40,7 @@ const Books = () => {
     window.scrollTo(0, 0);
     dispatch(fetchBookDetails(params.id));
     dispatch(fetchSubscriptionDetails());
-    // dispatch(fetchSongs());
+    dispatch(fetchSongs());
 
     //  console.log('current URL 👉️', window.location.href);
     //  console.log('current Pathname 👉️', window.location.pathname);

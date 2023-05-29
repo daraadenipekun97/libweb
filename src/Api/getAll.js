@@ -2,7 +2,6 @@ import api from "../Service";
 import { toastr } from "react-redux-toastr";
 
 const baseController = "api/services/";
-const baseControllerAdmin = "api/admin/";
 
 
 export const getCountries = async () => {
@@ -30,7 +29,7 @@ export const getSongs = async () => {
     toastr.error("No Internet Connection", "Please try again");
   } else {
     try {
-      const response = await api.get(`${baseControllerAdmin}dashboard/audio/all`);
+      const response = await api.get(`${baseController}audio/all`);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
           return response.data.data;
