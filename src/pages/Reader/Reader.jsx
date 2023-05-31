@@ -4,6 +4,7 @@ import "./reader.css"
 import { useLocation } from "react-router-dom";
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import 'react-jinke-music-player/assets/index.css'
+import { fetchSongs } from '../../Actions';
 
 
 
@@ -20,7 +21,16 @@ const Reader = () => {
     const { allSongs } = useSelector((state) => state.getAll);
 
 
+
+
+
     const [audioList, setAudioList] = useState([])
+
+
+    useEffect(() => {
+      dispatch(fetchSongs());     
+    }, [dispatch])
+    
 
     useEffect(() => {
       const createSongPlaylist = () => {
