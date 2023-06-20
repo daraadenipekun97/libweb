@@ -28,7 +28,7 @@ const Modal = ({ handleClose, show, data, clickedId }) => {
           <>
             <h4 className="modal-title">{filtered.content}</h4>
             <hr />
-            <p className="modal-text">{filtered.achieve_by}</p>
+            <p className="modal-text">{`${filtered.achieve_by_hour} hours per ${filtered.achieve_by_interval}`}</p>
           </>
         )}
 
@@ -132,8 +132,9 @@ const MyReadingGoals = () => {
   const initialFormValues = {
     start_date: "",
     end_date: "",
-    book_title: "",
-    achieve_by: "",
+    book_id: "",
+    hour: "",
+    interval: ""
   };
 
   const [formValues, setFormValues] = useState({ ...initialFormValues });
@@ -181,7 +182,7 @@ const MyReadingGoals = () => {
     const createBooksSelect = () => {
       let booksData = [];
       allBookNames.map((allBook) => {
-        let option = { label: allBook.name };
+        let option = { label: allBook.name, value:allBook.id };
         booksData.push(option);
       });
 
@@ -191,30 +192,49 @@ const MyReadingGoals = () => {
     allBookNames.length !== 0 && createBooksSelect();
   }, [allBookNames]);
 
-  const [booksName, setBooksName] = useState({});
+  const [booksId, setBooksId] = useState(null);
+  const [duration, setDuration] = useState(null);
+
 
   const booksHandler = (e) => {
     setRequiredText("");
 
     if (e) {
-      setBooksName(e);
+      setBooksId(e);
     }
   };
 
-  const achievedByHandler = (e) => {
+  const durationHandler = (e) => {
     setRequiredText("");
 
     if (e) {
-      let achieveValue = e.target.value;
+      setDuration(e);
+    }
+  }
+
+  const hourHandler = (e) => {
+    setRequiredText("");
+
+    if (e) {
+      let hourValue = e.target.value;
       e.preventDefault();
-      setFormValues({
+      if(hourValue <= 0){
+        setFormValues({
+          ...formValues,
+          hour: "",
+        });
+      }
+      else{
+         setFormValues({
         ...formValues,
-        achieve_by: achieveValue,
+        hour: hourValue,
       });
+      }
+     
     } else {
       setFormValues({
         ...formValues,
-        achieve_by: "",
+        hour: "",
       });
     }
   };
@@ -223,13 +243,14 @@ const MyReadingGoals = () => {
     if (
       formValues.start_date !== "" &&
       formValues.end_date !== "" &&
-      booksName.label !== "" &&
-      formValues.achieve_by !== ""
+      booksId.value !== "" &&
+      formValues.hour !=="" &&
+      duration.value !== ""
     ) {
       setFormState({
         ...formState,
         buttonState: true,
-        buttonText: "Register",
+        buttonText: "",
         spinner: true,
       });
 
@@ -245,8 +266,9 @@ const MyReadingGoals = () => {
         addGoals({
           start_date: formValues.start_date,
           end_date: formValues.end_date,
-          book_title: booksName.label,
-          achieve_by: formValues.achieve_by,
+          book_id: booksId.value,
+          hour: parseInt(formValues.hour),
+          interval: duration.value,
         })
       );
     }
@@ -270,7 +292,8 @@ const MyReadingGoals = () => {
     if (addGoalsSuccess === true) {
       setFormValues({ ...initialFormValues });
       setFormState({ ...initialFormState });
-      setBooksName({});
+      setBooksId(null);
+      setDuration(null)
       dispatch(fetchAllGoals());
     }
 
@@ -362,17 +385,33 @@ const MyReadingGoals = () => {
           <Select
             options={theBooks}
             styles={customStyles}
+            value={booksId}
             placeholder={"Select Book*"}
             onChange={(e) => booksHandler(e)}
+            // isClearable={true}
+
           />
         </div>
 
+        <input
+            type="number"
+            name="hours"
+            className="reading-goals-input"
+            value={formValues.hour}
+            placeholder="No of Hours you want to put in eg 5*"
+            required
+            min="1"
+            onChange={(e) => hourHandler(e)}
+          />
         <div className="select-book-wrapper">
+        
           <Select
-            options={[{value:1,label:"1 hour daily"}, {value:10, label:"10 hours weekly"}, {value:50, label:"50 hours monthly"}]}
+            options={[{value:'week',label:"Weekly"}, {value:'month', label:"Monthly"}]}
             styles={customStyles}
-            placeholder={"How do you intend to achieve this goal*"}
-            // onChange={(e) => booksHandler(e)}
+            value={duration}
+            placeholder={"Duration*"}
+            // isClearable={true}
+            onChange={(e) => durationHandler(e)}
           />
         </div>
 
@@ -395,6 +434,8 @@ const MyReadingGoals = () => {
           {formState.spinner === true ? <Spinner /> : formState.buttonText}
         </button>
       </div>
+
+     
 
       <h4 className="reading-goals-h4">All Goals</h4>
 

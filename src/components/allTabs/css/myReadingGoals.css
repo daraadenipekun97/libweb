@@ -33,6 +33,18 @@
   border: 1px solid #5e458b;
 }
 
+.reading-goals-input{
+
+  background-color: #ffffff;
+  border: 2px solid rgba(84, 95, 125, 0.15);
+  border-radius: 5px;
+  height: 50px;
+  padding: 0px 10px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
 .select-book-wrapper {
   /* border: solid; */
 }

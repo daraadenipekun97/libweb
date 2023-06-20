@@ -185,3 +185,8 @@ export const RESTORE_DELETE_ACCOUNT_INITIAL = "restore_delete_account_initial";
 
 export const FETCH_SONGS = "fetch_songs";
 export const FETCH_SONGS_SUCCESS = "fetch_songs_success";
+
+
+export const UPDATE_READING_TIME = "update_reading_time";
+export const UPDATE_READING_TIME_SUCCESS = "update_reading_time_success";
+export const RESTORE_UPDATE_READING_TIME_INITIAL = "restore_update_reading_time_initial"

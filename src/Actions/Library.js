@@ -22,7 +22,11 @@ import {
 
   REMOVE_FROM_LIBRARY,
   REMOVE_FROM_LIBRARY_SUCCESS,
-  RESTORE_REMOVE_FROM_LIBRARY_INITIAL
+  RESTORE_REMOVE_FROM_LIBRARY_INITIAL,
+
+  UPDATE_READING_TIME,
+  UPDATE_READING_TIME_SUCCESS,
+  RESTORE_UPDATE_READING_TIME_INITIAL
 } from "../ActionTypes";
 
 export const fetchMyBooks = () => ({
@@ -43,13 +47,14 @@ export const fetchMyFavoritesSuccess = (payload) => ({
   payload,
 });
 
-export const addGoals = ({ start_date, end_date, book_title, achieve_by }) => ({
+export const addGoals = ({ start_date, end_date, book_id, hour, interval }) => ({
   type: ADD_GOALS,
   payload: {
     start_date,
     end_date,
-    book_title,
-    achieve_by,
+    book_id,
+    hour,
+    interval
   },
 });
 
@@ -144,4 +149,23 @@ export const removeFromLibrarySuccess = (payload) => ({
 
 export const restoreRemoveFromLibraryInitial = () => ({
   type: RESTORE_REMOVE_FROM_LIBRARY_INITIAL,
+});
+
+
+export const updateReadingTime = ({ total_seconds, book_id }) => ({
+  type: UPDATE_READING_TIME,
+  payload: {
+    total_seconds,
+    book_id
+  },
+});
+
+export const updateReadingTimeSuccess = (payload) => ({
+  type: UPDATE_READING_TIME_SUCCESS,
+  payload,
+});
+
+
+export const restoreUpdateReadingTimeInitial = () => ({
+  type: RESTORE_UPDATE_READING_TIME_INITIAL,
 });

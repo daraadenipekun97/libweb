@@ -29,13 +29,13 @@ export const createGoals = async (body) => {
     toastr.error("No Internet Connection", "Please try again");
   } else {
     try {
-      const response = await api.post(`${baseControllerUser}goal/add`, body);
+      const response = await api.post(`${baseControllerUser}goal/add/v1`, body);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
           toastr.success("Reading Goal Added Successful", "");
           return response.data.status;
         } else {
-          toastr.error("Couldnt add reading goal", "Please try again");
+          toastr.error("Could not add reading goal", "Please try again");
           return response.data.status;
         }
       } else {
@@ -192,6 +192,32 @@ export const removeFromLib = async (id) => {
       }
     } catch (ex) {
       toastr.error("An Error occurred", "Please try again");
+    }
+  }
+};
+
+
+
+export const updateReadTime = async (body) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.post(`${baseControllerUser}goal/reading/time`, body);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          toastr.success("Reading Time Updated Successful", "");
+          return response.data.status;
+        } else {
+          toastr.error("Could not update reading time", "Please try again");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("An Error Occured", "Please try again");
+      }
+    } catch (ex) {
+      toastr.error("An Error Occured", "Please try again");
+      //   return ex.response.data.message
     }
   }
 };

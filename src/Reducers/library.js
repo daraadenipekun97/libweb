@@ -12,7 +12,9 @@ import {
   RESTORE_ADD_REVIEW_INITIAL,
   READ_BOOK_SUCCESS,
   REMOVE_FROM_LIBRARY_SUCCESS,
-  RESTORE_REMOVE_FROM_LIBRARY_INITIAL
+  RESTORE_REMOVE_FROM_LIBRARY_INITIAL,
+  UPDATE_READING_TIME_SUCCESS,
+  RESTORE_UPDATE_READING_TIME_INITIAL
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -35,6 +37,10 @@ const INIT_STATE = {
 
   myFavorites: [],
   readBookSuccess: false,
+
+  updateReadingTimeSuccess:false,
+  updateReadingTimeFailure:false
+
 };
 
 const libraryReducer = (state = INIT_STATE, action) => {
@@ -185,6 +191,30 @@ const libraryReducer = (state = INIT_STATE, action) => {
         ...state,
         removeFromLibSuccess: false,
         removeFromLibFailure: false,
+      };
+    }
+
+    case UPDATE_READING_TIME_SUCCESS: {
+      if (action.payload === true) {
+        return {
+          ...state,
+          updateReadingTimeSuccess: true,
+          updateReadingTimeFailure: false,
+        };
+      } else {
+        return {
+          ...state,
+          updateReadingTimeSuccess: false,
+          updateReadingTimeFailure: true,
+        };
+      }
+    }
+
+    case RESTORE_UPDATE_READING_TIME_INITIAL: {
+      return {
+        ...state,
+        updateReadingTimeSuccess: false,
+        updateReadingTimeFailure: false,
       };
     }
 

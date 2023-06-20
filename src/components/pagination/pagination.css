@@ -16,6 +16,7 @@
   line-height: 1.43;
   font-size: 13px;
   min-width: 32px;
+  
 }
 .pagination-container .pagination-item.dots:hover {
   background-color: transparent;
@@ -55,4 +56,22 @@
 .pagination-container .pagination-item.disabled:hover {
   background-color: transparent;
   cursor: default;
+}
+
+
+@media screen and (max-width: 426px) {
+
+  .pagination-container {
+    display: block;
+
+  }
+
+  .pagination-container .pagination-item {
+    
+    width: fit-content;
+    margin: 0 auto;
+
+    
+  }
+
 }

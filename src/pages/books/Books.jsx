@@ -40,10 +40,11 @@ const Books = () => {
     window.scrollTo(0, 0);
     dispatch(fetchBookDetails(params.id));
     dispatch(fetchSubscriptionDetails());
-    dispatch(fetchSongs());
+    // dispatch(fetchSongs());
 
     //  console.log('current URL 👉️', window.location.href);
-    //  console.log('current Pathname 👉️', window.location.pathname);
+      // console.log('current Pathname 👉️', window.location.pathname);
+
   }, [dispatch, params.id]);
 
   useEffect(() => {
@@ -54,7 +55,11 @@ const Books = () => {
     if (slicedPathname === "/home/books/") {
       localStorage.setItem("book", window.location.href);
     }
+
+   
   }, [dispatch, window.location.pathname]);
+  
+  
 
   const handleBack = () => {
     dispatch(restoreFetchBookDetails());
@@ -133,6 +138,7 @@ const Books = () => {
           navigate("/home/reader", {
             state: {
               id: url,
+              bookId: bookId
             },
           });
           dispatch(readBook(bookId));
@@ -141,6 +147,8 @@ const Books = () => {
           navigate("/home/reader", {
             state: {
               id: url,
+              bookId: bookId
+
             },
           });
           dispatch(readBook(bookId));
@@ -160,6 +168,8 @@ const Books = () => {
           navigate("/home/reader", {
             state: {
               id: url,
+              bookId: bookId
+
             },
           });
           dispatch(readBook(bookId));
@@ -168,6 +178,8 @@ const Books = () => {
           navigate("/home/reader", {
             state: {
               id: url,
+              bookId: bookId
+
             },
           });
           dispatch(readBook(bookId));
