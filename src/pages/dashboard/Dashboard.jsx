@@ -26,7 +26,7 @@ const Modal = ({ handleClose, show, handleNavigate }) => {
             </span>
           </h4>
           <p className="modal-text-dashboard">Great to have you here!</p>
-          <p className="modal-text-dashboard">Get Started with ₦100 for 7 days</p>
+          <p className="modal-text-dashboard">Get Started with ₦150 for 7 days</p>
         </>
 
         <hr />

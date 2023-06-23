@@ -43,7 +43,7 @@ const Subscription = () => {
     const paystack = new PaystackPop();
     paystack.newTransaction({
       key: "pk_live_1f30c4fc751c34322510ee08938c462aaf339bd5",
-      amount: 100 * 100,
+      amount: 150 * 100,
       email,
       firstName,
       lastName,
@@ -236,10 +236,10 @@ const Subscription = () => {
             <img src={SubImage} alt="subscription_image" />
           </div>
           <button className="trial-btn" onClick={(e) => payWithPaystackTrial(e)}>
-            Get 7 days access to the Trial period for ₦100{" "}
+            Get 7 days access to the Trial period for ₦150{" "}
           </button>
           <p className="subscription-top-text">
-            Please note that the sum of ₦100 will be deducted from your account, this is to validate
+            Please note that the sum of ₦150 will be deducted from your account, this is to validate
             your account.
           </p>
         </div>
