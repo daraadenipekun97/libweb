@@ -39,7 +39,7 @@ export const createGoals = async (body) => {
           return response.data.status;
         }
       } else {
-        toastr.error("An Error Occured", "Please try again");
+        toastr.error("Something went wrong", "Please try again");
       }
     } catch (ex) {
       toastr.error("An Error Occured", "Please try again");
@@ -206,10 +206,10 @@ export const updateReadTime = async (body) => {
       const response = await api.post(`${baseControllerUser}goal/reading/time`, body);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
-          toastr.success("Reading Time Updated Successful", "");
+          toastr.success("Reading Time Updated Successfully", "");
           return response.data.status;
         } else {
-          toastr.warning("Could not save reading time", "Please add book to your reading goals to save reading time");
+          toastr.warning("Could not save reading time", "Please add this book to your reading goals to save reading time");
           return response.data.status;
         }
       } else {

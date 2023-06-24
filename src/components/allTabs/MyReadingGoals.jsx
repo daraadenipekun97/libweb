@@ -156,18 +156,18 @@ const MyReadingGoals = () => {
   const startDateHandler = (e) => {
     setRequiredText("");
   
-
     if (e) {
       let dateValue = e.target.value;
+      const [year, month, day] =  dateValue.includes("-") ? dateValue.split("-") : dateValue.split("/");
+      const formattedDate = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`; // Format the date string as "YYYY-MM-DD"
       e.preventDefault();
       setFormValues({
         ...formValues,
-        start_date: dateValue,
+        start_date: formattedDate,
       });
 
-      const [year, month, day] = dateValue.split("-");
-      const formattedDate = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`; // Format the date string as "YYYY-MM-DD"
-      console.log(formattedDate)
+      
+      // console.log(formattedDate)
       let dateObject  = Date.parse(formattedDate)
       dateTypeEnd.current.min = new Date(dateObject + 1 * 24 * 60 * 60 * 1000)
       .toISOString()
@@ -185,10 +185,12 @@ const MyReadingGoals = () => {
     setRequiredText("");
     if (e) {
       let dateValue = e.target.value;
+      const [year, month, day] =  dateValue.includes("-") ? dateValue.split("-") : dateValue.split("/");
+      const formattedDate = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`; // Format the date string as "YYYY-MM-DD"
       e.preventDefault();
       setFormValues({
         ...formValues,
-        end_date: dateValue,
+        end_date: formattedDate,
       });
       // dateTypeEnd.current.min = new Date(new Date(formValues.start_date).getTime() + 1 * 24*60*60*1000).toISOString().split("T")[0]
     } else {
@@ -458,7 +460,14 @@ const MyReadingGoals = () => {
         </button>
       </div>
 
+    
+
+     <p>{formValues.start_date}</p>
+     <p>{formValues.end_date}</p>
      
+     <p>{parseInt(formValues.hour)}</p>
+
+
 
       <h4 className="reading-goals-h4">All Goals</h4>
 
