@@ -209,7 +209,7 @@ export const updateReadTime = async (body) => {
           toastr.success("Reading Time Updated Successful", "");
           return response.data.status;
         } else {
-          toastr.error("Could not update reading time", "Please try again");
+          toastr.warning("Could not save reading time", "Please add book to your reading goals to save reading time");
           return response.data.status;
         }
       } else {

@@ -28,7 +28,7 @@ const Modal = ({ handleClose, show, data, clickedId }) => {
           <>
             <h4 className="modal-title">{filtered.content}</h4>
             <hr />
-            <p className="modal-text">{`${filtered.achieve_by_hour} hours per ${filtered.achieve_by_interval}`}</p>
+            <p className="modal-text">{`${filtered.achieve_by_hour} hour${filtered.achieve_by_hour === 1 ? "" : "s"} in a ${filtered.achieve_by_interval}`}</p>
           </>
         )}
 
@@ -40,6 +40,20 @@ const Modal = ({ handleClose, show, data, clickedId }) => {
     </div>
   );
 };
+
+
+const StatusIndicator = ({color, text}) => {
+
+
+  return (
+    <div className="status-cover" style={{
+      backgroundColor: color
+    }}>
+      {text}
+    </div>
+  )
+
+}
 
 const MyReadingGoals = () => {
   const dispatch = useDispatch();
@@ -107,10 +121,10 @@ const MyReadingGoals = () => {
   useEffect(() => {
     dispatch(fetchAllBookNames());
     dispatch(fetchAllGoals());
-    dateTypeStart.current.min = new Date(Date.now() + 1 * 24 * 60 * 60 * 1000)
+    dateTypeStart.current.min = new Date(Date.now())
       .toISOString()
       .split("T")[0];
-    dateTypeEnd.current.min = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)
+    dateTypeEnd.current.min = new Date(Date.now() + 1 * 24 * 60 * 60 * 1000)
       .toISOString()
       .split("T")[0];
   }, [dispatch]);
@@ -141,6 +155,7 @@ const MyReadingGoals = () => {
 
   const startDateHandler = (e) => {
     setRequiredText("");
+  
 
     if (e) {
       let dateValue = e.target.value;
@@ -149,6 +164,15 @@ const MyReadingGoals = () => {
         ...formValues,
         start_date: dateValue,
       });
+
+      const [year, month, day] = dateValue.split("-");
+      const formattedDate = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`; // Format the date string as "YYYY-MM-DD"
+      console.log(formattedDate)
+      let dateObject  = Date.parse(formattedDate)
+      dateTypeEnd.current.min = new Date(dateObject + 1 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0];
+
     } else {
       setFormValues({
         ...formValues,
@@ -159,7 +183,6 @@ const MyReadingGoals = () => {
 
   const endDateHandler = (e) => {
     setRequiredText("");
-
     if (e) {
       let dateValue = e.target.value;
       e.preventDefault();
@@ -406,7 +429,7 @@ const MyReadingGoals = () => {
         <div className="select-book-wrapper">
         
           <Select
-            options={[{value:'week',label:"Weekly"}, {value:'month', label:"Monthly"}]}
+            options={[{value:'day',label:"In a day"}, {value:'week',label:"In a week"}, {value:'month', label:"In a month"}]}
             styles={customStyles}
             value={duration}
             placeholder={"Duration*"}
@@ -446,8 +469,11 @@ const MyReadingGoals = () => {
               <th>Title</th>
               <th>Start</th>
               <th>End</th>
-              <th>Days Remaining</th>
-              <th>Socials</th>
+              <th>Goal to be achieved</th>
+              <th>Goal Status</th>
+
+              {/* <th>Days Remaining</th> */}
+              {/* <th>Socials</th> */}
               <th>Action</th>
             </tr>
           </thead>
@@ -459,11 +485,18 @@ const MyReadingGoals = () => {
                     <td onClick={() => handleOpen(allGoal.id)}>{allGoal.content}</td>
                     <td>{moment(allGoal.start).format("MMM Do YYYY")}</td>
                     <td>{moment(allGoal.end).format("MMM Do YYYY")}</td>
-                    <td>
+                    <td>{`Read ${allGoal.achieve_by_hour} hour${allGoal.achieve_by_hour === 1 ? "" : "s"} in a ${allGoal.achieve_by_interval}`}</td>
+                    <td>{allGoal.completed === 1 ? (
+                      <StatusIndicator color="green" text="Completed"/>
+                    ) : (<StatusIndicator color="orange" text="Pending"/>)
+                  }</td>
+
+
+                    {/* <td>
                       {(new Date(allGoal.end).getTime() - new Date(allGoal.start).getTime()) /
                         (1000 * 3600 * 24)}
-                    </td>
-                    <td>
+                    </td> */}
+                    {/* <td>
                       <div className="socials-icon">
                         <AiFillFacebook size={20} color="#78787d" />
 
@@ -471,7 +504,7 @@ const MyReadingGoals = () => {
 
                         <AiFillTwitterSquare size={20} color="#78787d" />
                       </div>
-                    </td>
+                    </td> */}
                     <td>
                       <button className="table-btn" onClick={() => handleDeleteGoal(allGoal.id)}>
                         Delete <AiFillDelete size={12} color="red" />

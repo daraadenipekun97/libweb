@@ -12,7 +12,6 @@ import {
 import Spinner from "../../components/spinner/Spinner";
 import { useNavigate, useLocation } from "react-router-dom";
 
-// import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 
 import jwtDecode from 'jwt-decode'
