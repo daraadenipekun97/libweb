@@ -462,10 +462,7 @@ const MyReadingGoals = () => {
 
     
 
-     <p>{formValues.start_date}</p>
-     <p>{formValues.end_date}</p>
-     
-     <p>{parseInt(formValues.hour)}</p>
+    
 
 
 
