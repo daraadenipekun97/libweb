@@ -1,6 +1,15 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import "./messengerChat.css";
 function MessengerChat() {
+
+  const {
+    facebookIconHidden,
+  } = useSelector((state) => state.getAll)
+
+   const [show, setShow] = useState(false);
+
+
   useEffect(() => {
     window.fbAsyncInit = function () {
       window.FB.init({
@@ -19,6 +28,21 @@ function MessengerChat() {
     })(document, "script", "facebook-jssdk");
     // console.log("facebook sdk loaded");
   });
+
+  useEffect(() => {
+     if (facebookIconHidden) {
+         setShow(true);
+         console.log("show is true")
+         window.FB.CustomerChat.hide();
+     }
+     else{
+      setShow(false)
+     }
+  
+  }, [facebookIconHidden])
+  
+
+
   return (
     <>
       <div id="fb-root"></div>

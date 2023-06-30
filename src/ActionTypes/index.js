@@ -190,3 +190,8 @@ export const FETCH_SONGS_SUCCESS = "fetch_songs_success";
 export const UPDATE_READING_TIME = "update_reading_time";
 export const UPDATE_READING_TIME_SUCCESS = "update_reading_time_success";
 export const RESTORE_UPDATE_READING_TIME_INITIAL = "restore_update_reading_time_initial"
+
+
+export const HIDE_FACEBOOK_ICON = "hide_facebook_icon";
+export const HIDE_FACEBOOK_ICON_SUCCESS = "hide_facebook_icon_success";
+export const RESTORE_HIDE_FACEBOOK_ICON_INITIAL = "restore_hide_facebook_icon_initial";

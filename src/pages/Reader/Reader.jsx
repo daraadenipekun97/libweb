@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 // import { fetchSongs } from '../../Actions';
 
 // import TimeMe from 'timeme.js';
-import { updateReadingTime } from '../../Actions';
+import { hideFacebookIcon, restoreHideFacebookIcon, updateReadingTime } from '../../Actions';
 
 
 
@@ -53,7 +53,8 @@ const Reader = () => {
 
 
     useEffect(() => {
-    
+      
+      dispatch(hideFacebookIcon())
       // TimeMe.initialize({
       //   currentPageName: "reader-page", // current page
       //   idleTimeoutInSeconds: 60 // seconds
@@ -115,6 +116,7 @@ window.addEventListener("focus", function() {
   startTrackingTime();
 });
 
+
 // get total time spent on page
 window.setInterval(function() {
   trackTime();
@@ -138,6 +140,7 @@ window.setInterval(function() {
           total_seconds : parseInt(totalTime / 1000),
           book_id: location.state.bookId
         }))
+        dispatch(restoreHideFacebookIcon())
         // TimeMe.resetRecordedPageTime('reader-page')      
       };
     }, [])

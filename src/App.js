@@ -81,6 +81,9 @@ function App() {
   const user =
     userDataRegister !== null ? userDataRegister : userDataLogin !== null ? userDataLogin : null;
 
+  // let pathname =  window.location.pathname;
+
+
   return (
     <>
     <GoogleOAuthProvider clientId="218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com">
@@ -136,9 +139,9 @@ function App() {
           progressBar
           closeOnToastrClick
         />
+        <MessengerChat />
       </Provider>
       </GoogleOAuthProvider>
-      <MessengerChat />
     </>
   );
 }

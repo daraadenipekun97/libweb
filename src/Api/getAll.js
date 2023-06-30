@@ -42,3 +42,12 @@ export const getSongs = async () => {
     }
   }
 };
+
+
+export const facebookHide = async () => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    return true
+  }
+};
