@@ -37,6 +37,8 @@ function MessengerChat() {
      }
      else{
       setShow(false)
+      console.log("show is false")
+      window.FB.CustomerChat.show()
      }
   
   }, [facebookIconHidden])
