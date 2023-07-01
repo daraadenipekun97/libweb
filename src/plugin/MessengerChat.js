@@ -34,6 +34,9 @@ function MessengerChat() {
          setShow(true);
          console.log("show is true")
          window.FB.CustomerChat.hide();
+         window.FB.CustomerChat.update({
+          greeting_dialog_display: 'hide' // Hide the welcome text
+        });
      }
      else{
       setShow(false)
