@@ -40,7 +40,7 @@ function MessengerChat() {
       console.log("show is false")
       window.setTimeout(() => {
         FB.CustomerChat.showDialog()        
-        console.log("Delayed function called after 2 seconds");
+        console.log("Delayed function called after 5 seconds");
       }, 5000);
      }
   
