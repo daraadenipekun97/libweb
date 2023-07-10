@@ -153,6 +153,7 @@ const Register = ({ user }) => {
     phone: "",
     dob: "",
     country_id: 0,
+    referral:"",
     password: "",
     device: "",
   };
@@ -236,6 +237,23 @@ const Register = ({ user }) => {
       setFormValues({
         ...formValues,
         dob: "",
+      });
+    }
+  };
+
+
+  const refHandler = (e) => {
+    if (e) {
+      let refValue = e.target.value;
+      e.preventDefault();
+      setFormValues({
+        ...formValues,
+        referral: refValue,
+      });
+    } else {
+      setFormValues({
+        ...formValues,
+        referral: "",
       });
     }
   };
@@ -340,6 +358,7 @@ const Register = ({ user }) => {
           phone: formValues.phone,
           dob: formValues.dob,
           country_id: countryId.value,
+          referral: formValues.referral !== "" ? formValues.referral : "",
           password: formValues.password,
           device: "web",
         })
@@ -531,6 +550,8 @@ const Register = ({ user }) => {
                   placeholder="Referral*"
                   onFocus={handleReferralFocus}
                   onBlur={handleReferralBlur}
+                  onChange={(e) => refHandler(e)}
+
                 />
                 {referralFocus ? <p className="green-warning">This field is not required</p> : ""}
               </div>

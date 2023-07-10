@@ -29,6 +29,7 @@ export const registerUser = ({
   phone,
   dob,
   country_id,
+  referral,
   password,
   device,
 }) => ({
@@ -40,6 +41,7 @@ export const registerUser = ({
     phone,
     dob,
     country_id,
+    referral,
     password,
     device,
   },
