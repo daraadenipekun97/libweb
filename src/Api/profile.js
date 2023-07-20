@@ -247,7 +247,7 @@ export const makeWebPurchase = async (param) => {
   } else {
     try {
       const response = await api.get(
-        `${baseControllerPayment}callbackTest?trxref=${param.trxref}&reference=${param.reference}`
+        `${baseControllerPayment}callback?trxref=${param.trxref}&reference=${param.reference}`
       );
       if (typeof response !== "undefined") {
         if (response.status === 200) {

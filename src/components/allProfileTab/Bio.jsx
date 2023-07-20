@@ -211,6 +211,8 @@ const Bio = () => {
       setFocused({ ...focused, firstname: true });
     } else if (e.target.name === "lastname") {
       setFocused({ ...focused, lastname: true });
+    } else if (e.target.name === "phone"){
+      setFocused({ ...focused, phone: true });
     }
   };
 
@@ -232,6 +234,7 @@ const Bio = () => {
       if (
         formValues.firstname !== "" &&
         formValues.lastname !== "" &&
+        formValues.phone !== "" &&
         formValues.gender !== "No Gender" &&
         /[A-Z'][a-zA-Z'-]+/.test(formValues.firstname) &&
         /[A-Z'][a-zA-Z'-]+/.test(formValues.lastname)
@@ -249,6 +252,7 @@ const Bio = () => {
           ...focused,
           firstname: true,
           lastname: true,
+          phone: true
         });
 
         setGenderValidation(true);
@@ -263,7 +267,7 @@ const Bio = () => {
           fullname: `${formValues.firstname} ${formValues.lastname}`,
           phone: formValues.phone,
           dob: formValues.dob,
-          country_id: 10,
+          country_id: profileData.country_id,
           gender: formValues.gender,
         })
       );
@@ -308,7 +312,7 @@ const Bio = () => {
         ...formValues,
         firstname: spliteNameArray !== "" ? spliteNameArray[0] : "",
         lastname: spliteNameArray !== "" ? spliteNameArray[1] : "",
-        phone: profileData.phone !== null ? profileData.phone : "",
+        phone: profileData.phone !== null ? profileData.phone[0] === "+"  ? profileData.phone.slice(1) : profileData.phone : "",
         dob: profileData.dob !== null ? profileData.dob : "",
         country_id: profileData.country_id !== null ? profileData.country_id : "No Country",
         gender: profileData.gender !== null ? profileData.gender : "No Gender",
@@ -464,6 +468,7 @@ const Bio = () => {
               required
               disabled={disableField}
               onChange={(e) => dobHandler(e)}
+              
             />
           </div>
 
@@ -474,8 +479,10 @@ const Bio = () => {
               placeholder="Phone Number*"
               value={formValues.phone}
               required
-              disabled={disableField}
+              disabled={disabledState}
               onChange={(e) => phoneHandler(e)}
+              onBlur={(e) => handleFocus(e)}
+              focused={focused.phone.toString()}
 
             />
             <p className="profile-validation-error-text">phone number is required</p>

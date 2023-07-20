@@ -18,17 +18,18 @@ const Subscription = () => {
     (state) => state.profile
   );
 
-  const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
-  const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
+  // const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
+  // const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
 
-  const userData =
-    userDataRegister !== null ? userDataRegister : userDataLogin !== null ? userDataLogin : "";
+  // const userData =
+  //   userDataRegister !== null ? userDataRegister : userDataLogin !== null ? userDataLogin : "";
 
-  const spliteNameArray = userData.user.name.split(" ");
-  const email = userData.user.email;
+  // const spliteNameArray = userData?.user?.name?.split(" ");
+  // const email = userData?.user?.email;
 
-  const [firstName, setFirstName] = useState(spliteNameArray[0]);
-  const [lastName, setLastName] = useState(spliteNameArray[1]);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [dashboardModalState, setDashboardModalState] = useState(true);
 
 
@@ -39,6 +40,10 @@ const Subscription = () => {
   // let trialCheck = Object.keys(subscriptionDetails).length > 0 && subscriptionDetails.subscription.title !== null ?  subscriptionDetails.subscription.title : ""
 
   const payWithPaystackTrial = (e) => {
+    const spliteNameArray = profileData?.name.split(" ");
+    setFirstName(spliteNameArray[0])
+    setLastName(spliteNameArray[1])
+    setEmail(profileData?.email);
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({
@@ -72,6 +77,10 @@ const Subscription = () => {
   };
 
   const payWithPaystackMonthly = (e) => {
+    const spliteNameArray = profileData?.name.split(" ");
+    setFirstName(spliteNameArray[0])
+    setLastName(spliteNameArray[1])
+    setEmail(profileData?.email);
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({
@@ -105,6 +114,10 @@ const Subscription = () => {
   };
 
   const payWithPaystackQuarterly = (e) => {
+    const spliteNameArray = profileData?.name.split(" ");
+    setFirstName(spliteNameArray[0])
+    setLastName(spliteNameArray[1])
+    setEmail(profileData?.email);
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({
@@ -137,6 +150,10 @@ const Subscription = () => {
   };
 
   const payWithPaystackBiannual = (e) => {
+    const spliteNameArray = profileData?.name.split(" ");
+    setFirstName(spliteNameArray[0])
+    setLastName(spliteNameArray[1])
+    setEmail(profileData?.email);
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({
@@ -170,6 +187,10 @@ const Subscription = () => {
   };
 
   const payWithPaystackAnnual = (e) => {
+    const spliteNameArray = profileData?.name.split(" ");
+    setFirstName(spliteNameArray[0])
+    setLastName(spliteNameArray[1])
+    setEmail(profileData?.email);
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({

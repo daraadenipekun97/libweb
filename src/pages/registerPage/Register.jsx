@@ -7,7 +7,9 @@ import { registerUser, fetchAllCountries, restoreRegisterInitial } from "../../A
 import Spinner from "../../components/spinner/Spinner";
 import { useNavigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import Input, { getCountries, getCountryCallingCode } from 'react-phone-number-input/input'
+import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'; 
 const Register = ({ user }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -49,15 +51,19 @@ const Register = ({ user }) => {
     const createCountrySelect = () => {
       let countryData = [];
       countries.map((country) => {
-        let option = { value: country.id, label: country.name };
+        let option = { value: country.id, label: country.name, code:country.code };
         countryData.push(option);
       });
 
       setTheCountry(countryData);
     };
 
+
     countries.length !== 0 && createCountrySelect();
   }, [countries]);
+
+ 
+  
 
   useEffect(() => {
     dispatch(fetchAllCountries());
@@ -100,6 +106,11 @@ const Register = ({ user }) => {
       height: "50px",
     }),
   };
+
+ 
+  const [phoneValue, setPhoneValue] = useState("")
+  const [phoneValueValid, setPhoneValueValid] = useState(false)
+
 
   const [focused, setFocused] = useState({
     firstname: false,
@@ -259,7 +270,9 @@ const Register = ({ user }) => {
   };
 
   const [countryId, setCountryId] = useState({});
+  const [phoneNumberCountry, setPhoneNumberCountry] = useState("NG")
   const countryHandler = (e) => {
+    setPhoneNumberCountry(e.code)
     setCountryError(false);
     if (e) {
       setCountryId(e);
@@ -313,7 +326,7 @@ const Register = ({ user }) => {
       formValues.lastname !== "" &&
       formValues.email !== "" &&
       formValues.password !== "" &&
-      formValues.phone !== "" &&
+      (phoneValue !== "" || phoneValue !== undefined) &&
       formValues.dob !== "" &&
       countryId.label !== "" &&
       termsCheckBox === true &&
@@ -355,7 +368,7 @@ const Register = ({ user }) => {
           firstname: formValues.firstname,
           lastname: formValues.lastname,
           email: formValues.email,
-          phone: formValues.phone,
+          phone: phoneValue,
           dob: formValues.dob,
           country_id: countryId.value,
           referral: formValues.referral !== "" ? formValues.referral : "",
@@ -514,18 +527,20 @@ const Register = ({ user }) => {
               </div>
 
               <div className="lib-register-input-group-wrapper-right">
-                <input
-                  name="phone"
-                  type="number"
-                  id="phone-num"
-                  placeholder="Phone Number*"
-                  value={formValues.phone}
-                  required
-                  onBlur={(e) => handleFocus(e)}
-                  focused={focused.phone.toString()}
-                  onChange={(e) => phoneNumberHandler(e)}
+              <Select
+                  options={theCountry}
+                  // value = {countryId.label}
+                  styles={customStyles}
+                  placeholder={"Country*"}
+                  onChange={(e) => countryHandler(e)}
                 />
-                <p className="register-validation-error-text">phone number is required</p>
+
+                {countryError === true ? (
+                  <p className="terms-validation-text">Select your country</p>
+                ) : (
+                  ""
+                )}
+               
               </div>
             </div>
             <div className="lib-register-input-group">
@@ -545,9 +560,46 @@ const Register = ({ user }) => {
                 <p className="register-validation-error-text">date of birth is required</p>
               </div>
               <div className="lib-register-input-group-wrapper-right">
-                <input
+              {/* <input
+                  name="phone"
+                  type="number"
+                  id="phone-num"
+                  placeholder="Phone Number*"
+                  value={formValues.phone}
+                  required
+                  onBlur={(e) => handleFocus(e)}
+                  focused={focused.phone.toString()}
+                  onChange={(e) => phoneNumberHandler(e)}
+                /> */}
+                <PhoneInput
+                  international
+                  className="phone_input"
+                  defaultCountry={phoneNumberCountry}
+                  countryCallingCodeEditable={false}
+                  value={phoneValue}
+                  onChange={(phoneValue) => {
+                    setPhoneValue(phoneValue)
+                    setPhoneValueValid(false)
+                  }} 
+                  onBlur={(e) => {
+                    if (phoneValue === undefined || phoneValue === "") {
+                        setPhoneValueValid(true)
+                    }
+                  }}
+                  focused={focused.phone.toString()}
+                  />
+                {
+                  phoneValueValid ?  <p className="phone-number-required-text">phone number is required</p> : ""
+                }
+              </div>
+            </div>
+            <div className="lib-register-input-group">
+              <div className="lib-register-input-group-wrapper-left">
+              
+             
+              <input
                   type="text"
-                  placeholder="Referral*"
+                  placeholder="Referral"
                   onFocus={handleReferralFocus}
                   onBlur={handleReferralBlur}
                   onChange={(e) => refHandler(e)}
@@ -555,25 +607,9 @@ const Register = ({ user }) => {
                 />
                 {referralFocus ? <p className="green-warning">This field is not required</p> : ""}
               </div>
-            </div>
-            <div className="lib-register-input-group">
-              <div className="lib-register-input-group-wrapper-left">
-                <Select
-                  options={theCountry}
-                  // value = {countryId.label}
-                  styles={customStyles}
-                  placeholder={"Country"}
-                  onChange={(e) => countryHandler(e)}
-                />
-
-                {countryError === true ? (
-                  <p className="terms-validation-text">Select your country</p>
-                ) : (
-                  ""
-                )}
-              </div>
 
               <div className="lib-register-input-group-wrapper-right">
+             
                 <input
                   autoComplete="off"
                   name="password"
