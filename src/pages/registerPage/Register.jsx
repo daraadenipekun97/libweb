@@ -317,7 +317,7 @@ const Register = ({ user }) => {
   const [countryError, setCountryError] = useState(false);
 
   const handleRegister = () => {
-
+    debugger
    //let b =  /[A-Z'][a-zA-Z'-]+/.test(formValues.firstname)
   //  console.log("b is " + b)
 
@@ -443,26 +443,19 @@ const Register = ({ user }) => {
     navigate("/signin");
   };
 
-  const handleKeyPress = (e) => {
-    // let keyCode = e.keyCode ? e.keyCode : e.which;
-    // if (
-    //   (keyCode > 47 && keyCode < 58) ||
-    //   keyCode == 32 ||
-    //   e.shiftKey ||
-    //   keyCode == 106 ||
-    //   keyCode == 107 ||
-    //   keyCode == 110 ||
-    //   keyCode == 111 ||
-    //   keyCode == 186 ||
-    //   keyCode == 187 ||
-    //   keyCode == 188 ||
-    //   (keyCode >= 190 && keyCode < 222) ||
-    //   (keyCode >= 96 && keyCode <= 105) ||
-    //   keyCode == 144
-    // ) {
-    //   e.preventDefault();
-    // }
-  };
+
+  useEffect(() => {
+    
+    if (phoneNumberCountry === "NG" || phoneNumberCountry !== "NG") {
+      setPhoneValue("")
+  }
+  
+   
+  }, [phoneNumberCountry])
+  
+ 
+
+
 
   return (
     <>
@@ -482,9 +475,6 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.firstname.toString()}
                   onChange={(e) => firstnameHandler(e)}
-                  onKeyDown={(e) => handleKeyPress(e)}
-                  onKeyUp={(e) => handleKeyPress(e)}
-                  // onFocus={() => setShowNameDesc(true)}
                   pattern="[A-Z'][a-zA-Z'-]+"
                 />
 
@@ -501,11 +491,7 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.lastname.toString()}
                   onChange={(e) => lastnameHandler(e)}
-                  onKeyDown={(e) => handleKeyPress(e)}
-                  onKeyUp={(e) => handleKeyPress(e)}
-                  // onFocus={() => setShowNameDesc(true)}
                   pattern="[A-Z'][a-zA-Z'-]+"
-
                 />
                 <p className="register-validation-error-text">lastname is required (Uppercase first)</p>
               </div>

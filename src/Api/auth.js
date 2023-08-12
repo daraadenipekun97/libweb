@@ -43,7 +43,7 @@ export const postVerifyUser = async (body) => {
           toastr.success("Email Verification Successful", "");
           return response.data.status;
         } else {
-          toastr.error("Couldnt verify your  email", "Please try again");
+          toastr.error("Email verification failed", "Invalid code");
           return response.data.status;
         }
       } else {

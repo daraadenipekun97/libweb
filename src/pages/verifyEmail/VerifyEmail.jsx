@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./verifyEmail.css";
 import { Navbar } from "../../containers";
 import Spinner from "../../components/spinner/Spinner";
+import { AiFillWarning } from "react-icons/ai";
 
 import {
   verifyUserEmail,
@@ -262,8 +263,16 @@ const VerifyEmail = ({ user }) => {
                 {resendBtnState.buttonText}
               </button>
             </p>
+            <div className="verification-warning">
+        <AiFillWarning color="#EED202" size={30} />
+        <p className="warning-text">
+                 Please note you risk loosing your account if  not verifed in 7 days
+              </p>
+        </div>
           </div>
         </div>
+
+        
 
         <div className="verify-area">
           <ul className="circles">
