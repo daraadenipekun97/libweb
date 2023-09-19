@@ -129,40 +129,40 @@ const Subscription = () => {
         <>
           {subscriptionDetails.subscription.title === "Trial" &&
           profileData.cancel_trial === 0 &&
-          todaysDate.valueOf() < expiryDate.valueOf() ? (
+          subscriptionDetails.subscription.status === "active" ? (
             <h3 className="subscription-status-green">{`You're subscribed to ${subscriptionDetails.subscription.title} Plan`}</h3>
           ) : subscriptionDetails.subscription.title === "Trial" &&
             profileData.cancel_trial === 1 &&
-            todaysDate.valueOf() < expiryDate.valueOf() ? (
+            subscriptionDetails.subscription.status === "active" ? (
             <h3 className="subscription-status">{`You have canceled your ${subscriptionDetails.subscription.title} Plan`}</h3>
           ) : subscriptionDetails.subscription.title === "Trial" &&
             profileData.cancel_trial === 0 &&
-            todaysDate.valueOf() > expiryDate.valueOf() ? (
+            subscriptionDetails.subscription.status !== "active" ? (
             <h3 className="subscription-status">{`Your ${subscriptionDetails.subscription.title} Plan has expired`}</h3>
           ) : subscriptionDetails.subscription.title === "Trial" &&
             profileData.cancel_trial === 1 &&
-            todaysDate.valueOf() > expiryDate.valueOf() ? (
-            <h3 className="subscription-status">{`You have canceled your ${subscriptionDetails.subscription.title} Plan.`}</h3>
+            subscriptionDetails.subscription.status !== "active" ? (
+            <h3 className="subscription-status">{`Your ${subscriptionDetails.subscription.title} Plan has expired.`}</h3>
           ) : (
             ""
           )}
 
           {subscriptionDetails.subscription.title !== "Trial" &&
           profileData.cancel_subscription === 0 &&
-          todaysDate.valueOf() < expiryDate.valueOf() ? (
+          subscriptionDetails.subscription.status === "active" ? (
             <h3 className="subscription-status-green">{`You're subscribed to ${subscriptionDetails.subscription.title} Plan`}</h3>
           ) : subscriptionDetails.subscription.title !== "Trial" &&
             profileData.cancel_subscription === 1 &&
-            todaysDate.valueOf() < expiryDate.valueOf() ? (
+            subscriptionDetails.subscription.status === "active" ? (
             <h3 className="subscription-status">{`You have canceled your ${subscriptionDetails.subscription.title} Plan`}</h3>
           ) : subscriptionDetails.subscription.title !== "Trial" &&
             profileData.cancel_subscription === 0 &&
-            todaysDate.valueOf() > expiryDate.valueOf() ? (
+            subscriptionDetails.subscription.status !== "active" ? (
             <h3 className="subscription-status">{`Your ${subscriptionDetails.subscription.title} Plan has expired`}</h3>
           ) : subscriptionDetails.subscription.title !== "Trial" &&
             profileData.cancel_subscription === 1 &&
-            todaysDate.valueOf() > expiryDate.valueOf() ? (
-            <h3 className="subscription-status">{`You have canceled your ${subscriptionDetails.subscription.title} Plan.`}</h3>
+            subscriptionDetails.subscription.status !== "active" ? (
+            <h3 className="subscription-status">{`Your ${subscriptionDetails.subscription.title} Plan has expired.`}</h3>
           ) : (
             ""
           )}
@@ -188,13 +188,13 @@ const Subscription = () => {
 
           {profileData.cancel_trial === 0 &&
           subscriptionDetails.subscription.title === "Trial" &&
-          todaysDate.valueOf() < expiryDate.valueOf() ? (
+          subscriptionDetails.subscription.status === "active" ? (
             <button className="button-24" role="button" onClick={() => handleCancelTrial()}>
               {spinnerStatus === true ? <Spinner /> : "Cancel Trial Plan"}
             </button>
           ) : profileData.cancel_trial === 1 &&
             subscriptionDetails.subscription.title === "Trial" &&
-            todaysDate.valueOf() < expiryDate.valueOf() ? (
+            subscriptionDetails.subscription.status === "active" ? (
             <button
               className="btn-reactivate"
               role="button"
@@ -208,13 +208,13 @@ const Subscription = () => {
 
           {subscriptionDetails.subscription.title !== "Trial" &&
           profileData.cancel_subscription === 0 &&
-          todaysDate.valueOf() < expiryDate.valueOf() ? (
+          subscriptionDetails.subscription.status === "active" ? (
             <button className="button-24" role="button" onClick={() => handleCancelSubscription()}>
               {spinnerStatus === true ? <Spinner /> : "Cancel Subscription"}
             </button>
           ) : subscriptionDetails.subscription.title !== "Trial" &&
             profileData.cancel_subscription === 1 &&
-            todaysDate.valueOf() < expiryDate.valueOf() ? (
+            subscriptionDetails.subscription.status === "active" ? (
             <button
               className="btn-reactivate"
               role="button"
@@ -240,7 +240,7 @@ const Subscription = () => {
         </p>
         <h3 className="card-bottom-text">N1,000/ 1 Month</h3>
         {Object.keys(subscriptionDetails).length > 0 &&
-        todaysDate.valueOf() < expiryDate.valueOf() ? (
+        subscriptionDetails.subscription.status === "active" ? (
           <></>
         ) : (
           <div className="select-btn" onClick={handleSelectNavigate}>
@@ -259,7 +259,7 @@ const Subscription = () => {
         </p>
         <h3 className="card-bottom-text">N2,500/ 3 Months</h3>
         {Object.keys(subscriptionDetails).length > 0 &&
-        todaysDate.valueOf() < expiryDate.valueOf() ? (
+        subscriptionDetails.subscription.status === "active" ? (
           <></>
         ) : (
           <div className="select-btn" onClick={handleSelectNavigate}>
@@ -278,7 +278,7 @@ const Subscription = () => {
         </p>
         <h3 className="card-bottom-text">N5,500/ 6 Months</h3>
         {Object.keys(subscriptionDetails).length > 0 &&
-        todaysDate.valueOf() < expiryDate.valueOf() ? (
+        subscriptionDetails.subscription.status === "active" ? (
           <></>
         ) : (
           <div className="select-btn" onClick={handleSelectNavigate}>
@@ -297,7 +297,7 @@ const Subscription = () => {
         </p>
         <h3 className="card-bottom-text">N11,200/ 12 Months</h3>
         {Object.keys(subscriptionDetails).length > 0 &&
-        todaysDate.valueOf() < expiryDate.valueOf() ? (
+        subscriptionDetails.subscription.status === "active" ? (
           <></>
         ) : (
           <div className="select-btn" onClick={handleSelectNavigate}>

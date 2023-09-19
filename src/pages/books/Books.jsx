@@ -120,18 +120,18 @@ const Books = () => {
   }
 
   const handleStartReading = (url, bookId) => {
-    let expiryDate =
-      subscriptionDetails.expiry_date !== null
-        ? new Date(new Date(subscriptionDetails.expiry_date).toDateString())
-        : "";
+    // let expiryDate =
+    //   subscriptionDetails.expiry_date !== null
+    //     ? new Date(new Date(subscriptionDetails.expiry_date).toDateString())
+    //     : "";
 
-    if (subscriptionDetails.expiry_date !== null) {
+    if ( subscriptionDetails.subscription.status === "active") {
       //navigate to reader
 
-      let todaysDate = new Date();
+      // let todaysDate = new Date();
 
       if (
-        todaysDate.valueOf() < expiryDate.valueOf() &&
+        subscriptionDetails.subscription.status === "active" &&
         subscriptionDetails.subscription.title === "Trial"
       ) {
         if (subscriptionDetails.cancel_trial === 0) {
@@ -154,14 +154,14 @@ const Books = () => {
           dispatch(readBook(bookId));
         }
       } else if (
-        todaysDate.valueOf() > expiryDate.valueOf() &&
+        subscriptionDetails.subscription.status !== "active" &&
         subscriptionDetails.subscription.title === "Trial"
       ) {
         navigate("/home/subscription");
       }
 
       if (
-        todaysDate.valueOf() < expiryDate.valueOf() &&
+        subscriptionDetails.subscription.status === "active" &&
         subscriptionDetails.subscription.title !== "Trial"
       ) {
         if (subscriptionDetails.cancel_subscription === 0) {
@@ -185,7 +185,7 @@ const Books = () => {
           dispatch(readBook(bookId));
         }
       } else if (
-        todaysDate.valueOf() > expiryDate.valueOf() &&
+        subscriptionDetails.subscription.status !== "active" &&
         subscriptionDetails.subscription.title !== "Trial"
       ) {
         // toastr.warning('You cant read this book because you do not have an active subscription', 'Please subscribe')
