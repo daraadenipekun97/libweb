@@ -92,12 +92,42 @@ const Bio = () => {
   const [genderValidation, setGenderValidation] = useState(false);
   const [disableField, setDisableField] = useState(true)
 
+  const verifyCheckHandler = () => {
+
+    Swal.fire({
+      title: 'Account Verification',
+      text: "Please verify you account before proceeding!",
+      icon: 'warning',
+      allowOutsideClick: false,
+      showCancelButton: false,
+      confirmButtonColor: '#5e458b',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ok',
+      width: 400,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/verify")
+      }
+    })
+
+  }
   useEffect(() => {
     dispatch(fetchAllCountries());
     dispatch(fetchProfile());
+
+   
   }, [dispatch]);
 
 
+  useEffect(() => {
+    
+    if (profileData.email_verified_at === null) {
+      verifyCheckHandler();
+    }
+  
+   
+  }, [profileData])
+  
   
 
   const firstnameHandler = (e) => {

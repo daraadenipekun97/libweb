@@ -8,6 +8,7 @@ import { Community, Footer, Header } from "../../containers";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import ModalRedirect from "../../components/modal/ModalRedirect";
+import Swal from "sweetalert2";
 
 
 const Modal = ({ handleClose, show, handleNavigate }) => {
@@ -61,12 +62,32 @@ const Dashboard = () => {
   const [show, setShow] = useState(false);
   const [showRedirectModal, setShowRedirectModal] = useState(false)
 
+  const verifyCheckHandler = () => {
+
+    Swal.fire({
+      title: 'Account Verification',
+      text: "Please verify you account before proceeding!",
+      icon: 'warning',
+      allowOutsideClick: false,
+      showCancelButton: false,
+      confirmButtonColor: '#5e458b',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ok',
+      width: 400,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/verify")
+      }
+    })
+
+  }
+
   useEffect(() => {
 
-    dispatch(fetchProfile());
+    // dispatch(fetchProfile());
     dispatch(fetchAllTrendingBooks());
     dispatch(fetchSubscriptionDetails());
-
+   
    
 
   }, [dispatch]);
@@ -82,9 +103,15 @@ const Dashboard = () => {
 
       }
 
+      if (profileData.email_verified_at === null) {
+        verifyCheckHandler();
+      }
+
+
     }else{
 
     }
+    
 
   },[profileData])
 

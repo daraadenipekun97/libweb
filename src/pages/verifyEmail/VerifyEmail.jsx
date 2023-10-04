@@ -11,6 +11,7 @@ import {
   restoreVerifyUserEmailInitial,
   resendMail,
   restoreResendMailInitial,
+  fetchProfile
 } from "../../Actions";
 import Swal from "sweetalert2";
 import UserNavbar from "../../components/userNavbar/UserNavbar";
@@ -25,6 +26,11 @@ const VerifyEmail = ({ user }) => {
 
   const { verifyUserFailure, verifyUserSuccess, resendMailSuccess, resendMailFailure } =
     useSelector((state) => state.auth);
+
+    const {
+      profileData,
+    
+    } = useSelector((state) => state.profile);
 
   const hanldeSwal = () => {
     Swal.fire({
@@ -47,12 +53,19 @@ const VerifyEmail = ({ user }) => {
     });
   };
 
-  // useEffect(() => {
-  //   if(user && location.pathname === "/verify")  {
-  //     hanldeSwal()
+  useEffect(() => {
+    dispatch(fetchProfile());
 
+  },[dispatch])
+
+  // useEffect(() => {
+
+  //   if (profileData.email_verified_at !== null && location.pathname === "/verify") {
+  //     navigate("/home/dashboard");
   //   }
-  // })
+    
+  // }, [profileData])
+  
 
   const handleFocus = (e) => {
     setFocused(true);
@@ -227,12 +240,10 @@ const VerifyEmail = ({ user }) => {
 
   return (
     <>
-      {user ? <UserNavbar /> : <Navbar />}
+      {/* {user ? <UserNavbar /> : <Navbar />} */}
 
       <div className="lib-verify-container">
-        <div className={
-          user ? "lib-verify-wrapper-user" : "lib-verify-wrapper"
-        }>
+        <div className="lib-verify-wrapper">
           <h1>Verify Email</h1>
           <p className="info-text">Enter the token sent to your email address</p>
           <br />
