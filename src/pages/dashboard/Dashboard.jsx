@@ -9,7 +9,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import ModalRedirect from "../../components/modal/ModalRedirect";
 import Swal from "sweetalert2";
-
+import ActionBanner from "../../containers/actionBanner/ActionBanner";
 
 const Modal = ({ handleClose, show, handleNavigate }) => {
   const showHideClassName = show
@@ -151,6 +151,9 @@ const Dashboard = () => {
 
   return (
     <>
+        <div className="shifter">
+        
+        </div>
       <UserNavbar />
       <Header />
       <div className="book-container">
@@ -159,6 +162,7 @@ const Dashboard = () => {
         </div>
       </div>
       <Community />
+      <ActionBanner />
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
       <ModalRedirect  showRedirectModal={showRedirectModal}  />

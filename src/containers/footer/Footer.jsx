@@ -84,13 +84,13 @@ const Footer = () => {
             <a href="mailto: support@mylibribooks.com">Assistance</a>
           </p>
           <p>
-            <a href="mailto: complaints@mylibribooks.com">Complaints</a>
+            <a href="mailto: enquiries@mylibribooks.com">Complaints</a>
           </p>
           <p>
             <a href="mailto: enquiries@mylibribooks.com">Enquiries</a>
           </p>
           <p>
-            <a href="mailto: suggestions@mylibribooks.com">Feedback & Suggestion</a>
+            <a href="mailto: support@mylibribooks.com">Feedback & Suggestion</a>
           </p>
         </div>
       </div>

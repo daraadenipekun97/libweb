@@ -1,0 +1,21 @@
+.action-banner-wrapper{
+    /* border: 1px solid red; */
+    width: 100%;
+    position: fixed;
+    height: fit-content;
+    background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 50%);
+    top: 0;
+    color: white;
+    text-align: center;
+    padding:10px 0px;
+    font-weight: 600;
+   
+}
+
+.action-start-now{
+    cursor: pointer;
+
+}
+.action-start-now:hover{
+    text-decoration: underline;
+}

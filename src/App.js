@@ -68,6 +68,8 @@ const AboutUsPage = lazy(() => import("./pages/aboutUs/AboutUs"));
 const FAQPage = lazy(() => import("./pages/faq/Faq"));
 const PrivacyPolicyPage = lazy(() => import("./pages/privacy/PrivacyPolicy"));
 const TermsOfUsePage = lazy(() => import("./pages/privacy/TermsOfUse"));
+const WritingChallengePage = lazy(() => import("./pages/writingChallenge/WritingChallenge"));
+const WritingPage = lazy(() => import("./pages/writingChallenge/WritingPage"));
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
 
@@ -120,6 +122,8 @@ function App() {
                   <Route path="reader" element={<ReaderPage/>} />
                   <Route path="subscription" element={<SubscriptionPage />} />
                   <Route path="wallet" element={<WalletPage />} />
+                  <Route path="writingChallenge" element={<WritingChallengePage />} />
+                  <Route path="article" element={<WritingPage />} />
                   <Route path="search/:id" element={<SearchPage />} />
                 </Route>
 
