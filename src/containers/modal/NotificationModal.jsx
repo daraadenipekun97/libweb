@@ -1,6 +1,6 @@
 import React from 'react'
 import "./notificationModal.css"
-import pdf from "../../assets/images/Okada_Books_statement.pdf"
+import okadaImage from "../../assets/images/Okada_Books_statement.jpg"
 
 
 const NotificationModal = ({showNotification, setShowNotification}) => {
@@ -18,13 +18,14 @@ const NotificationModal = ({showNotification, setShowNotification}) => {
     <div className="modal-main-dashboard">
       <>
         <h4 className="modal-title-dashboard">
-          NOTICE{" "}
+          NOTICE
         </h4>
         {/* <p className="modal-text-dashboard">Please update your profile</p>
         <p className="modal-text-dashboard">Country, Date of Birth & Phone Number</p> */}
 
-    <div>
-        <iframe src={pdf} width="100%" height="300px" />
+    <div style={{borderTop:"1px solid #ddd"}}>
+        {/* <iframe src={pdf} width="100%" height="300px" /> */}
+        <img src={okadaImage} alt="Okada books notice" width="100%" height="100%"/>
     </div>
 
       </>
