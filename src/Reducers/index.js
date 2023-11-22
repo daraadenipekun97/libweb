@@ -6,6 +6,7 @@ import booksReducer from "./books";
 import libraryReducer from "./library";
 import profileReducer from "./profile";
 import readersReducer from "./readers";
+import challengeReducer from "./challenge";
 
 const reducer = () =>
   combineReducers({
@@ -15,6 +16,7 @@ const reducer = () =>
     library: libraryReducer,
     profile: profileReducer,
     reader: readersReducer,
+    challenge: challengeReducer,
     toastr: toastrReducer,
   });
 

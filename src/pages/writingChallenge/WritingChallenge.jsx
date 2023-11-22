@@ -8,6 +8,8 @@ import {useNavigate } from "react-router-dom";
 import { PurpleButton } from '../../components/button/Button';
 import {
   fetchProfile,
+  fetchAllArticleTopics,
+  fetchArticleByUser
 } from "../../Actions";
 import Swal from "sweetalert2";
 
@@ -18,6 +20,10 @@ const WritingChallenge = () => {
 
   const { profileData } = useSelector(
     (state) => state.profile
+  );
+
+  const { allTopics } = useSelector(
+    (state) => state.challenge
   );
 
   const customStyles = {
@@ -61,11 +67,30 @@ const WritingChallenge = () => {
   const [checkedError, setCheckedError] = useState(false);
   const [topicError, setTopicError] = useState(false)
   const [termsCheckBox, setTermsCheckBox] = useState(false);
+  const [theTopics, setTheTopics] = useState([])
   const [topic, setTopic] = useState(null)
+
 
   useEffect(() => {
     dispatch(fetchProfile());
+    dispatch(fetchAllArticleTopics());
+    dispatch(fetchArticleByUser());
   }, [dispatch]);
+
+
+  useEffect(() => {
+    const createTopicSelect = () => {
+      let topicsData = [];
+      allTopics.map((allTopics) => {
+        let option = { label: allTopics.name, value:allTopics.id };
+        topicsData.push(option);
+      });
+
+      setTheTopics(topicsData);
+    };
+
+    allTopics.length !== 0 && createTopicSelect();
+  }, [allTopics]);
 
 
   const verifySubscriptionStatus = () => {
@@ -116,10 +141,10 @@ const WritingChallenge = () => {
 
     }
 
-    if(termsCheckBox && topic !== null && profileData.subscription_status === "active"){
-        navigate("/home/article")
+    if(termsCheckBox && topic !== null && profileData.subscription_status === "inactive"){
+        navigate(`/home/article/${topic.value}`)
     }
-    else if(termsCheckBox && topic !== null && profileData.subscription_status === "inactive"){
+    else if(termsCheckBox && topic !== null && profileData.subscription_status === "active"){
       verifySubscriptionStatus()
     }
   }
@@ -250,10 +275,10 @@ const WritingChallenge = () => {
            </p>
            <hr />
            <Select
-            options={[{value:'Love',label:"Love"}, {value:'War',label:"War"}, {value:'Success', label:"Success"}]}
+            options={theTopics}
             styles={customStyles}
             value={topic}
-            placeholder={"Select a Category/Genre*"}
+            placeholder={"Select a Topic*"}
             // isClearable={true}
             onChange={(e) => selectTopicHandler(e)}
           />

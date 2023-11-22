@@ -195,3 +195,37 @@ export const RESTORE_UPDATE_READING_TIME_INITIAL = "restore_update_reading_time_
 export const HIDE_FACEBOOK_ICON = "hide_facebook_icon";
 export const HIDE_FACEBOOK_ICON_SUCCESS = "hide_facebook_icon_success";
 export const RESTORE_HIDE_FACEBOOK_ICON_INITIAL = "restore_hide_facebook_icon_initial";
+
+// ==============================writing challenge================
+
+
+
+export const FETCH_ARTICLE_TOPICS = "fetch_article_topics";
+export const FETCH_ARTICLE_TOPICS_SUCCESS = "fetch_article_topics_success";
+
+export const FETCH_ALL_ARTICLE = "fetch_all_article"
+export const FETCH_ALL_ARTICLE_SUCCESS = "fetch_all_article_success"
+
+export const FETCH_ARTICLE_BY_TOPIC = "fetch_article_by_topic";
+export const FETCH_ARTICLE_BY_TOPIC_SUCCESS = "fetch_article_by_topic_success";
+
+export const CREATE_ARTICLE = "create_article";
+export const CREATE_ARTICLE_SUCCESS = "create_article_success";
+export const RESTORE_CREATE_ARTICLE_INITIAL = "restore_create_article_initial";
+
+export const EDIT_ARTICLE = "edit_article";
+export const EDIT_ARTICLE_SUCCESS = "edit_article_success";
+export const RESTORE_EDIT_ARTICLE_INITIAL = "restore_edit_article_initial";
+
+export const FETCH_ARTICLE_BY_ID = "fetch_article_by_id";
+export const FETCH_ARTICLE_BY_ID_SUCCESS = "fetch_article_by_id_success";
+
+
+export const VOTE_ARTICLE = "vote_article";
+export const VOTE_ARTICLE_SUCCESS = "vote_article_success";
+
+export const FETCH_ARTICLE_BY_USER = "fetch_article_by_user"
+export const FETCH_ARTICLE_BY_USER_SUCCESS = "fetch_article_by_user_success"
+
+
+

@@ -4,3 +4,4 @@ export * from "./Books";
 export * from "./Library";
 export * from "./Profile";
 export * from "./Reader";
+export * from "./Challenge";

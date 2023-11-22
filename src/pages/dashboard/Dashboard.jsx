@@ -151,9 +151,9 @@ const Dashboard = () => {
 
   return (
     <>
-        <div className="shifter">
+        {/* <div className="shifter">
         
-        </div>
+        </div> */}
       <UserNavbar />
       <Header />
       <div className="book-container">
@@ -162,7 +162,7 @@ const Dashboard = () => {
         </div>
       </div>
       <Community />
-      <ActionBanner />
+      {/* <ActionBanner /> */}
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
       <ModalRedirect  showRedirectModal={showRedirectModal}  />

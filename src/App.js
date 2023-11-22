@@ -123,7 +123,7 @@ function App() {
                   <Route path="subscription" element={<SubscriptionPage />} />
                   <Route path="wallet" element={<WalletPage />} />
                   <Route path="writingChallenge" element={<WritingChallengePage />} />
-                  <Route path="article" element={<WritingPage />} />
+                  <Route path="article/:id" element={<WritingPage />} />
                   <Route path="search/:id" element={<SearchPage />} />
                 </Route>
 
