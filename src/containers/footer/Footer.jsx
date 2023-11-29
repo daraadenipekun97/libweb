@@ -33,6 +33,11 @@ const Footer = () => {
               FAQs
             </a>
           </p>
+          <p>
+            <a href="/blog" target="_blank">
+              Blog
+            </a>
+          </p>
         </div>
 
         <div className="lib-footer-links-div">

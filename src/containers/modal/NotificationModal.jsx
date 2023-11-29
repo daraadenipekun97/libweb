@@ -18,7 +18,7 @@ const NotificationModal = ({showNotification, setShowNotification}) => {
     <div className="modal-main-dashboard">
       <>
         <h4 className="modal-title-dashboard">
-          NOTICE
+          A heartfelt farewell to Okada Books: Gratitude and fond memories
         </h4>
         {/* <p className="modal-text-dashboard">Please update your profile</p>
         <p className="modal-text-dashboard">Country, Date of Birth & Phone Number</p> */}

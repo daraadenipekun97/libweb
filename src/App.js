@@ -70,6 +70,7 @@ const PrivacyPolicyPage = lazy(() => import("./pages/privacy/PrivacyPolicy"));
 const TermsOfUsePage = lazy(() => import("./pages/privacy/TermsOfUse"));
 const WritingChallengePage = lazy(() => import("./pages/writingChallenge/WritingChallenge"));
 const WritingPage = lazy(() => import("./pages/writingChallenge/WritingPage"));
+const BlogPage = lazy(() => import("./pages/blog/Blog"));
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
 
@@ -104,6 +105,7 @@ function App() {
                 <Route path="faq" element={<FAQPage user={user} />} />
                 <Route path="privacyPolicy" element={<PrivacyPolicyPage user={user} />} />
                 <Route path="termsOfUse" element={<TermsOfUsePage user={user} />} />
+                <Route path="blog" element={<BlogPage user={user} />} />
 
                 <Route path="home" element={<HomePage user={user} />}>
                   <Route path="dashboard" element={<DashboardPage />} />

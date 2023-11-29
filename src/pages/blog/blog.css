@@ -1,0 +1,19 @@
+.blog-container{
+    background-color: #e3daf0;
+    padding: 4rem 6rem;
+    min-height: 100vh;
+    text-align: center;
+}
+.blog-text{
+    color: #5e458b;
+
+}
+
+
+@media screen and (max-width: 755px) {
+    .blog-container{
+        padding: 4rem 1rem;
+    }
+    
+  }
+
