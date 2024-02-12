@@ -33,8 +33,7 @@
   border: 1px solid #5e458b;
 }
 
-.reading-goals-input{
-
+.reading-goals-input {
   background-color: #ffffff;
   border: 2px solid rgba(84, 95, 125, 0.15);
   border-radius: 5px;
@@ -129,12 +128,10 @@
 .content-table tbody tr {
   border-bottom: 1px solid #dddddd;
   background-color: white;
-
 }
 
 .content-table tbody tr td {
-
-  white-space:nowrap;
+  white-space: nowrap;
 }
 
 .content-table tbody tr:last-of-type {
@@ -168,7 +165,7 @@
   cursor: pointer;
 }
 
-.table-btn:active{
+.table-btn:active {
   background-color: #ddd !important;
 }
 
@@ -238,8 +235,7 @@ hr {
   cursor: pointer;
 }
 
-
-.status-cover{
+.status-cover {
   padding: 5px;
   text-align: center;
   border-radius: 4px;

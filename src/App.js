@@ -21,9 +21,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 //   NotfoundPage
 // } from "./pages";
 
-import { GoogleOAuthProvider } from '@react-oauth/google'
-
-
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const LightTheme = {
   pageBackground: "white",
@@ -71,9 +69,9 @@ const TermsOfUsePage = lazy(() => import("./pages/privacy/TermsOfUse"));
 const WritingChallengePage = lazy(() => import("./pages/writingChallenge/WritingChallenge"));
 const WritingPage = lazy(() => import("./pages/writingChallenge/WritingPage"));
 const BlogPage = lazy(() => import("./pages/blog/Blog"));
+const BlogWriteupPage = lazy(() => import("./pages/blog/BlogWriteup"));
+
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
-
-
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -86,67 +84,70 @@ function App() {
 
   // let pathname =  window.location.pathname;
 
-
   return (
     <>
-    <GoogleOAuthProvider clientId="218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com">
-      <Provider store={store}>
-        <BrowserRouter>
-          <ErrorBoundary>
-            <Suspense fallback={<Preloader />}>
-              <Routes>
-                <Route path="/" element={<LandingPage user={user} />} />
-                <Route path="signin" element={<LoginPage user={user} />} />
-                <Route path="register" element={<RegisterPage user={user} />} />
-                <Route path="forgot" element={<ForgotPasswordPage user={user} />} />
-                <Route path="reset" element={<ResetPasswordPage user={user} />} />
-                <Route path="verify" element={<VerifyEmailPage user={user} />} />
-                <Route path="about" element={<AboutUsPage user={user} />} />
-                <Route path="faq" element={<FAQPage user={user} />} />
-                <Route path="privacyPolicy" element={<PrivacyPolicyPage user={user} />} />
-                <Route path="termsOfUse" element={<TermsOfUsePage user={user} />} />
-                <Route path="blog" element={<BlogPage user={user} />} />
+      <GoogleOAuthProvider clientId="218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com">
+        <Provider store={store}>
+          <BrowserRouter>
+            <ErrorBoundary>
+              <Suspense fallback={<Preloader />}>
+                <Routes>
+                  <Route path="/" element={<LandingPage user={user} />} />
+                  <Route path="signin" element={<LoginPage user={user} />} />
+                  <Route path="register" element={<RegisterPage user={user} />} />
+                  <Route path="forgot" element={<ForgotPasswordPage user={user} />} />
+                  <Route path="reset" element={<ResetPasswordPage user={user} />} />
+                  <Route path="verify" element={<VerifyEmailPage user={user} />} />
+                  <Route path="about" element={<AboutUsPage user={user} />} />
+                  <Route path="faq" element={<FAQPage user={user} />} />
+                  <Route path="privacyPolicy" element={<PrivacyPolicyPage user={user} />} />
+                  <Route path="termsOfUse" element={<TermsOfUsePage user={user} />} />
+                  <Route path="blog" element={<BlogPage user={user} />} />
+                  <Route
+                    path="blog/:id"
+                    element={<BlogWriteupPage user={user} />}
+                  />
 
-                <Route path="home" element={<HomePage user={user} />}>
-                  <Route path="dashboard" element={<DashboardPage />} />
-                  <Route path="library" element={<LibraryPage />} />
-                  <Route path="discover" element={<DiscoverPage />} />
-                  <Route path="trending" element={<TrendingPage />} />
-                  <Route path="newReleases" element={<NewReleasesPage />} />
-                  <Route path="classics" element={<ClassicsPage />} />
-                  <Route path="childrenscorner" element={<KiddiesPage />} />
-                  <Route path="authors" element={<AllAuthorsPage />} />
-                  <Route path="authors/:id" element={<AuthorsPage />} />
-                  <Route path="genre" element={<GenrePage />} />
-                  <Route path="genre/:id" element={<GenreByIdPage />} />
-                  <Route path="books/:id" element={<BooksPage />} />
-                  <Route path="profile" element={<ProfilePage />} />
-                  <Route path="reader" element={<ReaderPage/>} />
-                  <Route path="subscription" element={<SubscriptionPage />} />
-                  <Route path="wallet" element={<WalletPage />} />
-                  <Route path="writingChallenge" element={<WritingChallengePage />} />
-                  <Route path="article/:id" element={<WritingPage />} />
-                  <Route path="search/:id" element={<SearchPage />} />
-                </Route>
+                  <Route path="home" element={<HomePage user={user} />}>
+                    <Route path="dashboard" element={<DashboardPage />} />
+                    <Route path="library" element={<LibraryPage />} />
+                    <Route path="discover" element={<DiscoverPage />} />
+                    <Route path="trending" element={<TrendingPage />} />
+                    <Route path="newReleases" element={<NewReleasesPage />} />
+                    <Route path="classics" element={<ClassicsPage />} />
+                    <Route path="childrenscorner" element={<KiddiesPage />} />
+                    <Route path="authors" element={<AllAuthorsPage />} />
+                    <Route path="authors/:id" element={<AuthorsPage />} />
+                    <Route path="genre" element={<GenrePage />} />
+                    <Route path="genre/:id" element={<GenreByIdPage />} />
+                    <Route path="books/:id" element={<BooksPage />} />
+                    <Route path="profile" element={<ProfilePage />} />
+                    <Route path="reader" element={<ReaderPage />} />
+                    <Route path="subscription" element={<SubscriptionPage />} />
+                    <Route path="wallet" element={<WalletPage />} />
+                    <Route path="writingChallenge" element={<WritingChallengePage />} />
+                    <Route path="article/:id" element={<WritingPage />} />
+                    <Route path="search/:id" element={<SearchPage />} />
+                  </Route>
 
-                <Route path="*" element={<NotfoundPage user={user} />} />
-              </Routes>
-            </Suspense>
-          </ErrorBoundary>
-        </BrowserRouter>
-        <ReduxToastr
-          timeOut={4000}
-          newestOnTop={false}
-          preventDuplicates
-          position="top-right"
-          getState={(state) => state.toastr}
-          transitionIn="bounceIn"
-          transitionOut="bounceOut"
-          progressBar
-          closeOnToastrClick
-        />
-        <MessengerChat />
-      </Provider>
+                  <Route path="*" element={<NotfoundPage user={user} />} />
+                </Routes>
+              </Suspense>
+            </ErrorBoundary>
+          </BrowserRouter>
+          <ReduxToastr
+            timeOut={4000}
+            newestOnTop={false}
+            preventDuplicates
+            position="top-right"
+            getState={(state) => state.toastr}
+            transitionIn="bounceIn"
+            transitionOut="bounceOut"
+            progressBar
+            closeOnToastrClick
+          />
+          <MessengerChat />
+        </Provider>
       </GoogleOAuthProvider>
     </>
   );

@@ -15,7 +15,6 @@ export const fetchCountryy = function* () {
   yield takeEvery(FETCH_ALL_COUNTRIES, fetchCountryRequest);
 };
 
-
 export const fetchSongRequest = function* ({ payload }) {
   yield call(requestFunction, fetchSongsSuccess, getSongs, payload);
 };
@@ -24,7 +23,6 @@ export const fetchAllSongss = function* () {
   yield takeEvery(FETCH_SONGS, fetchSongRequest);
 };
 
-
 export const HideIconRequest = function* ({ payload }) {
   yield call(requestFunction, hideFacebookIconSuccess, facebookHide, payload);
 };
@@ -32,7 +30,6 @@ export const HideIconRequest = function* ({ payload }) {
 export const hideFaceIcon = function* () {
   yield takeEvery(HIDE_FACEBOOK_ICON, HideIconRequest);
 };
-
 
 export default function* rootSaga() {
   yield all([fork(fetchCountryy), fork(fetchAllSongss), fork(hideFaceIcon)]);

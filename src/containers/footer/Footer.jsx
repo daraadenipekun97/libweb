@@ -1,18 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./footer.css";
 import Logo from "../../assets/images/myLibriBooks.png";
 
 import { AiFillFacebook, AiFillInstagram, AiFillTwitterCircle } from "react-icons/ai";
 
 const Footer = () => {
-
   const [year, setYear] = useState("-");
 
+  const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
+
+
   useEffect(() => {
-    const footerYear =  new Date().getFullYear();
-    setYear(footerYear)
-  }, [])
-  
+    const footerYear = new Date().getFullYear();
+    setYear(footerYear);
+  }, []);
 
   return (
     <div className="lib-footer-container">
@@ -33,11 +34,12 @@ const Footer = () => {
               FAQs
             </a>
           </p>
-          <p>
-            <a href="/blog" target="_blank">
-              Blog
-            </a>
-          </p>
+         
+              <p>
+                <a href="/blog">Blog</a>
+              </p>
+        
+          
         </div>
 
         <div className="lib-footer-links-div">

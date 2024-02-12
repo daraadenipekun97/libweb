@@ -84,7 +84,7 @@ const ReviewTab = () => {
         addReview({
           review: formValues.review,
           rating: formValues.rating,
-          id:bookDetails.book.id
+          id: bookDetails.book.id,
         })
       );
     }
@@ -129,9 +129,7 @@ const ReviewTab = () => {
         </div>
       ) : (
         <>
-          <div className={
-            bookDetails.reviews.length === 0? "no-review-height" : "no-review"
-          }>
+          <div className={bookDetails.reviews.length === 0 ? "no-review-height" : "no-review"}>
             {bookDetails.reviews.map((review) => {
               return (
                 <>

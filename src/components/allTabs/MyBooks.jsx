@@ -1,11 +1,18 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchMyBooks, restoreFavouriteInitial, restoreUnfavouriteInitial, restoreRemoveFromLibraryInitial } from "../../Actions";
+import {
+  fetchMyBooks,
+  restoreFavouriteInitial,
+  restoreUnfavouriteInitial,
+  restoreRemoveFromLibraryInitial,
+} from "../../Actions";
 import SingleBook from "../singleBook/SingleBook";
 
 const MyBooks = () => {
   const dispatch = useDispatch();
-  const { myBooks, removeFromLibSuccess, removeFromLibFailure  } = useSelector((state) => state.library);
+  const { myBooks, removeFromLibSuccess, removeFromLibFailure } = useSelector(
+    (state) => state.library
+  );
 
   const {
     addBookToFavouriteSuccess,
@@ -18,9 +25,8 @@ const MyBooks = () => {
     dispatch(fetchMyBooks());
   }, [dispatch]);
 
-
   useEffect(() => {
-    if (addBookToFavouriteSuccess || addBookToFavouriteFailure ) {
+    if (addBookToFavouriteSuccess || addBookToFavouriteFailure) {
       dispatch(fetchMyBooks());
     }
 
@@ -28,7 +34,6 @@ const MyBooks = () => {
       dispatch(restoreFavouriteInitial());
     };
   }, [addBookToFavouriteSuccess, addBookToFavouriteFailure]);
-
 
   useEffect(() => {
     if (removeBookFromFavouriteSuccess || removeBookFromFavouriteFailure) {
@@ -40,9 +45,8 @@ const MyBooks = () => {
     };
   }, [removeBookFromFavouriteSuccess, removeBookFromFavouriteFailure]);
 
-
   useEffect(() => {
-    if (removeFromLibSuccess || removeFromLibFailure ) {
+    if (removeFromLibSuccess || removeFromLibFailure) {
       dispatch(fetchMyBooks());
     }
 
@@ -51,9 +55,7 @@ const MyBooks = () => {
     };
   }, [removeFromLibSuccess, removeFromLibFailure]);
 
-
-  return <SingleBook datas={myBooks} searchBar="" title="" icon={true} />
-  ;
+  return <SingleBook datas={myBooks} searchBar="" title="" icon={true} />;
 };
 
 export default MyBooks;

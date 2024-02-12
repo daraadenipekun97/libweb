@@ -1,9 +1,14 @@
-import { FETCH_ALL_COUNTRIES_SUCCESS, FETCH_SONGS_SUCCESS, HIDE_FACEBOOK_ICON_SUCCESS, RESTORE_HIDE_FACEBOOK_ICON_INITIAL } from "../ActionTypes";
+import {
+  FETCH_ALL_COUNTRIES_SUCCESS,
+  FETCH_SONGS_SUCCESS,
+  HIDE_FACEBOOK_ICON_SUCCESS,
+  RESTORE_HIDE_FACEBOOK_ICON_INITIAL,
+} from "../ActionTypes";
 
 const INIT_STATE = {
   countries: [],
-  allSongs:[],
-  facebookIconHidden:false
+  allSongs: [],
+  facebookIconHidden: false,
 };
 
 const getAllReducer = (state = INIT_STATE, action) => {

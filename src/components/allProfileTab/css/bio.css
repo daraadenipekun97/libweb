@@ -121,8 +121,7 @@ select:disabled {
   margin-top: 1rem;
 }
 
-
-.delete-button{
+.delete-button {
   padding: 0.5rem 1rem;
   font-weight: 500;
   border-radius: 5px;
@@ -138,9 +137,7 @@ select:disabled {
   margin-top: 10px;
 }
 
-
-.delete-button:active{
-  
+.delete-button:active {
   outline: none;
   background: rgb(188, 2, 2) !important;
   color: white;

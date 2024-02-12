@@ -22,7 +22,7 @@ import {
   CHANGE_PASSWORD_SUCCESS,
   RESTORE_CHANGE_PASSWORD_INITIAL,
   DELETE_ACCOUNT_SUCCESS,
-  RESTORE_DELETE_ACCOUNT_INITIAL
+  RESTORE_DELETE_ACCOUNT_INITIAL,
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -41,7 +41,6 @@ const INIT_STATE = {
   cancelSubscriptionSuccess: false,
   cancelSubscriptionFailure: false,
 
-
   reactivateTrialSuccess: false,
   reactivateTrailFailure: false,
   reactivateSubscriptionSuccess: false,
@@ -54,8 +53,8 @@ const INIT_STATE = {
   passwordChangeSuccess: false,
   passwordChangeFailure: false,
 
-  deleteAccountSuccess:false,
-  deleteAccountFailure:false
+  deleteAccountSuccess: false,
+  deleteAccountFailure: false,
 };
 
 const profileReducer = (state = INIT_STATE, action) => {
@@ -201,7 +200,6 @@ const profileReducer = (state = INIT_STATE, action) => {
       };
     }
 
-
     case REACTIVATE_TRIAL_SUCCESS: {
       if (action.payload === true) {
         return {
@@ -226,8 +224,6 @@ const profileReducer = (state = INIT_STATE, action) => {
       };
     }
 
-
-
     case REACTIVATE_SUBSCRIPTION_SUCCESS: {
       if (action.payload === true) {
         return {
@@ -251,10 +247,6 @@ const profileReducer = (state = INIT_STATE, action) => {
         reactivateSubscriptionSuccess: false,
       };
     }
-
-
-
-
 
     case FETCH_SUBSCRIPTION_DETAILS_SUCCESS: {
       return {
@@ -310,7 +302,6 @@ const profileReducer = (state = INIT_STATE, action) => {
         passwordChangeSuccess: false,
       };
     }
-
 
     case DELETE_ACCOUNT_SUCCESS: {
       if (action.payload === true) {

@@ -9,7 +9,7 @@ import { fetchClassicBooks } from "../../Actions";
 import Pagination from "../../components/pagination/Pagination";
 import { fetchProfile } from "../../Actions";
 import ModalRedirect from "../../components/modal/ModalRedirect";
-import {  useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 let PageSize = 30;
 
@@ -21,33 +21,26 @@ const Classics = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const { classicBooks } = useSelector((state) => state.books);
-  const {
-    profileData,
-  } = useSelector((state) => state.profile);
-  const [showRedirectModal, setShowRedirectModal] = useState(false)
-
+  const { profileData } = useSelector((state) => state.profile);
+  const [showRedirectModal, setShowRedirectModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchClassicBooks());
     dispatch(fetchProfile());
-
   }, [dispatch]);
 
   useEffect(() => {
-    if(profileData){
-
-      if(profileData.dob === null || profileData.country_id === null && (location.pathname !== "/home/profile") ){
-        setShowRedirectModal(true)
-      }else {
-
+    if (profileData) {
+      if (
+        profileData.dob === null ||
+        (profileData.country_id === null && location.pathname !== "/home/profile")
+      ) {
+        setShowRedirectModal(true);
+      } else {
       }
-
-    }else{
-
+    } else {
     }
-
-  },[profileData])
-
+  }, [profileData]);
 
   const handleDiscover = () => {
     navigate("/home/discover");
@@ -86,7 +79,7 @@ const Classics = () => {
         />
       </div>
       <Footer />
-      <ModalRedirect  showRedirectModal={showRedirectModal}  />
+      <ModalRedirect showRedirectModal={showRedirectModal} />
     </>
   );
 };

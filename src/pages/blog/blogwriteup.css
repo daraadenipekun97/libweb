@@ -1,0 +1,35 @@
+.blog-writeup-container {
+  /* background-color: #e3daf0;
+  padding: 4rem 12rem;
+  min-height: 100vh;
+  text-align: left; */
+  /* border: solid; */
+
+
+
+}
+
+.writeup-container{
+    /* border: 1px solid #5e458b; */
+}
+
+.blog-writeup-text {
+  color: #5e458b;
+}
+
+.blog-writeup-container-back-button {
+  color: #5e458b;
+  border: 1px solid #5e458b;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.blog-writeup-container-back-button:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 755px) {
+  .blog-writeup-container {
+    padding: 4rem 1rem;
+  }
+}

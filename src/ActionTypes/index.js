@@ -141,7 +141,6 @@ export const CANCEL_SUBSCRIPTION = "cancel_subscription";
 export const CANCEL_SUBSCRIPTION_SUCCESS = "cancel_subscription_success";
 export const RESTORE_CANCEL_SUBSCRIPTION_INITIAL = "restore_cancel_subscription_initial";
 
-
 export const REACTIVATE_TRIAL = "reactivate_trial";
 export const REACTIVATE_TRIAL_SUCCESS = "reactivate_trial_success";
 export const RESTORE_REACTIVATE_TRIAL_INITIAL = "restore_reactivate_trial_initial";
@@ -149,7 +148,6 @@ export const RESTORE_REACTIVATE_TRIAL_INITIAL = "restore_reactivate_trial_initia
 export const REACTIVATE_SUBSCRIPTION = "reactivate_subscription";
 export const REACTIVATE_SUBSCRIPTION_SUCCESS = "reactivate_subscription_success";
 export const RESTORE_REACTIVATE_SUBSCRIPTION_INITIAL = "restore_reactivate_subscription_initial";
-
 
 export const WEB_PURCHASE = "web_purchase";
 export const WEB_PURCHASE_SUCCESS = "web_purchase_success";
@@ -177,20 +175,16 @@ export const REMOVE_FROM_LIBRARY = "remove_from_library";
 export const REMOVE_FROM_LIBRARY_SUCCESS = "remove_from_library_success";
 export const RESTORE_REMOVE_FROM_LIBRARY_INITIAL = "remove_from_library_initial";
 
-
 export const DELETE_ACCOUNT = "delete_account";
 export const DELETE_ACCOUNT_SUCCESS = "delete_account_success";
 export const RESTORE_DELETE_ACCOUNT_INITIAL = "restore_delete_account_initial";
 
-
 export const FETCH_SONGS = "fetch_songs";
 export const FETCH_SONGS_SUCCESS = "fetch_songs_success";
 
-
 export const UPDATE_READING_TIME = "update_reading_time";
 export const UPDATE_READING_TIME_SUCCESS = "update_reading_time_success";
-export const RESTORE_UPDATE_READING_TIME_INITIAL = "restore_update_reading_time_initial"
-
+export const RESTORE_UPDATE_READING_TIME_INITIAL = "restore_update_reading_time_initial";
 
 export const HIDE_FACEBOOK_ICON = "hide_facebook_icon";
 export const HIDE_FACEBOOK_ICON_SUCCESS = "hide_facebook_icon_success";
@@ -198,13 +192,11 @@ export const RESTORE_HIDE_FACEBOOK_ICON_INITIAL = "restore_hide_facebook_icon_in
 
 // ==============================writing challenge================
 
-
-
 export const FETCH_ARTICLE_TOPICS = "fetch_article_topics";
 export const FETCH_ARTICLE_TOPICS_SUCCESS = "fetch_article_topics_success";
 
-export const FETCH_ALL_ARTICLE = "fetch_all_article"
-export const FETCH_ALL_ARTICLE_SUCCESS = "fetch_all_article_success"
+export const FETCH_ALL_ARTICLE = "fetch_all_article";
+export const FETCH_ALL_ARTICLE_SUCCESS = "fetch_all_article_success";
 
 export const FETCH_ARTICLE_BY_TOPIC = "fetch_article_by_topic";
 export const FETCH_ARTICLE_BY_TOPIC_SUCCESS = "fetch_article_by_topic_success";
@@ -220,12 +212,17 @@ export const RESTORE_EDIT_ARTICLE_INITIAL = "restore_edit_article_initial";
 export const FETCH_ARTICLE_BY_ID = "fetch_article_by_id";
 export const FETCH_ARTICLE_BY_ID_SUCCESS = "fetch_article_by_id_success";
 
-
 export const VOTE_ARTICLE = "vote_article";
 export const VOTE_ARTICLE_SUCCESS = "vote_article_success";
 
-export const FETCH_ARTICLE_BY_USER = "fetch_article_by_user"
-export const FETCH_ARTICLE_BY_USER_SUCCESS = "fetch_article_by_user_success"
+export const FETCH_ARTICLE_BY_USER = "fetch_article_by_user";
+export const FETCH_ARTICLE_BY_USER_SUCCESS = "fetch_article_by_user_success";
 
+
+export const FETCH_ALL_BLOGS = "fetch_all_blogs";
+export const FETCH_ALL_BLOGS_SUCCESS = "fetch_all_blogs_success";
+
+export const FETCH_BLOG_BY_ID = "fetch_blog_by_id";
+export const FETCH_BLOG_BY_ID_SUCCESS = "fetch_blog_by_id_success";
 
 

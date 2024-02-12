@@ -28,7 +28,9 @@ const Modal = ({ handleClose, show, data, clickedId }) => {
           <>
             <h4 className="modal-title">{filtered.content}</h4>
             <hr />
-            <p className="modal-text">{`${filtered.achieve_by_hour} hour${filtered.achieve_by_hour === 1 ? "" : "s"} in a ${filtered.achieve_by_interval}`}</p>
+            <p className="modal-text">{`${filtered.achieve_by_hour} hour${
+              filtered.achieve_by_hour === 1 ? "" : "s"
+            } in a ${filtered.achieve_by_interval}`}</p>
           </>
         )}
 
@@ -41,19 +43,18 @@ const Modal = ({ handleClose, show, data, clickedId }) => {
   );
 };
 
-
-const StatusIndicator = ({color, text}) => {
-
-
+const StatusIndicator = ({ color, text }) => {
   return (
-    <div className="status-cover" style={{
-      backgroundColor: color
-    }}>
+    <div
+      className="status-cover"
+      style={{
+        backgroundColor: color,
+      }}
+    >
       {text}
     </div>
-  )
-
-}
+  );
+};
 
 const MyReadingGoals = () => {
   const dispatch = useDispatch();
@@ -121,9 +122,7 @@ const MyReadingGoals = () => {
   useEffect(() => {
     dispatch(fetchAllBookNames());
     dispatch(fetchAllGoals());
-    dateTypeStart.current.min = new Date(Date.now())
-      .toISOString()
-      .split("T")[0];
+    dateTypeStart.current.min = new Date(Date.now()).toISOString().split("T")[0];
     dateTypeEnd.current.min = new Date(Date.now() + 1 * 24 * 60 * 60 * 1000)
       .toISOString()
       .split("T")[0];
@@ -148,17 +147,19 @@ const MyReadingGoals = () => {
     end_date: "",
     book_id: "",
     hour: "",
-    interval: ""
+    interval: "",
   };
 
   const [formValues, setFormValues] = useState({ ...initialFormValues });
 
   const startDateHandler = (e) => {
     setRequiredText("");
-  
+
     if (e) {
       let dateValue = e.target.value;
-      const [year, month, day] =  dateValue.includes("-") ? dateValue.split("-") : dateValue.split("/");
+      const [year, month, day] = dateValue.includes("-")
+        ? dateValue.split("-")
+        : dateValue.split("/");
       const formattedDate = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`; // Format the date string as "YYYY-MM-DD"
       e.preventDefault();
       setFormValues({
@@ -166,13 +167,11 @@ const MyReadingGoals = () => {
         start_date: formattedDate,
       });
 
-      
       // console.log(formattedDate)
-      let dateObject  = Date.parse(formattedDate)
+      let dateObject = Date.parse(formattedDate);
       dateTypeEnd.current.min = new Date(dateObject + 1 * 24 * 60 * 60 * 1000)
-      .toISOString()
-      .split("T")[0];
-
+        .toISOString()
+        .split("T")[0];
     } else {
       setFormValues({
         ...formValues,
@@ -185,7 +184,9 @@ const MyReadingGoals = () => {
     setRequiredText("");
     if (e) {
       let dateValue = e.target.value;
-      const [year, month, day] =  dateValue.includes("-") ? dateValue.split("-") : dateValue.split("/");
+      const [year, month, day] = dateValue.includes("-")
+        ? dateValue.split("-")
+        : dateValue.split("/");
       const formattedDate = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`; // Format the date string as "YYYY-MM-DD"
       e.preventDefault();
       setFormValues({
@@ -207,7 +208,7 @@ const MyReadingGoals = () => {
     const createBooksSelect = () => {
       let booksData = [];
       allBookNames.map((allBook) => {
-        let option = { label: allBook.name, value:allBook.id };
+        let option = { label: allBook.name, value: allBook.id };
         booksData.push(option);
       });
 
@@ -219,7 +220,6 @@ const MyReadingGoals = () => {
 
   const [booksId, setBooksId] = useState(null);
   const [duration, setDuration] = useState(null);
-
 
   const booksHandler = (e) => {
     setRequiredText("");
@@ -235,7 +235,7 @@ const MyReadingGoals = () => {
     if (e) {
       setDuration(e);
     }
-  }
+  };
 
   const hourHandler = (e) => {
     setRequiredText("");
@@ -243,19 +243,17 @@ const MyReadingGoals = () => {
     if (e) {
       let hourValue = e.target.value;
       e.preventDefault();
-      if(hourValue <= 0){
+      if (hourValue <= 0) {
         setFormValues({
           ...formValues,
           hour: "",
         });
+      } else {
+        setFormValues({
+          ...formValues,
+          hour: hourValue,
+        });
       }
-      else{
-         setFormValues({
-        ...formValues,
-        hour: hourValue,
-      });
-      }
-     
     } else {
       setFormValues({
         ...formValues,
@@ -269,7 +267,7 @@ const MyReadingGoals = () => {
       formValues.start_date !== "" &&
       formValues.end_date !== "" &&
       booksId.value !== "" &&
-      formValues.hour !=="" &&
+      formValues.hour !== "" &&
       duration.value !== ""
     ) {
       setFormState({
@@ -318,7 +316,7 @@ const MyReadingGoals = () => {
       setFormValues({ ...initialFormValues });
       setFormState({ ...initialFormState });
       setBooksId(null);
-      setDuration(null)
+      setDuration(null);
       dispatch(fetchAllGoals());
     }
 
@@ -414,24 +412,26 @@ const MyReadingGoals = () => {
             placeholder={"Select Book*"}
             onChange={(e) => booksHandler(e)}
             // isClearable={true}
-
           />
         </div>
 
         <input
-            type="number"
-            name="hours"
-            className="reading-goals-input"
-            value={formValues.hour}
-            placeholder="No of Hours you want to put in eg 5*"
-            required
-            min="1"
-            onChange={(e) => hourHandler(e)}
-          />
+          type="number"
+          name="hours"
+          className="reading-goals-input"
+          value={formValues.hour}
+          placeholder="No of Hours you want to put in eg 5*"
+          required
+          min="1"
+          onChange={(e) => hourHandler(e)}
+        />
         <div className="select-book-wrapper">
-        
           <Select
-            options={[{value:'day',label:"In a day"}, {value:'week',label:"In a week"}, {value:'month', label:"In a month"}]}
+            options={[
+              { value: "day", label: "In a day" },
+              { value: "week", label: "In a week" },
+              { value: "month", label: "In a month" },
+            ]}
             styles={customStyles}
             value={duration}
             placeholder={"Duration*"}
@@ -460,12 +460,6 @@ const MyReadingGoals = () => {
         </button>
       </div>
 
-    
-
-    
-
-
-
       <h4 className="reading-goals-h4">All Goals</h4>
 
       <div className="table-wrapper">
@@ -491,12 +485,16 @@ const MyReadingGoals = () => {
                     <td onClick={() => handleOpen(allGoal.id)}>{allGoal.content}</td>
                     <td>{moment(allGoal.start).format("MMM Do YYYY")}</td>
                     <td>{moment(allGoal.end).format("MMM Do YYYY")}</td>
-                    <td>{`Read ${allGoal.achieve_by_hour} hour${allGoal.achieve_by_hour === 1 ? "" : "s"} in a ${allGoal.achieve_by_interval}`}</td>
-                    <td>{allGoal.completed === 1 ? (
-                      <StatusIndicator color="green" text="Completed"/>
-                    ) : (<StatusIndicator color="orange" text="Pending"/>)
-                  }</td>
-
+                    <td>{`Read ${allGoal.achieve_by_hour} hour${
+                      allGoal.achieve_by_hour === 1 ? "" : "s"
+                    } in a ${allGoal.achieve_by_interval}`}</td>
+                    <td>
+                      {allGoal.completed === 1 ? (
+                        <StatusIndicator color="green" text="Completed" />
+                      ) : (
+                        <StatusIndicator color="orange" text="Pending" />
+                      )}
+                    </td>
 
                     {/* <td>
                       {(new Date(allGoal.end).getTime() - new Date(allGoal.start).getTime()) /

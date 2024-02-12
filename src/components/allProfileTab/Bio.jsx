@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import "./css/bio.css";
 import Select from "react-select";
 import Swal from "sweetalert2";
-import { googleLogout } from '@react-oauth/google';
+import { googleLogout } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-
 
 import {
   fetchAllCountries,
@@ -13,7 +12,7 @@ import {
   restoreUpdateProfileInitial,
   updateProfile,
   deleteAccount,
-  restoredeleteAccountInitial
+  restoredeleteAccountInitial,
 } from "../../Actions";
 import Spinner from "../spinner/Spinner";
 
@@ -57,13 +56,17 @@ const Bio = () => {
   const navigate = useNavigate();
 
   const { countries } = useSelector((state) => state.getAll);
-  const { profileData, updateProfileSuccess, updateProfileFailure, deleteAccountSuccess, deleteAccountFailure } = useSelector(
-    (state) => state.profile
-  );
+  const {
+    profileData,
+    updateProfileSuccess,
+    updateProfileFailure,
+    deleteAccountSuccess,
+    deleteAccountFailure,
+  } = useSelector((state) => state.profile);
 
   const [theCountry, setTheCountry] = useState([]);
   const [disabledState, setDisabledState] = useState(true);
-  const [btnDisabledState, setBtnDisabledState] = useState(false)
+  const [btnDisabledState, setBtnDisabledState] = useState(false);
 
   const initialFormState = {
     buttonState: false,
@@ -90,45 +93,35 @@ const Bio = () => {
 
   const [valid, setValid] = useState(false);
   const [genderValidation, setGenderValidation] = useState(false);
-  const [disableField, setDisableField] = useState(true)
+  const [disableField, setDisableField] = useState(true);
 
   const verifyCheckHandler = () => {
-
     Swal.fire({
-      title: 'Account Verification',
+      title: "Account Verification",
       text: "Please verify you account before proceeding!",
-      icon: 'warning',
+      icon: "warning",
       allowOutsideClick: false,
       showCancelButton: false,
-      confirmButtonColor: '#5e458b',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Ok',
+      confirmButtonColor: "#5e458b",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ok",
       width: 400,
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate("/verify")
+        navigate("/verify");
       }
-    })
-
-  }
+    });
+  };
   useEffect(() => {
     dispatch(fetchAllCountries());
     dispatch(fetchProfile());
-
-   
   }, [dispatch]);
 
-
   useEffect(() => {
-    
     if (profileData.email_verified_at === null) {
       verifyCheckHandler();
     }
-  
-   
-  }, [profileData])
-  
-  
+  }, [profileData]);
 
   const firstnameHandler = (e) => {
     if (e) {
@@ -161,7 +154,6 @@ const Bio = () => {
       });
     }
   };
-
 
   const dobHandler = (e) => {
     if (e) {
@@ -212,7 +204,6 @@ const Bio = () => {
     }
   };
 
-
   const phoneHandler = (e) => {
     if (e) {
       let phoneValue = e.target.value;
@@ -241,7 +232,7 @@ const Bio = () => {
       setFocused({ ...focused, firstname: true });
     } else if (e.target.name === "lastname") {
       setFocused({ ...focused, lastname: true });
-    } else if (e.target.name === "phone"){
+    } else if (e.target.name === "phone") {
       setFocused({ ...focused, phone: true });
     }
   };
@@ -250,8 +241,12 @@ const Bio = () => {
     if (formType === "view") {
       setFormType("update");
       setDisabledState(false);
-      if(profileData.dob === null || profileData.country_id === null || profileData.phone === null){
-        setDisableField(false)
+      if (
+        profileData.dob === null ||
+        profileData.country_id === null ||
+        profileData.phone === null
+      ) {
+        setDisableField(false);
       }
       setFormState({
         ...formState,
@@ -282,7 +277,7 @@ const Bio = () => {
           ...focused,
           firstname: true,
           lastname: true,
-          phone: true
+          phone: true,
         });
 
         setGenderValidation(true);
@@ -324,7 +319,7 @@ const Bio = () => {
     if (updateProfileSuccess) {
       setFormState({ ...initialFormState });
       setDisabledState(true);
-      setDisableField(true)
+      setDisableField(true);
       setFormType("view");
       dispatch(fetchProfile());
     }
@@ -342,7 +337,12 @@ const Bio = () => {
         ...formValues,
         firstname: spliteNameArray !== "" ? spliteNameArray[0] : "",
         lastname: spliteNameArray !== "" ? spliteNameArray[1] : "",
-        phone: profileData.phone !== null ? profileData.phone[0] === "+"  ? profileData.phone.slice(1) : profileData.phone : "",
+        phone:
+          profileData.phone !== null
+            ? profileData.phone[0] === "+"
+              ? profileData.phone.slice(1)
+              : profileData.phone
+            : "",
         dob: profileData.dob !== null ? profileData.dob : "",
         country_id: profileData.country_id !== null ? profileData.country_id : "No Country",
         gender: profileData.gender !== null ? profileData.gender : "No Gender",
@@ -372,226 +372,213 @@ const Bio = () => {
     }
   };
 
-
   const deleteAccountHandler = (email) => {
-
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Delete Account!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete Account!",
     }).then((result) => {
       if (result.isConfirmed) {
         setBtnDisabledState(true);
-        dispatch(deleteAccount(email))
-
+        dispatch(deleteAccount(email));
       }
-    })
-
-  }
+    });
+  };
 
   const handleLogout = () => {
-    
     googleLogout();
     localStorage.clear();
     navigate("/");
     window.location.reload();
   };
 
-
   useEffect(() => {
-    
-    if(deleteAccountFailure){
-
-      setBtnDisabledState(false)
-
+    if (deleteAccountFailure) {
+      setBtnDisabledState(false);
     }
-  
+
     return () => {
-      dispatch(restoredeleteAccountInitial())
-    }
-  }, [deleteAccountFailure])
-
+      dispatch(restoredeleteAccountInitial());
+    };
+  }, [deleteAccountFailure]);
 
   useEffect(() => {
-    
-    if(deleteAccountSuccess){
-
+    if (deleteAccountSuccess) {
       handleLogout();
-      
-        
     }
-  
+
     return () => {
-      dispatch(restoredeleteAccountInitial())
-    }
-  }, [deleteAccountSuccess])
-  
+      dispatch(restoredeleteAccountInitial());
+    };
+  }, [deleteAccountSuccess]);
 
   return (
     <>
-    <div className="bio-wrapper">
-      <p className="bio-wrapper-text">You Can Modify Your Name And Gender</p>
-      <div className="bio-form">
-        {formType === "view" ? (
-          <input
-            name="email"
-            type="email"
-            placeholder="Email*"
-            value={formValues.email}
-            disabled
-            className="email-input"
-          />
-        ) : (
-          ""
-        )}
-
-        <div className="input-group">
-          <div className="input-group-wrapper-left">
+      <div className="bio-wrapper">
+        <p className="bio-wrapper-text">You Can Modify Your Name And Gender</p>
+        <div className="bio-form">
+          {formType === "view" ? (
             <input
-              name="firstname"
-              type="text"
-              placeholder="Firstname*"
-              value={formValues.firstname}
-              required
-              disabled={disabledState}
-              onChange={(e) => firstnameHandler(e)}
-              onBlur={(e) => handleFocus(e)}
-              focused={focused.firstname.toString()}
-              onKeyDown={(e) => handleKeyPress(e)}
-              onKeyUp={(e) => handleKeyPress(e)}
-              pattern="[A-Z'][a-zA-Z'-]+"
-
+              name="email"
+              type="email"
+              placeholder="Email*"
+              value={formValues.email}
+              disabled
+              className="email-input"
             />
-            <p className="profile-validation-error-text">firstname is required (Uppercase first)</p>
-          </div>
+          ) : (
+            ""
+          )}
 
-          <div className="input-group-wrapper-right">
-            <input
-              name="lastname"
-              type="text"
-              placeholder="Lastname*"
-              value={formValues.lastname}
-              required
-              disabled={disabledState}
-              onChange={(e) => lastnameHandler(e)}
-              onBlur={(e) => handleFocus(e)}
-              focused={focused.lastname.toString()}
-              onKeyDown={(e) => handleKeyPress(e)}
-              onKeyUp={(e) => handleKeyPress(e)}
-              pattern="[A-Z'][a-zA-Z'-]+"
-
-            />
-            <p className="profile-validation-error-text">lastname is required (Uppercase first)</p>
-          </div>
-        </div>
-        <div className="input-group">
-          <div className="input-group-wrapper-left">
-            <input
-              name="dob"
-              type="date"
-              placeholder="Date of Birth*"
-              value={formValues.dob}
-              required
-              disabled={disableField}
-              onChange={(e) => dobHandler(e)}
-              
-            />
-          </div>
-
-          <div className="input-group-wrapper-right">
-            <input
-              name="phone"
-              type="number"
-              placeholder="Phone Number*"
-              value={formValues.phone}
-              required
-              disabled={disabledState}
-              onChange={(e) => phoneHandler(e)}
-              onBlur={(e) => handleFocus(e)}
-              focused={focused.phone.toString()}
-
-            />
-            <p className="profile-validation-error-text">phone number is required</p>
-          </div>
-        </div>
-
-        <div className="input-group">
-          <div className="input-group-wrapper-left">
-            <select className="gender-select" 
-            onChange={(e) => countryHandler(e)}
-            disabled={disableField}
-            value={formValues.country_id}
-            
-            >
-              <option value="No Country" disabled>
-                No Country
-              </option>
-              {countries.map((country) => {
-                return (
-                  <option value={country.id} key={country.id}>
-                    {country.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-
-          <div className="input-group-wrapper-right">
-            {formType === "view" ? (
+          <div className="input-group">
+            <div className="input-group-wrapper-left">
               <input
-                name="Gender"
+                name="firstname"
                 type="text"
-                placeholder="Gender*"
-                value={formValues.gender}
+                placeholder="Firstname*"
+                value={formValues.firstname}
                 required
-                disabled
+                disabled={disabledState}
+                onChange={(e) => firstnameHandler(e)}
+                onBlur={(e) => handleFocus(e)}
+                focused={focused.firstname.toString()}
+                onKeyDown={(e) => handleKeyPress(e)}
+                onKeyUp={(e) => handleKeyPress(e)}
+                pattern="[A-Z'][a-zA-Z'-]+"
               />
-            ) : (
-              <>
-                <select
-                  className="gender-select"
-                  disabled={disabledState}
-                  onChange={(e) => genderHandler(e)}
-                  value={formValues.gender}
-                >
-                  <option value="No Gender" disabled>
-                    No Gender Selected
-                  </option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
+              <p className="profile-validation-error-text">
+                firstname is required (Uppercase first)
+              </p>
+            </div>
 
-                {genderValidation === true ? (
-                  <p className="select-validation-error-text">Select your Gender</p>
-                ) : (
-                  ""
-                )}
-              </>
-            )}
+            <div className="input-group-wrapper-right">
+              <input
+                name="lastname"
+                type="text"
+                placeholder="Lastname*"
+                value={formValues.lastname}
+                required
+                disabled={disabledState}
+                onChange={(e) => lastnameHandler(e)}
+                onBlur={(e) => handleFocus(e)}
+                focused={focused.lastname.toString()}
+                onKeyDown={(e) => handleKeyPress(e)}
+                onKeyUp={(e) => handleKeyPress(e)}
+                pattern="[A-Z'][a-zA-Z'-]+"
+              />
+              <p className="profile-validation-error-text">
+                lastname is required (Uppercase first)
+              </p>
+            </div>
           </div>
+          <div className="input-group">
+            <div className="input-group-wrapper-left">
+              <input
+                name="dob"
+                type="date"
+                placeholder="Date of Birth*"
+                value={formValues.dob}
+                required
+                disabled={disableField}
+                onChange={(e) => dobHandler(e)}
+              />
+            </div>
+
+            <div className="input-group-wrapper-right">
+              <input
+                name="phone"
+                type="number"
+                placeholder="Phone Number*"
+                value={formValues.phone}
+                required
+                disabled={disabledState}
+                onChange={(e) => phoneHandler(e)}
+                onBlur={(e) => handleFocus(e)}
+                focused={focused.phone.toString()}
+              />
+              <p className="profile-validation-error-text">phone number is required</p>
+            </div>
+          </div>
+
+          <div className="input-group">
+            <div className="input-group-wrapper-left">
+              <select
+                className="gender-select"
+                onChange={(e) => countryHandler(e)}
+                disabled={disableField}
+                value={formValues.country_id}
+              >
+                <option value="No Country" disabled>
+                  No Country
+                </option>
+                {countries.map((country) => {
+                  return (
+                    <option value={country.id} key={country.id}>
+                      {country.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+
+            <div className="input-group-wrapper-right">
+              {formType === "view" ? (
+                <input
+                  name="Gender"
+                  type="text"
+                  placeholder="Gender*"
+                  value={formValues.gender}
+                  required
+                  disabled
+                />
+              ) : (
+                <>
+                  <select
+                    className="gender-select"
+                    disabled={disabledState}
+                    onChange={(e) => genderHandler(e)}
+                    value={formValues.gender}
+                  >
+                    <option value="No Gender" disabled>
+                      No Gender Selected
+                    </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+
+                  {genderValidation === true ? (
+                    <p className="select-validation-error-text">Select your Gender</p>
+                  ) : (
+                    ""
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+
+          <button
+            className="bio-button"
+            disabled={formState.buttonState}
+            onClick={() => handleSubmit()}
+          >
+            {formState.spinner === true ? <Spinner /> : formState.buttonText}
+          </button>
         </div>
-
-        <button
-          className="bio-button"
-          disabled={formState.buttonState}
-          onClick={() => handleSubmit()}
-        >
-          {formState.spinner === true ? <Spinner /> : formState.buttonText}
-        </button>
-
-       
       </div>
-    </div>
-    <div className="delete-wrapper">
-    <p className="bio-wrapper-text">You can delete your account</p>
-    <button className="delete-button" onClick = {() => deleteAccountHandler(formValues.email)} disabled={btnDisabledState}>
+      <div className="delete-wrapper">
+        <p className="bio-wrapper-text">You can delete your account</p>
+        <button
+          className="delete-button"
+          onClick={() => deleteAccountHandler(formValues.email)}
+          disabled={btnDisabledState}
+        >
           Delete Account
         </button>
-    </div>
+      </div>
     </>
   );
 };

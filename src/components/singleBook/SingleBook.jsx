@@ -11,7 +11,13 @@ import { AiFillHeart, AiOutlineHeart, AiFillDelete } from "react-icons/ai";
 // import BookImg from "../../assets/images/wolesoyinka.jpg";
 import Spinner from "../spinner/Spinner";
 import PageHeaderText from "../pageHeaderText/PageHeaderText";
-import { searchBooksUnauth, fetchProfile, removeBookFromFav, addBookToFav, removeFromLibrary } from "../../Actions";
+import {
+  searchBooksUnauth,
+  fetchProfile,
+  removeBookFromFav,
+  addBookToFav,
+  removeFromLibrary,
+} from "../../Actions";
 
 const Modal = ({ handleClose, show }) => {
   const showHideClassName = show ? "main-modal-bg display-block" : "main-modal-bg display-none";
@@ -38,7 +44,6 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
   const navigate = useNavigate();
 
   const { profileData } = useSelector((state) => state.profile);
- 
 
   const [spinnerHide, setSpinnerHide] = useState(false);
   const [show, setShow] = useState(false);
@@ -95,7 +100,11 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
   };
 
   const handleSearch = () => {
+
     if (formValues.search !== "") {
+      setTimeout(() => {
+        setSpinnerHide(true);
+      }, 3000);
       dispatch(
         searchBooksUnauth({
           search: formValues.search,
@@ -104,9 +113,18 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
 
       setFormValues({ ...initialFormValues });
     } else {
-      toastr.warning("Search Book", "Please enter a search term");
+      setSpinnerHide(false);
+      dispatch(
+        searchBooksUnauth({
+          search: "A",
+        })
+      );
+      // toastr.warning("Search Book", "Please enter a search term");
     }
   };
+
+
+  
 
   // function getYearDiffWithMonth(startDate, endDate) {
   //   const ms = endDate.getTime() - startDate.getTime();
@@ -158,7 +176,6 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
     }
   };
 
-
   const handleRemoveFav = (id) => {
     dispatch(removeBookFromFav(id));
   };
@@ -168,8 +185,8 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
   };
 
   const handleRemoveFromLibrary = (id) => {
-    dispatch(removeFromLibrary(id))
-  }
+    dispatch(removeFromLibrary(id));
+  };
 
   return (
     <div className="lib-book-gallery">
@@ -181,7 +198,7 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
               <input
                 type="text"
                 name="search"
-                placeholder="search for a book"
+                placeholder="Enter a search term"
                 onChange={(e) => searchTextHandler(e)}
                 value={formValues.search}
               />
@@ -217,82 +234,76 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
             datas.map((data) => {
               return (
                 <div>
-                <div
-                  className={icon || favorite ? "lib-gallery-box-my-books" : "lib-gallery-box"}
-                  onClick={() =>
-                    userLoggedIn && profileData.email_verified_at
-                      ? handleBookNavigate(data.id)
-                      : userLoggedIn && profileData.email_verified_at === null
-                      ? handleVerifyNavigate()
-                      : handleSignInNavigate()
-                  }
-                  key={data.id}
-                >
-                  <div className="img-div">
-                    <LazyLoadImage
-                      effect="blur"
-                      src={data.image_data ? data.image_data : ""}
-                      alt={data.name ? data.name : ""}
-                    />
+                  <div
+                    className={icon || favorite ? "lib-gallery-box-my-books" : "lib-gallery-box"}
+                    onClick={() =>
+                      userLoggedIn && profileData.email_verified_at
+                        ? handleBookNavigate(data.id)
+                        : userLoggedIn && profileData.email_verified_at === null
+                        ? handleVerifyNavigate()
+                        : handleSignInNavigate()
+                    }
+                    key={data.id}
+                  >
+                    <div className="img-div">
+                      <LazyLoadImage
+                        effect="blur"
+                        src={data.image_data ? data.image_data : ""}
+                        alt={data.name ? data.name : ""}
+                      />
+                    </div>
+
+                    <p className="lib-gallery-box-author">{data.author ? data.author.name : ""}</p>
+                    <h1 className="lib-gallery-box-book-name">{data.name ? data.name : ""}</h1>
                   </div>
-
-                  <p className="lib-gallery-box-author">{data.author ? data.author.name : ""}</p>
-                  <h1 className="lib-gallery-box-book-name">{data.name ? data.name : ""}</h1>
-                  
-                </div>
                   <div className="icons-container">
-                    {
-                      icon ? (
-                        <>
-
-                          {data.favorite ? (
-                            <>
-                              <AiFillHeart
-                                 title="Remove from Favorite"
-                                size={18}
-                                color="red"
-                                 onClick={() => handleRemoveFav(data.id)}
-                              />
-                              <AiFillDelete
-                                title="Delete from Library"
-                                size={18}
-                                onClick={() => handleRemoveFromLibrary(data.id)}
-                                color="grey"
-                              />
-                            </>
-                          ) : (
-                            <>
-                              <AiOutlineHeart
-                                title="Add to Favorite"
-                                size={18}
-                                color="red"
-                                onClick={() => handleAddFav(data.id)}
-                              />
-                              <AiFillDelete
-                                title="Delete from Library"
-                                size={18}
-                                onClick={() => handleRemoveFromLibrary(data.id)}
-                                color="grey"
-                              />
-                            </>
-                          )}
-
-
-
-
-                        </>
-                      ) : <></>
-                    }
-                    {
-                      favorite ? (
-                        <AiFillHeart
+                    {icon ? (
+                      <>
+                        {data.favorite ? (
+                          <>
+                            <AiFillHeart
+                              title="Remove from Favorite"
+                              size={18}
+                              color="red"
+                              onClick={() => handleRemoveFav(data.id)}
+                            />
+                            <AiFillDelete
+                              title="Delete from Library"
+                              size={18}
+                              onClick={() => handleRemoveFromLibrary(data.id)}
+                              color="grey"
+                            />
+                          </>
+                        ) : (
+                          <>
+                            <AiOutlineHeart
+                              title="Add to Favorite"
+                              size={18}
+                              color="red"
+                              onClick={() => handleAddFav(data.id)}
+                            />
+                            <AiFillDelete
+                              title="Delete from Library"
+                              size={18}
+                              onClick={() => handleRemoveFromLibrary(data.id)}
+                              color="grey"
+                            />
+                          </>
+                        )}
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                    {favorite ? (
+                      <AiFillHeart
                         title="Remove from Favorite"
-                       size={18}
-                       color="red"
+                        size={18}
+                        color="red"
                         onClick={() => handleRemoveFav(data.id)}
-                     />
-                      ) : <></>
-                    }
+                      />
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </div>
               );

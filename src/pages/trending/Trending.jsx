@@ -6,20 +6,15 @@ import { fetchAllTrendingBooks } from "../../Actions";
 import { Footer } from "../../containers";
 import Tab from "../../components/tab/Tab";
 import ModalRedirect from "../../components/modal/ModalRedirect";
-import {  useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { fetchProfile } from "../../Actions";
-
 
 const Trending = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const {
-    profileData,
-  } = useSelector((state) => state.profile);
-  const [showRedirectModal, setShowRedirectModal] = useState(false)
-
-
+  const { profileData } = useSelector((state) => state.profile);
+  const [showRedirectModal, setShowRedirectModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllTrendingBooks());
@@ -27,27 +22,24 @@ const Trending = () => {
   }, []);
 
   useEffect(() => {
-    if(profileData){
-
-      if(profileData.dob === null || profileData.country_id === null && (location.pathname !== "/home/profile") ){
-        setShowRedirectModal(true)
-      }else {
-
+    if (profileData) {
+      if (
+        profileData.dob === null ||
+        (profileData.country_id === null && location.pathname !== "/home/profile")
+      ) {
+        setShowRedirectModal(true);
+      } else {
       }
-
-    }else{
-
+    } else {
     }
-
-  },[profileData])
+  }, [profileData]);
 
   return (
     <>
       <UserNavbar />
       <Tab tabName="discover" />
       <Footer />
-      <ModalRedirect  showRedirectModal={showRedirectModal}  />
-
+      <ModalRedirect showRedirectModal={showRedirectModal} />
     </>
   );
 };

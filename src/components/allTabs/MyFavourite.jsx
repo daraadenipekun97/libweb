@@ -7,15 +7,13 @@ const MyFavourite = () => {
   const dispatch = useDispatch();
   const { myFavorites } = useSelector((state) => state.library);
 
-  const {
-    removeBookFromFavouriteSuccess,
-    removeBookFromFavouriteFailure,
-  } = useSelector((state) => state.books);
+  const { removeBookFromFavouriteSuccess, removeBookFromFavouriteFailure } = useSelector(
+    (state) => state.books
+  );
 
   useEffect(() => {
     dispatch(fetchMyFavorites());
   }, [dispatch]);
-
 
   useEffect(() => {
     if (removeBookFromFavouriteSuccess || removeBookFromFavouriteFailure) {
@@ -27,8 +25,7 @@ const MyFavourite = () => {
     };
   }, [removeBookFromFavouriteSuccess, removeBookFromFavouriteFailure]);
 
-
-  return <SingleBook datas={myFavorites} searchBar="" title=""  favorite={true} />;
+  return <SingleBook datas={myFavorites} searchBar="" title="" favorite={true} />;
 };
 
 export default MyFavourite;

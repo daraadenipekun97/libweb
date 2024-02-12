@@ -13,8 +13,7 @@ const DownloadApp = lazy(() => import("../../containers/downloadApp/DownloadApp"
 const Community = lazy(() => import("../../containers/community/Community"));
 
 const LandingPage = ({ user }) => {
-
-  const [showNotification, setShowNotification] = useState(true)
+  const [showNotification, setShowNotification] = useState(true);
 
   return (
     <>
@@ -26,7 +25,7 @@ const LandingPage = ({ user }) => {
           <DownloadApp />
           <Community />
           <Footer />
-          <NotificationModal showNotification={showNotification} setShowNotification={setShowNotification} />
+          {/* <NotificationModal showNotification={showNotification} setShowNotification={setShowNotification} /> */}
         </Suspense>
       </div>
     </>

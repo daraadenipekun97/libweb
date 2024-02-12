@@ -12,7 +12,7 @@ import {
   reactivateSubscription,
   reactivateTrial,
   restoreReactivateSubscriptionInitial,
-  restoreReactivateTrialInitial
+  restoreReactivateTrialInitial,
 } from "../../Actions";
 import Preloader from "../preloader/Preloader";
 import "./css/subscription.css";
@@ -33,7 +33,7 @@ const Subscription = () => {
     reactivateTrialSuccess,
     reactivateTrailFailure,
     reactivateSubscriptionSuccess,
-    reactivateSubscriptionFailure
+    reactivateSubscriptionFailure,
   } = useSelector((state) => state.profile);
 
   const [spinnerStatus, setSpinnerStatus] = useState(false);
@@ -54,13 +54,13 @@ const Subscription = () => {
 
   const handleReactivateTrial = () => {
     setSpinnerStatus(true);
-    dispatch(reactivateTrial())
-  }
+    dispatch(reactivateTrial());
+  };
 
   const handleReactivateSub = () => {
     setSpinnerStatus(true);
-    dispatch(reactivateSubscription())
-  }
+    dispatch(reactivateSubscription());
+  };
 
   useEffect(() => {
     if (cancelTrialSuccess || cancelTrailFailure) {
@@ -84,7 +84,6 @@ const Subscription = () => {
     };
   }, [cancelSubscriptionSuccess, cancelSubscriptionFailure]);
 
-
   useEffect(() => {
     if (reactivateTrialSuccess || reactivateTrailFailure) {
       setSpinnerStatus(false);
@@ -96,7 +95,6 @@ const Subscription = () => {
     };
   }, [reactivateTrialSuccess, reactivateTrailFailure]);
 
-
   useEffect(() => {
     if (reactivateSubscriptionSuccess || reactivateSubscriptionFailure) {
       setSpinnerStatus(false);
@@ -107,8 +105,6 @@ const Subscription = () => {
       dispatch(restoreReactivateSubscriptionInitial());
     };
   }, [reactivateSubscriptionSuccess, reactivateSubscriptionFailure]);
-
-
 
   const handleSelectNavigate = () => {
     navigate("/home/subscription");
@@ -198,7 +194,7 @@ const Subscription = () => {
             <button
               className="btn-reactivate"
               role="button"
-              onClick={()=>handleReactivateTrial()}
+              onClick={() => handleReactivateTrial()}
             >
               {spinnerStatus === true ? <Spinner /> : "Reactivate Trial Plan"}
             </button>
@@ -215,11 +211,7 @@ const Subscription = () => {
           ) : subscriptionDetails.subscription.title !== "Trial" &&
             profileData.cancel_subscription === 1 &&
             subscriptionDetails.status === "active" ? (
-            <button
-              className="btn-reactivate"
-              role="button"
-               onClick={()=>handleReactivateSub()}
-            >
+            <button className="btn-reactivate" role="button" onClick={() => handleReactivateSub()}>
               {spinnerStatus === true ? <Spinner /> : "Reactivate Subscription"}
             </button>
           ) : (
@@ -239,8 +231,7 @@ const Subscription = () => {
           book releases, One (1) Number of Devices
         </p>
         <h3 className="card-bottom-text">N1,000/ 1 Month</h3>
-        {Object.keys(subscriptionDetails).length > 0 &&
-        subscriptionDetails.status === "active" ? (
+        {Object.keys(subscriptionDetails).length > 0 && subscriptionDetails.status === "active" ? (
           <></>
         ) : (
           <div className="select-btn" onClick={handleSelectNavigate}>
@@ -258,8 +249,7 @@ const Subscription = () => {
           book releases, One (1) Number of Devices
         </p>
         <h3 className="card-bottom-text">N2,500/ 3 Months</h3>
-        {Object.keys(subscriptionDetails).length > 0 &&
-        subscriptionDetails.status === "active" ? (
+        {Object.keys(subscriptionDetails).length > 0 && subscriptionDetails.status === "active" ? (
           <></>
         ) : (
           <div className="select-btn" onClick={handleSelectNavigate}>
@@ -277,8 +267,7 @@ const Subscription = () => {
           book releases, One (1) Number of Devices
         </p>
         <h3 className="card-bottom-text">N5,500/ 6 Months</h3>
-        {Object.keys(subscriptionDetails).length > 0 &&
-        subscriptionDetails.status === "active" ? (
+        {Object.keys(subscriptionDetails).length > 0 && subscriptionDetails.status === "active" ? (
           <></>
         ) : (
           <div className="select-btn" onClick={handleSelectNavigate}>
@@ -296,8 +285,7 @@ const Subscription = () => {
           book releases, One (1) Number of Devices
         </p>
         <h3 className="card-bottom-text">N11,200/ 12 Months</h3>
-        {Object.keys(subscriptionDetails).length > 0 &&
-        subscriptionDetails.status === "active" ? (
+        {Object.keys(subscriptionDetails).length > 0 && subscriptionDetails.status === "active" ? (
           <></>
         ) : (
           <div className="select-btn" onClick={handleSelectNavigate}>

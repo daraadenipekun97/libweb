@@ -2,13 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./messengerChat.css";
 function MessengerChat() {
+  const { facebookIconHidden } = useSelector((state) => state.getAll);
 
-  const {
-    facebookIconHidden,
-  } = useSelector((state) => state.getAll)
-
-   const [show, setShow] = useState(false);
-
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     window.fbAsyncInit = function () {
@@ -30,26 +26,22 @@ function MessengerChat() {
   });
 
   useEffect(() => {
-     if (facebookIconHidden) {
-         setShow(true);
-         console.log("show is true")
-         window.FB.CustomerChat.hide();
-         window.FB.CustomerChat.update({
-          greeting_dialog_display: 'hide' // Hide the welcome text
-        });
-     }
-     else{
-      setShow(false)
-      console.log("show is false")
+    if (facebookIconHidden) {
+      setShow(true);
+      console.log("show is true");
+      window.FB.CustomerChat.hide();
+      window.FB.CustomerChat.update({
+        greeting_dialog_display: "hide", // Hide the welcome text
+      });
+    } else {
+      setShow(false);
+      console.log("show is false");
       window.setTimeout(() => {
-        window.FB.CustomerChat.show(false)
+        window.FB.CustomerChat.show(false);
         console.log("Delayed function called after 5 seconds");
       }, 5000);
-     }
-  
-  }, [facebookIconHidden])
-  
-
+    }
+  }, [facebookIconHidden]);
 
   return (
     <>

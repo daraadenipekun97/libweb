@@ -14,10 +14,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import { gapi } from "gapi-script";
 
-import jwtDecode from 'jwt-decode'
+import jwtDecode from "jwt-decode";
 
-import { GoogleLogin } from '@react-oauth/google';
-
+import { GoogleLogin } from "@react-oauth/google";
 
 const LoginPage = ({ user }) => {
   const dispatch = useDispatch();
@@ -98,12 +97,7 @@ const LoginPage = ({ user }) => {
       });
     };
     gapi.load("client:auth2", initClient);
-
-   
   });
-
-
-  
 
   useEffect(() => {
     if (googleLoginSuccess) {
@@ -297,46 +291,44 @@ const LoginPage = ({ user }) => {
               Forgot Password?
             </p>
 
-            <br />
+            {/* <br /> */}
 
             <hr />
 
-            <br />
+            {/* <br />
 
             <p className="lib-login-p-tag">Or</p>
-              
-              <br />
-              <center>
-              <GoogleLogin
-              onSuccess = {credentialResponse => {
-                if (credentialResponse.credential != null) {
-                 const USER_CREDENTIAL = jwtDecode(credentialResponse.credential);
-                 let credentialObjJSON = JSON.stringify(USER_CREDENTIAL)
-                 let credentialObj = JSON.parse(`${credentialObjJSON}`)
-                //  console.log(credentialObj)
-                 dispatch(
-                  googleLogin({
-                    name: credentialObj.name,
-                    email: credentialObj.email,
-                    uid: credentialObj.iat,
-                    photo_url: credentialObj.picture,
-                    device: "web",
-                    country_id: "",
-                  })
-                 )
-                }
-               }
-              }
-              onError={() => {
-                alert('Sorry we cant log you in at this time.Login Failed');
-              }}
-              text="Sign in with Google"
-              logo_alignment="right"
-            />
 
-              </center>
-            
-              <br />
+            <br />
+            <center>
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  if (credentialResponse.credential != null) {
+                    const USER_CREDENTIAL = jwtDecode(credentialResponse.credential);
+                    let credentialObjJSON = JSON.stringify(USER_CREDENTIAL);
+                    let credentialObj = JSON.parse(`${credentialObjJSON}`);
+                    //  console.log(credentialObj)
+                    dispatch(
+                      googleLogin({
+                        name: credentialObj.name,
+                        email: credentialObj.email,
+                        uid: credentialObj.iat,
+                        photo_url: credentialObj.picture,
+                        device: "web",
+                        country_id: "",
+                      })
+                    );
+                  }
+                }}
+                onError={() => {
+                  alert("Sorry we cant log you in at this time.Login Failed");
+                }}
+                text="Sign in with Google"
+                logo_alignment="right"
+              />
+            </center> */}
+
+            <br />
             <p className="lib-login-p-tag">
               Dont have an account? <span onClick={handleSignup}>Sign up</span>
             </p>

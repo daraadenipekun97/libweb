@@ -14,7 +14,7 @@ import {
   REMOVE_FROM_LIBRARY_SUCCESS,
   RESTORE_REMOVE_FROM_LIBRARY_INITIAL,
   UPDATE_READING_TIME_SUCCESS,
-  RESTORE_UPDATE_READING_TIME_INITIAL
+  RESTORE_UPDATE_READING_TIME_INITIAL,
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -38,9 +38,8 @@ const INIT_STATE = {
   myFavorites: [],
   readBookSuccess: false,
 
-  updateReadingTimeSuccess:false,
-  updateReadingTimeFailure:false
-
+  updateReadingTimeSuccess: false,
+  updateReadingTimeFailure: false,
 };
 
 const libraryReducer = (state = INIT_STATE, action) => {
@@ -168,7 +167,6 @@ const libraryReducer = (state = INIT_STATE, action) => {
         readBookSuccess: action.payload,
       };
     }
-
 
     case REMOVE_FROM_LIBRARY_SUCCESS: {
       if (action.payload === true) {

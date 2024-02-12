@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import Avatar from "../../assets/images/avatar.png";
 import { fetchProfile } from "../../Actions";
 import ModalRedirect from "../../components/modal/ModalRedirect";
-import {  useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Authors = () => {
   const params = useParams();
@@ -18,36 +18,29 @@ const Authors = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-
   const { booksByAuthor, authorById } = useSelector((state) => state.books);
-  const {
-    profileData,
-  } = useSelector((state) => state.profile);
-  const [showRedirectModal, setShowRedirectModal] = useState(false)
-
+  const { profileData } = useSelector((state) => state.profile);
+  const [showRedirectModal, setShowRedirectModal] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchBookByAuthor(params.id));
     dispatch(fetchAuthorsById(params.id));
     dispatch(fetchProfile());
-
   }, [dispatch]);
 
   useEffect(() => {
-    if(profileData){
-
-      if(profileData.dob === null || profileData.country_id === null && (location.pathname !== "/home/profile") ){
-        setShowRedirectModal(true)
-      }else {
-
+    if (profileData) {
+      if (
+        profileData.dob === null ||
+        (profileData.country_id === null && location.pathname !== "/home/profile")
+      ) {
+        setShowRedirectModal(true);
+      } else {
       }
-
-    }else{
-
+    } else {
     }
-
-  },[profileData])
+  }, [profileData]);
 
   return (
     <>
@@ -74,7 +67,7 @@ const Authors = () => {
       </div>
 
       <Footer />
-      <ModalRedirect  showRedirectModal={showRedirectModal}  />
+      <ModalRedirect showRedirectModal={showRedirectModal} />
     </>
   );
 };

@@ -1,73 +1,68 @@
 .about-challenge-wrapper {
-    background-color: #e3daf0;
-    padding: 4rem 6rem;
-    /* border: solid; */
-    min-height: 100vh;
-  }
+  background-color: #e3daf0;
+  padding: 4rem 6rem;
+  /* border: solid; */
+  min-height: 100vh;
+}
 
+.about-challenge-heading {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #5e458b;
+  margin-bottom: 0.5rem;
+}
 
-  .about-challenge-heading {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #5e458b;
-    margin-bottom: 0.5rem;
-  }
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
 
-  hr {
-    border: 0;
-    height: 1px;
-    background: #333;
-    background-image: linear-gradient(to right, #ccc, #333, #ccc);
-  }
+.challenge-text {
+  color: #78787d;
+  font-size: 15px;
+  margin: 1rem 0;
+  line-height: 25px;
+  text-align: justify;
+}
+.rules-list {
+  list-style: none;
+}
 
-  .challenge-text{
+.rules-list li {
+}
 
-    color: #78787d;
-    font-size: 15px;
-    margin: 1rem 0;
-    line-height: 25px;
-    text-align: justify;
-
-  }
-  .rules-list{
-    list-style: none;
-  }
-
-  .rules-list li{
-  }
-
-  .terms-checkbox{
-    /* display: flex;
+.terms-checkbox {
+  /* display: flex;
     justify-content: flex-start;
     align-items: center; */
-    margin: 1rem 0rem;
-  }
+  margin: 1rem 0rem;
+}
 
-  .writing-terms{
-    accent-color: #5e458b;
-    cursor: pointer;
-  }
+.writing-terms {
+  accent-color: #5e458b;
+  cursor: pointer;
+}
 
-  .terms-label{
-    font-size: 1rem ;
-    color: #78787d;
-    /* font-weight: bold; */
-  }
+.terms-label {
+  font-size: 1rem;
+  color: #78787d;
+  /* font-weight: bold; */
+}
 
-  .terms-validation-text {
-    color: red;
-    transition: 0.5s;
-    text-align: left;
-    font-size: 10px;
-    margin: 0.5rem 0;
-    /* width: 250px; */
-    font-weight: 300;
-  }
+.terms-validation-text {
+  color: red;
+  transition: 0.5s;
+  text-align: left;
+  font-size: 10px;
+  margin: 0.5rem 0;
+  /* width: 250px; */
+  font-weight: 300;
+}
 
-
-  @media screen and (max-width: 500px) {
-    .about-challenge-wrapper {
-      padding: 4rem 2rem;
-    }
+@media screen and (max-width: 500px) {
+  .about-challenge-wrapper {
+    padding: 4rem 2rem;
   }
-  
+}

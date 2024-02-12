@@ -19,14 +19,12 @@ import {
   RESTORE_ADD_REVIEW_INITIAL,
   READ_BOOK,
   READ_BOOK_SUCCESS,
-
   REMOVE_FROM_LIBRARY,
   REMOVE_FROM_LIBRARY_SUCCESS,
   RESTORE_REMOVE_FROM_LIBRARY_INITIAL,
-
   UPDATE_READING_TIME,
   UPDATE_READING_TIME_SUCCESS,
-  RESTORE_UPDATE_READING_TIME_INITIAL
+  RESTORE_UPDATE_READING_TIME_INITIAL,
 } from "../ActionTypes";
 
 export const fetchMyBooks = () => ({
@@ -54,7 +52,7 @@ export const addGoals = ({ start_date, end_date, book_id, hour, interval }) => (
     end_date,
     book_id,
     hour,
-    interval
+    interval,
   },
 });
 
@@ -112,7 +110,7 @@ export const addReview = ({ review, rating, id }) => ({
   payload: {
     rating,
     review,
-    id
+    id,
   },
 });
 
@@ -135,10 +133,9 @@ export const readBookSuccess = (payload) => ({
   payload,
 });
 
-
 export const removeFromLibrary = (id) => ({
   type: REMOVE_FROM_LIBRARY,
-  payload:id
+  payload: id,
 });
 
 export const removeFromLibrarySuccess = (payload) => ({
@@ -146,17 +143,15 @@ export const removeFromLibrarySuccess = (payload) => ({
   payload,
 });
 
-
 export const restoreRemoveFromLibraryInitial = () => ({
   type: RESTORE_REMOVE_FROM_LIBRARY_INITIAL,
 });
-
 
 export const updateReadingTime = ({ total_seconds, book_id }) => ({
   type: UPDATE_READING_TIME,
   payload: {
     total_seconds,
-    book_id
+    book_id,
   },
 });
 
@@ -164,7 +159,6 @@ export const updateReadingTimeSuccess = (payload) => ({
   type: UPDATE_READING_TIME_SUCCESS,
   payload,
 });
-
 
 export const restoreUpdateReadingTimeInitial = () => ({
   type: RESTORE_UPDATE_READING_TIME_INITIAL,

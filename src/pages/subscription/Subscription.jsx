@@ -14,7 +14,7 @@ const Subscription = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { profileData,  webPurchaseFailure, webPurchaseSuccess, subscriptionDetails } = useSelector(
+  const { profileData, webPurchaseFailure, webPurchaseSuccess, subscriptionDetails } = useSelector(
     (state) => state.profile
   );
 
@@ -32,7 +32,6 @@ const Subscription = () => {
   const [email, setEmail] = useState("");
   const [dashboardModalState, setDashboardModalState] = useState(true);
 
-
   useEffect(() => {
     dispatch(fetchProfile());
   }, [dispatch]);
@@ -41,8 +40,8 @@ const Subscription = () => {
 
   const payWithPaystackTrial = (e) => {
     const spliteNameArray = profileData?.name.split(" ");
-    setFirstName(spliteNameArray[0])
-    setLastName(spliteNameArray[1])
+    setFirstName(spliteNameArray[0]);
+    setLastName(spliteNameArray[1]);
     setEmail(profileData?.email);
     e.preventDefault();
     const paystack = new PaystackPop();
@@ -78,8 +77,8 @@ const Subscription = () => {
 
   const payWithPaystackMonthly = (e) => {
     const spliteNameArray = profileData?.name.split(" ");
-    setFirstName(spliteNameArray[0])
-    setLastName(spliteNameArray[1])
+    setFirstName(spliteNameArray[0]);
+    setLastName(spliteNameArray[1]);
     setEmail(profileData?.email);
     e.preventDefault();
     const paystack = new PaystackPop();
@@ -115,8 +114,8 @@ const Subscription = () => {
 
   const payWithPaystackQuarterly = (e) => {
     const spliteNameArray = profileData?.name.split(" ");
-    setFirstName(spliteNameArray[0])
-    setLastName(spliteNameArray[1])
+    setFirstName(spliteNameArray[0]);
+    setLastName(spliteNameArray[1]);
     setEmail(profileData?.email);
     e.preventDefault();
     const paystack = new PaystackPop();
@@ -151,8 +150,8 @@ const Subscription = () => {
 
   const payWithPaystackBiannual = (e) => {
     const spliteNameArray = profileData?.name.split(" ");
-    setFirstName(spliteNameArray[0])
-    setLastName(spliteNameArray[1])
+    setFirstName(spliteNameArray[0]);
+    setLastName(spliteNameArray[1]);
     setEmail(profileData?.email);
     e.preventDefault();
     const paystack = new PaystackPop();
@@ -188,8 +187,8 @@ const Subscription = () => {
 
   const payWithPaystackAnnual = (e) => {
     const spliteNameArray = profileData?.name.split(" ");
-    setFirstName(spliteNameArray[0])
-    setLastName(spliteNameArray[1])
+    setFirstName(spliteNameArray[0]);
+    setLastName(spliteNameArray[1]);
     setEmail(profileData?.email);
     e.preventDefault();
     const paystack = new PaystackPop();
@@ -247,26 +246,24 @@ const Subscription = () => {
     <>
       <UserNavbar />
       <div className="subscription-page-container">
-
-        {
-          Object.keys(profileData).length === 0 ?  (
-            <></>
-          ): Object.keys(profileData).length !==0 && profileData.trial_used === false ?(
-            <div className="subscription-top-contents">
-          <div className="subscription-image-container">
-            <img src={SubImage} alt="subscription_image" />
+        {Object.keys(profileData).length === 0 ? (
+          <></>
+        ) : Object.keys(profileData).length !== 0 && profileData.trial_used === false ? (
+          <div className="subscription-top-contents">
+            <div className="subscription-image-container">
+              <img src={SubImage} alt="subscription_image" />
+            </div>
+            <button className="trial-btn" onClick={(e) => payWithPaystackTrial(e)}>
+              Get 7 days access to the Trial period for ₦150{" "}
+            </button>
+            <p className="subscription-top-text">
+              Please note that the sum of ₦150 will be deducted from your account, this is to
+              validate your account.
+            </p>
           </div>
-          <button className="trial-btn" onClick={(e) => payWithPaystackTrial(e)}>
-            Get 7 days access to the Trial period for ₦150{" "}
-          </button>
-          <p className="subscription-top-text">
-            Please note that the sum of ₦150 will be deducted from your account, this is to validate
-            your account.
-          </p>
-        </div>
-          ):<></>
-        }
-        
+        ) : (
+          <></>
+        )}
 
         <div className="subscription-bottom-contents">
           <div className="card-heading-container">

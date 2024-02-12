@@ -1,108 +1,105 @@
 .main-modal-bg-dashboard {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main-dashboard {
+  position: fixed;
+  background: white;
+  width: 50%;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  overflow: auto;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.modal-title-dashboard {
+  padding: 1rem;
+  color: #5e458b;
+  font-size: 18px;
+}
+
+.modal-text-dashboard {
+  padding: 0.5rem 1rem;
+  color: #78787d;
+}
+
+.btn-modal-wrapper-dashboard {
+  float: right;
+}
+
+.modal-btn-dashboard {
+  margin: 0.8rem 0.5rem;
+  padding: 0.3rem 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 25px;
+  border: 1px solid #5e458b;
+  outline: none;
+  background: white;
+  color: #5e458b;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.modal-btn-dashboard:active {
+  color: white;
+}
+
+.modal-btn-start-trial-dashboard {
+  margin: 0.8rem 0.5rem;
+  padding: 0.3rem 0.5rem;
+  font-weight: 500;
+  border-radius: 5px;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 25px;
+  border: none;
+  outline: none;
+  background: white;
+  color: white;
+  width: fit-content;
+  cursor: pointer;
+  background-color: #5e458b;
+}
+
+hr {
+  border: 0;
+  height: 0.5px;
+  background: #ddd !important;
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 920px) {
   .modal-main-dashboard {
-    position: fixed;
-    background: white;
-    width: 50%;
-    height: 500px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
-    overflow: auto;
+    width: 50% !important;
   }
-  
-  .display-block {
-    display: block;
+}
+
+@media screen and (max-width: 550px) {
+  .modal-main-dashboard {
+    width: 70% !important;
   }
-  
-  .display-none {
-    display: none;
+}
+
+@media screen and (max-width: 400px) {
+  .modal-main-dashboard {
+    width: 80% !important;
   }
-  
-  .modal-title-dashboard {
-    padding: 1rem;
-    color: #5e458b;
-    font-size: 18px;
-  }
-  
-  .modal-text-dashboard {
-    padding: 0.5rem 1rem;
-    color: #78787d;
-  }
-  
-  .btn-modal-wrapper-dashboard {
-    float: right;
-  }
-  
-  .modal-btn-dashboard {
-    margin: 0.8rem 0.5rem;
-    padding: 0.3rem 1rem;
-    font-weight: 500;
-    border-radius: 5px;
-    font-style: normal;
-    font-size: 15px;
-    line-height: 25px;
-    border: 1px solid #5e458b;
-    outline: none;
-    background: white;
-    color: #5e458b;
-    width: fit-content;
-    cursor: pointer;
-  }
-  
-  .modal-btn-dashboard:active {
-    color: white;
-  }
-  
-  .modal-btn-start-trial-dashboard {
-    margin: 0.8rem 0.5rem;
-    padding: 0.3rem 0.5rem;
-    font-weight: 500;
-    border-radius: 5px;
-    font-style: normal;
-    font-size: 15px;
-    line-height: 25px;
-    border: none;
-    outline: none;
-    background: white;
-    color: white;
-    width: fit-content;
-    cursor: pointer;
-    background-color: #5e458b;
-  }
-  
-  hr {
-    border: 0;
-    height: 0.5px;
-    background: #ddd !important;
-    margin-top: 1rem;
-  }
-  
-  @media screen and (max-width: 920px) {
-    .modal-main-dashboard {
-      width: 50% !important;
-    }
-  }
-  
-  @media screen and (max-width: 550px) {
-    .modal-main-dashboard {
-      width: 70% !important;
-    }
-  }
-  
-  @media screen and (max-width: 400px) {
-   
-  
-    .modal-main-dashboard {
-      width: 80% !important;
-    }
-  }
-  
+}

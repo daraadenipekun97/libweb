@@ -15,8 +15,7 @@
   padding: 2rem 3rem;
 }
 
-.lib-verify-wrapper-user{
-
+.lib-verify-wrapper-user {
   width: fit-content;
   position: absolute;
   top: 35vh;
@@ -26,7 +25,6 @@
   border-radius: 20px;
   padding: 2rem 3rem;
   /* border: solid; */
-
 }
 
 .lib-verify-wrapper h1 {
@@ -155,31 +153,28 @@
   transform: scale(0.97);
 }
 
-.verification-warning{
-
+.verification-warning {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px dashed  #eed202;
+  border: 1px dashed #eed202;
   border-radius: 10px;
   padding: 0.5rem 2rem;
   margin-top: 1rem;
-
-
 }
-.verification-warning:hover{
+.verification-warning:hover {
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
 }
 
-.warning-text{
-    font-size: 14px;
-    text-align: center;
-  
+.warning-text {
+  font-size: 14px;
+  text-align: center;
 }
 
 .verify-area {
   background: #5e458b;
-  background: linear-gradient( #e3daf0, #5e458b) !important;  width: 100%;
+  background: linear-gradient(#e3daf0, #5e458b) !important;
+  width: 100%;
   height: 100vh;
   z-index: -1;
 }
@@ -320,23 +315,16 @@
     margin: 0rem 1rem;
     /* padding: 1rem 0.5rem; */
   }
-  .warning-text{
+  .warning-text {
     font-size: 10px;
     text-align: center;
-  
-}
-}
-
-@media screen and (max-width:368px) {
-  
-  .verification-warning{
-
-   
-    padding: 0.5rem 0.5rem;
-  
-  
   }
+}
 
+@media screen and (max-width: 368px) {
+  .verification-warning {
+    padding: 0.5rem 0.5rem;
+  }
 }
 
 @media screen and (max-width: 333px) {

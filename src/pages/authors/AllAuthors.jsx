@@ -7,7 +7,7 @@ import "./allAuthors.css";
 import Pagination from "../../components/pagination/Pagination";
 import { fetchProfile } from "../../Actions";
 import ModalRedirect from "../../components/modal/ModalRedirect";
-import {  useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 let PageSize = 30;
 
@@ -15,11 +15,8 @@ const AllAuthors = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { allAuthors } = useSelector((state) => state.books);
-  const {
-    profileData,
-  } = useSelector((state) => state.profile);
-  const [showRedirectModal, setShowRedirectModal] = useState(false)
-
+  const { profileData } = useSelector((state) => state.profile);
+  const [showRedirectModal, setShowRedirectModal] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -30,19 +27,17 @@ const AllAuthors = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if(profileData){
-
-      if(profileData.dob === null || profileData.country_id === null && (location.pathname !== "/home/profile") ){
-        setShowRedirectModal(true)
-      }else {
-
+    if (profileData) {
+      if (
+        profileData.dob === null ||
+        (profileData.country_id === null && location.pathname !== "/home/profile")
+      ) {
+        setShowRedirectModal(true);
+      } else {
       }
-
-    }else{
-
+    } else {
     }
-
-  },[profileData])
+  }, [profileData]);
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -63,7 +58,7 @@ const AllAuthors = () => {
           onPageChange={(page) => setCurrentPage(page)}
         />
       </div>
-      <ModalRedirect  showRedirectModal={showRedirectModal}  />
+      <ModalRedirect showRedirectModal={showRedirectModal} />
     </>
   );
 };

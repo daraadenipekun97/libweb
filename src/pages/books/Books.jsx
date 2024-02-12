@@ -17,7 +17,7 @@ import {
   readBook,
   fetchSubscriptionDetails,
   restoreFetchBookDetails,
-  fetchSongs
+  fetchSongs,
 } from "../../Actions";
 import Preloader from "../../components/preloader/Preloader";
 import StarRating from "../../components/starRating/StarRating";
@@ -35,7 +35,6 @@ const Books = () => {
   } = useSelector((state) => state.books);
   const { subscriptionDetails } = useSelector((state) => state.profile);
 
-
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchBookDetails(params.id));
@@ -43,8 +42,7 @@ const Books = () => {
     // dispatch(fetchSongs());
 
     //  console.log('current URL 👉️', window.location.href);
-      // console.log('current Pathname 👉️', window.location.pathname);
-
+    // console.log('current Pathname 👉️', window.location.pathname);
   }, [dispatch, params.id]);
 
   useEffect(() => {
@@ -55,11 +53,7 @@ const Books = () => {
     if (slicedPathname === "/home/books/") {
       localStorage.setItem("book", window.location.href);
     }
-
-   
   }, [dispatch, window.location.pathname]);
-  
-  
 
   const handleBack = () => {
     dispatch(restoreFetchBookDetails());
@@ -120,13 +114,13 @@ const Books = () => {
   }
 
   const handleStartReading = (url, bookId) => {
-    debugger
+    debugger;
     // let expiryDate =
     //   subscriptionDetails.expiry_date !== null
     //     ? new Date(new Date(subscriptionDetails.expiry_date).toDateString())
     //     : "";
 
-    if ( subscriptionDetails.status === "active") {
+    if (subscriptionDetails.status === "active") {
       //navigate to reader
 
       // let todaysDate = new Date();
@@ -139,17 +133,15 @@ const Books = () => {
           navigate("/home/reader", {
             state: {
               id: url,
-              bookId: bookId
+              bookId: bookId,
             },
           });
           dispatch(readBook(bookId));
         } else {
-
           navigate("/home/reader", {
             state: {
               id: url,
-              bookId: bookId
-
+              bookId: bookId,
             },
           });
           dispatch(readBook(bookId));
@@ -169,18 +161,15 @@ const Books = () => {
           navigate("/home/reader", {
             state: {
               id: url,
-              bookId: bookId
-
+              bookId: bookId,
             },
           });
           dispatch(readBook(bookId));
         } else {
-
           navigate("/home/reader", {
             state: {
               id: url,
-              bookId: bookId
-
+              bookId: bookId,
             },
           });
           dispatch(readBook(bookId));

@@ -2,15 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./profileTab.css";
 import { useNavigate } from "react-router-dom";
 
-import {
-  AiOutlineLogout,
-} from "react-icons/ai";
+import { AiOutlineLogout } from "react-icons/ai";
 
 import Bio from "../allProfileTab/Bio";
 import WalletTab from "../allProfileTab/WalletTab";
 import Subscription from "../allProfileTab/Subscription";
 import ChangePassword from "../allProfileTab/ChangePassword";
-import { googleLogout } from '@react-oauth/google';
+import { googleLogout } from "@react-oauth/google";
 
 const ProfileTab = () => {
   const navigate = useNavigate();
@@ -34,7 +32,6 @@ const ProfileTab = () => {
   };
 
   const handleLogout = () => {
-    
     googleLogout();
     localStorage.clear();
     navigate("/");

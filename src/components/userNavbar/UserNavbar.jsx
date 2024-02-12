@@ -6,8 +6,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toastr } from "react-redux-toastr";
 import { useDispatch } from "react-redux";
-import { googleLogout } from '@react-oauth/google';
-
+import { googleLogout } from "@react-oauth/google";
 
 const UserNavbar = () => {
   const navigate = useNavigate();
@@ -19,11 +18,7 @@ const UserNavbar = () => {
 
   const [formValues, setFormValues] = useState({ ...initialFormValues });
 
-
   // const clientIdLocal:3000 = '893028334475-6o02i3mott60lp08b9tugapak12j6hr7.apps.googleusercontent.com'
-
-
-
 
   const handleProfile = () => {
     const profileBox = document.getElementsByClassName("profile_dropdown")[0];
@@ -42,7 +37,6 @@ const UserNavbar = () => {
   const userRegData = JSON.parse(localStorage.getItem("userRegData"));
 
   const handleLogout = () => {
-   
     googleLogout();
     localStorage.clear();
     navigate("/");

@@ -174,8 +174,6 @@ export const readBookCurrentlyReading = async (id) => {
   }
 };
 
-
-
 export const removeFromLib = async (id) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -195,8 +193,6 @@ export const removeFromLib = async (id) => {
     }
   }
 };
-
-
 
 export const updateReadTime = async (body) => {
   if (navigator.onLine === false) {

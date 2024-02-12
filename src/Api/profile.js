@@ -9,7 +9,6 @@ const baseControllerReactivateSubscription = "api/user/profile/reactivate/";
 const baseControllerPayment = "api/user/payment/";
 const baseControllerServices = "api/services/";
 
-
 export const updateProfile = async (body) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -177,9 +176,6 @@ export const cancelSub = async () => {
   }
 };
 
-
-
-
 export const reactivateTrial = async () => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -199,8 +195,6 @@ export const reactivateTrial = async () => {
     }
   }
 };
-
-
 
 export const reactivateSub = async () => {
   if (navigator.onLine === false) {
@@ -287,8 +281,6 @@ export const changePass = async (body) => {
   }
 };
 
-
-
 export const deleteUserAccount = async (email) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
@@ -308,7 +300,7 @@ export const deleteUserAccount = async (email) => {
       }
     } catch (ex) {
       toastr.error("An Error Occured", "Please try again");
-          return ex.response.data.message
+      return ex.response.data.message;
     }
   }
 };

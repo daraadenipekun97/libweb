@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import UserNavbar from "../../components/userNavbar/UserNavbar";
 import SingleBook from "../../components/singleBook/SingleBook";
 import "./dashboard.css";
-import { fetchAllTrendingBooks, fetchSubscriptionDetails, fetchProfile} from "../../Actions";
+import { fetchAllTrendingBooks, fetchSubscriptionDetails, fetchProfile } from "../../Actions";
 import { Community, Footer, Header } from "../../containers";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -44,8 +44,6 @@ const Modal = ({ handleClose, show, handleNavigate }) => {
   );
 };
 
-
-
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -53,67 +51,54 @@ const Dashboard = () => {
 
   const { trendingBooks } = useSelector((state) => state.books);
   const { subscriptionDetails } = useSelector((state) => state.profile);
-  const {
-    profileData,
-  } = useSelector((state) => state.profile);
-
+  const { profileData } = useSelector((state) => state.profile);
 
   const [slicedTrendingBooks, setSlicedTrendingBooks] = useState([]);
   const [show, setShow] = useState(false);
-  const [showRedirectModal, setShowRedirectModal] = useState(false)
+  const [showRedirectModal, setShowRedirectModal] = useState(false);
 
   const verifyCheckHandler = () => {
-
     Swal.fire({
-      title: 'Account Verification',
+      title: "Account Verification",
       text: "Please verify you account before proceeding!",
-      icon: 'warning',
+      icon: "warning",
       allowOutsideClick: false,
       showCancelButton: false,
-      confirmButtonColor: '#5e458b',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Ok',
+      confirmButtonColor: "#5e458b",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ok",
       width: 400,
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate("/verify")
+        navigate("/verify");
       }
-    })
-
-  }
+    });
+  };
 
   useEffect(() => {
-
     // dispatch(fetchProfile());
     dispatch(fetchAllTrendingBooks());
     dispatch(fetchSubscriptionDetails());
-   
-   
-
   }, [dispatch]);
 
   useEffect(() => {
-
-    if(profileData){
-
-      if(profileData.dob === null || profileData.country_id === null && (location.pathname === "/home/dashboard" || location.pathname === "/home/profile") ){
-        setShowRedirectModal(true)
-        setShow(false)
-      }else {
-
+    if (profileData) {
+      if (
+        profileData.dob === null ||
+        (profileData.country_id === null &&
+          (location.pathname === "/home/dashboard" || location.pathname === "/home/profile"))
+      ) {
+        setShowRedirectModal(true);
+        setShow(false);
+      } else {
       }
 
-      if (profileData.email_verified_at === null) {
-        verifyCheckHandler();
-      }
-
-
-    }else{
-
+      // if (profileData.email_verified_at === null) {
+      //   verifyCheckHandler();
+      // }
+    } else {
     }
-    
-
-  },[profileData])
+  }, [profileData]);
 
   useEffect(() => {
     if (subscriptionDetails.subscription === null && location.state === null) {
@@ -133,9 +118,6 @@ const Dashboard = () => {
     navigate("/home/subscription");
   };
 
-  
-
-
   function getMultipleRandom(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
 
@@ -151,7 +133,7 @@ const Dashboard = () => {
 
   return (
     <>
-        {/* <div className="shifter">
+      {/* <div className="shifter">
         
         </div> */}
       <UserNavbar />
@@ -165,8 +147,7 @@ const Dashboard = () => {
       {/* <ActionBanner /> */}
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
-      <ModalRedirect  showRedirectModal={showRedirectModal}  />
-
+      <ModalRedirect showRedirectModal={showRedirectModal} />
     </>
   );
 };

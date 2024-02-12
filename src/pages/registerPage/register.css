@@ -61,8 +61,7 @@ input[type="password"] {
   margin-bottom: 0.5rem;
 }
 
-.phone_input{
-
+.phone_input {
   background-color: #ffffff;
   border: 2px solid rgba(84, 95, 125, 0.15);
   border-radius: 5px;
@@ -72,24 +71,20 @@ input[type="password"] {
   margin-bottom: 0.5rem;
 
   pointer-events: none;
-
-
 }
 
-.phone_input:hover{
+.phone_input:hover {
   border: 1px solid #5e458b !important;
 }
 
-.phone_input input{
+.phone_input input {
   height: 40px;
-    border: none !important;
-    outline: none !important;
-    pointer-events: all; 
+  border: none !important;
+  outline: none !important;
+  pointer-events: all;
 }
 
-
-
-.lib-register-input-group input[type="date"]{
+.lib-register-input-group input[type="date"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   min-height: 1.2em;
@@ -116,15 +111,13 @@ input[type="password"] {
   width: 250px;
   display: none;
 }
-.phone-number-required-text{
-
+.phone-number-required-text {
   color: red;
   transition: 0.5s;
   text-align: left;
   font-size: 10px;
   margin-bottom: 0.5rem;
   width: 250px;
-
 }
 .terms-validation-text {
   color: red;
@@ -368,7 +361,7 @@ hr {
     margin-bottom: 0.5rem;
   }
 
-  .lib-register-input-group input[type="date"]{
+  .lib-register-input-group input[type="date"] {
     -webkit-min-logical-width: calc(100% - 16px) !important;
   }
 
@@ -393,6 +386,6 @@ hr {
   .lib-register-wrapper {
     margin: 0rem 1rem;
     padding: 1rem 1.5rem;
-    top: 20vh ;
+    top: 20vh;
   }
 }

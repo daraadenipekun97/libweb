@@ -11,7 +11,7 @@ import {
   ADD_REVIEW,
   READ_BOOK,
   REMOVE_FROM_LIBRARY,
-  UPDATE_READING_TIME
+  UPDATE_READING_TIME,
 } from "../ActionTypes";
 
 import {
@@ -24,7 +24,7 @@ import {
   createReview,
   readBookCurrentlyReading,
   removeFromLib,
-  updateReadTime
+  updateReadTime,
 } from "../Api";
 
 import {
@@ -37,7 +37,7 @@ import {
   addReviewSuccess,
   readBookSuccess,
   removeFromLibrarySuccess,
-  updateReadingTimeSuccess
+  updateReadingTimeSuccess,
 } from "../Actions";
 
 export const fetchMyBooksRequest = function* ({ payload }) {
@@ -104,7 +104,6 @@ export const readBookCurently = function* () {
   yield takeEvery(READ_BOOK, readBookRequest);
 };
 
-
 export const removeFromLibRequest = function* ({ payload }) {
   yield call(requestFunction, removeFromLibrarySuccess, removeFromLib, payload);
 };
@@ -112,8 +111,6 @@ export const removeFromLibRequest = function* ({ payload }) {
 export const removeFrommLibraryyy = function* () {
   yield takeEvery(REMOVE_FROM_LIBRARY, removeFromLibRequest);
 };
-
-
 
 export const updateReadingTimeRequest = function* ({ payload }) {
   yield call(requestFunction, updateReadingTimeSuccess, updateReadTime, payload);
@@ -134,6 +131,6 @@ export default function* rootSaga() {
     fork(addRevieww),
     fork(readBookCurently),
     fork(removeFrommLibraryyy),
-    fork(uppdateReaddTime)
+    fork(uppdateReaddTime),
   ]);
 }

@@ -11,7 +11,7 @@ import {
   restoreVerifyUserEmailInitial,
   resendMail,
   restoreResendMailInitial,
-  fetchProfile
+  fetchProfile,
 } from "../../Actions";
 import Swal from "sweetalert2";
 import UserNavbar from "../../components/userNavbar/UserNavbar";
@@ -27,10 +27,7 @@ const VerifyEmail = ({ user }) => {
   const { verifyUserFailure, verifyUserSuccess, resendMailSuccess, resendMailFailure } =
     useSelector((state) => state.auth);
 
-    const {
-      profileData,
-    
-    } = useSelector((state) => state.profile);
+  const { profileData } = useSelector((state) => state.profile);
 
   const hanldeSwal = () => {
     Swal.fire({
@@ -55,17 +52,15 @@ const VerifyEmail = ({ user }) => {
 
   useEffect(() => {
     dispatch(fetchProfile());
-
-  },[dispatch])
+  }, [dispatch]);
 
   // useEffect(() => {
-
-  //   if (profileData.email_verified_at !== null && location.pathname === "/verify") {
+  //   debugger
+  //   if (profileData.email_verified_at === null && location.pathname === "/verify") {
   //     navigate("/home/dashboard");
   //   }
-    
+
   // }, [profileData])
-  
 
   const handleFocus = (e) => {
     setFocused(true);
@@ -165,8 +160,6 @@ const VerifyEmail = ({ user }) => {
     });
   };
 
-
-
   useEffect(() => {
     if (verifyUserSuccess === true) {
       setFormState({
@@ -182,8 +175,6 @@ const VerifyEmail = ({ user }) => {
       });
 
       navigate("/home/dashboard");
-
-   
     }
 
     return () => {
@@ -275,15 +266,13 @@ const VerifyEmail = ({ user }) => {
               </button>
             </p>
             <div className="verification-warning">
-        <AiFillWarning color="#EED202" size={30} />
-        <p className="warning-text">
-                 Please note you risk loosing your account if  not verifed in 7 days
+              <AiFillWarning color="#EED202" size={30} />
+              <p className="warning-text">
+                Please note you risk loosing your account if not verifed in 7 days
               </p>
-        </div>
+            </div>
           </div>
         </div>
-
-        
 
         <div className="verify-area">
           <ul className="circles">

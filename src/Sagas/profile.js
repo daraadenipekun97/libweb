@@ -15,7 +15,7 @@ import {
   WEB_PURCHASE,
   FETCH_SUBSCRIPTION_DETAILS,
   CHANGE_PASSWORD,
-  DELETE_ACCOUNT
+  DELETE_ACCOUNT,
 } from "../ActionTypes";
 
 import {
@@ -32,7 +32,7 @@ import {
   makeWebPurchase,
   getSubscriptionDetails,
   changePass,
-  deleteUserAccount
+  deleteUserAccount,
 } from "../Api";
 
 import {
@@ -49,7 +49,7 @@ import {
   webPurchaseSuccess,
   fetchSubscriptionDetailsSuccess,
   changePasswordSuccess,
-  deleteAccountSuccess
+  deleteAccountSuccess,
 } from "../Actions";
 
 export const updateProfileRequest = function* ({ payload }) {
@@ -116,8 +116,6 @@ export const cancelSubs = function* () {
   yield takeEvery(CANCEL_SUBSCRIPTION, cancelSubscriptionRequest);
 };
 
-
-
 export const reactivateTrailRequest = function* ({ payload }) {
   yield call(requestFunction, reactivateTrialSuccess, reactivateTrial, payload);
 };
@@ -126,7 +124,6 @@ export const reactivateTTriiall = function* () {
   yield takeEvery(REACTIVATE_TRIAL, reactivateTrailRequest);
 };
 
-
 export const reactivateSubscriptionRequest = function* ({ payload }) {
   yield call(requestFunction, reactivateSubscriptionSuccess, reactivateSub, payload);
 };
@@ -134,8 +131,6 @@ export const reactivateSubscriptionRequest = function* ({ payload }) {
 export const reactivateSubs = function* () {
   yield takeEvery(REACTIVATE_SUBSCRIPTION, reactivateSubscriptionRequest);
 };
-
-
 
 export const webPurchaseRequest = function* ({ payload }) {
   yield call(requestFunction, webPurchaseSuccess, makeWebPurchase, payload);
@@ -161,7 +156,6 @@ export const changePasswordd = function* () {
   yield takeEvery(CHANGE_PASSWORD, changePasswordRequest);
 };
 
-
 export const deleteAccountRequest = function* ({ payload }) {
   yield call(requestFunction, deleteAccountSuccess, deleteUserAccount, payload);
 };
@@ -169,7 +163,6 @@ export const deleteAccountRequest = function* ({ payload }) {
 export const deleteAcct = function* () {
   yield takeEvery(DELETE_ACCOUNT, deleteAccountRequest);
 };
-
 
 export default function* rootSaga() {
   yield all([
@@ -186,7 +179,6 @@ export default function* rootSaga() {
     fork(webPurchasseee),
     fork(fetchSubDetaillss),
     fork(changePasswordd),
-    fork(deleteAcct)
-
+    fork(deleteAcct),
   ]);
 }

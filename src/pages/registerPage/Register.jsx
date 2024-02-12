@@ -7,9 +7,9 @@ import { registerUser, fetchAllCountries, restoreRegisterInitial } from "../../A
 import Spinner from "../../components/spinner/Spinner";
 import { useNavigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
-import Input, { getCountries, getCountryCallingCode } from 'react-phone-number-input/input'
-import PhoneInput from 'react-phone-number-input'
-import 'react-phone-number-input/style.css'; 
+import Input, { getCountries, getCountryCallingCode } from "react-phone-number-input/input";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 const Register = ({ user }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,19 +51,15 @@ const Register = ({ user }) => {
     const createCountrySelect = () => {
       let countryData = [];
       countries.map((country) => {
-        let option = { value: country.id, label: country.name, code:country.code };
+        let option = { value: country.id, label: country.name, code: country.code };
         countryData.push(option);
       });
 
       setTheCountry(countryData);
     };
 
-
     countries.length !== 0 && createCountrySelect();
   }, [countries]);
-
- 
-  
 
   useEffect(() => {
     dispatch(fetchAllCountries());
@@ -107,10 +103,8 @@ const Register = ({ user }) => {
     }),
   };
 
- 
-  const [phoneValue, setPhoneValue] = useState("")
-  const [phoneValueValid, setPhoneValueValid] = useState(false)
-
+  const [phoneValue, setPhoneValue] = useState("");
+  const [phoneValueValid, setPhoneValueValid] = useState(false);
 
   const [focused, setFocused] = useState({
     firstname: false,
@@ -164,7 +158,7 @@ const Register = ({ user }) => {
     phone: "",
     dob: "",
     country_id: 0,
-    referral:"",
+    referral: "",
     password: "",
     device: "",
   };
@@ -252,7 +246,6 @@ const Register = ({ user }) => {
     }
   };
 
-
   const refHandler = (e) => {
     if (e) {
       let refValue = e.target.value;
@@ -270,9 +263,9 @@ const Register = ({ user }) => {
   };
 
   const [countryId, setCountryId] = useState({});
-  const [phoneNumberCountry, setPhoneNumberCountry] = useState("NG")
+  const [phoneNumberCountry, setPhoneNumberCountry] = useState("NG");
   const countryHandler = (e) => {
-    setPhoneNumberCountry(e.code)
+    setPhoneNumberCountry(e.code);
     setCountryError(false);
     if (e) {
       setCountryId(e);
@@ -317,9 +310,9 @@ const Register = ({ user }) => {
   const [countryError, setCountryError] = useState(false);
 
   const handleRegister = () => {
-    debugger
-   //let b =  /[A-Z'][a-zA-Z'-]+/.test(formValues.firstname)
-  //  console.log("b is " + b)
+    debugger;
+    //let b =  /[A-Z'][a-zA-Z'-]+/.test(formValues.firstname)
+    //  console.log("b is " + b)
 
     if (
       formValues.firstname !== "" &&
@@ -443,19 +436,11 @@ const Register = ({ user }) => {
     navigate("/signin");
   };
 
-
   useEffect(() => {
-    
     if (phoneNumberCountry === "NG" || phoneNumberCountry !== "NG") {
-      setPhoneValue("")
-  }
-  
-   
-  }, [phoneNumberCountry])
-  
- 
-
-
+      setPhoneValue("");
+    }
+  }, [phoneNumberCountry]);
 
   return (
     <>
@@ -478,7 +463,9 @@ const Register = ({ user }) => {
                   pattern="[A-Z'][a-zA-Z'-]+"
                 />
 
-                <p className="register-validation-error-text">firstname is required (Uppercase first)</p>
+                <p className="register-validation-error-text">
+                  firstname is required (Uppercase first)
+                </p>
               </div>
 
               <div className="lib-register-input-group-wrapper-right">
@@ -493,7 +480,9 @@ const Register = ({ user }) => {
                   onChange={(e) => lastnameHandler(e)}
                   pattern="[A-Z'][a-zA-Z'-]+"
                 />
-                <p className="register-validation-error-text">lastname is required (Uppercase first)</p>
+                <p className="register-validation-error-text">
+                  lastname is required (Uppercase first)
+                </p>
               </div>
             </div>
             <div className="lib-register-input-group">
@@ -513,7 +502,7 @@ const Register = ({ user }) => {
               </div>
 
               <div className="lib-register-input-group-wrapper-right">
-              <Select
+                <Select
                   options={theCountry}
                   // value = {countryId.label}
                   styles={customStyles}
@@ -526,7 +515,6 @@ const Register = ({ user }) => {
                 ) : (
                   ""
                 )}
-               
               </div>
             </div>
             <div className="lib-register-input-group">
@@ -546,7 +534,7 @@ const Register = ({ user }) => {
                 <p className="register-validation-error-text">date of birth is required</p>
               </div>
               <div className="lib-register-input-group-wrapper-right">
-              {/* <input
+                {/* <input
                   name="phone"
                   type="number"
                   id="phone-num"
@@ -564,38 +552,36 @@ const Register = ({ user }) => {
                   countryCallingCodeEditable={false}
                   value={phoneValue}
                   onChange={(phoneValue) => {
-                    setPhoneValue(phoneValue)
-                    setPhoneValueValid(false)
-                  }} 
+                    setPhoneValue(phoneValue);
+                    setPhoneValueValid(false);
+                  }}
                   onBlur={(e) => {
                     if (phoneValue === undefined || phoneValue === "") {
-                        setPhoneValueValid(true)
+                      setPhoneValueValid(true);
                     }
                   }}
                   focused={focused.phone.toString()}
-                  />
-                {
-                  phoneValueValid ?  <p className="phone-number-required-text">phone number is required</p> : ""
-                }
+                />
+                {phoneValueValid ? (
+                  <p className="phone-number-required-text">phone number is required</p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             <div className="lib-register-input-group">
               <div className="lib-register-input-group-wrapper-left">
-              
-             
-              <input
+                <input
                   type="text"
                   placeholder="Referral"
                   onFocus={handleReferralFocus}
                   onBlur={handleReferralBlur}
                   onChange={(e) => refHandler(e)}
-
                 />
                 {referralFocus ? <p className="green-warning">This field is not required</p> : ""}
               </div>
 
               <div className="lib-register-input-group-wrapper-right">
-             
                 <input
                   autoComplete="off"
                   name="password"

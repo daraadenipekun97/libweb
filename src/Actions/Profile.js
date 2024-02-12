@@ -34,10 +34,9 @@ import {
   CHANGE_PASSWORD,
   CHANGE_PASSWORD_SUCCESS,
   RESTORE_CHANGE_PASSWORD_INITIAL,
-
   DELETE_ACCOUNT,
   DELETE_ACCOUNT_SUCCESS,
-  RESTORE_DELETE_ACCOUNT_INITIAL
+  RESTORE_DELETE_ACCOUNT_INITIAL,
 } from "../ActionTypes";
 
 export const fetchProfile = () => ({
@@ -146,7 +145,6 @@ export const restoreCancelSubscriptionInitial = () => ({
   type: RESTORE_CANCEL_SUBSCRIPTION_INITIAL,
 });
 
-
 export const reactivateTrial = () => ({
   type: REACTIVATE_TRIAL,
 });
@@ -213,17 +211,15 @@ export const restoreChangePasswordInitial = () => ({
   type: RESTORE_CHANGE_PASSWORD_INITIAL,
 });
 
-
 export const deleteAccount = (email) => ({
   type: DELETE_ACCOUNT,
-  payload: email
+  payload: email,
 });
 
 export const deleteAccountSuccess = (payload) => ({
   type: DELETE_ACCOUNT_SUCCESS,
   payload,
 });
-
 
 export const restoredeleteAccountInitial = () => ({
   type: RESTORE_DELETE_ACCOUNT_INITIAL,
