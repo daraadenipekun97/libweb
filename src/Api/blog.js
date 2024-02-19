@@ -23,12 +23,12 @@ export const getBlogs = async () => {
 };
 
 
-export const getBlogById = async (id) => {
+export const getBlogById = async (title) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
   } else {
     try {
-      const response = await api.get(`${baseController}blog/find/${id}`);
+      const response = await api.get(`${baseController}blog/find/${title}`);
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
           return response.data.data;

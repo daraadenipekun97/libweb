@@ -15,9 +15,9 @@ import {
   });
 
 
-  export const fetchBlogById = (id) => ({
+  export const fetchBlogById = (title) => ({
     type: FETCH_BLOG_BY_ID,
-    payload: id,
+    payload: title,
   });
   
   export const fetchBlogByIdSuccess = (payload) => ({

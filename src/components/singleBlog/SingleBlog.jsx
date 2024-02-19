@@ -27,7 +27,7 @@ const SingleBlog = () => {
 
   useEffect(() => {
 
-    dispatch(fetchBlogById(params.id));
+    dispatch(fetchBlogById(params.title));
   }, [dispatch]);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const SingleBlog = () => {
         <div className="single-book-content blog-container">
           <a href="/blog" className="back-home">Back To Home</a>
           <h1 className="header-title">{blogById?.title}</h1>
-          <img src={blogById.image ? blogById?.image : Placeholder} alt="placeholder" className="header-img" />
+          <img src={blogById.blog_image_data ? blogById?.blog_image_data : Placeholder} alt="placeholder" className="header-img" />
 
         </div>
       </div>

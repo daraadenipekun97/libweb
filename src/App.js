@@ -104,7 +104,7 @@ function App() {
                   <Route path="termsOfUse" element={<TermsOfUsePage user={user} />} />
                   <Route path="blog" element={<BlogPage user={user} />} />
                   <Route
-                    path="blog/:id"
+                    path="blog/:title"
                     element={<BlogWriteupPage user={user} />}
                   />
 

@@ -1,11 +1,13 @@
 .single-blog-card {
   width: 350px;
+  height: 500px;
   background-color: #ffffff;
   border: 1px solid #ececec;
   margin: 20px;
 }
 .single-blog-card-image-wrapper {
   width: 100%;
+  height: 200px !important;
   height: auto;
 }
 

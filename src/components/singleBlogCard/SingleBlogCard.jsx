@@ -7,7 +7,7 @@ const SingleBlogCard = ({data}) => {
   return (
     <div className="single-blog-card">
       <div className="single-blog-card-image-wrapper">
-        <img src={data.image ? data?.image : Placeholder } alt="Adebayo Jacobs-Amoo" />
+        <img src={data.blog_image_data ? data?.blog_image_data : Placeholder } alt="blog_image" />
       </div>
       <div className="single-blog-card-text">
         <span>{moment(data?.updated_at).format("MMM Do YYYY")}</span>
@@ -17,7 +17,7 @@ const SingleBlogCard = ({data}) => {
         <p>
           {data?.content}
         </p>
-        <a href={`/blog/${data?.id}`}>Read More</a>
+        <a href={`/blog/${data?.title}`}>Read More</a>
       </div>
     </div>
   );
