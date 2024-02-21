@@ -7,6 +7,19 @@ import OkadaImage from "../../assets/images/Okada_Books_statement.jpg";
 import { AiFillFacebook, AiFillInstagram, AiFillTwitterCircle } from "react-icons/ai";
 import { fetchBlogById } from "../../Actions";
 
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  WhatsappIcon,
+  EmailIcon
+} from "react-share";
+
 const SingleBlog = () => {
 
 
@@ -51,6 +64,8 @@ const SingleBlog = () => {
     )
   }
  }
+
+ const currentPageUrl = window.location.href;
 
   return (
     <>
@@ -105,23 +120,78 @@ const SingleBlog = () => {
       <div className="blog-share blog-container">
           <span className="share-title">Share this blog post</span>
           <div className="social">
-          <a
+
+            <FacebookShareButton
+            className="social-btn"
+             url={currentPageUrl}
+            //  quote="Please check out this recent blog post from MyLibriBooks"
+            //  hashtag="#MyLibriBooks #blog"
+            // url={`http://localhost:3000/blog/${blogById.title}`}
+            >
+              <FacebookIcon
+                size={25}
+                round
+              />
+            </FacebookShareButton>
+
+
+            <TwitterShareButton
+              className="social-btn"
+             url={currentPageUrl}
+            title="Please check out this recent blog post from MyLibriBooks"
+            //  hashtag="#MyLibriBooks #blog"
+            >
+              <TwitterIcon
+                size={25}
+                round
+
+              />
+            </TwitterShareButton>
+
+            <LinkedinShareButton
+            className="social-btn"
+             url={currentPageUrl}
+            title="Please check out this recent blog post from MyLibriBooks"
+             summary="A summary of the blog"
+            >
+              <LinkedinIcon
+                size={25}
+                round
+
+              />
+            </LinkedinShareButton>
+
+            <WhatsappShareButton
+             url={currentPageUrl}
+            title="Please check out this recent blog post from MyLibriBooks"
+             separator=" "
+            >
+              <WhatsappIcon
+                size={25}
+                round
+
+              />
+            </WhatsappShareButton>
+
+
+          {/* <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <AiFillFacebook size={20} />
-              </a>
-              <a
+              </a> */}
+
+              {/* <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <AiFillInstagram size={20} />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              </a> */}
+              {/* <a href="#" target="_blank" rel="noopener noreferrer">
                 <AiFillTwitterCircle size={20} />
-              </a>
+              </a> */}
           </div>
       </div>
       </>
