@@ -18,12 +18,16 @@ const ActionBanner = () => {
     }
   };
 
-  const handleNavigate = () => {
-    navigate("/home/writingChallenge");
+  const handleScroll = () => {
+    // navigate("/home/writingChallenge");
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth', // Optional: adds smooth scrolling animation
+    });
   };
 
   return (
-    <div className="action-banner-wrapper">
+    <div className="action-banner-wrapper" onClick={handleScroll}>
       <marquee
         direction="left"
         ref={marqueeRef}
@@ -31,10 +35,10 @@ const ActionBanner = () => {
         onMouseOut={startMarquee}
       >
         Join our writing challenge and stand a chance to win up to $150 and one year mylibri books
-        subscription👉
-        <span className="action-start-now" onClick={handleNavigate}>
+        subscription
+        {/* <span className="action-start-now">
           <em>Start Now</em>
-        </span>
+        </span> */}
       </marquee>
     </div>
   );

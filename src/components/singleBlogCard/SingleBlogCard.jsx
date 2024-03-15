@@ -17,7 +17,7 @@ const SingleBlogCard = ({data}) => {
         <p>
           {data?.content}
         </p>
-        <a href={`/blog/${data?.title}`}>Read More</a>
+        <a href={`/blog/${data?.title ? data.title.replace(/\s+/g, '-') : ''}`}>Read More</a>
       </div>
     </div>
   );

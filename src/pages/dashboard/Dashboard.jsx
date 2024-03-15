@@ -4,7 +4,7 @@ import UserNavbar from "../../components/userNavbar/UserNavbar";
 import SingleBook from "../../components/singleBook/SingleBook";
 import "./dashboard.css";
 import { fetchAllTrendingBooks, fetchSubscriptionDetails, fetchProfile } from "../../Actions";
-import { Community, Footer, Header } from "../../containers";
+import { Community, Footer, Header, WritingCompetition } from "../../containers";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import ModalRedirect from "../../components/modal/ModalRedirect";
@@ -133,9 +133,9 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* <div className="shifter">
+      <div className="shifter">
         
-        </div> */}
+        </div>
       <UserNavbar />
       <Header />
       <div className="book-container">
@@ -144,7 +144,8 @@ const Dashboard = () => {
         </div>
       </div>
       <Community />
-      {/* <ActionBanner /> */}
+      <WritingCompetition/>
+      <ActionBanner />
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
       <ModalRedirect showRedirectModal={showRedirectModal} />

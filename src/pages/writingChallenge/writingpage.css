@@ -25,6 +25,21 @@
   line-height: 25px;
   text-align: left;
 }
+.backbtn{
+  margin: 2rem 0px;
+
+}
+
+.back-to-challenge{
+
+  color: #5e458b;
+  font-size: 0.9rem;
+
+}
+
+.back-to-challenge:hover{
+  text-decoration: underline;
+}
 
 @media screen and (max-width: 500px) {
   .article-wrapper {

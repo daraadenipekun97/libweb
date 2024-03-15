@@ -200,6 +200,7 @@ export const FETCH_ALL_ARTICLE_SUCCESS = "fetch_all_article_success";
 
 export const FETCH_ARTICLE_BY_TOPIC = "fetch_article_by_topic";
 export const FETCH_ARTICLE_BY_TOPIC_SUCCESS = "fetch_article_by_topic_success";
+export const RESTORE_FETCH_ARTICLE_BY_TOPIC = "restore_fetch_article_by_topic"
 
 export const CREATE_ARTICLE = "create_article";
 export const CREATE_ARTICLE_SUCCESS = "create_article_success";
@@ -214,6 +215,7 @@ export const FETCH_ARTICLE_BY_ID_SUCCESS = "fetch_article_by_id_success";
 
 export const VOTE_ARTICLE = "vote_article";
 export const VOTE_ARTICLE_SUCCESS = "vote_article_success";
+export const RESTORE_VOTE_ARTICLE_INITIAL = "restore_vote_article_initial"
 
 export const FETCH_ARTICLE_BY_USER = "fetch_article_by_user";
 export const FETCH_ARTICLE_BY_USER_SUCCESS = "fetch_article_by_user_success";

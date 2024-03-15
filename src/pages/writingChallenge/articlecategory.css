@@ -1,0 +1,112 @@
+.article-category-wrapper{
+
+    background-color: #e3daf0;
+    padding: 4rem 6rem;
+    /* border: solid; */
+    min-height: 100vh;
+
+}
+
+
+.article-category-heading {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #5e458b;
+    margin-bottom: 0.5rem;
+  }
+
+
+.article-category-list-container{
+  /* border: solid; */
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+.wrap-collabsible {
+  margin: 1.2rem 0;
+}
+.lbl-toggle {
+  display: block;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem;
+  color: #ddd;
+  background: linear-gradient(105.61deg, #d4826d 2.12%, #675489 50%);
+  cursor: pointer;
+  border-radius: 7px;
+  transition: all 0.25s ease-out;
+}
+.lbl-toggle:hover {
+  color: #fff;
+}
+.lbl-toggle::before {
+  content: " ";
+  display: inline-block;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: 0.7rem;
+  transform: translateY(-2px);
+  transition: transform 0.2s ease-out;
+}
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.25s ease-in-out;
+}
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 350px;
+}
+.toggle:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.collapsible-content .content-inner {
+  background: #ffffff;
+  border-bottom: 1px solid #5e458b;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: 0.5rem 1rem;
+}
+.content-inner a {
+  color: #78787d;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: justify;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+hr {
+  border: 0;
+  height: 1px;
+  margin: 1rem 0;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+
+
+
+
+
+
+
+  @media screen and (max-width: 500px) {
+    .article-category-wrapper {
+      padding: 4rem 2rem;
+    }
+  }
+  

@@ -39,8 +39,8 @@ const SingleBlog = () => {
 
 
   useEffect(() => {
-
-    dispatch(fetchBlogById(params.title));
+    const actualTitle = params.title.replace(/-/g, ' ')
+    dispatch(fetchBlogById(actualTitle));
   }, [dispatch]);
 
   useEffect(() => {
@@ -88,33 +88,7 @@ const SingleBlog = () => {
                 {item.splitText}
               </p>
             ))
-          }
-         
-
-          {/* <img src={OkadaImage} alt="Adebayo Jacobs-Amoo"  className="body-img" /> */}
-
-          {/* <p className="blog-post-text">
-          In these challenging times, it's important to remember the impact Okada Books had in shaping
-        the Nigerian literacy community. Their dedication, hard work, and determination in the face
-        of the unique challenges of the Nigerian business landscape have been nothing short of
-        inspiring.
-        <br />
-        To Okechukwu Ofili, his wonderful team, and the entire literary community at Okada Books, we
-        at MyLibri Books extend our deepest sympathies. Your loss is our loss, and while we mourn
-        the end of this chapter, we also look forward with hope to the new beginnings it brings.
-        Change, though difficult, opens doors to new opportunities. We eagerly await the next
-        venture that the brilliant minds behind Okada Books will embark upon and wish them all the
-        success they rightly deserve.
-        <br />
-        In times like these, we are reminded of the power of community and resilience. Let us
-        continue to support and uplift each other, keeping the spirit of innovation and passion for
-        literature alive. With heartfelt sympathy and anticipation for the future.
-        <br />
-        Adebayo Jacobs-Amoo
-        <br />
-        Founder/CEO, MyLibri Books
-          </p> */}
-          
+          }   
       </div>
 
       <div className="blog-share blog-container">

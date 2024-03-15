@@ -15,7 +15,7 @@ const WritingChallenge = () => {
 
   const { profileData } = useSelector((state) => state.profile);
 
-  const { allTopics } = useSelector((state) => state.challenge);
+  const { allTopics, articleByUser } = useSelector((state) => state.challenge);
 
   const customStyles = {
     control: (provided, state) => ({
@@ -64,6 +64,7 @@ const WritingChallenge = () => {
     dispatch(fetchProfile());
     dispatch(fetchAllArticleTopics());
     dispatch(fetchArticleByUser());
+    setTopic(articleByUser)
   }, [dispatch]);
 
   useEffect(() => {
@@ -111,18 +112,27 @@ const WritingChallenge = () => {
   };
 
   const handleStartChallenge = () => {
-    if (!termsCheckBox) {
+    debugger
+    if (!termsCheckBox && articleByUser?.article_topic_id === undefined) {
       setCheckedError(true);
     }
 
-    if (topic === null) {
+    if (Object.keys(topic).length === 0 && articleByUser?.article_topic_id === undefined) {
       setTopicError(true);
     }
 
-    if (termsCheckBox && topic !== null && profileData.subscription_status === "inactive") {
+
+    if (termsCheckBox && Object.keys(topic).length !== 0 && (profileData.subscription_status === null || profileData.subscription_status === 'inactive') ) {
       navigate(`/home/article/${topic.value}`);
-    } else if (termsCheckBox && topic !== null && profileData.subscription_status === "active") {
+    } else if (termsCheckBox && Object.keys(topic).length !== 0 && (profileData.subscription_status === null || profileData.subscription_status === 'active')) {
       verifySubscriptionStatus();
+    }
+
+    if (!termsCheckBox && topic.article_topic_id !== undefined && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')) {
+      navigate(`/home/article/${topic.article_topic_id}`);
+    }
+    else if (!termsCheckBox && topic.article_topic_id === undefined && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')){
+      setCheckedError(true);
     }
   };
 
@@ -295,8 +305,11 @@ const WritingChallenge = () => {
           anyone comments or likes the article, once there is a comment or like on the article, you
           cannot delete or edit the article anymore
         </p>
-        <hr />
-        <Select
+       {
+        articleByUser?.article_topic_id ? <></> : (
+          <>
+        <p className="select-label">Select a Category of Article*</p>
+      <Select
           options={theTopics}
           styles={customStyles}
           value={topic}
@@ -318,7 +331,11 @@ const WritingChallenge = () => {
           </label>
         </div>
 
-        <PurpleButton text="Start Challenge" onClickFunction={handleStartChallenge} />
+          </>
+        )
+       }
+
+        <PurpleButton text={articleByUser?.article_topic_id ? "Continue" : "Start Challenge"} onClickFunction={handleStartChallenge} />
       </div>
     </>
   );

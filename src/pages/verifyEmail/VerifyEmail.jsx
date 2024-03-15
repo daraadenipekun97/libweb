@@ -268,7 +268,7 @@ const VerifyEmail = ({ user }) => {
             <div className="verification-warning">
               <AiFillWarning color="#EED202" size={30} />
               <p className="warning-text">
-                Please note you risk loosing your account if not verifed in 7 days
+                Please check your spam folders for verification code
               </p>
             </div>
           </div>

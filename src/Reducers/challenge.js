@@ -2,6 +2,7 @@ import {
   FETCH_ARTICLE_TOPICS_SUCCESS,
   FETCH_ALL_ARTICLE_SUCCESS,
   FETCH_ARTICLE_BY_TOPIC_SUCCESS,
+  RESTORE_FETCH_ARTICLE_BY_TOPIC,
   CREATE_ARTICLE_SUCCESS,
   RESTORE_CREATE_ARTICLE_INITIAL,
   EDIT_ARTICLE_SUCCESS,
@@ -9,6 +10,7 @@ import {
   FETCH_ARTICLE_BY_ID_SUCCESS,
   VOTE_ARTICLE_SUCCESS,
   FETCH_ARTICLE_BY_USER_SUCCESS,
+  RESTORE_VOTE_ARTICLE_INITIAL
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -27,7 +29,7 @@ const INIT_STATE = {
   voteArticleSuccess: false,
   voteArticleFailure: false,
 
-  articleByUser: [],
+  articleByUser: {},
 };
 
 const challengeReducer = (state = INIT_STATE, action) => {
@@ -57,6 +59,13 @@ const challengeReducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         articlesByTopic: action.payload,
+      };
+    }
+
+    case RESTORE_FETCH_ARTICLE_BY_TOPIC: {
+      return {
+        ...state,
+        articlesByTopic:[],
       };
     }
 
@@ -129,6 +138,14 @@ const challengeReducer = (state = INIT_STATE, action) => {
           voteArticleFailure: true,
         };
       }
+    }
+
+    case RESTORE_VOTE_ARTICLE_INITIAL: {
+      return {
+        ...state,
+        voteArticleSuccess: false,
+        voteArticleFailure: false,
+      };
     }
 
     default:

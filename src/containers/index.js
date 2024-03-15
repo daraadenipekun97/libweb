@@ -4,3 +4,5 @@ export { default as Explore } from "./explore/Explore";
 export { default as Navbar } from "./navbar/Navbar";
 export { default as DownloadApp } from "./downloadApp/DownloadApp";
 export { default as Community } from "./community/Community";
+export { default as WritingCompetition } from "./writingCompetition/WritingCompetition";
+

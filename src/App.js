@@ -68,6 +68,8 @@ const PrivacyPolicyPage = lazy(() => import("./pages/privacy/PrivacyPolicy"));
 const TermsOfUsePage = lazy(() => import("./pages/privacy/TermsOfUse"));
 const WritingChallengePage = lazy(() => import("./pages/writingChallenge/WritingChallenge"));
 const WritingPage = lazy(() => import("./pages/writingChallenge/WritingPage"));
+const ArticleCategoryPage = lazy(() => import("./pages/writingChallenge/ArticleCategory"));
+const ArticleReadVotePage = lazy(() => import("./pages/writingChallenge/ReadVoteArticle"));
 const BlogPage = lazy(() => import("./pages/blog/Blog"));
 const BlogWriteupPage = lazy(() => import("./pages/blog/BlogWriteup"));
 
@@ -126,6 +128,8 @@ function App() {
                     <Route path="subscription" element={<SubscriptionPage />} />
                     <Route path="wallet" element={<WalletPage />} />
                     <Route path="writingChallenge" element={<WritingChallengePage />} />
+                    <Route path="articlecategory" element={<ArticleCategoryPage />} />
+                    <Route path="articlecategory/:id" element={<ArticleReadVotePage />} />
                     <Route path="article/:id" element={<WritingPage />} />
                     <Route path="search/:id" element={<SearchPage />} />
                   </Route>

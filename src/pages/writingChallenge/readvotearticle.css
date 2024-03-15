@@ -1,0 +1,54 @@
+.article-writeup-wrapper{
+
+    background-color: #e3daf0;
+    padding: 4rem 6rem;
+    /* border: solid; */
+    min-height: 100vh;
+
+}
+
+.article-writeup{
+    /* border: solid; */
+}
+
+.article-text{
+
+    font-size: 1rem;
+    line-height: 1.7rem;
+    margin: 1rem 0;
+    text-align: justify;
+    color: #78787d;
+}
+
+.article-vote{
+    display: flex;
+    align-items: center;
+}
+.article-vote:hover{
+    cursor: pointer;
+}
+
+
+.backbtn{
+    margin: 2rem 0px;
+  
+  }
+  
+  .back-to-category{
+  
+    color: #5e458b;
+    font-size: 0.9rem;
+  
+  }
+
+  .back-to-category:hover{
+    text-decoration: underline;
+  }
+
+
+@media screen and (max-width: 500px) {
+    .article-writeup-wrapper {
+      padding: 4rem 2rem;
+    }
+  }
+  

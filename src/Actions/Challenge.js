@@ -17,6 +17,8 @@ import {
   VOTE_ARTICLE_SUCCESS,
   FETCH_ARTICLE_BY_USER,
   FETCH_ARTICLE_BY_USER_SUCCESS,
+  RESTORE_FETCH_ARTICLE_BY_TOPIC,
+  RESTORE_VOTE_ARTICLE_INITIAL,
 } from "../ActionTypes";
 
 export const fetchAllArticleTopics = () => ({
@@ -47,9 +49,13 @@ export const fetchArticleByTopicSuccess = (payload) => ({
   payload,
 });
 
-export const createArticle = ({ article_id, article_body }) => ({
+export const restorefetchArticleByTopicInitial = () => ({
+  type: RESTORE_FETCH_ARTICLE_BY_TOPIC,
+});
+
+export const createArticle = ({ article_topic_id, article_body }) => ({
   type: CREATE_ARTICLE,
-  payload: { article_id, article_body },
+  payload: { article_topic_id, article_body },
 });
 
 export const createArticleSuccess = (payload) => ({
@@ -83,6 +89,10 @@ export const voteArticle = (id) => ({
 export const voteArticleSuccess = (payload) => ({
   type: VOTE_ARTICLE_SUCCESS,
   payload,
+});
+
+export const restoreVoteArticleInitial = () => ({
+  type: RESTORE_VOTE_ARTICLE_INITIAL,
 });
 
 export const fetchArticleById = (id) => ({

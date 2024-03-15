@@ -11,13 +11,6 @@ const BlogWriteup = ({ user }) => {
         <div className="writeup-container">
         <SingleBlog />
         </div>
-        {/* <h3 className='blog-writeup-text'>Blog</h3>
-           <hr /> */}
-        {/* <a href="/blog" class="blog-writeup-container-back-button">
-          Back
-        </a> */}
-       
-
       <Footer />
     </>
   );

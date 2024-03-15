@@ -11,6 +11,7 @@ import {
   restoreCreateArticleInitial,
   editArticle,
   restoreEditArticleInitial,
+  fetchArticleByUser,
 } from "../../Actions";
 import Swal from "sweetalert2";
 import UserNavbar from "../../components/userNavbar/UserNavbar";
@@ -30,6 +31,7 @@ const WritingPage = () => {
     articleById,
     voteArticleSuccess,
     voteArticleFailure,
+    articleByUser
   } = useSelector((state) => state.challenge);
 
   const [editor, setEditor] = useState(null);
@@ -42,6 +44,11 @@ const WritingPage = () => {
   //         verifySubscriptionStatus()
   //       }
   //   }, [dispatch]);
+
+  useEffect(() => {
+      dispatch(fetchArticleByUser())
+  }, [dispatch])
+  
 
   const verifySubscriptionStatus = () => {
     Swal.fire({
@@ -68,7 +75,7 @@ const WritingPage = () => {
   const verifySubmitArticle = () => {
     Swal.fire({
       title: "Verify",
-      text: "Are you sure you want to submit your article",
+      text: "Are you sure you want to submit your article. Please note once you submit an article, it can be read by the public",
       icon: "warning",
       allowOutsideClick: false,
       showCancelButton: true,
@@ -80,7 +87,31 @@ const WritingPage = () => {
       if (result.isConfirmed) {
         dispatch(
           createArticle({
-            article_id: params.id,
+            article_topic_id:Number(params.id),
+            article_body: articleText,
+          })
+        );
+        // console.log(articleText)
+      }
+    });
+  };
+
+  const verifyEditArticle = () => {
+    Swal.fire({
+      title: "Verify",
+      text: "Are you sure you want to edit your article. Please note you won't be able to edit you article after it has been voted for",
+      icon: "warning",
+      allowOutsideClick: false,
+      showCancelButton: true,
+      confirmButtonColor: "#5e458b",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ok",
+      width: 400,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(
+          editArticle({
+            article_id:articleByUser?.id,
             article_body: articleText,
           })
         );
@@ -116,6 +147,15 @@ const WritingPage = () => {
     }
   };
 
+
+  const handleEditArticle = () => {
+    if (wordCount <= 1000) {
+      verifyEditArticle();
+    } else {
+      setWordLimitValidation(true);
+    }
+  };
+
   useEffect(() => {
     if (createArticleSuccess) {
       console.log("article created successfully");
@@ -126,13 +166,28 @@ const WritingPage = () => {
     };
   }, [createArticleSuccess]);
 
+  
+  useEffect(() => {
+    if (editArticleSuccess) {
+      console.log("article edited successfully");
+      dispatch(fetchArticleByUser())
+    }
+
+    return () => {
+      dispatch(restoreEditArticleInitial());
+    };
+  }, [editArticleSuccess]);
+
   return (
     <>
       <UserNavbar />
       <div className="article-wrapper">
+        <div className="backbtn">
+          <a href="javascript:history.back()" className="back-to-challenge">Back To Home</a>
+        </div>
         <CKEditor
           editor={ClassicEditor}
-          data="<p>Start Typing Here</p>"
+          data={articleByUser?.content}
           onReady={(editor) => {
             console.log("CKEditor5 React Component is ready to use!", editor);
             setEditor(editor);
@@ -143,6 +198,7 @@ const WritingPage = () => {
             setWordLimitValidation(false);
             setArticleText(data);
           }}
+          style={{ height: "500px" }} // Adjust the height value as needed
         />
         <div className="word-count-wrapper">
           <p className="article-text">Word Count: {wordCount}</p>
@@ -152,9 +208,13 @@ const WritingPage = () => {
             ""
           )}
         </div>
-        <PurpleButton text="Submit Article" onClickFunction={handleSubmitArticle} />
+        {
+          articleByUser?.created_at ? <></> : <PurpleButton text="Submit" onClickFunction={handleSubmitArticle} />
+        }
         &nbsp;
-        <WhiteButton text="Edit Article" onClickFunction={handleSubmitArticle} />
+        {
+          articleByUser?.votes && articleByUser?.votes.length > 0 ? <></> : <WhiteButton text="Edit Article" onClickFunction={handleEditArticle} />
+        }
       </div>
     </>
   );

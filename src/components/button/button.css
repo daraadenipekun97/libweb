@@ -1,6 +1,6 @@
 .btn-wrapper-purple {
   padding: 0.5rem 1rem;
-  font-weight: 500;
+  font-weight: 400;
   border-radius: 5px;
   font-style: normal;
   font-size: 18px;
@@ -9,16 +9,17 @@
   outline: none;
   background-color: #5e458b;
   color: white;
+  margin-bottom: 1rem;
 }
 
 .btn-wrapper-purple:hover {
   cursor: pointer;
-  background-color: #4c3575;
+  /* background-color: #4c3575; */
 }
 
 .btn-wrapper-white {
   padding: 0.5rem 1rem;
-  font-weight: 500;
+  font-weight: 400;
   border-radius: 5px;
   font-style: normal;
   font-size: 18px;
@@ -27,9 +28,15 @@
   outline: none;
   background-color: white;
   color: #5e458b;
+  margin-bottom: 1rem;
+
 }
 
 .btn-wrapper-white:hover {
   cursor: pointer;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
+}
+
+.btn-wrapper-white:active{
+  background-color: white !important;
 }
