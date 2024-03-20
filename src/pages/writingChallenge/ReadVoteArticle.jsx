@@ -108,7 +108,7 @@ const ReadVoteArticle = () => {
             {
             paragraph?.map((item) => (
               <p className="article-text">
-                {item.splitText}
+                {item.splitText.replace(/(<([^>]+)>|&\w+;)/gi, '')}
               </p>
             ))
           }

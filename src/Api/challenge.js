@@ -118,8 +118,13 @@ export const voteForArticle = async (id) => {
     try {
       const response = await api.get(`${baseController}article/vote/${id}`);
       if (typeof response !== "undefined") {
+        console.log(response)
         if (response.status === 200 && response.data.status === true) {
           toastr.success("You have voted successfully", "");
+          return response.data.status;
+        }
+        else{
+          toastr.warning(`${response.data.message}`, "")
           return response.data.status;
         }
       } else {

@@ -60,7 +60,7 @@ const ArticleCategory = () => {
                         {
                           articlesByTopic?.map((item) => (
                             <>
-                            <a href={`/home/articlecategory/${item.id}`}>{item.content}</a>
+                            <a href={`/home/articlecategory/${item.id}`}>{item.content.replace(/(<([^>]+)>|&\w+;)/gi, '')}</a>
                             <hr />
                             </>
                           ))

@@ -88,6 +88,10 @@ input[type="checkbox"] {
   text-overflow: ellipsis;
 }
 
+.content-inner a:hover{
+  text-decoration: underline;
+}
+
 
 hr {
   border: 0;
