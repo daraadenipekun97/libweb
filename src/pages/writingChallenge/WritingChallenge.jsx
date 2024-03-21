@@ -64,7 +64,7 @@ const WritingChallenge = () => {
     dispatch(fetchProfile());
     dispatch(fetchAllArticleTopics());
     dispatch(fetchArticleByUser());
-    setTopic(articleByUser)
+    // setTopic(articleByUser)
   }, [dispatch]);
 
   useEffect(() => {
@@ -112,27 +112,33 @@ const WritingChallenge = () => {
   };
 
   const handleStartChallenge = () => {
-    debugger
     if (!termsCheckBox && articleByUser?.article_topic_id === undefined) {
       setCheckedError(true);
     }
 
-    if (Object.keys(topic).length === 0 && articleByUser?.article_topic_id === undefined) {
+    if (Object.keys(articleByUser).length === 0 && articleByUser?.article_topic_id === undefined) {
       setTopicError(true);
     }
 
 
-    if (termsCheckBox && Object.keys(topic).length !== 0 && (profileData.subscription_status === null || profileData.subscription_status === 'inactive') ) {
+    if (termsCheckBox && Object.keys(articleByUser).length !== 0 && (profileData.subscription_status === 'active') ) {
       navigate(`/home/article/${topic.value}`);
-    } else if (termsCheckBox && Object.keys(topic).length !== 0 && (profileData.subscription_status === null || profileData.subscription_status === 'active')) {
+    } else if (termsCheckBox && Object.keys(articleByUser).length !== 0 && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')) {
       verifySubscriptionStatus();
     }
 
-    if (!termsCheckBox && topic.article_topic_id !== undefined && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')) {
-      navigate(`/home/article/${topic.article_topic_id}`);
+    if (!termsCheckBox && articleByUser?.article_topic_id !== undefined && (profileData.subscription_status === 'active')) {
+      navigate(`/home/article/${articleByUser?.article_topic_id}`);
     }
-    else if (!termsCheckBox && topic.article_topic_id === undefined && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')){
-      setCheckedError(true);
+    else if (!termsCheckBox && articleByUser?.article_topic_id !== undefined && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')){
+      // setCheckedError(true);
+      verifySubscriptionStatus();
+    }
+    else if (!termsCheckBox && articleByUser?.article_topic_id === undefined && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')){
+      // setCheckedError(true);
+      verifySubscriptionStatus();
+    }else{
+      
     }
   };
 
