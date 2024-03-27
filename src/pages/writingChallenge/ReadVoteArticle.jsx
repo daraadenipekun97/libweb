@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import UserNavbar from "../../components/userNavbar/UserNavbar";
 import './readvotearticle.css'
 import Swal from "sweetalert2";
-import {fetchArticleById, voteArticle, restoreVoteArticleInitial } from "../../Actions";
+import {fetchArticleById, voteArticle, restoreVoteArticleInitial, fetchProfile } from "../../Actions";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 
@@ -13,6 +13,11 @@ const ReadVoteArticle = () => {
 
     const dispatch = useDispatch();
     const params = useParams();
+    const navigate = useNavigate();
+
+
+    const { profileData } = useSelector((state) => state.profile);
+
 
 
     const { articleById, voteArticleSuccess, voteArticleFailure } = useSelector((state) => state.challenge);
@@ -27,6 +32,8 @@ const ReadVoteArticle = () => {
 
     useEffect(() => {
         dispatch(fetchArticleById(params.id));
+        dispatch(fetchProfile());
+
       }, [dispatch]);
 
       const voteVerify = (id) => {
@@ -49,6 +56,24 @@ const ReadVoteArticle = () => {
           });
 
       }
+
+      const verifySubscriptionStatus = () => {
+        Swal.fire({
+          title: "Opps",
+          text: "Your subscription has expired. Please subscribe and try again",
+          icon: "warning",
+          allowOutsideClick: false,
+          showCancelButton: false,
+          confirmButtonColor: "#5e458b",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Ok",
+          width: 400,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate("/home/subscription");
+          }
+        });
+      };
 
 
       useEffect(() => {
@@ -95,6 +120,15 @@ const ReadVoteArticle = () => {
         }
        }
 
+       const handleVote = () => {
+          if(profileData.subscription_status === null || profileData.subscription_status === 'inactive'){
+            verifySubscriptionStatus();
+          }
+          else{
+            voteVerify(params.id)
+          }
+       }
+
 
   return (
     <>
@@ -115,7 +149,7 @@ const ReadVoteArticle = () => {
             </div>
             <div className="article-vote-share">
                 <div className="article-vote" 
-                onClick={() => voteVerify(params.id)}
+                onClick={() => handleVote()}
 
                 >
                 <AiOutlineHeart

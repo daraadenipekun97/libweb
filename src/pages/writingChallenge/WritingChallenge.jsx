@@ -112,18 +112,19 @@ const WritingChallenge = () => {
   };
 
   const handleStartChallenge = () => {
+    debugger
     if (!termsCheckBox && articleByUser?.article_topic_id === undefined) {
       setCheckedError(true);
     }
 
-    if (Object.keys(articleByUser).length === 0 && articleByUser?.article_topic_id === undefined) {
+    if (topic.value === null && articleByUser?.article_topic_id === undefined) {
       setTopicError(true);
     }
 
 
-    if (termsCheckBox && Object.keys(articleByUser).length !== 0 && (profileData.subscription_status === 'active') ) {
+    if (termsCheckBox && topic.value !== null && (profileData.subscription_status === 'active') ) {
       navigate(`/home/article/${topic.value}`);
-    } else if (termsCheckBox && Object.keys(articleByUser).length !== 0 && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')) {
+    } else if (termsCheckBox && topic.value !== null && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')) {
       verifySubscriptionStatus();
     }
 
@@ -138,7 +139,7 @@ const WritingChallenge = () => {
       // setCheckedError(true);
       verifySubscriptionStatus();
     }else{
-      
+
     }
   };
 
