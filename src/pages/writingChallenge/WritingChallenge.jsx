@@ -117,14 +117,14 @@ const WritingChallenge = () => {
       setCheckedError(true);
     }
 
-    if (topic.value === null && articleByUser?.article_topic_id === undefined) {
+    if (topic === null && articleByUser?.article_topic_id === undefined) {
       setTopicError(true);
     }
 
 
-    if (termsCheckBox && topic.value !== null && (profileData.subscription_status === 'active') ) {
-      navigate(`/home/article/${topic.value}`);
-    } else if (termsCheckBox && topic.value !== null && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')) {
+    if (termsCheckBox && topic !== null && (profileData.subscription_status === 'active') ) {
+      navigate(`/home/article/${topic?.value}`);
+    } else if (termsCheckBox && topic !== null && (profileData.subscription_status === null || profileData.subscription_status === 'inactive')) {
       verifySubscriptionStatus();
     }
 
