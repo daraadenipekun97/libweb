@@ -8,7 +8,7 @@ const Home = ({ user }) => {
 
   useEffect(() => {
     if (!user || location.pathname === "/home") {
-      navigate("/");
+      navigate("/signin");
     }
     //    if(user && (location.pathname === "/")){
     //      alert("Hello")
