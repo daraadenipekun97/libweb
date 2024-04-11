@@ -19,6 +19,9 @@ import {
   FETCH_ARTICLE_BY_USER_SUCCESS,
   RESTORE_FETCH_ARTICLE_BY_TOPIC,
   RESTORE_VOTE_ARTICLE_INITIAL,
+
+  SEND_ARTICLE_LINK,
+  SEND_ARTICLE_LINK_SUCCESS
 } from "../ActionTypes";
 
 export const fetchAllArticleTopics = () => ({
@@ -111,5 +114,16 @@ export const fetchArticleByUser = () => ({
 
 export const fetchArticleByUserSuccess = (payload) => ({
   type: FETCH_ARTICLE_BY_USER_SUCCESS,
+  payload,
+});
+
+
+export const sendArticleLink = ({ article_id, link }) => ({
+  type: SEND_ARTICLE_LINK,
+  payload: { article_id, link },
+});
+
+export const sendArticleLinkSuccess = (payload) => ({
+  type: SEND_ARTICLE_LINK_SUCCESS,
   payload,
 });

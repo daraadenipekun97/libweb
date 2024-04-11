@@ -10,6 +10,7 @@ import {
   FETCH_ARTICLE_BY_ID,
   VOTE_ARTICLE,
   FETCH_ARTICLE_BY_USER,
+  SEND_ARTICLE_LINK
 } from "../ActionTypes";
 
 import {
@@ -21,6 +22,7 @@ import {
   voteForArticle,
   getArticleById,
   getArticleByUser,
+  addArticleLink
 } from "../Api";
 
 import {
@@ -32,6 +34,7 @@ import {
   voteArticleSuccess,
   fetchArticleByIdSuccess,
   fetchArticleByUserSuccess,
+  sendArticleLinkSuccess
 } from "../Actions";
 
 export const fetchAllArticleTopicsRequest = function* ({ payload }) {
@@ -98,6 +101,15 @@ export const voteArtc = function* () {
   yield takeEvery(VOTE_ARTICLE, voteArticleRequest);
 };
 
+
+export const sendArticleLinkRequest = function* ({ payload }) {
+  yield call(requestFunction, sendArticleLinkSuccess, addArticleLink, payload);
+};
+
+export const sendArtLink = function* () {
+  yield takeEvery(SEND_ARTICLE_LINK, sendArticleLinkRequest);
+};
+
 export default function* rootSaga() {
   yield all([
     fork(fetchAllArtc),
@@ -108,5 +120,6 @@ export default function* rootSaga() {
     fork(voteArtc),
     fork(fetchArtcById),
     fork(fetchArticleByUsr),
+    fork(sendArtLink)
   ]);
 }

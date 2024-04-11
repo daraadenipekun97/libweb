@@ -44,6 +44,41 @@ const Modal = ({ handleClose, show, handleNavigate }) => {
   );
 };
 
+
+
+const ChallengeModal = ({ handleClose, show, handleNavigate }) => {
+  const showHideClassName = show
+    ? "main-modal-bg-dashboard display-block"
+    : "main-modal-bg-dashboard display-none";
+
+  return (
+    <div className={showHideClassName}>
+      <div className="modal-main-dashboard">
+        <>
+          <h4 className="modal-title-dashboard">
+            Writing Challenge{" "}
+            <span style={{ float: "right" }}>
+              <AiOutlineCloseCircle size={20} color="#5e458b" onClick={handleClose} />
+            </span>
+          </h4>
+          <p className="modal-text-dashboard">Hi, Join the writing challenge</p>
+          <p className="modal-text-dashboard">Stand a chance to win a yearly subscription</p>
+        </>
+
+        <hr />
+        <div className="btn-modal-wrapper-dashboard">
+          <button className="modal-btn-dashboard" onClick={handleClose}>
+            Close
+          </button>
+          <button className="modal-btn-start-trial-dashboard" onClick={handleNavigate}>
+            Join the Challenge
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -55,6 +90,7 @@ const Dashboard = () => {
 
   const [slicedTrendingBooks, setSlicedTrendingBooks] = useState([]);
   const [show, setShow] = useState(false);
+  const [showChallengeModal, setShowChallengeModal] = useState(false)
   const [showRedirectModal, setShowRedirectModal] = useState(false);
 
   const verifyCheckHandler = () => {
@@ -79,6 +115,7 @@ const Dashboard = () => {
     // dispatch(fetchProfile());
     dispatch(fetchAllTrendingBooks());
     dispatch(fetchSubscriptionDetails());
+    setShowChallengeModal(true)
   }, [dispatch]);
 
   useEffect(() => {
@@ -114,9 +151,18 @@ const Dashboard = () => {
     setShow(false);
   };
 
+  const handleCloseChallenge = () => {
+    setShowChallengeModal(false);
+
+  }
+
   const handleNavigate = () => {
     navigate("/home/subscription");
   };
+
+  const handleNavigateChallenge = () => {
+    navigate("/home/writingChallenge")
+  }
 
   function getMultipleRandom(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
@@ -148,6 +194,7 @@ const Dashboard = () => {
       <ActionBanner />
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
+      <ChallengeModal handleClose={handleCloseChallenge} show={showChallengeModal} handleNavigate={handleNavigateChallenge} />
       <ModalRedirect showRedirectModal={showRedirectModal} />
     </>
   );

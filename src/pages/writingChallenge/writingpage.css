@@ -41,6 +41,27 @@
   text-decoration: underline;
 }
 
+.social{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.share-title{
+  font-size: 1rem;
+  font-weight: 400;
+  color: #78787d;
+  margin-bottom: 0.5rem;
+  
+
+}
+
+.social-btn {
+  margin-right: 5px;
+}
+
+
 @media screen and (max-width: 500px) {
   .article-wrapper {
     padding: 4rem 2rem;

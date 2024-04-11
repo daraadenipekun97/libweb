@@ -173,3 +173,28 @@ export const getArticleByUser = async () => {
     }
   }
 };
+
+export const addArticleLink = async (body) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.post(`${baseController}article/link/${body.article_id}`, body);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          // toastr.success("Article link added Successful", "");
+          return response.data.status;
+        } else {
+          toastr.error("Could not add article link", "Please try again");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("Something went wrong", "Please try again");
+      }
+    } catch (ex) {
+      toastr.error("An Error Occured", "Please try again");
+      //   return ex.response.data.message
+    }
+  }
+};
+

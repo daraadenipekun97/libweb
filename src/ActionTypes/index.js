@@ -220,11 +220,15 @@ export const RESTORE_VOTE_ARTICLE_INITIAL = "restore_vote_article_initial"
 export const FETCH_ARTICLE_BY_USER = "fetch_article_by_user";
 export const FETCH_ARTICLE_BY_USER_SUCCESS = "fetch_article_by_user_success";
 
+export const SEND_ARTICLE_LINK = "send_article_link";
+export const SEND_ARTICLE_LINK_SUCCESS = "send_article_link_success";
 
 export const FETCH_ALL_BLOGS = "fetch_all_blogs";
 export const FETCH_ALL_BLOGS_SUCCESS = "fetch_all_blogs_success";
 
 export const FETCH_BLOG_BY_ID = "fetch_blog_by_id";
 export const FETCH_BLOG_BY_ID_SUCCESS = "fetch_blog_by_id_success";
+
+
 
 

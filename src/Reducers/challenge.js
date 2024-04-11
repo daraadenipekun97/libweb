@@ -10,7 +10,8 @@ import {
   FETCH_ARTICLE_BY_ID_SUCCESS,
   VOTE_ARTICLE_SUCCESS,
   FETCH_ARTICLE_BY_USER_SUCCESS,
-  RESTORE_VOTE_ARTICLE_INITIAL
+  RESTORE_VOTE_ARTICLE_INITIAL,
+  SEND_ARTICLE_LINK_SUCCESS
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -30,6 +31,9 @@ const INIT_STATE = {
   voteArticleFailure: false,
 
   articleByUser: {},
+
+  addArticleLinkSuccess: false,
+  addArticleLinkFailure: false,
 };
 
 const challengeReducer = (state = INIT_STATE, action) => {
@@ -146,6 +150,22 @@ const challengeReducer = (state = INIT_STATE, action) => {
         voteArticleSuccess: false,
         voteArticleFailure: false,
       };
+    }
+
+    case SEND_ARTICLE_LINK_SUCCESS: {
+      if (action.payload === true) {
+        return {
+          ...state,
+          addArticleLinkSuccess: true,
+          addArticleLinkFailure: false,
+        };
+      } else {
+        return {
+          ...state,
+          addArticleLinkSuccess: false,
+          addArticleLinkFailure: true,
+        };
+      }
     }
 
     default:
