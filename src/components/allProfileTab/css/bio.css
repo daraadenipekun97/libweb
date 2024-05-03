@@ -175,7 +175,7 @@ select:disabled {
 .user-profile-img img{
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   border: 3px solid #fff;
   border-radius: 50%;
 }
