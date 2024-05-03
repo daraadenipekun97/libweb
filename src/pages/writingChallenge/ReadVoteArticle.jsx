@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-
+import Avatar from "../../assets/images/avatar.png"
 import UserNavbar from "../../components/userNavbar/UserNavbar";
 import './readvotearticle.css'
 import Swal from "sweetalert2";
 import {fetchArticleById, voteArticle, restoreVoteArticleInitial, fetchProfile } from "../../Actions";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  WhatsappIcon,
+} from "react-share";
 
 const ReadVoteArticle = () => {
 
@@ -22,6 +32,8 @@ const ReadVoteArticle = () => {
 
     const { articleById, voteArticleSuccess, voteArticleFailure } = useSelector((state) => state.challenge);
 
+    const [articleVoted, setArticleVoted] = useState(false);
+
     const [paragraph, setParagraph] = useState(
         [
           {
@@ -31,8 +43,12 @@ const ReadVoteArticle = () => {
       );
 
     useEffect(() => {
+         dispatch(fetchProfile());
         dispatch(fetchArticleById(params.id));
-        dispatch(fetchProfile());
+
+
+
+       
 
       }, [dispatch]);
 
@@ -100,6 +116,15 @@ const ReadVoteArticle = () => {
 
       useEffect(() => {
         callParagaraphs()
+
+        console.log(articleById.votes)
+        console.log("profile", profileData.id)
+        let articlevoted = articleById?.votes?.find(item => item.voter_id === profileData?.id);
+        console.log('articlevoted ', articlevoted)
+        setArticleVoted(articlevoted !== undefined ? true : false);
+
+
+
       }, [articleById])
 
 
@@ -147,20 +172,99 @@ const ReadVoteArticle = () => {
             ))
           }
             </div>
-            <div className="article-vote-share">
-                <div className="article-vote" 
-                onClick={() => handleVote()}
 
-                >
-                <AiOutlineHeart
-                    size={25}
-                    color="red"
-                    />
-                    <small>Vote this article</small>
-                </div>
-               
-
+            <div className="profile">
+            <div class="profile-img">
+                  <img src={articleById?.user?.image_data?.includes("avatar.png") ? Avatar : articleById?.user?.image_data} alt="" />
+              </div>
+              <span class="name">{articleById?.user?.name}</span>
             </div>
+
+
+            <div className="article-vote-share">
+               {
+                articleVoted? (
+                  <div className="article-vote" 
+                  // onClick={() => handleVote()}
+  
+                  >
+                  <AiFillHeart
+                      size={25}
+                      color="red"
+                      />
+                      <small>Article Voted</small>
+
+                  </div>
+                ) :(
+                  <div className="article-vote" 
+                  onClick={() => handleVote()}
+  
+                  >
+                  <AiOutlineHeart
+                      size={25}
+                      color="red"
+                      />
+                      <small>Vote this article</small>
+                  </div>
+                )
+               }
+                <small style={{color:"brown"}}>*you can only vote once throughout the challenge</small>
+            </div>
+
+
+        <div className="social">
+          <span className="share-title">share this article</span>
+          <div>
+            <FacebookShareButton
+              className="social-btn"
+              url={`${window.location.href}`}
+            >
+              <FacebookIcon
+                size={20}
+                round
+              />
+            </FacebookShareButton>
+
+
+            <TwitterShareButton
+              className="social-btn"
+              url={`${window.location.href}`}
+              title="Please check out this article on mylibribooks and vote"
+            //  hashtag="#MyLibriBooks #blog"
+            >
+              <TwitterIcon
+                size={20}
+                round
+
+              />
+            </TwitterShareButton>
+
+            <LinkedinShareButton
+              className="social-btn"
+              url={`${window.location.href}`}
+              title="Please check out this article on mylibribooks and vote"
+              summary=""
+            >
+              <LinkedinIcon
+                size={20}
+                round
+
+              />
+            </LinkedinShareButton>
+
+            <WhatsappShareButton
+              url={`${window.location.href}`}
+              title="Please check out this article on mylibribooks and vote"
+              separator=" "
+            >
+              <WhatsappIcon
+                size={20}
+                round
+
+              />
+            </WhatsappShareButton>
+          </div>
+        </div>
 
         </div>
 

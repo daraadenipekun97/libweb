@@ -46,7 +46,7 @@ const Modal = ({ handleClose, show, handleNavigate }) => {
 
 
 
-const ChallengeModal = ({ handleClose, show, handleNavigate }) => {
+const ChallengeModal = ({ handleClose, show, handleNavigate, handleNavigateVote }) => {
   const showHideClassName = show
     ? "main-modal-bg-dashboard display-block"
     : "main-modal-bg-dashboard display-none";
@@ -67,8 +67,8 @@ const ChallengeModal = ({ handleClose, show, handleNavigate }) => {
 
         <hr />
         <div className="btn-modal-wrapper-dashboard">
-          <button className="modal-btn-dashboard" onClick={handleClose}>
-            Close
+          <button className="modal-btn-dashboard" onClick={handleNavigateVote}>
+            Vote an Article
           </button>
           <button className="modal-btn-start-trial-dashboard" onClick={handleNavigate}>
             Join the Challenge
@@ -164,6 +164,10 @@ const Dashboard = () => {
     navigate("/home/writingChallenge")
   }
 
+  const handleNavigateVote = () => {
+    navigate("/home/articlecategory")
+  }
+
   function getMultipleRandom(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
 
@@ -194,7 +198,7 @@ const Dashboard = () => {
       <ActionBanner />
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
-      <ChallengeModal handleClose={handleCloseChallenge} show={showChallengeModal} handleNavigate={handleNavigateChallenge} />
+      <ChallengeModal handleClose={handleCloseChallenge} show={showChallengeModal} handleNavigate={handleNavigateChallenge} handleNavigateVote={handleNavigateVote} />
       <ModalRedirect showRedirectModal={showRedirectModal} />
     </>
   );

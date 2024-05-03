@@ -304,3 +304,33 @@ export const deleteUserAccount = async (email) => {
     }
   }
 };
+
+
+export const uploadUserProfileImage = async (body) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.post(`${baseController}update/image`, body, {
+          headers: {
+              'content-type': 'multipart/form-data' 
+        }
+      });
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          toastr.success(`${response.data.message}`, "Success");
+          return response.data.status;
+        } else {
+          toastr.error("Something went wrong", "Please try again");
+          return response.data.status;
+        }
+      } else {
+        toastr.error("An Error Occured", "Please try again");
+      }
+    } catch (ex) {
+      toastr.error("An Error Occured", "Please try again");
+          // console.log(ex.response.data)
+          return ex.response.data.message
+    }
+  }
+};

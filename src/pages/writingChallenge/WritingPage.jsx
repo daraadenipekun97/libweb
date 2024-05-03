@@ -152,7 +152,7 @@ const WritingPage = () => {
   }, [editor]);
 
   const handleSubmitArticle = () => {
-    if (wordCount <= 1000) {
+    if (wordCount <= 1500) {
       verifySubmitArticle();
     } else {
       setWordLimitValidation(true);
@@ -161,7 +161,7 @@ const WritingPage = () => {
 
 
   const handleEditArticle = () => {
-    if (wordCount <= 1000) {
+    if (wordCount <= 1500) {
       verifyEditArticle();
     } else {
       setWordLimitValidation(true);

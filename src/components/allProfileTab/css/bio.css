@@ -145,6 +145,96 @@ select:disabled {
   cursor: pointer;
 }
 
+.profile-picture-wrapper {
+  background-color: white;
+  height: fit-content;
+  width: 60vw;
+  padding: 2rem 2rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  
+}
+
+.upload-profile-image-wrapper{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.user-profile-img{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+
+}
+
+.user-profile-img img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
+
+
+/* .hidden-file-input {
+  position: absolute;
+  left: -9999px;
+} */
+
+/* Style the custom file input label */
+.custom-file-input {
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Style the text inside the custom file input label */
+.custom-file-input span {
+  font-size: 13px;
+  color: #333;
+}
+
+/* Optional: add hover and focus styles for better user experience */
+.custom-file-input:hover,
+.custom-file-input:focus {
+  background-color: #e0e0e0;
+}
+
+
+.size-error-text{
+  font-size: 10px;
+  color: red;
+}
+
+
+.upload-image{
+
+  padding: 0rem 1rem;
+  font-weight: 400;
+  border-radius: 5px;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 25px;
+  border: 0;
+  outline: none;
+  background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
+  color: white;
+  width: fit-content;
+  height: 35px;
+  cursor: pointer;
+
+}
+
+
+
 @media screen and (max-width: 1024px) {
   .bio-wrapper {
     background-color: white;
@@ -157,6 +247,11 @@ select:disabled {
     width: 100%;
     padding: 2rem 2rem;
   }
+
+  .profile-picture-wrapper {
+    width: 100%;
+  }
+  
 }
 
 @media screen and (max-width: 400px) {

@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./userNavbar.css";
 import Logo from "../../assets/images/myLibriBooks.png";
 import Avatar from "../../assets/images/avatar.png";
 import { AiFillCaretDown } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toastr } from "react-redux-toastr";
-import { useDispatch } from "react-redux";
 import { googleLogout } from "@react-oauth/google";
 
 const UserNavbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const {
+    profileData,
+  } = useSelector((state) => state.profile);
+
 
   const initialFormValues = {
     search: "",
@@ -82,6 +87,7 @@ const UserNavbar = () => {
     } else if (window.location.pathname === "/home/discover") {
       setActiveTab("discover");
     }
+
   }, [dispatch, window.location.pathname]);
 
   const handleHome = () => {
@@ -149,7 +155,7 @@ const UserNavbar = () => {
             </button>
           </div>
           <div className="profile" onClick={() => handleProfile()}>
-            <img src={Avatar} alt="" className="profile_pic" />
+            <img src={profileData.image_data || Avatar} alt="" className="profile_pic" />
             <AiFillCaretDown size={20} color="#5e458b" />
           </div>
         </div>

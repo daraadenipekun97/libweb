@@ -112,9 +112,11 @@
   cursor: pointer;
 }
 .profile_pic {
-  object-fit: contain;
+  object-fit: cover;
   width: 50px;
-  height: auto;
+  height: 50px;
+  border-radius: 50%;
+
 }
 .profileName {
   color: #5e458b;

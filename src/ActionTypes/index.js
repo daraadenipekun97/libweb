@@ -229,6 +229,8 @@ export const FETCH_ALL_BLOGS_SUCCESS = "fetch_all_blogs_success";
 export const FETCH_BLOG_BY_ID = "fetch_blog_by_id";
 export const FETCH_BLOG_BY_ID_SUCCESS = "fetch_blog_by_id_success";
 
-
+export const UPLOAD_PROFILE_IMAGE = "upload_profile_image";
+export const UPLOAD_PROFILE_IMAGE_SUCCESS = "upload_profile_image_success";
+export const RESTORE_UPLOAD_PROFILE_IMAGE_INITIAL = "restore_upload_profile_image_initial";
 
 

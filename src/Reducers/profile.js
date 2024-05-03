@@ -23,6 +23,8 @@ import {
   RESTORE_CHANGE_PASSWORD_INITIAL,
   DELETE_ACCOUNT_SUCCESS,
   RESTORE_DELETE_ACCOUNT_INITIAL,
+  UPLOAD_PROFILE_IMAGE_SUCCESS,
+  RESTORE_UPLOAD_PROFILE_IMAGE_INITIAL
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -55,6 +57,9 @@ const INIT_STATE = {
 
   deleteAccountSuccess: false,
   deleteAccountFailure: false,
+
+  uploadProfImagSuccess:false,
+  uploadProfImagFailure:false,
 };
 
 const profileReducer = (state = INIT_STATE, action) => {
@@ -324,6 +329,31 @@ const profileReducer = (state = INIT_STATE, action) => {
         ...state,
         deleteAccountSuccess: false,
         deleteAccountFailure: false,
+      };
+    }
+
+
+    case UPLOAD_PROFILE_IMAGE_SUCCESS: {
+      if (action.payload === true) {
+        return {
+          ...state,
+          uploadProfImagSuccess: true,
+          uploadProfImagFailure: false,
+        };
+      } else {
+        return {
+          ...state,
+          uploadProfImagSuccess: false,
+          uploadProfImagFailure: true,
+        };
+      }
+    }
+
+    case RESTORE_UPLOAD_PROFILE_IMAGE_INITIAL: {
+      return {
+        ...state,
+        uploadProfImagSuccess: false,
+        uploadProfImagFailure: false,
       };
     }
 

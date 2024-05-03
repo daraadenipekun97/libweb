@@ -5,7 +5,7 @@ import Select from "react-select";
 import Swal from "sweetalert2";
 import { googleLogout } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-
+import Avatar from "../../assets/images/avatar.png"
 import {
   fetchAllCountries,
   fetchProfile,
@@ -13,43 +13,12 @@ import {
   updateProfile,
   deleteAccount,
   restoredeleteAccountInitial,
+  uploadProfileImage,
+  restoreUploadProfileImageInitial,
 } from "../../Actions";
 import Spinner from "../spinner/Spinner";
 
-const customStyles = {
-  control: (provided, state) => ({
-    ...provided,
-    background: "#fff",
-    border: "2px solid #e9eaee",
-    minHeight: "30px",
-    height: "50px",
-    boxShadow: state.isFocused ? null : null,
-    marginBottom: "0.5rem",
-    fontSize: "15px",
 
-    "&:hover": {
-      border: "1px solid #5e458b",
-    },
-  }),
-
-  valueContainer: (provided, state) => ({
-    ...provided,
-    height: "50px",
-    padding: "0 6px",
-  }),
-
-  input: (provided, state) => ({
-    ...provided,
-    margin: "0px",
-  }),
-  indicatorSeparator: (state) => ({
-    display: "none",
-  }),
-  indicatorsContainer: (provided, state) => ({
-    ...provided,
-    height: "50px",
-  }),
-};
 
 const Bio = () => {
   const dispatch = useDispatch();
@@ -62,6 +31,8 @@ const Bio = () => {
     updateProfileFailure,
     deleteAccountSuccess,
     deleteAccountFailure,
+    uploadProfImagSuccess,
+    uploadProfImagFailure
   } = useSelector((state) => state.profile);
 
   const [theCountry, setTheCountry] = useState([]);
@@ -74,7 +45,9 @@ const Bio = () => {
     spinner: false,
   };
   const [formState, setFormState] = useState({ ...initialFormState });
-
+  const [displayPicture, setDisplayPicture] = useState(null)
+  const [fileSizeError, setFileSizeError] = useState(false);
+  const [profileImageSpinner, setProfileImageSpinner] = useState(false)
   const initialFormValues = {
     firstname: "",
     lastname: "",
@@ -85,6 +58,7 @@ const Bio = () => {
 
     //not being sent to API
     email: "",
+    profile_image: null
   };
 
   const [formValues, setFormValues] = useState({ ...initialFormValues });
@@ -347,6 +321,7 @@ const Bio = () => {
         country_id: profileData.country_id !== null ? profileData.country_id : "No Country",
         gender: profileData.gender !== null ? profileData.gender : "No Gender",
         email: profileData.email !== null ? profileData.email : "",
+        profile_image: profileData.image_data !==null ? profileData.image_data : ""
       });
     }
   }, [profileData]);
@@ -415,6 +390,61 @@ const Bio = () => {
       dispatch(restoredeleteAccountInitial());
     };
   }, [deleteAccountSuccess]);
+
+
+  const onInputChange = (e) => {
+     console.log(e.target.files);
+    let uploadedFile = e.target.files[0];
+
+    const maxSizeInBytes = 2 * 1024 * 1024; // 2MB in bytes
+
+
+    if (uploadedFile && uploadedFile.size > maxSizeInBytes) {
+        setFileSizeError(true)
+    } else {
+      setFileSizeError(false)
+      setDisplayPicture(URL.createObjectURL(uploadedFile))
+    setFormValues({
+      ...formValues,
+      profile_image: uploadedFile
+
+    });
+    }
+
+    // setFile(uploadedFile);
+   
+  }
+
+
+  const uploadProfImage = () => {
+   if (typeof formValues.profile_image === 'object') {
+    setProfileImageSpinner(true)
+    let formData = new FormData();
+    formData.append ("image" , formValues.profile_image);
+
+    dispatch(
+      uploadProfileImage(formData)
+    );
+    
+   }
+   else{
+    setFileSizeError(true)
+
+   }
+
+  }
+
+
+  useEffect(() => {
+    if (uploadProfImagSuccess || uploadProfImagFailure) {
+      setProfileImageSpinner(false)
+    }
+
+    return () => {
+      dispatch(restoreUploadProfileImageInitial());
+    };
+  }, [uploadProfImagSuccess , uploadProfImagFailure]);
+
 
   return (
     <>
@@ -568,6 +598,27 @@ const Bio = () => {
             {formState.spinner === true ? <Spinner /> : formState.buttonText}
           </button>
         </div>
+      </div>
+      <div className="profile-picture-wrapper">
+         <p className="bio-wrapper-text">Upload a head shot</p>
+         <div className="upload-profile-image-wrapper">
+         <div class="user-profile-img">
+                <img src={displayPicture === null ? formValues.profile_image : displayPicture} alt="" />
+          </div>
+          <input id="fileInput" hidden accept="image/*" type="file" onChange={(e) => onInputChange(e)} />
+          <label for="fileInput" class="custom-file-input">
+            <span>Choose an image</span>
+          </label>
+            <button className="upload-image" onClick={() => uploadProfImage()}>
+            {profileImageSpinner === true ? <Spinner /> : "Upload"}
+            </button>
+         </div>
+
+         {
+          fileSizeError ? (<small className="size-error-text">Please upload an image not more than 2MB</small>) : ""
+          }
+       
+
       </div>
       <div className="delete-wrapper">
         <p className="bio-wrapper-text">You can delete your account</p>
