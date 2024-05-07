@@ -123,8 +123,9 @@ const WritingPage = () => {
       if (result.isConfirmed) {
         dispatch(
           editArticle({
-            article_id:articleByUser?.id,
+            article_topic_id:articleByUser?.article_topic_id,
             article_body: articleText,
+            article_id: articleByUser?.id
           })
         );
         // console.log(articleText)
@@ -172,12 +173,12 @@ const WritingPage = () => {
     if (createArticleSuccess) {
       console.log("article created successfully");
       dispatch(fetchArticleByUser())
-      setTimeout(() => { 
-        dispatch(sendArticleLink({
-          article_id: articleByUser?.id,
-          link: `https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`
-        }))
-      }, 2000);  
+      // setTimeout(() => { 
+      //   dispatch(sendArticleLink({
+      //     article_id: articleByUser?.id,
+      //     link: `https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`
+      //   }))
+      // }, 2000);  
     }
 
     return () => {
@@ -246,7 +247,7 @@ const WritingPage = () => {
         <div className="word-count-wrapper">
           <p className="article-text">Word Count: {wordCount}</p>
           {wordLimitValidation ? (
-            <p className="word-limit">You have exceeding the maximum word limit of 1000 words</p>
+            <p className="word-limit">You have exceeding the maximum word limit of 1500 words</p>
           ) : (
             ""
           )}

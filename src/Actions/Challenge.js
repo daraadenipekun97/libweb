@@ -70,9 +70,9 @@ export const restoreCreateArticleInitial = () => ({
   type: RESTORE_CREATE_ARTICLE_INITIAL,
 });
 
-export const editArticle = ({ article_id, article_body }) => ({
+export const editArticle = ({ article_topic_id, article_body, article_id }) => ({
   type: EDIT_ARTICLE,
-  payload: { article_id, article_body },
+  payload: { article_topic_id, article_body, article_id },
 });
 
 export const editArticleSuccess = (payload) => ({

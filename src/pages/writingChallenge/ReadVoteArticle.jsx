@@ -192,7 +192,7 @@ const ReadVoteArticle = () => {
                       size={25}
                       color="red"
                       />
-                      <small>Article Voted</small>
+                      <small>Article Voted. Article has {articleById?.votes?.length} vote(s)</small>
 
                   </div>
                 ) :(
@@ -204,7 +204,7 @@ const ReadVoteArticle = () => {
                       size={25}
                       color="red"
                       />
-                      <small>Vote this article</small>
+                      <small>Vote this article. Article has {articleById?.votes?.length} vote(s)</small>
                   </div>
                 )
                }
