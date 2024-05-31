@@ -283,12 +283,12 @@ const WritingChallenge = () => {
           <br />
           <b>Prices to be won</b> <br />
           Positions <br />
-          <b>1st.</b> 150 $ dollars <br />
-          <b>2nd.</b> 100 $ dollars <br />
-          <b>3rd.</b> 50 $ dollars <br />
-          <b> 4th.</b> One year mylibri books subscription <br />
-          <b>5th.</b> One year mylibri books subscription <br />
-          <b>6th.</b> One year mylibri books subscription <br />
+          <b>1st.</b> 150$ dollars + 1 Year MyLibri Books subscription <br />
+          <b>2nd.</b> 100$ dollars + 1 Year MyLibri Books subscription <br />
+          <b>3rd.</b> 50$ dollars + 1 Year MyLibri Books subscription <br />
+          <b>4th.</b> One year MyLibri books subscription <br />
+          <b>5th.</b> One year MyLibri books subscription <br />
+          {/* <b>6th.</b> One year mylibri books subscription <br />
           <b>7th.</b> One year mylibri books subscription <br />
           <b>8th.</b> One year mylibri books subscription <br />
           <b>9th.</b> One month mylibri books subscription <br />
@@ -297,7 +297,7 @@ const WritingChallenge = () => {
           <b>12th.</b> One month mylibri books subscription <br />
           <b>13th.</b> One month mylibri books subscription <br />
           <b>14th.</b> One month mylibri books subscription <br />
-          <b>15th.</b> One month mylibri books subscription <br />
+          <b>15th.</b> One month mylibri books subscription <br /> */}
           The above are the prices to be won.
           <br />
           The contestant will pick any topic from the 5 dropdown menu topics and write an article on
