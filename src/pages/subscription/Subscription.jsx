@@ -302,7 +302,7 @@ const Subscription = () => {
                 <p>LONE RANGER QUARTERLY</p>
               </div>
               <p className="subscription-price">
-                ₦2,500/<span>3 month</span>
+                ₦2,500/<span>3 months</span>
               </p>
               <p className="price-subtext">Great Reading Plan for Individual</p>
               <p className="features-list">
@@ -328,7 +328,7 @@ const Subscription = () => {
                 <p>LONE RANGER BIANNUAL</p>
               </div>
               <p className="subscription-price">
-                ₦5,500/<span>6 month</span>
+                ₦5,500/<span>6 months</span>
               </p>
               <p className="price-subtext">Great Reading Plan for Individual</p>
               <p className="features-list">
@@ -354,7 +354,7 @@ const Subscription = () => {
                 <p>LONE RANGER ANNUAL</p>
               </div>
               <p className="subscription-price">
-                ₦11,200/<span>12 month</span>
+                ₦11,200/<span>12 months</span>
               </p>
               <p className="price-subtext">Great Reading Plan for Individual</p>
               <p className="features-list">

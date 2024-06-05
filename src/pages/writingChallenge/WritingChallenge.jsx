@@ -150,64 +150,48 @@ const WritingChallenge = () => {
         <h1 className="about-challenge-heading">About Challenge</h1>
         <hr />
         <p className="challenge-text">
-          Writing competitions provide a unique platform for writers to showcase their creativity,
-          skills, and storytelling prowess. If you're considering entering this writing challenge,
-          it's essential to familiarize yourself with the rules and guidelines to increase your
-          chances of success. The writing challenge is an opportunity for writers to test their
-          abilities, push their creative boundaries, and gain recognition for their work. It offers
-          a structured platform for writers to produce content within a specific word limit, theme,
-          or genre. The challenge comes with prizes, recognition, and the chance to have your work
-          read by a wider audience.
+          Writing competitions are an excellent platform for writers to showcase their creativity, skills, and storytelling prowess. This challenge is an opportunity for writers to test their abilities, push their creative boundaries, and gain recognition for their work. By participating, writers can produce content within a specific word limit, theme, or genre, with the chance to win prizes, gain recognition, and have their work read by a wider audience.
         </p>
         <h1 className="about-challenge-heading">Rules of the Challenge</h1>
         <hr />
         <ul className="rules-list">
           <li>
+          <p className="challenge-text-header">Participation: </p>
             <p className="challenge-text">
-              <b>Participation: </b>
-              To participate in this challenge, you must have an active subscription
+                •	Writers must have an active subscription, specifically any of the Lone Ranger Plans. <br />
+                •	Voters need at least a Trial Subscription.
             </p>
           </li>
           <li>
+          <p className="challenge-text-header">Word Limit: </p>
             <p className="challenge-text">
-              <b>Word Limit: </b>
-              Typically, a writing competition will specify a word limit, and it's essential to
-              adhere to this limit. For the purpose of this article, let's consider a 1500-word
-              limit. You may be penalized or disqualified if your article exceeds this limit. Be
-              concise, and make every word count.
+               •	The article should not exceed 500 words. Submissions over this limit may be penalized or disqualified.
             </p>
           </li>
           <li>
+          <p className="challenge-text-header">Theme or Topic: </p>
             <p className="challenge-text">
-              <b>Theme or Topic: </b>
-              The competition will specify a theme, topic, or genre that your article should revolve
-              around. It's crucial to stay on topic and explore the theme creatively. Deviating from
-              the theme may result in disqualification.{" "}
-            </p>
+              •	The competition focuses on fiction. Ensure your article revolves around this genre. Straying from the theme may lead to disqualification.
+          </p>
           </li>
           <li>
+          <p className="challenge-text-header">Submission Deadline: </p>
             <p className="challenge-text">
-              <b>Submission Deadline: </b>
-              The competition will have a clear deadline for submitting your article. Missing this
-              deadline may result in disqualification. To avoid any last-minute rushes, plan your
-              writing process and aim to submit your entry well before the deadline.{" "}
-            </p>
+              •	Adhere to the specified deadline. Late submissions will not be considered. Plan and submit your entry well before the deadline to avoid last-minute issues.
+              </p>
           </li>
           <li>
+          <p className="challenge-text-header">Originality:</p>
             <p className="challenge-text">
-              <b>Originality: </b>
-              Plagiarism is strictly prohibited in writing competitions. Your submission must be
-              entirely your own work, and you should avoid copying, imitating, or paraphrasing
-              content from other sources without proper attribution.
-            </p>
+              •	Submissions must be original. Plagiarism, including copying or paraphrasing from other sources without proper attribution, is strictly prohibited.
+              </p>
+         
           </li>
           <li>
+          <p className="challenge-text-header">Language and Grammar:</p>
             <p className="challenge-text">
-              <b>Language and Grammar: </b>
-              Proper grammar, spelling, and punctuation are crucial. Review and edit your article
-              for errors before submitting. Sloppy writing can detract from the quality of your work
-              and affect your chances of winning.
-            </p>
+              •	Submissions must be original. Plagiarism, including copying or paraphrasing from other sources without proper attribution, is strictly prohibited.
+              </p>
           </li>
         </ul>
 
@@ -215,112 +199,90 @@ const WritingChallenge = () => {
         <hr />
         <ul className="rules-list">
           <li>
+          <p className="challenge-text-header">Plan Your Writing:</p>
             <p className="challenge-text">
-              <b>Plan Your Writing: </b>
-              Careful planning is essential. Start by brainstorming ideas related to the competition
-              theme and outline your article. This will help you stay focused and organized
-              throughout the writing process.{" "}
+            •	Brainstorm ideas related to the theme and outline your article. This helps maintain focus and organization.              </p>
+          </li>
+          <li>
+          <p className="challenge-text-header">Revise and Edit:</p>
+            <p className="challenge-text">
+            •	After drafting, revise and edit for clarity, consistency, and readability. Remove unnecessary words and refine your prose.            </p>
+          </li>
+          <li>
+          <p className="challenge-text-header">Seek Feedback:</p>
+            <p className="challenge-text">
+            •	Share your work with peers or writing groups for constructive feedback. Another perspective can highlight areas for improvement.              </p>
+          </li>
+          <li>
+          <p className="challenge-text-header">Stay True to the Theme:</p>
+            <p className="challenge-text">
+            •	Ensure your article is closely connected to the competition theme. Creativity is encouraged, but relevance to the theme is crucial.              </p>
+          </li>
+          <li>
+          <p className="challenge-text-header">Proofread:</p>
+            <p className="challenge-text">
+            •	Proofreading involves correcting typos and refining your writing. Consider professional editing assistance if possible.            </p>
+          </li>
+          <li>
+          <p className="challenge-text-header">Respect the Word Limit:</p>
+            <p className="challenge-text">
+            •	Stick to the 500-word limit. Being concise and effective with word usage is a valuable skill.            
             </p>
           </li>
           <li>
+          <p className="challenge-text-header">Submit Early:</p>
             <p className="challenge-text">
-              <b>Revise and Edit: </b>
-              After completing your initial draft, take the time to revise and edit your work. Check
-              for clarity, consistency, and readability. Eliminate unnecessary words and refine your
-              prose.{" "}
-            </p>
-          </li>
-          <li>
-            <p className="challenge-text">
-              <b>Seek Feedback: </b>
-              Share your work with peers or writing groups for constructive feedback. Another
-              perspective can help you identify areas for improvement and make your article
-              stronger.{" "}
-            </p>
-          </li>
-          <li>
-            <p className="challenge-text">
-              <b>Stay True to the Theme: </b>
-              Ensure that your article remains closely connected to the competition theme.
-              Creativity is encouraged, but don't lose sight of the theme's relevance.{" "}
-            </p>
-          </li>
-          <li>
-            <p className="challenge-text">
-              <b>Proofread: </b>
-              Proofreading is not just about correcting typos but also about refining your writing
-              to its best form. Consider enlisting the help of a professional editor if possible
-            </p>
-          </li>
-          <li>
-            <p className="challenge-text">
-              <b>Respect the Word Limit: </b>
-              Stick to the word limit without exceeding it. Being concise and making every word
-              count is a valuable skill in writing competitions{" "}
-            </p>
-          </li>
-          <li>
-            <p className="challenge-text">
-              <b>Submit Early: </b>
-              Avoid last-minute submissions. Submit your article well in advance of the deadline to
-              account for any technical issues or last-minute changes.{" "}
-            </p>
+            •	Avoid last-minute submissions. Submit early to account for any technical issues or last-minute changes             </p>
           </li>
         </ul>
 
-        <h1 className="about-challenge-heading">Winner / Judging Criteria</h1>
+        <h1 className="about-challenge-heading">Judging Criteria and Prizes</h1>
         <hr />
-        <p className="challenge-text">
-          Understanding how your work will be evaluated is vital. These competition judging
-          criteria, which may include creativity, originality, adherence to the theme, writing
-          style, and overall impact, comments and Like (Vote).{" "}
-          <b>
-            {" "}
-            It is also important to note that the more likes (votes) you have propels you to be the
-            winner of the 1st price.
-          </b>{" "}
-          Tailor your article to meet these criteria to the best of your ability.
-          <br />
-          <b>Prices to be won</b> <br />
-          Positions <br />
-          <b>1st.</b> 150$ dollars + 1 Year MyLibri Books subscription <br />
-          <b>2nd.</b> 100$ dollars + 1 Year MyLibri Books subscription <br />
-          <b>3rd.</b> 50$ dollars + 1 Year MyLibri Books subscription <br />
-          <b>4th.</b> One year MyLibri books subscription <br />
-          <b>5th.</b> One year MyLibri books subscription <br />
-          {/* <b>6th.</b> One year mylibri books subscription <br />
-          <b>7th.</b> One year mylibri books subscription <br />
-          <b>8th.</b> One year mylibri books subscription <br />
-          <b>9th.</b> One month mylibri books subscription <br />
-          <b>10th.</b> One month mylibri books subscription <br />
-          <b>11th.</b> One month mylibri books subscription <br />
-          <b>12th.</b> One month mylibri books subscription <br />
-          <b>13th.</b> One month mylibri books subscription <br />
-          <b>14th.</b> One month mylibri books subscription <br />
-          <b>15th.</b> One month mylibri books subscription <br /> */}
-          The above are the prices to be won.
-          <br />
-          The contestant will pick any topic from the 5 dropdown menu topics and write an article on
-          it with the text area provided.
-          <br />
-          During Submission a link will be auto generated that the contestant can share with their
-          family and friends to come and vote for their published articles on our platform to win
-          any of the above price
-          <br />
-          <b>WARNING:</b> During the submission of the article, if you notice an error in your
-          article, you can either delete or edit to make the correction on your article before
-          anyone comments or likes the article, once there is a comment or like on the article, you
-          cannot delete or edit the article anymore
-        </p>
+
+        <ul className="rules-list">
+        <li>
+          <p className="challenge-text-header">Judging Criteria:</p>
+            <p className="challenge-text">
+             •	Articles will be evaluated based on creativity, originality, adherence to the theme, writing style, overall impact, comments, and likes (votes). Articles with the most likes (votes) have a higher chance of winning the 1st prize.            
+            </p>
+          </li>
+
+          <li>
+          <p className="challenge-text-header">Prizes:</p>
+            <p className="challenge-text">
+            •	1st Place: $150 + 1 Year MyLibri Books subscription <br />
+            •	2nd Place: $100 + 1 Year MyLibri Books subscription <br />
+            •	3rd Place: $50 + 1 Year MyLibri Books subscription <br />
+            •	4th Place: 1 Year MyLibri Books subscription <br />      
+            •	5th Place: 1 Year MyLibri Books subscription <br />
+            
+            </p>
+          </li>
+
+          <li>
+          <p className="challenge-text-header">Submission Details:</p>
+            <p className="challenge-text">
+            •	Write and submit your article using the provided text area. <br />      
+            •	Upon submission, you can share your article with your family and friends to garner votes.
+            </p>
+          </li>
+
+           <li>
+              <p className="challenge-text-bottom">
+               Note: If errors are noticed after submission, you can edit or delete your article before any comments or likes are made. Once comments or likes are present, the article cannot be edited or deleted. Ensure thorough proofreading before submission.
+              </p>
+           </li>
+          
+        </ul>
        {
         articleByUser?.article_topic_id ? <></> : (
           <>
-        <p className="select-label">Select a Category of Article*</p>
+        <p className="select-label">Select Category*</p>
       <Select
           options={theTopics}
           styles={customStyles}
           value={topic}
-          placeholder={"Select a Topic*"}
+          placeholder={"Article Category*"}
           // isClearable={true}
           onChange={(e) => selectTopicHandler(e)}
         />

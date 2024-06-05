@@ -153,7 +153,7 @@ const WritingPage = () => {
   }, [editor]);
 
   const handleSubmitArticle = () => {
-    if (wordCount <= 1500) {
+    if (wordCount <= 500) {
       verifySubmitArticle();
     } else {
       setWordLimitValidation(true);
@@ -162,7 +162,7 @@ const WritingPage = () => {
 
 
   const handleEditArticle = () => {
-    if (wordCount <= 1500) {
+    if (wordCount <= 500) {
       verifyEditArticle();
     } else {
       setWordLimitValidation(true);
@@ -247,7 +247,7 @@ const WritingPage = () => {
         <div className="word-count-wrapper">
           <p className="article-text">Word Count: {wordCount}</p>
           {wordLimitValidation ? (
-            <p className="word-limit">You have exceeding the maximum word limit of 1500 words</p>
+            <p className="word-limit">You have exceeding the maximum word limit of 500 words</p>
           ) : (
             ""
           )}
