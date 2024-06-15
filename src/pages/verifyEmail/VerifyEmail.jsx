@@ -267,9 +267,7 @@ const VerifyEmail = ({ user }) => {
             </p>
             <div className="verification-warning">
               <AiFillWarning color="#EED202" size={30} />
-              <p className="warning-text">
-                Please check your spam folders for verification code
-              </p>
+              <p className="warning-text">Please check your spam folders for verification code</p>
             </div>
           </div>
         </div>

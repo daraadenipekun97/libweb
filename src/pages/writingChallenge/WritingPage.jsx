@@ -43,7 +43,7 @@ const WritingPage = () => {
     articleById,
     voteArticleSuccess,
     voteArticleFailure,
-    articleByUser
+    articleByUser,
   } = useSelector((state) => state.challenge);
 
   const [editor, setEditor] = useState(null);
@@ -58,9 +58,8 @@ const WritingPage = () => {
   //   }, [dispatch]);
 
   useEffect(() => {
-      dispatch(fetchArticleByUser())
-  }, [dispatch])
-  
+    dispatch(fetchArticleByUser());
+  }, [dispatch]);
 
   const verifySubscriptionStatus = () => {
     Swal.fire({
@@ -99,7 +98,7 @@ const WritingPage = () => {
       if (result.isConfirmed) {
         dispatch(
           createArticle({
-            article_topic_id:Number(params.id),
+            article_topic_id: Number(params.id),
             article_body: articleText,
           })
         );
@@ -123,9 +122,9 @@ const WritingPage = () => {
       if (result.isConfirmed) {
         dispatch(
           editArticle({
-            article_topic_id:articleByUser?.article_topic_id,
+            article_topic_id: articleByUser?.article_topic_id,
             article_body: articleText,
-            article_id: articleByUser?.id
+            article_id: articleByUser?.id,
           })
         );
         // console.log(articleText)
@@ -160,7 +159,6 @@ const WritingPage = () => {
     }
   };
 
-
   const handleEditArticle = () => {
     if (wordCount <= 500) {
       verifyEditArticle();
@@ -172,13 +170,13 @@ const WritingPage = () => {
   useEffect(() => {
     if (createArticleSuccess) {
       console.log("article created successfully");
-      dispatch(fetchArticleByUser())
-      // setTimeout(() => { 
+      dispatch(fetchArticleByUser());
+      // setTimeout(() => {
       //   dispatch(sendArticleLink({
       //     article_id: articleByUser?.id,
       //     link: `https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`
       //   }))
-      // }, 2000);  
+      // }, 2000);
     }
 
     return () => {
@@ -186,17 +184,16 @@ const WritingPage = () => {
     };
   }, [createArticleSuccess]);
 
-
   // useEffect(() => {
   //   if (createArticleFailure) {
   //     console.log("article created successfully");
   //     dispatch(fetchArticleByUser())
-  //     setTimeout(() => { 
+  //     setTimeout(() => {
   //       dispatch(sendArticleLink({
   //         article_id: articleByUser?.id,
   //         link: `${window.location.hostname}/home/articlecategory/${articleByUser?.id}`
   //       }))
-  //     }, 2000);  
+  //     }, 2000);
   //   }
 
   //   return () => {
@@ -204,14 +201,10 @@ const WritingPage = () => {
   //   };
   // }, [createArticleFailure]);
 
- 
-  
-
-  
   useEffect(() => {
     if (editArticleSuccess) {
       console.log("article edited successfully");
-      dispatch(fetchArticleByUser())
+      dispatch(fetchArticleByUser());
     }
 
     return () => {
@@ -224,11 +217,10 @@ const WritingPage = () => {
       <UserNavbar />
       <div className="article-wrapper">
         <div className="backbtn">
-          <a href="javascript:history.back()" className="back-to-challenge">Back To Home</a>
-          
+          <a href="javascript:history.back()" className="back-to-challenge">
+            Back To Home
+          </a>
         </div>
-
-       
         <CKEditor
           editor={ClassicEditor}
           data={articleByUser?.content}
@@ -252,73 +244,61 @@ const WritingPage = () => {
             ""
           )}
         </div>
-        {
-          articleByUser?.created_at ?  <></> : <PurpleButton text="Submit" onClickFunction={handleSubmitArticle} />
-        }
+        {articleByUser?.created_at ? (
+          <></>
+        ) : (
+          <PurpleButton text="Submit" onClickFunction={handleSubmitArticle} />
+        )}
         &nbsp;
-        {
-          articleByUser?.votes && articleByUser?.votes.length > 0 ? <></> : <WhiteButton text="Edit Article" onClickFunction={handleEditArticle} />
-        }
-        {
-           articleByUser?.created_at ? 
-          
-            <div className="social">
+        {articleByUser?.votes && articleByUser?.votes.length > 0 ? (
+          <></>
+        ) : (
+          <WhiteButton text="Edit Article" onClickFunction={handleEditArticle} />
+        )}
+        {articleByUser?.created_at ? (
+          <div className="social">
             <span className="share-title">share this article</span>
             <div>
-            <FacebookShareButton
-              className="social-btn"
-              url={`https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`}
-            //  quote="Please check out this recent blog post from MyLibriBooks"
-            //  hashtag="#MyLibriBooks #blog"
-            // url={`http://localhost:3000/blog/${blogById.title}`}
-            >
-              <FacebookIcon
-                size={20}
-                round
-              />
-            </FacebookShareButton>
+              <FacebookShareButton
+                className="social-btn"
+                url={`https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`}
+                //  quote="Please check out this recent blog post from MyLibriBooks"
+                //  hashtag="#MyLibriBooks #blog"
+                // url={`http://localhost:3000/blog/${blogById.title}`}
+              >
+                <FacebookIcon size={20} round />
+              </FacebookShareButton>
 
+              <TwitterShareButton
+                className="social-btn"
+                url={`https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`}
+                title="Please check out my article on MyLibriBooks"
+                //  hashtag="#MyLibriBooks #blog"
+              >
+                <TwitterIcon size={20} round />
+              </TwitterShareButton>
 
-            <TwitterShareButton
-              className="social-btn"
-              url={`https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`}
-              title="Please check out my article on mylibribooks"
-            //  hashtag="#MyLibriBooks #blog"
-            >
-              <TwitterIcon
-                size={20}
-                round
+              <LinkedinShareButton
+                className="social-btn"
+                url={`https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`}
+                title="Please check out my article on MyLibriBooks"
+                summary=""
+              >
+                <LinkedinIcon size={20} round />
+              </LinkedinShareButton>
 
-              />
-            </TwitterShareButton>
-
-            <LinkedinShareButton
-              className="social-btn"
-              url={`https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`}
-              title="Please check out my article on mylibribooks"
-              summary=""
-            >
-              <LinkedinIcon
-                size={20}
-                round
-
-              />
-            </LinkedinShareButton>
-
-            <WhatsappShareButton
-              url={`https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`}
-              title="Please check out my article on mylibribooks"
-              separator=" "
-            >
-              <WhatsappIcon
-                size={20}
-                round
-
-              />
-            </WhatsappShareButton>
+              <WhatsappShareButton
+                url={`https://${window.location.hostname}/home/articlecategory/${articleByUser?.id}`}
+                title="Please check out my article on MyLibriBooks"
+                separator=" "
+              >
+                <WhatsappIcon size={20} round />
+              </WhatsappShareButton>
             </div>
-          </div> : <></>
-        }
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

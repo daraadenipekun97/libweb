@@ -29,7 +29,6 @@
   background-color: white;
   color: #5e458b;
   margin-bottom: 1rem;
-
 }
 
 .btn-wrapper-white:hover {
@@ -37,6 +36,6 @@
   /* background-color: whitesmoke; */
 }
 
-.btn-wrapper-white:active{
+.btn-wrapper-white:active {
   background-color: white !important;
 }

@@ -37,10 +37,9 @@ import {
   DELETE_ACCOUNT,
   DELETE_ACCOUNT_SUCCESS,
   RESTORE_DELETE_ACCOUNT_INITIAL,
-
   UPLOAD_PROFILE_IMAGE,
   UPLOAD_PROFILE_IMAGE_SUCCESS,
-  RESTORE_UPLOAD_PROFILE_IMAGE_INITIAL
+  RESTORE_UPLOAD_PROFILE_IMAGE_INITIAL,
 } from "../ActionTypes";
 
 export const fetchProfile = () => ({
@@ -229,11 +228,9 @@ export const restoredeleteAccountInitial = () => ({
   type: RESTORE_DELETE_ACCOUNT_INITIAL,
 });
 
-
-
 export const uploadProfileImage = (payload) => ({
   type: UPLOAD_PROFILE_IMAGE,
-  payload
+  payload,
 });
 
 export const uploadProfileImageSuccess = (payload) => ({

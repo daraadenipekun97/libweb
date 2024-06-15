@@ -105,10 +105,7 @@ function App() {
                   <Route path="privacyPolicy" element={<PrivacyPolicyPage user={user} />} />
                   <Route path="termsOfUse" element={<TermsOfUsePage user={user} />} />
                   <Route path="blog" element={<BlogPage user={user} />} />
-                  <Route
-                    path="blog/:title"
-                    element={<BlogWriteupPage user={user} />}
-                  />
+                  <Route path="blog/:title" element={<BlogWriteupPage user={user} />} />
 
                   <Route path="home" element={<HomePage user={user} />}>
                     <Route path="dashboard" element={<DashboardPage />} />

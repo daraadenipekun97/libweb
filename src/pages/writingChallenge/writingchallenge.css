@@ -18,20 +18,17 @@ hr {
   background: #333;
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
-.challenge-text-header{
+.challenge-text-header {
   font-weight: 700;
   color: #78787d;
-  font-size:medium
+  font-size: medium;
 }
 
-.challenge-text-bottom{
-
+.challenge-text-bottom {
   font-weight: 600;
   color: #78787d;
-  font-size:medium;
+  font-size: medium;
   /* line-height: 3; */
-
-
 }
 
 .challenge-text {
@@ -46,7 +43,6 @@ hr {
   list-style: none;
   margin: 15px 0px;
   /* border: solid; */
-
 }
 
 .rules-list li {
@@ -71,7 +67,7 @@ hr {
   /* font-weight: bold; */
 }
 
-.select-label{
+.select-label {
   font-size: 1rem;
   color: #78787d;
 }

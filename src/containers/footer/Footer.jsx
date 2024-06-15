@@ -9,7 +9,6 @@ const Footer = () => {
 
   const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
 
-
   useEffect(() => {
     const footerYear = new Date().getFullYear();
     setYear(footerYear);
@@ -34,12 +33,10 @@ const Footer = () => {
               FAQs
             </a>
           </p>
-         
-              <p>
-                <a href="/blog">Blog</a>
-              </p>
-        
-          
+
+          <p>
+            <a href="/blog">Blog</a>
+          </p>
         </div>
 
         <div className="lib-footer-links-div">

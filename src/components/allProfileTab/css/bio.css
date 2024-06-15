@@ -152,34 +152,30 @@ select:disabled {
   padding: 2rem 2rem;
   border-radius: 10px;
   margin-top: 1rem;
-  
 }
 
-.upload-profile-image-wrapper{
+.upload-profile-image-wrapper {
   display: flex;
   justify-content: left;
   align-items: center;
   gap: 10px;
-
 }
 
-.user-profile-img{
+.user-profile-img {
   border-radius: 50%;
   height: 100px;
   width: 100px;
   margin-top: 10px;
   border: 1px solid #ddd;
-
 }
 
-.user-profile-img img{
+.user-profile-img img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border: 3px solid #fff;
   border-radius: 50%;
 }
-
 
 /* .hidden-file-input {
   position: absolute;
@@ -208,15 +204,12 @@ select:disabled {
   background-color: #e0e0e0;
 }
 
-
-.size-error-text{
+.size-error-text {
   font-size: 10px;
   color: red;
 }
 
-
-.upload-image{
-
+.upload-image {
   padding: 0rem 1rem;
   font-weight: 400;
   border-radius: 5px;
@@ -230,10 +223,7 @@ select:disabled {
   width: fit-content;
   height: 35px;
   cursor: pointer;
-
 }
-
-
 
 @media screen and (max-width: 1024px) {
   .bio-wrapper {
@@ -251,7 +241,6 @@ select:disabled {
   .profile-picture-wrapper {
     width: 100%;
   }
-  
 }
 
 @media screen and (max-width: 400px) {

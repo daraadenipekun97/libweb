@@ -12,10 +12,7 @@ const UserNavbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const {
-    profileData,
-  } = useSelector((state) => state.profile);
-
+  const { profileData } = useSelector((state) => state.profile);
 
   const initialFormValues = {
     search: "",
@@ -87,7 +84,6 @@ const UserNavbar = () => {
     } else if (window.location.pathname === "/home/discover") {
       setActiveTab("discover");
     }
-
   }, [dispatch, window.location.pathname]);
 
   const handleHome = () => {

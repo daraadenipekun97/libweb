@@ -22,7 +22,7 @@ const ActionBanner = () => {
     // navigate("/home/writingChallenge");
     window.scrollTo({
       top: document.body.scrollHeight,
-      behavior: 'smooth', // Optional: adds smooth scrolling animation
+      behavior: "smooth", // Optional: adds smooth scrolling animation
     });
   };
 
@@ -34,8 +34,8 @@ const ActionBanner = () => {
         onMouseOver={stopMarquee}
         onMouseOut={startMarquee}
       >
-        Click to join our writing challenge and stand a chance to win up to $150 and one year MyLibri Books 
-        subscription
+        Click to join our writing challenge and stand a chance to win up to $150 and one year
+        MyLibriBooks subscription
         {/* <span className="action-start-now">
           <em>Start Now</em>
         </span> */}

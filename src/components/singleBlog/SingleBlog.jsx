@@ -17,136 +17,110 @@ import {
   TwitterIcon,
   LinkedinIcon,
   WhatsappIcon,
-  EmailIcon
+  EmailIcon,
 } from "react-share";
 
 const SingleBlog = () => {
-
-
   const params = useParams();
 
   const dispatch = useDispatch();
 
   const { blogById } = useSelector((state) => state.blog);
 
-  const [paragraph, setParagraph] = useState(
-    [
-      {
-        splitText: 'Loading. Blog'
-      }
-    ]
-  );
-
+  const [paragraph, setParagraph] = useState([
+    {
+      splitText: "Loading. Blog",
+    },
+  ]);
 
   useEffect(() => {
-    const actualTitle = params.title.replace(/-/g, ' ')
+    const actualTitle = params.title.replace(/-/g, " ");
     dispatch(fetchBlogById(actualTitle));
   }, [dispatch]);
 
   useEffect(() => {
-    callParagaraphs()
-  }, [blogById])
-  
+    callParagaraphs();
+  }, [blogById]);
 
- const callParagaraphs = () => {
-  if (Object.keys(blogById).length !== 0) {
-
-    let paragraphs = blogById?.content.split(/(?<=\.)\s+(?=[A-Z])/).map(text => ({ splitText: text }));
-    setParagraph(paragraphs)
-    
-  }else{
-    setParagraph(
-      [
+  const callParagaraphs = () => {
+    if (Object.keys(blogById).length !== 0) {
+      let paragraphs = blogById?.content
+        .split(/(?<=\.)\s+(?=[A-Z])/)
+        .map((text) => ({ splitText: text }));
+      setParagraph(paragraphs);
+    } else {
+      setParagraph([
         {
-          splitText: 'Loading. Blog'
-        }
-      ]
-    )
-  }
- }
+          splitText: "Loading. Blog",
+        },
+      ]);
+    }
+  };
 
- const currentPageUrl = window.location.href;
+  const currentPageUrl = window.location.href;
 
   return (
     <>
-    <div className="blog-header-container">
-
+      <div className="blog-header-container">
         <div className="single-book-content blog-container">
-          <a href="/blog" className="back-home">Back To Home</a>
+          <a href="/blog" className="back-home">
+            Back To Home
+          </a>
           <h1 className="header-title">{blogById?.title}</h1>
-          <img src={blogById.blog_image_data ? blogById?.blog_image_data : Placeholder} alt="placeholder" className="header-img" />
-
+          <img
+            src={blogById.blog_image_data ? blogById?.blog_image_data : Placeholder}
+            alt="placeholder"
+            className="header-img"
+          />
         </div>
       </div>
 
       <div className="blog-body-container blog-container">
-          {/* <h2 className="blog-sub-heading">Hello</h2> */}
+        {/* <h2 className="blog-sub-heading">Hello</h2> */}
 
-          {
-            paragraph?.map((item) => (
-              <p className="blog-post-text">
-                {item.splitText}
-              </p>
-            ))
-          }   
+        {paragraph?.map((item) => (
+          <p className="blog-post-text">{item.splitText}</p>
+        ))}
       </div>
 
       <div className="blog-share blog-container">
-          <span className="share-title">Share this blog post</span>
-          <div className="social">
-
-            <FacebookShareButton
+        <span className="share-title">Share this blog post</span>
+        <div className="social">
+          <FacebookShareButton
             className="social-btn"
-             url={currentPageUrl}
+            url={currentPageUrl}
             //  quote="Please check out this recent blog post from MyLibriBooks"
             //  hashtag="#MyLibriBooks #blog"
             // url={`http://localhost:3000/blog/${blogById.title}`}
-            >
-              <FacebookIcon
-                size={25}
-                round
-              />
-            </FacebookShareButton>
+          >
+            <FacebookIcon size={25} round />
+          </FacebookShareButton>
 
-
-            <TwitterShareButton
-              className="social-btn"
-             url={currentPageUrl}
+          <TwitterShareButton
+            className="social-btn"
+            url={currentPageUrl}
             title="Please check out this recent blog post from MyLibriBooks"
             //  hashtag="#MyLibriBooks #blog"
-            >
-              <TwitterIcon
-                size={25}
-                round
+          >
+            <TwitterIcon size={25} round />
+          </TwitterShareButton>
 
-              />
-            </TwitterShareButton>
-
-            <LinkedinShareButton
+          <LinkedinShareButton
             className="social-btn"
-             url={currentPageUrl}
+            url={currentPageUrl}
             title="Please check out this recent blog post from MyLibriBooks"
-             summary="A summary of the blog"
-            >
-              <LinkedinIcon
-                size={25}
-                round
+            summary="A summary of the blog"
+          >
+            <LinkedinIcon size={25} round />
+          </LinkedinShareButton>
 
-              />
-            </LinkedinShareButton>
-
-            <WhatsappShareButton
-             url={currentPageUrl}
+          <WhatsappShareButton
+            url={currentPageUrl}
             title="Please check out this recent blog post from MyLibriBooks"
-             separator=" "
-            >
-              <WhatsappIcon
-                size={25}
-                round
-
-              />
-            </WhatsappShareButton>
-
+            separator=" "
+          >
+            <WhatsappIcon size={25} round />
+          </WhatsappShareButton>
 
           {/* <a
                 href="#"
@@ -156,19 +130,19 @@ const SingleBlog = () => {
                 <AiFillFacebook size={20} />
               </a> */}
 
-              {/* <a
+          {/* <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <AiFillInstagram size={20} />
               </a> */}
-              {/* <a href="#" target="_blank" rel="noopener noreferrer">
+          {/* <a href="#" target="_blank" rel="noopener noreferrer">
                 <AiFillTwitterCircle size={20} />
               </a> */}
-          </div>
+        </div>
       </div>
-      </>
+    </>
   );
 };
 

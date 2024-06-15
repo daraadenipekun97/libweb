@@ -305,16 +305,15 @@ export const deleteUserAccount = async (email) => {
   }
 };
 
-
 export const uploadUserProfileImage = async (body) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
   } else {
     try {
       const response = await api.post(`${baseController}update/image`, body, {
-          headers: {
-              'content-type': 'multipart/form-data' 
-        }
+        headers: {
+          "content-type": "multipart/form-data",
+        },
       });
       if (typeof response !== "undefined") {
         if (response.status === 200 && response.data.status === true) {
@@ -329,8 +328,8 @@ export const uploadUserProfileImage = async (body) => {
       }
     } catch (ex) {
       toastr.error("An Error Occured", "Please try again");
-          // console.log(ex.response.data)
-          return ex.response.data.message
+      // console.log(ex.response.data)
+      return ex.response.data.message;
     }
   }
 };

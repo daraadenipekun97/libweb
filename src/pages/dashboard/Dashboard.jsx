@@ -44,8 +44,6 @@ const Modal = ({ handleClose, show, handleNavigate }) => {
   );
 };
 
-
-
 const ChallengeModal = ({ handleClose, show, handleNavigate, handleNavigateVote }) => {
   const showHideClassName = show
     ? "main-modal-bg-dashboard display-block"
@@ -90,7 +88,7 @@ const Dashboard = () => {
 
   const [slicedTrendingBooks, setSlicedTrendingBooks] = useState([]);
   const [show, setShow] = useState(false);
-  const [showChallengeModal, setShowChallengeModal] = useState(false)
+  const [showChallengeModal, setShowChallengeModal] = useState(false);
   const [showRedirectModal, setShowRedirectModal] = useState(false);
 
   const verifyCheckHandler = () => {
@@ -115,7 +113,7 @@ const Dashboard = () => {
     // dispatch(fetchProfile());
     dispatch(fetchAllTrendingBooks());
     dispatch(fetchSubscriptionDetails());
-    setShowChallengeModal(true)
+    setShowChallengeModal(true);
   }, [dispatch]);
 
   useEffect(() => {
@@ -153,20 +151,19 @@ const Dashboard = () => {
 
   const handleCloseChallenge = () => {
     setShowChallengeModal(false);
-
-  }
+  };
 
   const handleNavigate = () => {
     navigate("/home/subscription");
   };
 
   const handleNavigateChallenge = () => {
-    navigate("/home/writingChallenge")
-  }
+    navigate("/home/writingChallenge");
+  };
 
   const handleNavigateVote = () => {
-    navigate("/home/articlecategory")
-  }
+    navigate("/home/articlecategory");
+  };
 
   function getMultipleRandom(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
@@ -183,9 +180,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="shifter">
-        
-        </div>
+      <div className="shifter"></div>
       <UserNavbar />
       <Header />
       <div className="book-container">
@@ -194,11 +189,16 @@ const Dashboard = () => {
         </div>
       </div>
       <Community />
-      <WritingCompetition/>
+      <WritingCompetition />
       <ActionBanner />
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
-      <ChallengeModal handleClose={handleCloseChallenge} show={showChallengeModal} handleNavigate={handleNavigateChallenge} handleNavigateVote={handleNavigateVote} />
+      <ChallengeModal
+        handleClose={handleCloseChallenge}
+        show={showChallengeModal}
+        handleNavigate={handleNavigateChallenge}
+        handleNavigateVote={handleNavigateVote}
+      />
       <ModalRedirect showRedirectModal={showRedirectModal} />
     </>
   );

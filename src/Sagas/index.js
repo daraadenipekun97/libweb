@@ -16,6 +16,6 @@ export default function* rootSaga(getState) {
     librarySagas(),
     profileSagas(),
     challengeSagas(),
-    blogSagas()
+    blogSagas(),
   ]);
 }

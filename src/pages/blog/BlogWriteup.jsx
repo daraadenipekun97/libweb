@@ -8,9 +8,9 @@ const BlogWriteup = ({ user }) => {
   return (
     <>
       {user ? <UserNavbar /> : <Navbar />}
-        <div className="writeup-container">
+      <div className="writeup-container">
         <SingleBlog />
-        </div>
+      </div>
       <Footer />
     </>
   );

@@ -1,7 +1,7 @@
 import { all, call, takeEvery, fork } from "redux-saga/effects";
 import requestFunction from "../Utils/sagasGenericFunction";
 
-import { FETCH_ALL_BLOGS, FETCH_BLOG_BY_ID} from "../ActionTypes";
+import { FETCH_ALL_BLOGS, FETCH_BLOG_BY_ID } from "../ActionTypes";
 
 import { getBlogs, getBlogById } from "../Api";
 
@@ -23,12 +23,6 @@ export const fetchBlgById = function* () {
   yield takeEvery(FETCH_BLOG_BY_ID, fetchBlogByIdRequest);
 };
 
-
 export default function* rootSaga() {
-  yield all([
-    
-    fork(fetchBlgs), 
-    fork(fetchBlgById)
-
-]);
+  yield all([fork(fetchBlgs), fork(fetchBlgById)]);
 }

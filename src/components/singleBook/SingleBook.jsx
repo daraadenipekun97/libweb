@@ -100,7 +100,6 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
   };
 
   const handleSearch = () => {
-
     if (formValues.search !== "") {
       setTimeout(() => {
         setSpinnerHide(true);
@@ -122,9 +121,6 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
       // toastr.warning("Search Book", "Please enter a search term");
     }
   };
-
-
-  
 
   // function getYearDiffWithMonth(startDate, endDate) {
   //   const ms = endDate.getTime() - startDate.getTime();

@@ -11,7 +11,7 @@ import {
   VOTE_ARTICLE_SUCCESS,
   FETCH_ARTICLE_BY_USER_SUCCESS,
   RESTORE_VOTE_ARTICLE_INITIAL,
-  SEND_ARTICLE_LINK_SUCCESS
+  SEND_ARTICLE_LINK_SUCCESS,
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -69,7 +69,7 @@ const challengeReducer = (state = INIT_STATE, action) => {
     case RESTORE_FETCH_ARTICLE_BY_TOPIC: {
       return {
         ...state,
-        articlesByTopic:[],
+        articlesByTopic: [],
       };
     }
 

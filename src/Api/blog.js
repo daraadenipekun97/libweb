@@ -22,7 +22,6 @@ export const getBlogs = async () => {
   }
 };
 
-
 export const getBlogById = async (title) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");

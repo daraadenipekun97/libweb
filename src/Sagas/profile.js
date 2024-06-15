@@ -16,7 +16,7 @@ import {
   FETCH_SUBSCRIPTION_DETAILS,
   CHANGE_PASSWORD,
   DELETE_ACCOUNT,
-  UPLOAD_PROFILE_IMAGE
+  UPLOAD_PROFILE_IMAGE,
 } from "../ActionTypes";
 
 import {
@@ -34,7 +34,7 @@ import {
   getSubscriptionDetails,
   changePass,
   deleteUserAccount,
-  uploadUserProfileImage
+  uploadUserProfileImage,
 } from "../Api";
 
 import {
@@ -52,7 +52,7 @@ import {
   fetchSubscriptionDetailsSuccess,
   changePasswordSuccess,
   deleteAccountSuccess,
-  uploadProfileImageSuccess
+  uploadProfileImageSuccess,
 } from "../Actions";
 
 export const updateProfileRequest = function* ({ payload }) {
@@ -167,7 +167,6 @@ export const deleteAcct = function* () {
   yield takeEvery(DELETE_ACCOUNT, deleteAccountRequest);
 };
 
-
 export const uploadProfileImageRequest = function* ({ payload }) {
   yield call(requestFunction, uploadProfileImageSuccess, uploadUserProfileImage, payload);
 };
@@ -192,6 +191,6 @@ export default function* rootSaga() {
     fork(fetchSubDetaillss),
     fork(changePasswordd),
     fork(deleteAcct),
-    fork(uploadProfImg)
+    fork(uploadProfImg),
   ]);
 }

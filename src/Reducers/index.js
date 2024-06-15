@@ -9,7 +9,6 @@ import readersReducer from "./readers";
 import challengeReducer from "./challenge";
 import blogReducer from "./blog";
 
-
 const reducer = () =>
   combineReducers({
     auth: authReducer,
@@ -19,7 +18,7 @@ const reducer = () =>
     profile: profileReducer,
     reader: readersReducer,
     challenge: challengeReducer,
-    blog:blogReducer,
+    blog: blogReducer,
     toastr: toastrReducer,
   });
 
