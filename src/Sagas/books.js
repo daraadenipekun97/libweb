@@ -20,6 +20,7 @@ import {
   FETCH_AUTHORS_BY_ID,
   SEARCH_BOOK,
   SEARCH_BOOK_UNAUTH,
+  FETCH_BOOKS_BY_SUGGESTION
 } from "../ActionTypes";
 
 import {
@@ -41,6 +42,7 @@ import {
   getAuthorById,
   searchAllBooks,
   searchAllBooksUnauth,
+  getBooksBySuggestion,
 } from "../Api";
 
 import {
@@ -62,6 +64,7 @@ import {
   removeBookFromFavSuccess,
   searchBookSuccess,
   searchBooksUnauthSuccess,
+  fetchBookBySuggestionSuccess
 } from "../Actions";
 
 export const fetchTrendingBooksRequest = function* ({ payload }) {
@@ -208,6 +211,14 @@ export const searchBookssUnauth = function* () {
   yield takeEvery(SEARCH_BOOK_UNAUTH, searchBookUnauthRequest);
 };
 
+export const fetchBooksBySuggestionRequest = function* ({ payload }) {
+  yield call(requestFunction, fetchBookBySuggestionSuccess, getBooksBySuggestion, payload);
+};
+
+export const fetchBooksBySug = function* () {
+  yield takeEvery(FETCH_BOOKS_BY_SUGGESTION, fetchBooksBySuggestionRequest);
+};
+
 export default function* rootSaga() {
   yield all([
     fork(fetchTrending),
@@ -228,5 +239,6 @@ export default function* rootSaga() {
     fork(fetchAuthorrById),
     fork(searchBookss),
     fork(searchBookssUnauth),
+    fork(fetchBooksBySug)
   ]);
 }

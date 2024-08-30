@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toastr } from "react-redux-toastr";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import "./singleBook.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -39,9 +39,10 @@ const Modal = ({ handleClose, show }) => {
   );
 };
 
-const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
+const SingleBook = ({ datas, searchBar, title, icon, favorite, subtext }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { profileData } = useSelector((state) => state.profile);
 
@@ -187,7 +188,14 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite }) => {
   return (
     <div className="lib-book-gallery">
       <div className="lib-book-gallery-text">
-        <PageHeaderText text={title} />
+        <div>
+          <PageHeaderText text={title} />
+          {location.pathname === "/" || location.pathname === "/home/dashboard" ? (
+            <p className="header-subtext">{subtext}</p>
+          ) : (
+            <></>
+          )}
+        </div>
         {searchBar === true ? (
           <div className="growing-search">
             <div className="input">

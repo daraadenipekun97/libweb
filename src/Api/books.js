@@ -368,3 +368,23 @@ export const searchAllBooksUnauth = async (body) => {
     }
   }
 };
+
+
+export const getBooksBySuggestion = async (id) => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseControllerUser}book/suggestion/${id}`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200 && response.data.status === true) {
+          return response.data.data;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not retrieve suggested books");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please try again");
+    }
+  }
+};

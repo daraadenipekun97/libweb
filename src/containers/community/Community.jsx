@@ -9,8 +9,8 @@ const Community = () => {
       <div className="lib-community-left-wrapper">
         <h1>Join our community of readers</h1>
         <p>
-          Rub mind with our facebook community of readers just like yourself and get more insights
-          into trending books
+          Join our Facebook community of book enthusiasts from the best book lovers site in Africa
+          to stay updated on new releases, author interviews, and literary events
         </p>
         <a
           href="https://www.facebook.com/groups/5205409852862649"

@@ -232,3 +232,6 @@ export const FETCH_BLOG_BY_ID_SUCCESS = "fetch_blog_by_id_success";
 export const UPLOAD_PROFILE_IMAGE = "upload_profile_image";
 export const UPLOAD_PROFILE_IMAGE_SUCCESS = "upload_profile_image_success";
 export const RESTORE_UPLOAD_PROFILE_IMAGE_INITIAL = "restore_upload_profile_image_initial";
+
+export const FETCH_BOOKS_BY_SUGGESTION = "fetch_books_by_suggestion";
+export const FETCH_BOOKS_BY_SUGGESTION_SUCCESS = "fetch_books_by_suggestion_success";

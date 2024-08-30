@@ -6,11 +6,18 @@ const DownloadApp = () => {
     <div className="lib-download-app-container">
       <div className="lib-download-app-wrapper">
         <div className="lib-download-app-left-content">
-          <p className="lib-download-app-top-text">Download the app today</p>
-          <h1 className="lib-download-app-middle-text">
-            There are thousands of users using MyLibri Books
-          </h1>
-          <p className="lib-download-app-bottom-text">All your favorite books in one place</p>
+          <p className="lib-download-app-top-text">Love Africa, Love Reading</p>
+          <h1 className="lib-download-app-middle-text">Best App to Read Books and Novels</h1>
+          <p className="lib-download-app-bottom-text">
+            Experience ultimate reading pleasure with our innovative features
+          </p>
+
+          <ul className="feature-list">
+            <li> &#x2022; Personalized book recommendations</li>
+            <li> &#x2022; Customizable reading settings</li>
+            <li> &#x2022; Offline reading capabilities</li>
+            <li>&#x2022; White listing</li>
+          </ul>
 
           <div className="lib-download-app-two">
             <a

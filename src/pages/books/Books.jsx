@@ -18,6 +18,7 @@ import {
   fetchSubscriptionDetails,
   restoreFetchBookDetails,
   fetchSongs,
+  fetchBookBySuggestion,
 } from "../../Actions";
 import Preloader from "../../components/preloader/Preloader";
 import StarRating from "../../components/starRating/StarRating";
@@ -32,6 +33,7 @@ const Books = () => {
     addBookToFavouriteFailure,
     removeBookFromFavouriteSuccess,
     removeBookFromFavouriteFailure,
+    booksBySuggestion
   } = useSelector((state) => state.books);
   const { subscriptionDetails } = useSelector((state) => state.profile);
 
@@ -39,6 +41,7 @@ const Books = () => {
     window.scrollTo(0, 0);
     dispatch(fetchBookDetails(params.id));
     dispatch(fetchSubscriptionDetails());
+    dispatch(fetchBookBySuggestion(params.id));
     // dispatch(fetchSongs());
 
     //  console.log('current URL 👉️', window.location.href);
@@ -110,6 +113,10 @@ const Books = () => {
   }, [removeBookFromFavouriteFailure]);
 
   if (Object.keys(bookDetails).length === 0) {
+    return <Preloader />;
+  }
+
+  if (Object.keys(booksBySuggestion).length === 0) {
     return <Preloader />;
   }
 
@@ -190,6 +197,12 @@ const Books = () => {
     (book) => book.id !== bookDetails.book.id
   );
 
+  let filterSuggestionBook = booksBySuggestion.filter(
+    (item) => item.id !== bookDetails.book.id
+  )
+
+  // console.log(filterSuggestionBook)
+
   return (
     <>
       <UserNavbar />
@@ -239,6 +252,10 @@ const Books = () => {
 
         <div className="author-books-wrapper">
           <SingleBook datas={filterAuthorBooks} searchBar={false} title="Author's Book" />
+        </div>
+        
+        <div className="author-books-wrapper">
+          <SingleBook datas={filterSuggestionBook} title="More Books like this" />
         </div>
       </div>
       <Footer />

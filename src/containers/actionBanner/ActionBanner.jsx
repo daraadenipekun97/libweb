@@ -34,8 +34,7 @@ const ActionBanner = () => {
         onMouseOver={stopMarquee}
         onMouseOut={startMarquee}
       >
-        Click to join our writing challenge and stand a chance to win up to $150 and one year
-        MyLibriBooks subscription
+        Click here to win $150 and 1 year subscription
         {/* <span className="action-start-now">
           <em>Start Now</em>
         </span> */}

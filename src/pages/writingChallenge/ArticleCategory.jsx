@@ -58,9 +58,9 @@ const ArticleCategory = () => {
                 <div class="content-inner">
                   {articlesByTopic?.map((item) => (
                     <>
-                      <h4>Written by: {item.user.name}</h4>
+                      <h4>Written by: {item?.user?.name}</h4>
                       <a href={`/home/articlecategory/${item.id}`}>
-                        {item.content.replace(/(<([^>]+)>|&\w+;)/gi, "")}
+                        {item?.content.replace(/(<([^>]+)>|&\w+;)/gi, "")}
                       </a>
                       <hr />
                     </>

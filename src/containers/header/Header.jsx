@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <div className="lib-header section-padding">
       <div className="lib-header-content">
-        <h1>Africa’s Biggest Digital Libri</h1>
-        <p className="lib-header-paragraph">Your Libri, in the palm of your hands</p>
+        <h1>Africa’s Best Digital Library</h1>
+        <p className="lib-header-paragraph">African Literature at Your Fingertips</p>
         <div className="lib-download-app">
           <a
             href="https://apps.apple.com/us/app/mylibri-books/id1528198803"

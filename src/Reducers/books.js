@@ -20,6 +20,7 @@ import {
   SEARCH_BOOK_SUCCESS,
   SEARCH_BOOK_UNAUTH_SUCCESS,
   RESTORE_FETCH_BOOKS_DETAILS,
+  FETCH_BOOKS_BY_SUGGESTION_SUCCESS,
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -36,6 +37,7 @@ const INIT_STATE = {
   booksByAuthor: [],
   allAuthors: [],
   bookDetails: {},
+  booksBySuggestion: [],
 
   addBookToFavouriteSuccess: false,
   addBookToFavouriteFailure: false,
@@ -214,6 +216,13 @@ const booksReducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         searchedBooksUnauth: action.payload,
+      };
+    }
+
+    case FETCH_BOOKS_BY_SUGGESTION_SUCCESS: {
+      return {
+        ...state,
+        booksBySuggestion: action.payload,
       };
     }
 

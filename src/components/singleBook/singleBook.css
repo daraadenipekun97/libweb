@@ -11,6 +11,7 @@
   align-items: center;
   /* border: solid; */
   margin-bottom: 2.5rem;
+  margin-top: 2em;
 }
 
 /* .lib-book-gallery-text h1 {
@@ -260,6 +261,13 @@ hr {
   cursor: pointer;
 }
 
+.header-subtext {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #78787d;
+}
+
 @media screen and (max-width: 769px) {
   .lib-book-gallery-inner-wrapper {
     justify-content: center;
@@ -323,5 +331,10 @@ hr {
 
   .lib-book-gallery-inner-wrapper {
     justify-content: center;
+  }
+
+  .header-subtext{
+    line-height: 30px;
+    margin-bottom: 10px;
   }
 }

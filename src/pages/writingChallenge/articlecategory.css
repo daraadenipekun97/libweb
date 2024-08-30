@@ -82,14 +82,11 @@ input[type="checkbox"] {
   border-bottom-right-radius: 7px;
   padding: 0.5rem 1rem;
 }
-.content-inner h4{
-
+.content-inner h4 {
   color: #5e458b;
   font-size: 15px;
   line-height: 25px;
   font-size: medium;
-
-
 }
 .content-inner a {
   color: #78787d;

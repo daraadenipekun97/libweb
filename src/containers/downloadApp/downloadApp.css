@@ -10,6 +10,7 @@
   background-color: #e3daf0;
   padding: 4rem 4rem;
   border-radius: 10px;
+  /* border: solid; */
 }
 
 .lib-download-app-top-text {
@@ -36,6 +37,17 @@
   display: flex;
   justify-content: space-between;
   width: 21rem;
+}
+
+.feature-list {
+  list-style: none;
+  margin: 15px 0px;
+}
+
+.feature-list li {
+  font-size: 16px;
+  color: #78787d;
+  margin-bottom: 0.5rem;
 }
 
 @media screen and (max-width: 633px) {
@@ -74,5 +86,9 @@
     font-weight: 800;
     font-size: 30px;
     line-height: 40px;
+  }
+
+  .lib-download-app-bottom-text {
+   line-height: 25px;
   }
 }

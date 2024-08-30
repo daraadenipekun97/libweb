@@ -31,7 +31,7 @@
 
 @media screen and (max-width: 440px) {
   .lib-explore-top-items {
-    text-align: center;
+    /* text-align: center; */
   }
 
   .lib-explore {
@@ -43,6 +43,7 @@
   }
 
   .lib-explore-top-items p {
-    line-height: 20px;
+    /* line-height: 30px; */
+    justify-content: center;
   }
 }
