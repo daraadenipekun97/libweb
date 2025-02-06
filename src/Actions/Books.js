@@ -40,9 +40,8 @@ import {
   SEARCH_BOOK_UNAUTH,
   SEARCH_BOOK_UNAUTH_SUCCESS,
   RESTORE_SEARCH_BOOK_UNAUTH_INITIAL,
-
   FETCH_BOOKS_BY_SUGGESTION,
-  FETCH_BOOKS_BY_SUGGESTION_SUCCESS
+  FETCH_BOOKS_BY_SUGGESTION_SUCCESS,
 } from "../ActionTypes";
 
 export const fetchAllTrendingBooks = () => ({
@@ -238,7 +237,6 @@ export const searchBooksUnauthSuccess = (payload) => ({
 export const restoreSearchBooksUnauthInitial = () => ({
   type: RESTORE_SEARCH_BOOK_UNAUTH_INITIAL,
 });
-
 
 export const fetchBookBySuggestion = (id) => ({
   type: FETCH_BOOKS_BY_SUGGESTION,

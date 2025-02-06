@@ -237,7 +237,7 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite, subtext }) => {
           {datas.length !== 0 ? (
             datas.map((data) => {
               return (
-                <div>
+                <div key={data.id}>
                   <div
                     className={icon || favorite ? "lib-gallery-box-my-books" : "lib-gallery-box"}
                     onClick={() =>
@@ -247,7 +247,6 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite, subtext }) => {
                         ? handleVerifyNavigate()
                         : handleSignInNavigate()
                     }
-                    key={data.id}
                   >
                     <div className="img-div">
                       <LazyLoadImage

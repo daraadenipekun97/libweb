@@ -20,7 +20,7 @@ import {
   FETCH_AUTHORS_BY_ID,
   SEARCH_BOOK,
   SEARCH_BOOK_UNAUTH,
-  FETCH_BOOKS_BY_SUGGESTION
+  FETCH_BOOKS_BY_SUGGESTION,
 } from "../ActionTypes";
 
 import {
@@ -64,7 +64,7 @@ import {
   removeBookFromFavSuccess,
   searchBookSuccess,
   searchBooksUnauthSuccess,
-  fetchBookBySuggestionSuccess
+  fetchBookBySuggestionSuccess,
 } from "../Actions";
 
 export const fetchTrendingBooksRequest = function* ({ payload }) {
@@ -239,6 +239,6 @@ export default function* rootSaga() {
     fork(fetchAuthorrById),
     fork(searchBookss),
     fork(searchBookssUnauth),
-    fork(fetchBooksBySug)
+    fork(fetchBooksBySug),
   ]);
 }

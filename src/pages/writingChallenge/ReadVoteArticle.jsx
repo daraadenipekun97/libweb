@@ -87,7 +87,7 @@ const ReadVoteArticle = () => {
 
   useEffect(() => {
     if (voteArticleSuccess) {
-      console.log("article voted successfully");
+      // console.log("article voted successfully");
       dispatch(fetchArticleById(params.id));
     }
 
@@ -98,7 +98,7 @@ const ReadVoteArticle = () => {
 
   useEffect(() => {
     if (voteArticleFailure) {
-      console.log("article voting failed");
+      // console.log("article voting failed");
       dispatch(fetchArticleById(params.id));
     }
 
@@ -110,10 +110,10 @@ const ReadVoteArticle = () => {
   useEffect(() => {
     callParagaraphs();
 
-    console.log(articleById.votes);
-    console.log("profile", profileData.id);
+    // console.log(articleById.votes);
+    // console.log("profile", profileData.id);
     let articlevoted = articleById?.votes?.find((item) => item.voter_id === profileData?.id);
-    console.log("articlevoted ", articlevoted);
+    // console.log("articlevoted ", articlevoted);
     setArticleVoted(articlevoted !== undefined ? true : false);
   }, [articleById]);
 

@@ -33,7 +33,7 @@ export const postRegister = async (body) => {
 };
 
 export const postVerifyUser = async (body) => {
-  debugger;
+  // debugger;
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");
   } else {

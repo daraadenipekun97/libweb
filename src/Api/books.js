@@ -369,7 +369,6 @@ export const searchAllBooksUnauth = async (body) => {
   }
 };
 
-
 export const getBooksBySuggestion = async (id) => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");

@@ -33,7 +33,7 @@ const Books = () => {
     addBookToFavouriteFailure,
     removeBookFromFavouriteSuccess,
     removeBookFromFavouriteFailure,
-    booksBySuggestion
+    booksBySuggestion,
   } = useSelector((state) => state.books);
   const { subscriptionDetails } = useSelector((state) => state.profile);
 
@@ -121,7 +121,7 @@ const Books = () => {
   }
 
   const handleStartReading = (url, bookId) => {
-    debugger;
+    // debugger;
     // let expiryDate =
     //   subscriptionDetails.expiry_date !== null
     //     ? new Date(new Date(subscriptionDetails.expiry_date).toDateString())
@@ -197,9 +197,7 @@ const Books = () => {
     (book) => book.id !== bookDetails.book.id
   );
 
-  let filterSuggestionBook = booksBySuggestion.filter(
-    (item) => item.id !== bookDetails.book.id
-  )
+  let filterSuggestionBook = booksBySuggestion.filter((item) => item.id !== bookDetails.book.id);
 
   // console.log(filterSuggestionBook)
 
@@ -253,7 +251,7 @@ const Books = () => {
         <div className="author-books-wrapper">
           <SingleBook datas={filterAuthorBooks} searchBar={false} title="Author's Book" />
         </div>
-        
+
         <div className="author-books-wrapper">
           <SingleBook datas={filterSuggestionBook} title="More Books like this" />
         </div>

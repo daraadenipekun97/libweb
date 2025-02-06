@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import "./App.css";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -9,34 +9,11 @@ import { Provider } from "react-redux";
 import Preloader from "./components/preloader/Preloader";
 import MessengerChat from "./plugin/MessengerChat";
 import ErrorBoundary from "./components/ErrorBoundary";
-// import {
-//   LandingPage,
-//   LoginPage,
-//   RegisterPage,
-//   ForgotPasswordPage,
-//   ResetPasswordPage,
-//   VerifyEmailPage,
-//   HomePage,
-//   DashboardPage,
-//   NotfoundPage
-// } from "./pages";
+import Alan from "./plugin/Alan";
+
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
-const LightTheme = {
-  pageBackground: "white",
-  textColor: "#dc658b",
-};
-
-const DarkTheme = {
-  pageBackground: "#282c36",
-  textColor: "white",
-};
-
-const themes = {
-  light: LightTheme,
-  dark: DarkTheme,
-};
 
 const LandingPage = lazy(() => import("./pages/landingPage/LandingPage"));
 const LoginPage = lazy(() => import("./pages/loginPage/LoginPage"));
@@ -66,17 +43,17 @@ const AboutUsPage = lazy(() => import("./pages/aboutUs/AboutUs"));
 const FAQPage = lazy(() => import("./pages/faq/Faq"));
 const PrivacyPolicyPage = lazy(() => import("./pages/privacy/PrivacyPolicy"));
 const TermsOfUsePage = lazy(() => import("./pages/privacy/TermsOfUse"));
-const WritingChallengePage = lazy(() => import("./pages/writingChallenge/WritingChallenge"));
-const WritingPage = lazy(() => import("./pages/writingChallenge/WritingPage"));
-const ArticleCategoryPage = lazy(() => import("./pages/writingChallenge/ArticleCategory"));
-const ArticleReadVotePage = lazy(() => import("./pages/writingChallenge/ReadVoteArticle"));
+// const WritingChallengePage = lazy(() => import("./pages/writingChallenge/WritingChallenge"));
+// const WritingPage = lazy(() => import("./pages/writingChallenge/WritingPage"));
+// const ArticleCategoryPage = lazy(() => import("./pages/writingChallenge/ArticleCategory"));
+// const ArticleReadVotePage = lazy(() => import("./pages/writingChallenge/ReadVoteArticle"));
 const BlogPage = lazy(() => import("./pages/blog/Blog"));
 const BlogWriteupPage = lazy(() => import("./pages/blog/BlogWriteup"));
+const InteractionPage = lazy(() => import("./pages/interactions/Interactions"));
 
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
 function App() {
-  const [theme, setTheme] = useState("light");
 
   const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
   const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
@@ -84,13 +61,16 @@ function App() {
   const user =
     userDataRegister !== null ? userDataRegister : userDataLogin !== null ? userDataLogin : null;
 
-  // let pathname =  window.location.pathname;
+
+
+  
 
   return (
     <>
       <GoogleOAuthProvider clientId="218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com">
         <Provider store={store}>
           <BrowserRouter>
+          <Alan user={user} /> 
             <ErrorBoundary>
               <Suspense fallback={<Preloader />}>
                 <Routes>
@@ -124,10 +104,12 @@ function App() {
                     <Route path="reader" element={<ReaderPage />} />
                     <Route path="subscription" element={<SubscriptionPage />} />
                     <Route path="wallet" element={<WalletPage />} />
-                    <Route path="writingChallenge" element={<WritingChallengePage />} />
-                    <Route path="articlecategory" element={<ArticleCategoryPage />} />
-                    <Route path="articlecategory/:id" element={<ArticleReadVotePage />} />
-                    <Route path="article/:id" element={<WritingPage />} />
+                    <Route path="interactions/:id" element={<InteractionPage />} />
+
+                    {/* <Route path="writingChallenge" element={<WritingChallengePage />} /> */}
+                    {/* <Route path="articlecategory" element={<ArticleCategoryPage />} /> */}
+                    {/* <Route path="articlecategory/:id" element={<ArticleReadVotePage />} /> */}
+                    {/* <Route path="article/:id" element={<WritingPage />} /> */}
                     <Route path="search/:id" element={<SearchPage />} />
                   </Route>
 
@@ -147,7 +129,7 @@ function App() {
             progressBar
             closeOnToastrClick
           />
-          <MessengerChat />
+          {/* <MessengerChat /> */}
         </Provider>
       </GoogleOAuthProvider>
     </>

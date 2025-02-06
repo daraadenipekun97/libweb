@@ -180,7 +180,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="shifter"></div>
+      {/* <div className="shifter"></div> */}
       <UserNavbar />
       <Header />
       <div className="book-container">
@@ -189,16 +189,16 @@ const Dashboard = () => {
         </div>
       </div>
       <Community />
-      <WritingCompetition />
-      <ActionBanner />
+      {/* <WritingCompetition /> */}
+      {/* <ActionBanner /> */}
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
-      <ChallengeModal
+      {/* <ChallengeModal
         handleClose={handleCloseChallenge}
         show={showChallengeModal}
         handleNavigate={handleNavigateChallenge}
         handleNavigateVote={handleNavigateVote}
-      />
+      /> */}
       <ModalRedirect showRedirectModal={showRedirectModal} />
     </>
   );
