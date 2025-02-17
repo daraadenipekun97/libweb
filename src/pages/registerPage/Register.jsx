@@ -118,18 +118,25 @@ const Register = ({ user }) => {
   const handleFocus = (e) => {
     setShowPasswordDesc(false);
     // setShowNameDesc(false)
+    const firstChar = e.target.value.trim().charAt(0);
     if (e.target.name === "firstname") {
-      setFocused({ ...focused, firstname: true });
+      setFocused({ ...focused, 
+        firstname: e.target.value === "" || !/^[A-Z]$/.test(firstChar), // Check if empty OR first letter is not uppercase
+      });
+      console.log("Updated Focused State:", focused);
     } else if (e.target.name === "lastname") {
-      setFocused({ ...focused, lastname: true });
+      setFocused({ ...focused, 
+        lastname: e.target.value === "" || !/^[A-Z]$/.test(firstChar), 
+      });
     } else if (e.target.name === "email") {
-      setFocused({ ...focused, email: true });
+      setFocused({ ...focused, email: e.target.value === "" });
+      console.log("Updated Focused State:", focused);
     } else if (e.target.name === "phone") {
-      setFocused({ ...focused, phone: true });
+      setFocused({ ...focused, phone: e.target.value === ""  });
     } else if (e.target.name === "password") {
-      setFocused({ ...focused, password: true });
+      setFocused({ ...focused, password: e.target.value === "" });
     } else if (e.target.name === "dob") {
-      setFocused({ ...focused, dob: true });
+      setFocused({ ...focused, dob: e.target.value === ""});
     }
   };
 
@@ -319,13 +326,14 @@ const Register = ({ user }) => {
       formValues.lastname !== "" &&
       formValues.email !== "" &&
       formValues.password !== "" &&
-      (phoneValue !== "" || phoneValue !== undefined) &&
+      (phoneValue.length !== 0) &&
       formValues.dob !== "" &&
       countryId.label !== "" &&
       termsCheckBox === true &&
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_)){6,15}/.test(formValues.password) &&
-      /^[A-Z'][a-zA-Z'-]+$/.test(formValues.firstname) &&
-      /^[A-Z'][a-zA-Z'-]+$/.test(formValues.lastname)
+      /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(formValues.password) &&
+      /^[A-Z'][a-zA-Z' -]*$/.test(formValues.firstname) &&
+      /^[A-Z'][a-zA-Z' -]*$/.test(formValues.lastname)
+      
     ) {
       setFormState({
         ...formState,
@@ -342,15 +350,15 @@ const Register = ({ user }) => {
       if (countryId.label === "") {
         setCountryError(true);
       }
-      setFocused({
-        ...focused,
-        firstname: true,
-        lastname: true,
-        phone: true,
-        password: true,
-        dob: true,
-        email: true,
-      });
+      // setFocused({
+      //   ...focused,
+      //   firstname: true,
+      //   lastname: true,
+      //   phone: true,
+      //   password: true,
+      //   dob: true,
+      //   email: true,
+      // });
     }
   };
 
@@ -358,8 +366,8 @@ const Register = ({ user }) => {
     if (valid) {
       dispatch(
         registerUser({
-          firstname: formValues.firstname,
-          lastname: formValues.lastname,
+          firstname: formValues.firstname.trimEnd(),
+          lastname: formValues.lastname.trimEnd(),
           email: formValues.email,
           phone: phoneValue,
           dob: formValues.dob,
@@ -460,7 +468,7 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.firstname.toString()}
                   onChange={(e) => firstnameHandler(e)}
-                  pattern="[A-Z'][a-zA-Z'-]+"
+                  pattern="[A-Z'][a-zA-Z' -]+"
                 />
 
                 <p className="register-validation-error-text">
@@ -478,7 +486,7 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.lastname.toString()}
                   onChange={(e) => lastnameHandler(e)}
-                  pattern="[A-Z'][a-zA-Z'-]+"
+                  pattern="[A-Z'][a-zA-Z' -]+"
                 />
                 <p className="register-validation-error-text">
                   lastname is required (Uppercase first)
@@ -589,7 +597,7 @@ const Register = ({ user }) => {
                   placeholder="Password*"
                   value={formValues.password}
                   required
-                  pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$"
+                  pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$"
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.password.toString()}
                   onChange={(e) => passwordHandler(e)}
@@ -606,7 +614,7 @@ const Register = ({ user }) => {
                 {showPasswordDesc ? (
                   <p className="green-warning">
                     Password should be 6-15 characters and include at least 1 lower case letter, 1
-                    uppercase letter, 1 number and 1 special character!
+                    uppercase letter, 1 number, 1 special character and no spaces!
                   </p>
                 ) : (
                   <p className="register-validation-error-text">Password is required</p>

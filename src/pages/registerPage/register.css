@@ -137,12 +137,12 @@ input[type="password"] {
   width: 250px;
 }
 
-.lib-register-input-group input:invalid[focused="true"] ~ .register-validation-error-text {
-  display: block;
+.lib-register-input-group input[focused="true"] ~ .register-validation-error-text {
+  display: block !important;
 }
 
-.lib-register-input-group input:invalid[focused="true"] {
-  border: 1px solid red;
+.lib-register-input-group input[focused="true"] {
+  border: 1px solid red !important;
 }
 
 .lib-register-input-group input:focus {
