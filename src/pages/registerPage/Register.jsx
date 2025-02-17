@@ -134,7 +134,7 @@ const Register = ({ user }) => {
     } else if (e.target.name === "phone") {
       setFocused({ ...focused, phone: e.target.value === ""  });
     } else if (e.target.name === "password") {
-      setFocused({ ...focused, password: e.target.value === "" });
+      setFocused({ ...focused, password: e.target.value === "" || !/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(e.target.value) });
     } else if (e.target.name === "dob") {
       setFocused({ ...focused, dob: e.target.value === ""});
     }
@@ -468,8 +468,8 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.firstname.toString()}
                   onChange={(e) => firstnameHandler(e)}
-                  pattern="[A-Z'][a-zA-Z' -]+"
-                />
+                  pattern="^[A-Z][a-zA-Z' -]*$"
+                  />
 
                 <p className="register-validation-error-text">
                   firstname is required (Uppercase first)
@@ -486,8 +486,8 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.lastname.toString()}
                   onChange={(e) => lastnameHandler(e)}
-                  pattern="[A-Z'][a-zA-Z' -]+"
-                />
+                  pattern="^[A-Z][a-zA-Z' -]*$"
+                  />
                 <p className="register-validation-error-text">
                   lastname is required (Uppercase first)
                 </p>
