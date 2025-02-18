@@ -274,6 +274,7 @@ const Register = ({ user }) => {
   const countryHandler = (e) => {
     setPhoneNumberCountry(e.code);
     setCountryError(false);
+    console.log('country is', e)
     if (e) {
       setCountryId(e);
     }
@@ -328,7 +329,7 @@ const Register = ({ user }) => {
       formValues.password !== "" &&
       (phoneValue.length !== 0) &&
       formValues.dob !== "" &&
-      countryId.label !== "" &&
+      countryId.label !== undefined &&
       termsCheckBox === true &&
       /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(formValues.password) &&
       /^[A-Z'][a-zA-Z' -]*$/.test(formValues.firstname) &&
@@ -347,7 +348,7 @@ const Register = ({ user }) => {
       if (termsCheckBox !== true) {
         setCheckedError(true);
       }
-      if (countryId.label === "") {
+      if (countryId.label === undefined) {
         setCountryError(true);
       }
       // setFocused({
@@ -468,7 +469,7 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.firstname.toString()}
                   onChange={(e) => firstnameHandler(e)}
-                  pattern="^[A-Z][a-zA-Z' -]*$"
+                  pattern="^[A-Z][a-zA-Z'\- ]*$"
                   />
 
                 <p className="register-validation-error-text">
@@ -486,7 +487,7 @@ const Register = ({ user }) => {
                   onBlur={(e) => handleFocus(e)}
                   focused={focused.lastname.toString()}
                   onChange={(e) => lastnameHandler(e)}
-                  pattern="^[A-Z][a-zA-Z' -]*$"
+                  pattern="^[A-Z][a-zA-Z'\- ]*$"
                   />
                 <p className="register-validation-error-text">
                   lastname is required (Uppercase first)
