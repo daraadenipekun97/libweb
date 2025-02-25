@@ -9,7 +9,7 @@ const Alan = ({ user }) => {
     useEffect(() => {
         if (!user || alanInstance.current) return; // Ensure Alan is only initialized once
 
-        console.log("Initializing Alan AI...");
+        console.log("Initializing Alan AI... from code");
 
         const alanKey = '1cc1de04ce3430871b2ddce69a181a2c2e956eca572e1d8b807a3e2338fdd0dc/stage'
 
@@ -20,23 +20,32 @@ const Alan = ({ user }) => {
             onCommand: (commandData) => {
                 switch (commandData.command) {
                     case "trending":
-                        console.log('trending books---');
-                        navigate(`home/interactions/${commandData.command}`); // Redirect"
+                        navigate(`home/trending`);
                         break;
                     case "authors":
-                        navigate(`home/interactions/${commandData.command}`); 
+                        navigate(`home/authors`); 
                         break;
                     case "educational":
-                        navigate(`home/interactions/${commandData.command}`); 
+                        navigate(`home/childrenscorner`); 
                         break;
                     case "latest":
-                        navigate(`home/interactions/${commandData.command}`); 
+                        navigate(`home/newReleases`); 
                         break;
                     case "classic":
-                        navigate(`home/interactions/${commandData.command}`); 
+                        navigate(`home/classics`); 
+                        break;
+                    case "home":
+                        navigate('home/dashboard');
+                    case "library":
+                        navigate('home/library');
+                    case "back":
+                        navigate(-1); 
                         break;
                     case "genre":
-                        navigate(`home/interactions/${commandData.command}`); 
+                        navigate(`home/${commandData.command}/${commandData.genre}`); 
+                        break;
+                    case "search":
+                        navigate(`home/${commandData.command}/${commandData.search}`); 
                         break;
                     default:
                         console.log("Unknown command:", commandData.command);

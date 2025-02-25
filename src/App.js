@@ -49,7 +49,7 @@ const TermsOfUsePage = lazy(() => import("./pages/privacy/TermsOfUse"));
 // const ArticleReadVotePage = lazy(() => import("./pages/writingChallenge/ReadVoteArticle"));
 const BlogPage = lazy(() => import("./pages/blog/Blog"));
 const BlogWriteupPage = lazy(() => import("./pages/blog/BlogWriteup"));
-const InteractionPage = lazy(() => import("./pages/interactions/Interactions"));
+// const InteractionPage = lazy(() => import("./pages/interactions/Interactions"));
 
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
@@ -104,7 +104,7 @@ function App() {
                     <Route path="reader" element={<ReaderPage />} />
                     <Route path="subscription" element={<SubscriptionPage />} />
                     <Route path="wallet" element={<WalletPage />} />
-                    <Route path="interactions/:id" element={<InteractionPage />} />
+                    {/* <Route path="interactions/:id" element={<InteractionPage />} /> */}
 
                     {/* <Route path="writingChallenge" element={<WritingChallengePage />} /> */}
                     {/* <Route path="articlecategory" element={<ArticleCategoryPage />} /> */}

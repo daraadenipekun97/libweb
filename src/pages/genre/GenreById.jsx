@@ -6,7 +6,7 @@ import { Footer } from "../../containers";
 import "./genreById.css";
 import { AiFillLeftCircle } from "react-icons/ai";
 import SingleBook from "../../components/singleBook/SingleBook";
-import { fetchBookByGenre } from "../../Actions";
+import { fetchBookByGenre, fetchAllGenre } from "../../Actions";
 import SingleGenrePagination from "../../components/pagination/SingleGenrePagination";
 
 let PageSize = 15;
@@ -15,13 +15,20 @@ const GenreById = () => {
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { booksByGenre } = useSelector((state) => state.books);
+  const { booksByGenre, allGenre } = useSelector((state) => state.books);
 
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchBookByGenre(params.id));
-  }, [dispatch]);
+    if (typeof params.id === "string") {
+      dispatch(fetchAllGenre());
+    const genre = allGenre.find((g) => g.title.toLowerCase() === params.id.toLowerCase());
+    dispatch(fetchBookByGenre(genre?.id));
+  }
+    else{
+      dispatch(fetchBookByGenre(params.id));
+    }
+  }, [dispatch, params.id]);
 
   const handleBack = () => {
     navigate("/home/genre");
