@@ -1,14 +1,21 @@
 .single-blog-card {
   width: 350px;
-  height: 500px;
+  min-height: 500px;
   background-color: #ffffff;
-  border: 1px solid #ececec;
+  /* border: 1px solid red; */
   margin: 20px;
+  border-radius: 10px;
+  transition: 1s;
+
+}
+
+.single-blog-card:hover {
+  scale: 1.05;
 }
 .single-blog-card-image-wrapper {
   width: 100%;
   height: 200px !important;
-  height: auto;
+  /* height: auto; */
 }
 
 .single-blog-card-image-wrapper img {
@@ -35,12 +42,12 @@
   color: #5e458b;
 }
 
-.single-blog-card-text .single-blog-card-text-title:hover {
+/* .single-blog-card-text .single-blog-card-text-title:hover {
   color: #230854;
   transition: all ease 0.3s;
-}
+} */
 
-.single-blog-card-text p {
+.single-blog-card-text-preview {
   color: #78787d;
   font-size: 0.9rem;
   display: -webkit-box;

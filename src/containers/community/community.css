@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* border: solid; */
 }
 .lib-community-left-wrapper {
   flex: 1;
@@ -32,24 +33,39 @@
   line-height: 27px;
 }
 
+.lib-community-buttons {
+  display: flex;
+  gap: 16px; /* space between buttons */
+  margin-top: 16px;
+  /* border: solid; */
+}
+
 .lib-community-btn {
-  padding: 1rem 4rem;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
   background-color: transparent;
   border: 2px solid #5e458b;
-  font-weight: 500;
-  border-radius: 5px;
-  font-style: normal;
-  font-size: 18px;
-  line-height: 25px;
-  outline: none;
   color: #5e458b;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+ 
 }
 
 .lib-community-btn:hover {
-  border: 0;
-  background: linear-gradient(175.61deg, #5d418d 35.12%, #675489 96.44%);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: white;
+
+  background-color: #f0e9fa;
+    transform: scale(1.05);
+    font-weight: 600;
+}
+
+.lib-community-btn span {
+  display: inline-block;
 }
 
 .lib-community-right-wrapper {
@@ -83,12 +99,12 @@
 
 @media screen and (max-width: 428px) {
   .lib-community-wrapper {
-    padding: 4rem 3rem;
+    padding: 4rem 2rem;
   }
 }
 
 @media screen and (max-width: 332px) {
-  .lib-community-btn {
+  /* .lib-community-btn {
     padding: 1rem 3rem;
-  }
+  } */
 }

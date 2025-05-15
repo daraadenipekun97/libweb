@@ -1,8 +1,13 @@
 import React from "react";
 import "./notificationModal.css";
-import okadaImage from "../../assets/images/Okada_Books_statement.jpg";
+import okadaImage from "../../assets/images/HeroSectionBlur.png";
+import {AiOutlineCloseCircle} from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const NotificationModal = ({ showNotification, setShowNotification }) => {
+
+  const navigate = useNavigate();
+
   const showHideClassName = showNotification
     ? "main-modal-bg-dashboard display-block"
     : "main-modal-bg-dashboard display-none";
@@ -11,28 +16,37 @@ const NotificationModal = ({ showNotification, setShowNotification }) => {
     setShowNotification(false);
   };
 
+  
+  const handleNavigate = () => {
+    navigate("/blog");
+  };
+
   return (
     <div className={showHideClassName}>
       <div className="modal-main-dashboard">
         <>
-          <h4 className="modal-title-dashboard">
-            A heartfelt farewell to Okada Books: Gratitude and fond memories
-          </h4>
-          {/* <p className="modal-text-dashboard">Please update your profile</p>
-        <p className="modal-text-dashboard">Country, Date of Birth & Phone Number</p> */}
 
-          <div style={{ borderTop: "1px solid #ddd" }}>
-            {/* <iframe src={pdf} width="100%" height="300px" /> */}
-            <img src={okadaImage} alt="Okada books notice" width="100%" height="100%" />
+          <div className="modal-header-dashboard">
+            <h4 className="modal-title-dashboard">
+              Read a blog today
+            </h4>
+            <button className="close-icon-button" onClick={handleClose}>
+               <AiOutlineCloseCircle size={20} />            
+            </button>
+          </div>
+
+          <div className="modal-img">
+            <img src={okadaImage} alt="Okada books notice" />
+            <button className="modal-prompt-btn" onClick={handleNavigate}>Go to Blog</button>
           </div>
         </>
 
-        <hr />
+        {/* <hr />
         <div className="btn-modal-wrapper-dashboard">
           <button className="modal-btn-dashboard" onClick={() => handleClose()}>
             Close
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

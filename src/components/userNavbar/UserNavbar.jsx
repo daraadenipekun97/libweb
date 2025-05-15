@@ -83,6 +83,8 @@ const UserNavbar = () => {
       setActiveTab("lib");
     } else if (window.location.pathname === "/home/discover") {
       setActiveTab("discover");
+    }else{
+      setActiveTab("blog")
     }
   }, [dispatch, window.location.pathname]);
 
@@ -101,6 +103,9 @@ const UserNavbar = () => {
   const handleDashboard = () => {
     navigate("/home/dashboard");
   };
+  const handleBlog = () => {
+    navigate("/blog")
+  }
 
   return (
     <>
@@ -137,6 +142,9 @@ const UserNavbar = () => {
             </li>
             <li className={activeTab === "discover" ? "active" : ""} onClick={handleDiscover}>
               Discover
+            </li>
+            <li className={activeTab === "blog" ? "active" : ""} onClick={handleBlog}>
+              Blog
             </li>
           </ul>
           <div className="search">

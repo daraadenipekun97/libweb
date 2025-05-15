@@ -9,9 +9,9 @@ const Alan = ({ user }) => {
     useEffect(() => {
         if (!user || alanInstance.current) return; // Ensure Alan is only initialized once
 
-        console.log("Initializing Alan AI... from code");
+        // console.log("Initializing Alan AI... from code");
 
-        const alanKey = '1cc1de04ce3430871b2ddce69a181a2c2e956eca572e1d8b807a3e2338fdd0dc/stage'
+        const alanKey = process.env.REACT_APP_ALAN_KEY;
 
 
         alanInstance.current = alanBtn({
@@ -36,8 +36,16 @@ const Alan = ({ user }) => {
                         break;
                     case "home":
                         navigate('home/dashboard');
+                        break
                     case "library":
                         navigate('home/library');
+                        break
+                    case "discover":
+                        navigate('home/discover');
+                        break
+                    case "profile":
+                        navigate('home/profile');
+                        break
                     case "back":
                         navigate(-1); 
                         break;

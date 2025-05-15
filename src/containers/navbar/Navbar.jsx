@@ -6,11 +6,11 @@ import "./navbar.css";
 import Logo from "../../assets/images/myLibriBooks.png";
 import { PurpleButton } from "../../components/button/Button";
 
-import { AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineCloseCircle, AiOutlineMenu, AiOutlineArrowDown  } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Menu = ({ handleHome, handleDiscover, handleSignin }) => {
+const Menu = ({ handleHome, handleDiscover, handleSignin, handleBlog, handleHover, handleHoverLeave }) => {
   const dispatch = useDispatch();
 
   const [activeTab, setActiveTab] = useState("home");
@@ -20,6 +20,8 @@ const Menu = ({ handleHome, handleDiscover, handleSignin }) => {
       setActiveTab("home");
     } else if (window.location.pathname === "/signin") {
       setActiveTab("signin");
+    }else if(window.location.pathname === "/blog"){
+      setActiveTab("blog");
     }
   }, [dispatch, window.location.pathname]);
 
@@ -28,10 +30,28 @@ const Menu = ({ handleHome, handleDiscover, handleSignin }) => {
       <p className={activeTab === "home" ? "active" : ""} onClick={handleHome}>
         Home
       </p>
+      <p className="company-link"
+        onMouseEnter={handleHover}
+        // onMouseLeave={handleHoverLeave}
+      >
+        Company <AiOutlineArrowDown size={20}   />
+      </p>
       <p onClick={handleDiscover}>Discover</p>
+      <p className={activeTab === "blog" ? "active" : ""} onClick={handleBlog}>Blog</p>
       <p className={activeTab === "signin" ? "active" : ""} onClick={handleSignin}>
         Sign In
       </p>
+    </>
+  );
+};
+
+const MenuCompany = ({ handleAboutUs, handleFaq }) => {
+
+
+  return (
+    <>
+      <p  onClick={handleAboutUs}>About Us</p>
+      <p  onClick={handleFaq}>FAQ</p>
     </>
   );
 };
@@ -40,6 +60,8 @@ const Navbar = ({ user }) => {
   const navigate = useNavigate();
 
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleCompanyMenu, setToggleCompanyMenu] = useState(false);
+
 
   const handleHome = () => {
     if (user) {
@@ -52,6 +74,10 @@ const Navbar = ({ user }) => {
   const handleSignin = () => {
     navigate("/signin");
   };
+
+  const handleBlog = () => {
+    navigate("/blog")
+  }
 
   const handleDiscover = () => {
     const hanldeSwal = () => {
@@ -90,14 +116,46 @@ const Navbar = ({ user }) => {
     navigate("/register");
   };
 
+  const handleHover = () => {
+    setToggleCompanyMenu(true)
+    setToggleMenu(false)
+  }
+
+  const handleHoverLeave = () => {
+    setToggleCompanyMenu(false)
+  }
+  const  handleOpenDropDown = () => {
+    setToggleMenu(true); 
+    setToggleCompanyMenu(false);
+  }
+
+  const handleAboutUs = () => {
+    navigate("/about");
+
+  }
+
+  const handleFaq = () => {
+    navigate("/faq")
+  }
+
   return (
     <div className="lib-navbar">
       <div className="lib-navbar-logo" onClick={handleHomeNav}>
         <img src={Logo} alt="Logo" />
       </div>
       <div className="lib-navbar-links-container">
-        <Menu handleHome={handleHome} handleDiscover={handleDiscover} handleSignin={handleSignin} />
+        <Menu handleHome={handleHome} handleDiscover={handleDiscover} handleSignin={handleSignin} handleBlog={handleBlog} handleHover={handleHover} handleHoverLeave = {handleHoverLeave} />
       </div>
+      {toggleCompanyMenu && (
+          <div className="lib-navbar-menu-container-company scale-up-center"  onMouseLeave={handleHoverLeave}>
+            <div className="lib-navbar-menu-container-links">
+              <MenuCompany
+                handleAboutUs={handleAboutUs}
+                handleFaq={handleFaq}
+              />
+            </div>
+          </div>
+        )}
       <div className="btn-wrapper" onClick={handleGetStarted}>
         Get Started
       </div>
@@ -105,7 +163,7 @@ const Navbar = ({ user }) => {
         {toggleMenu ? (
           <AiOutlineCloseCircle size={27} color="#5e458b" onClick={() => setToggleMenu(false)} />
         ) : (
-          <AiOutlineMenu size={27} color="#5e458b" onClick={() => setToggleMenu(true)} />
+          <AiOutlineMenu size={27} color="#5e458b" onClick={handleOpenDropDown} />
         )}
         {toggleMenu && (
           <div className="lib-navbar-menu-container scale-up-center">
@@ -114,6 +172,8 @@ const Navbar = ({ user }) => {
                 handleHome={handleHome}
                 handleDiscover={handleDiscover}
                 handleSignin={handleSignin}
+                handleBlog={handleBlog}
+                handleHover={handleHover}
               />
               <PurpleButton text="Get Started" onClickFunction={handleGetStarted} />
             </div>

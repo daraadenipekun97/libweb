@@ -23,8 +23,8 @@ const Blog = ({ user }) => {
           <h3>Blog</h3>
         </div>
         <div className="blog-card-container">
-          {blogs.map((item) => (
-            <SingleBlogCard data={item} />
+          {blogs.map((blog) => (
+            <SingleBlogCard data={blog} key={blog.id} />
           ))}
         </div>
       </div>

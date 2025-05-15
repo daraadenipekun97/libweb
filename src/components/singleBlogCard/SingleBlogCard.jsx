@@ -12,7 +12,11 @@ const SingleBlogCard = ({ data }) => {
       <div className="single-blog-card-text">
         <span>{moment(data?.updated_at).format("MMM Do YYYY")}</span>
         <p className="single-blog-card-text-title">{data?.title}</p>
-        <p>{data?.content}</p>
+        <div
+        className="single-blog-card-text-preview"
+        dangerouslySetInnerHTML={{ __html: data?.content }}
+      /> 
+        {/* <p>{data?.content}</p> */}
         <a href={`/blog/${data?.title ? data.title.replace(/\s+/g, "-") : ""}`}>Read More</a>
       </div>
     </div>

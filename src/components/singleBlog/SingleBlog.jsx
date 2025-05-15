@@ -27,35 +27,35 @@ const SingleBlog = () => {
 
   const { blogById } = useSelector((state) => state.blog);
 
-  const [paragraph, setParagraph] = useState([
-    {
-      splitText: "Loading. Blog",
-    },
-  ]);
+  // const [paragraph, setParagraph] = useState([
+  //   {
+  //     splitText: "Loading. Blog",
+  //   },
+  // ]);
 
   useEffect(() => {
     const actualTitle = params.title.replace(/-/g, " ");
     dispatch(fetchBlogById(actualTitle));
   }, [dispatch]);
 
-  useEffect(() => {
-    callParagaraphs();
-  }, [blogById]);
+  // useEffect(() => {
+  //   callParagaraphs();
+  // }, [blogById]);
 
-  const callParagaraphs = () => {
-    if (Object.keys(blogById).length !== 0) {
-      let paragraphs = blogById?.content
-        .split(/(?<=\.)\s+(?=[A-Z])/)
-        .map((text) => ({ splitText: text }));
-      setParagraph(paragraphs);
-    } else {
-      setParagraph([
-        {
-          splitText: "Loading. Blog",
-        },
-      ]);
-    }
-  };
+  // const callParagaraphs = () => {
+  //   if (Object.keys(blogById).length !== 0) {
+  //     let paragraphs = blogById?.content
+  //       .split(/(?<=\.)\s+(?=[A-Z])/)
+  //       .map((text) => ({ splitText: text }));
+  //     setParagraph(paragraphs);
+  //   } else {
+  //     setParagraph([
+  //       {
+  //         splitText: "Loading. Blog",
+  //       },
+  //     ]);
+  //   }
+  // };
 
   const currentPageUrl = window.location.href;
 
@@ -67,6 +67,7 @@ const SingleBlog = () => {
             Back To Home
           </a>
           <h1 className="header-title">{blogById?.title}</h1>
+          <p className="header-blog-author">by Lucky Are Odionegwegu-Felix</p>
           <img
             src={blogById.blog_image_data ? blogById?.blog_image_data : Placeholder}
             alt="placeholder"
@@ -75,13 +76,15 @@ const SingleBlog = () => {
         </div>
       </div>
 
-      <div className="blog-body-container blog-container">
-        {/* <h2 className="blog-sub-heading">Hello</h2> */}
+      <div className="blog-body-container blog-container" 
+      
+       dangerouslySetInnerHTML={{ __html: blogById?.content }}
+      />
 
-        {paragraph?.map((item) => (
+        {/* {paragraph?.map((item) => (
           <p className="blog-post-text">{item.splitText}</p>
-        ))}
-      </div>
+        ))} */}
+      
 
       <div className="blog-share blog-container">
         <span className="share-title">Share this blog post</span>

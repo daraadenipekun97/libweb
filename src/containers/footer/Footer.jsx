@@ -48,7 +48,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <AiFillFacebook size={20} />
+                <AiFillFacebook size={30} />
               </a>
             </p>
             <p>
@@ -57,12 +57,12 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <AiFillInstagram size={20} />
+                <AiFillInstagram size={30} />
               </a>
             </p>
             <p>
               <a href="https://twitter.com/mylibribooks" target="_blank" rel="noopener noreferrer">
-                <AiFillTwitterCircle size={20} />
+                <AiFillTwitterCircle size={30} />
               </a>
             </p>
           </div>

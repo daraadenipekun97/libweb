@@ -25,7 +25,7 @@ const LandingPage = ({ user }) => {
           <DownloadApp />
           <Community />
           <Footer />
-          {/* <NotificationModal showNotification={showNotification} setShowNotification={setShowNotification} /> */}
+          <NotificationModal showNotification={showNotification} setShowNotification={setShowNotification} />
         </Suspense>
       </div>
     </>
