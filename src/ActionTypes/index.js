@@ -235,3 +235,9 @@ export const RESTORE_UPLOAD_PROFILE_IMAGE_INITIAL = "restore_upload_profile_imag
 
 export const FETCH_BOOKS_BY_SUGGESTION = "fetch_books_by_suggestion";
 export const FETCH_BOOKS_BY_SUGGESTION_SUCCESS = "fetch_books_by_suggestion_success";
+
+
+export const FETCH_ALL_BANNERS = "fetch_all_banners";
+export const FETCH_ALL_BANNERS_SUCCESS = "fetch_all_banners_success";
+
+

@@ -48,3 +48,24 @@ export const facebookHide = async () => {
     return true;
   }
 };
+
+
+
+export const getBanners = async () => {
+  if (navigator.onLine === false) {
+    toastr.error("No Internet Connection", "Please try again");
+  } else {
+    try {
+      const response = await api.get(`${baseController}banners`);
+      if (typeof response !== "undefined") {
+        if (response.status === 200) {
+          return response.data.data;
+        }
+      } else {
+        toastr.error("An Error occured", "Could not retrieve banners");
+      }
+    } catch (ex) {
+      toastr.error("An Error occurred", "Please try again");
+    }
+  }
+};

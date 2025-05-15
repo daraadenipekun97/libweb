@@ -6,6 +6,9 @@ import {
   HIDE_FACEBOOK_ICON,
   HIDE_FACEBOOK_ICON_SUCCESS,
   RESTORE_HIDE_FACEBOOK_ICON_INITIAL,
+
+  FETCH_ALL_BANNERS,
+  FETCH_ALL_BANNERS_SUCCESS,
 } from "../ActionTypes";
 
 export const fetchAllCountries = () => ({
@@ -37,4 +40,14 @@ export const hideFacebookIconSuccess = (payload) => ({
 
 export const restoreHideFacebookIcon = () => ({
   type: RESTORE_HIDE_FACEBOOK_ICON_INITIAL,
+});
+
+
+export const fetchAllBanners = () => ({
+  type: FETCH_ALL_BANNERS,
+});
+
+export const fetchAllBannersSuccess = (payload) => ({
+  type: FETCH_ALL_BANNERS_SUCCESS,
+  payload,
 });

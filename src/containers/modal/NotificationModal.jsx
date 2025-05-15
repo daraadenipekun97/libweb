@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./notificationModal.css";
 import okadaImage from "../../assets/images/HeroSectionBlur.png";
 import {AiOutlineCloseCircle} from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { fetchAllBanners } from "../../Actions";
 
 const NotificationModal = ({ showNotification, setShowNotification }) => {
 
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { allBanners } = useSelector((state) => state.getAll);
+
+  useEffect(() => {
+    dispatch(fetchAllBanners());
+  }, [dispatch]);
 
   const showHideClassName = showNotification
     ? "main-modal-bg-dashboard display-block"

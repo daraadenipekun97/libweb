@@ -3,12 +3,18 @@ import {
   FETCH_SONGS_SUCCESS,
   HIDE_FACEBOOK_ICON_SUCCESS,
   RESTORE_HIDE_FACEBOOK_ICON_INITIAL,
+  FETCH_ALL_BANNERS_SUCCESS
+
 } from "../ActionTypes";
 
 const INIT_STATE = {
   countries: [],
   allSongs: [],
   facebookIconHidden: false,
+
+
+  allBanners: [],
+
 };
 
 const getAllReducer = (state = INIT_STATE, action) => {
@@ -37,6 +43,13 @@ const getAllReducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         facebookIconHidden: false,
+      };
+    }
+
+    case FETCH_ALL_BANNERS_SUCCESS: {
+      return {
+        ...state,
+        allBanners: action.payload,
       };
     }
 
