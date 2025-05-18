@@ -13,14 +13,23 @@ const NotificationModal = ({ showNotification, setShowNotification }) => {
   const navigate = useNavigate();
 
   const { allBanners } = useSelector((state) => state.getAll);
+  const [randomBanner, setRandomBanner] = useState(null);
 
   useEffect(() => {
     dispatch(fetchAllBanners());
   }, [dispatch]);
 
+
+  useEffect(() => {
+    if (allBanners && allBanners.length > 0) {
+      const randomIndex = Math.floor(Math.random() * allBanners.length);
+      setRandomBanner(allBanners[randomIndex]);
+    }
+  }, [allBanners]);
+
   const showHideClassName = showNotification
-    ? "main-modal-bg-dashboard display-block"
-    : "main-modal-bg-dashboard display-none";
+    ? "banner-main-modal-bg-dashboard banner-display-block"
+    : "banner-main-modal-bg-dashboard banner-display-none";
 
   const handleClose = () => {
     setShowNotification(false);
@@ -28,26 +37,27 @@ const NotificationModal = ({ showNotification, setShowNotification }) => {
 
   
   const handleNavigate = () => {
-    navigate("/blog");
+    // navigate(`${randomBanner?.prompt?.prompt_url}`);
+    window.location.href = `${randomBanner?.prompt?.prompt_url}`
   };
 
   return (
     <div className={showHideClassName}>
-      <div className="modal-main-dashboard">
+      <div className="banner-modal-main-dashboard">
         <>
 
-          <div className="modal-header-dashboard">
-            <h4 className="modal-title-dashboard">
-              Read a blog today
+          <div className="banner-modal-header-dashboard">
+            <h4 className="banner-modal-title-dashboard">
+              {randomBanner?.title}
             </h4>
-            <button className="close-icon-button" onClick={handleClose}>
+            <button className="banner-close-icon-button" onClick={handleClose}>
                <AiOutlineCloseCircle size={20} />            
             </button>
           </div>
 
-          <div className="modal-img">
-            <img src={okadaImage} alt="Okada books notice" />
-            <button className="modal-prompt-btn" onClick={handleNavigate}>Go to Blog</button>
+          <div className="banner-modal-img">
+            <img src={randomBanner?.image_data} alt="" />
+            <button className="banner-modal-prompt-btn" onClick={handleNavigate}>{randomBanner?.prompt?.prompt}</button>
           </div>
         </>
 

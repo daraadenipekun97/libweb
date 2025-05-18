@@ -67,7 +67,9 @@ const SingleBlog = () => {
             Back To Home
           </a>
           <h1 className="header-title">{blogById?.title}</h1>
-          <p className="header-blog-author">by Lucky Are Odionegwegu-Felix</p>
+          <p className="header-blog-author">
+          {`Written by ${blogById.writer_name ? blogById.writer_name : "Admin"}`}
+          </p>
           <img
             src={blogById.blog_image_data ? blogById?.blog_image_data : Placeholder}
             alt="placeholder"

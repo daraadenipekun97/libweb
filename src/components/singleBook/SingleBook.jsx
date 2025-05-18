@@ -203,6 +203,7 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite, subtext }) => {
                 type="text"
                 name="search"
                 placeholder="Enter a search term"
+                id="target-input"
                 onChange={(e) => searchTextHandler(e)}
                 value={formValues.search}
               />

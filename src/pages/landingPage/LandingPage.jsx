@@ -1,4 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
+import { useLocation } from "react-router-dom";
+
 import "./landingPage.css";
 
 // import { Navbar, Header, Footer, Explore, DownloadApp, Community } from "../../containers";
@@ -13,7 +15,21 @@ const DownloadApp = lazy(() => import("../../containers/downloadApp/DownloadApp"
 const Community = lazy(() => import("../../containers/community/Community"));
 
 const LandingPage = ({ user }) => {
+  const location = useLocation();
   const [showNotification, setShowNotification] = useState(true);
+
+
+  useEffect(() => {
+    if (location.state?.scrollToInput) {
+      const input = document.querySelector('#target-input');
+      if (input) {
+        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          input.focus();
+        }, 500);
+      }
+    }
+  }, [location.state]);
 
   return (
     <>

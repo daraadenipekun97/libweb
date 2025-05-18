@@ -6,11 +6,11 @@ import "./navbar.css";
 import Logo from "../../assets/images/myLibriBooks.png";
 import { PurpleButton } from "../../components/button/Button";
 
-import { AiOutlineCloseCircle, AiOutlineMenu, AiOutlineArrowDown  } from "react-icons/ai";
+import { AiOutlineCloseCircle, AiOutlineMenu, AiOutlineArrowDown, AiOutlineSearch  } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Menu = ({ handleHome, handleDiscover, handleSignin, handleBlog, handleHover, handleHoverLeave }) => {
+const Menu = ({ handleHome, handleScroll, handleSignin, handleBlog, handleHover, handleHoverLeave }) => {
   const dispatch = useDispatch();
 
   const [activeTab, setActiveTab] = useState("home");
@@ -36,7 +36,12 @@ const Menu = ({ handleHome, handleDiscover, handleSignin, handleBlog, handleHove
       >
         Company <AiOutlineArrowDown size={20}   />
       </p>
-      <p onClick={handleDiscover}>Discover</p>
+      <p 
+      className="company-link"
+      onClick={handleScroll}>
+        Search
+        <AiOutlineSearch size={20} />
+      </p>
       <p className={activeTab === "blog" ? "active" : ""} onClick={handleBlog}>Blog</p>
       <p className={activeTab === "signin" ? "active" : ""} onClick={handleSignin}>
         Sign In
@@ -108,6 +113,31 @@ const Navbar = ({ user }) => {
     }
   };
 
+  const handleScroll = () => {
+    const currentPath = window.location.pathname;
+  
+    if (currentPath !== "/") {
+      navigate("/", { state: { scrollToInput: true } });
+    } else {
+      scrollAndFocusInput();
+    }
+  };
+  
+
+
+  const scrollAndFocusInput = () => {
+    const input = document.querySelector('#target-input');
+    if (input) {
+      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  
+      // Focus after scroll finishes
+      setTimeout(() => {
+        input.focus();
+      }, 500); // Adjust delay if needed
+    }
+  };
+  
+
   const handleHomeNav = () => {
     navigate("/");
   };
@@ -144,7 +174,7 @@ const Navbar = ({ user }) => {
         <img src={Logo} alt="Logo" />
       </div>
       <div className="lib-navbar-links-container">
-        <Menu handleHome={handleHome} handleDiscover={handleDiscover} handleSignin={handleSignin} handleBlog={handleBlog} handleHover={handleHover} handleHoverLeave = {handleHoverLeave} />
+        <Menu handleHome={handleHome} handleScroll={handleScroll} handleSignin={handleSignin} handleBlog={handleBlog} handleHover={handleHover} handleHoverLeave = {handleHoverLeave} />
       </div>
       {toggleCompanyMenu && (
           <div className="lib-navbar-menu-container-company scale-up-center"  onMouseLeave={handleHoverLeave}>
@@ -170,7 +200,7 @@ const Navbar = ({ user }) => {
             <div className="lib-navbar-menu-container-links">
               <Menu
                 handleHome={handleHome}
-                handleDiscover={handleDiscover}
+                handleScroll={handleScroll}
                 handleSignin={handleSignin}
                 handleBlog={handleBlog}
                 handleHover={handleHover}

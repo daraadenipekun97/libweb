@@ -1,4 +1,4 @@
-.main-modal-bg-dashboard {
+.banner-main-modal-bg-dashboard {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,7 +7,7 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.modal-main-dashboard {
+.banner-modal-main-dashboard {
   position: fixed;
   background: white;
   width: 80%;                /* wider for landscape */
@@ -19,15 +19,15 @@
   overflow: hidden;   
 }
 
-.display-block {
+.banner-display-block {
   display: block;
 }
 
-.display-none {
+.banner-display-none {
   display: none;
 }
 
-.modal-header-dashboard {
+.banner-modal-header-dashboard {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,14 +36,14 @@
   flex-wrap: wrap; /* ensures responsiveness */
 }
 
-.modal-title-dashboard {
+.banner-modal-title-dashboard {
   color: #5e458b;
   font-size: 16px;
   margin: 0;
   flex: 1;
 }
 
-.close-icon-button {
+.banner-close-icon-button {
   background: transparent;
   border: none;
   font-size: 24px;
@@ -54,21 +54,21 @@
   margin-left: auto;
 }
 
-.close-icon-button:hover {
+.banner-close-icon-button:hover {
   color: #000;
 }
 
 
-.modal-text-dashboard {
+.banner-modal-text-dashboard {
   padding: 0.5rem 1rem;
   color: #78787d;
 }
 
-.btn-modal-wrapper-dashboard {
+.banner-btn-modal-wrapper-dashboard {
   float: right;
 }
 
-.modal-img{
+.banner-modal-img{
 
   border-top: 2px solid #ddd;
   position: relative;
@@ -81,7 +81,7 @@
 
 }
 
-.modal-img img{
+.banner-modal-img img{
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -96,7 +96,7 @@
 
 
 
-.modal-prompt-btn {
+.banner-modal-prompt-btn {
   position: absolute;
   bottom: 70px;
   left: 50%;
@@ -118,7 +118,7 @@
 }
 
 
-.modal-prompt-btn:hover {
+.banner-modal-prompt-btn:hover {
   background: #ffffff;
   color: #5d418d;
   border: 1px solid #5d418d;
@@ -139,10 +139,10 @@
   .modal-main-dashboard {
     width: 70% !important;
   }
-}
-
-@media screen and (max-width: 400px) {
-  .modal-main-dashboard {
-    width: 80% !important;
-  }
 } */
+
+@media screen and (max-width: 428px) {
+  .banner-modal-prompt-btn {
+    bottom: 80px;
+} 
+}

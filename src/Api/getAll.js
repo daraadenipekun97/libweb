@@ -56,7 +56,7 @@ export const getBanners = async () => {
     toastr.error("No Internet Connection", "Please try again");
   } else {
     try {
-      const response = await api.get(`${baseController}banners`);
+      const response = await api.get(`${baseController}advert/banners`);
       if (typeof response !== "undefined") {
         if (response.status === 200) {
           return response.data.data;

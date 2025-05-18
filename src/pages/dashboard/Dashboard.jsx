@@ -10,6 +10,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import ModalRedirect from "../../components/modal/ModalRedirect";
 import Swal from "sweetalert2";
 import ActionBanner from "../../containers/actionBanner/ActionBanner";
+import NotificationModal from "../../containers/modal/NotificationModal";
 
 const Modal = ({ handleClose, show, handleNavigate }) => {
   const showHideClassName = show
@@ -90,6 +91,8 @@ const Dashboard = () => {
   const [show, setShow] = useState(false);
   const [showChallengeModal, setShowChallengeModal] = useState(false);
   const [showRedirectModal, setShowRedirectModal] = useState(false);
+  const [showNotification, setShowNotification] = useState(true);
+
 
   const verifyCheckHandler = () => {
     Swal.fire({
@@ -193,6 +196,7 @@ const Dashboard = () => {
       {/* <ActionBanner /> */}
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
+      <NotificationModal showNotification={showNotification} setShowNotification={setShowNotification} />
       {/* <ChallengeModal
         handleClose={handleCloseChallenge}
         show={showChallengeModal}

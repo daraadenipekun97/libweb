@@ -139,6 +139,8 @@
     border-radius: 5px;
     /* box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px; */
     border: 1px solid #ddd;
+    z-index: 9999; /* ensures it's on top of other elements */
+
   
 }
 
@@ -185,11 +187,18 @@
   }
 }
 
-@media screen and (max-width: 1043px) {
+@media screen and (max-width: 1055px) {
   .lib-navbar {
     padding: 1rem 4rem;
   }
 }
+
+@media screen and (max-width: 991px) {
+  .lib-navbar {
+    padding: 1rem 3rem;
+  }
+}
+
 
 @media screen and (max-width: 550px) {
   .lib-navbar {
