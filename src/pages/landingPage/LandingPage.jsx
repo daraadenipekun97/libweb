@@ -1,5 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAllBanners } from "../../Actions";
 
 import "./landingPage.css";
 
@@ -12,18 +14,25 @@ const Header = lazy(() => import("../../containers/header/Header"));
 const Footer = lazy(() => import("../../containers/footer/Footer"));
 const Explore = lazy(() => import("../../containers/explore/Explore"));
 const DownloadApp = lazy(() => import("../../containers/downloadApp/DownloadApp"));
+const Features = lazy(() => import("../../containers/features/Features"));
 const Community = lazy(() => import("../../containers/community/Community"));
 
 const LandingPage = ({ user }) => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const [showNotification, setShowNotification] = useState(true);
 
+  const { allBanners } = useSelector((state) => state.getAll);
+
+  useEffect(() => {
+    dispatch(fetchAllBanners());
+  }, [dispatch]);
 
   useEffect(() => {
     if (location.state?.scrollToInput) {
-      const input = document.querySelector('#target-input');
+      const input = document.querySelector("#target-input");
       if (input) {
-        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        input.scrollIntoView({ behavior: "smooth", block: "center" });
         setTimeout(() => {
           input.focus();
         }, 500);
@@ -38,10 +47,19 @@ const LandingPage = ({ user }) => {
           <Navbar user={user} />
           <Header />
           <Explore />
-          <DownloadApp />
+          {/* <DownloadApp /> */}
+          <Features/>
           <Community />
           <Footer />
-          <NotificationModal showNotification={showNotification} setShowNotification={setShowNotification} />
+          {allBanners.length !== 0 ? (
+            <NotificationModal
+              showNotification={showNotification}
+              setShowNotification={setShowNotification}
+              allBanners={allBanners}
+            />
+          ) : (
+            <></>
+          )}
         </Suspense>
       </div>
     </>

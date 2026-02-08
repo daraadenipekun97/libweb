@@ -83,8 +83,8 @@ const UserNavbar = () => {
       setActiveTab("lib");
     } else if (window.location.pathname === "/home/discover") {
       setActiveTab("discover");
-    }else{
-      setActiveTab("blog")
+    } else {
+      setActiveTab("blog");
     }
   }, [dispatch, window.location.pathname]);
 
@@ -104,8 +104,8 @@ const UserNavbar = () => {
     navigate("/home/dashboard");
   };
   const handleBlog = () => {
-    navigate("/blog")
-  }
+    navigate("/blog");
+  };
 
   return (
     <>

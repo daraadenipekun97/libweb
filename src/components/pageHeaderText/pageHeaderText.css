@@ -1,7 +1,10 @@
 .header-text {
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 25px;
   /* line-height: 45px; */
-  color: #5e458b;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(135deg, var(--terracotta) 0%, var(--gold) 100%);
 }

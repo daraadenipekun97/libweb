@@ -3,8 +3,7 @@ import {
   FETCH_SONGS_SUCCESS,
   HIDE_FACEBOOK_ICON_SUCCESS,
   RESTORE_HIDE_FACEBOOK_ICON_INITIAL,
-  FETCH_ALL_BANNERS_SUCCESS
-
+  FETCH_ALL_BANNERS_SUCCESS,
 } from "../ActionTypes";
 
 const INIT_STATE = {
@@ -12,9 +11,7 @@ const INIT_STATE = {
   allSongs: [],
   facebookIconHidden: false,
 
-
   allBanners: [],
-
 };
 
 const getAllReducer = (state = INIT_STATE, action) => {

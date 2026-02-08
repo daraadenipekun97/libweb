@@ -23,9 +23,14 @@ const Blog = ({ user }) => {
           <h3>Blog</h3>
         </div>
         <div className="blog-card-container">
-          {blogs.map((blog) => (
-            <SingleBlogCard data={blog} key={blog.id} />
-          ))}
+          {blogs.length === 0 ? (
+            <div className="no-blogs-message">
+              <h4>No blog posts yet</h4>
+              <p>Please check back later for new updates.</p>
+            </div>
+          ) : (
+            blogs.map((blog) => <SingleBlogCard data={blog} key={blog.id} />)
+          )}
         </div>
       </div>
       <Footer />

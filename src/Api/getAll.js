@@ -49,8 +49,6 @@ export const facebookHide = async () => {
   }
 };
 
-
-
 export const getBanners = async () => {
   if (navigator.onLine === false) {
     toastr.error("No Internet Connection", "Please try again");

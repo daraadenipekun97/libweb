@@ -222,25 +222,15 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite, subtext }) => {
           ""
         )}
       </div>
-      <div
-        className="lib-book-gallery-wrapper"
-
-        // {
-        //   childStat &&
-        //   (title === "Trending Books" ||
-        //     title === "New Releases Books" ||
-        //     title === "Classic Books")
-        //     ? "lib-book-gallery-wrapper-opacity"
-        //     : "lib-book-gallery-wrapper"
-        // }
-      >
-        <div className="lib-book-gallery-inner-wrapper-two">
+        <div className="books-grid">
           {datas.length !== 0 ? (
-            datas.map((data) => {
+            datas.map((data, index) => {
               return (
                 <div key={data.id}>
                   <div
-                    className={icon || favorite ? "lib-gallery-box-my-books" : "lib-gallery-box"}
+                    // className={icon || favorite ? "lib-gallery-box-my-books" : "book-card"}
+                    className="book-card"
+                    style={{ animationDelay: `${0.1 * index}s` }}
                     onClick={() =>
                       userLoggedIn && profileData.email_verified_at
                         ? handleBookNavigate(data.id)
@@ -249,12 +239,20 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite, subtext }) => {
                         : handleSignInNavigate()
                     }
                   >
-                    <div className="img-div">
-                      <LazyLoadImage
-                        effect="blur"
+                    <div className="book-card-image-wrapper">
+                      <div className="book-card-aspect">
+                      <img
                         src={data.image_data ? data.image_data : ""}
                         alt={data.name ? data.name : ""}
                       />
+                      </div>
+                     
+
+              <div className="book-card-overlay">
+                    <button className="book-card-read-btn">
+                          Read Now
+                        </button>
+                      </div>
                     </div>
 
                     <p className="lib-gallery-box-author">{data.author ? data.author.name : ""}</p>
@@ -316,7 +314,6 @@ const SingleBook = ({ datas, searchBar, title, icon, favorite, subtext }) => {
             <Spinner spinnerHide={spinnerHide} />
           )}
         </div>
-      </div>
       <Modal handleClose={handleClose} show={show} />
     </div>
   );

@@ -2,20 +2,43 @@ import React from "react";
 import "./header.css";
 import Hero from "../../assets/images/HeroSectionNoBkg.png";
 
+import { Apple, Play } from "lucide-react";
+
 const Header = () => {
   return (
-    <div className="lib-header section-padding">
-      <div className="lib-header-content">
-        <h1>Africa’s Best Digital Library</h1>
-        <p className="lib-header-paragraph">African Literature at Your Fingertips</p>
-        <div className="lib-download-app">
-          <a
-            href="https://apps.apple.com/us/app/mylibri-books/id1528198803"
-            className="lib-store"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="lib-store-wrapper">
+    <section className="hero">
+      {/* Background Pattern */}
+      <div className="hero-background">
+        <div className="hero-pattern" />
+      </div>
+
+      <div className="container hero-container">
+        <div className="hero-grid">
+          {/* Content */}
+          <div className="hero-content">
+            <div className="hero-badge animate-fade-up" style={{ animationDelay: '0.1s' }}>
+              <span className="hero-badge-dot" />
+              <span className="hero-badge-text">Africa's #1 Digital Library</span>
+            </div>
+            
+            <h1 className="hero-title animate-fade-up" style={{ animationDelay: '0.2s' }}>
+              African Literature at Your{" "}
+              <span className="text-gradient">Fingertips</span>
+            </h1>
+            
+            <p className="hero-description animate-fade-up" style={{ animationDelay: '0.3s' }}>
+              Discover thousands of ebooks from renowned African authors. 
+              Your gateway to the richest collection of African stories, novels, and wisdom.
+            </p>
+
+            {/* App Store Buttons */}
+            <div className="hero-buttons animate-fade-up" style={{ animationDelay: '0.4s' }}>
+              <a       
+              href="https://apps.apple.com/us/app/mylibri-books/id1528198803"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--hero btn--xl"
+               >
               <svg width="1.5rem" height="1.5625rem" viewBox="0 0 24 25" fill="none">
                 <g clipPath="url(#apple-logo-clip-path)" fill="white">
                   <path d="M16.499.5c-1.28.088-2.775.907-3.646 1.974-.796.967-1.45 2.404-1.194 3.801 1.397.043 2.842-.795 3.679-1.88.783-1.009 1.376-2.437 1.161-3.895z"></path>
@@ -26,21 +49,18 @@ const Header = () => {
                     <path fill="currentColor" transform="translate(0 .5)" d="M0 0h24v24H0z"></path>
                   </clipPath>
                 </defs>
-              </svg>
-              <div className="lib-store-text-wrapper">
-                <p className="lib-store-text-normal">Download on the </p>
-                <p className="lib-store-text-bold">App Store</p>
-              </div>
-            </div>
-          </a>
-
-          <a
-            href="https://play.google.com/store/apps/details?id=com.libribooks"
-            className="lib-store"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="lib-store-wrapper">
+              </svg>                
+              <div className="btn-content">
+                  <span className="btn-content-label">Download on the</span>
+                  <span className="btn-content-text">App Store</span>
+                </div>
+              </a>
+              <a
+              href="https://play.google.com/store/apps/details?id=com.libribooks"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--hero-outline btn--xl"
+              >
               <svg width="1.5rem" height="1.5625rem" viewBox="0 0 24 25" fill="none">
                 <g clipPath="url(#play-store-logo-clip-path)">
                   <path
@@ -70,21 +90,42 @@ const Header = () => {
                     ></rect>
                   </clipPath>
                 </defs>
-              </svg>
-              <div className="lib-store-text-wrapper">
-                <p className="lib-store-text-normal">Download on the </p>
-                <p className="lib-store-text-bold">Play Store</p>
+              </svg>                
+              <div className="btn-content">
+                  <span className="btn-content-label">Get it on</span>
+                  <span className="btn-content-text">Google Play</span>
+                </div>
+              </a>
+            </div>
+
+            {/* Stats */}
+            <div className="hero-stats animate-fade-up" style={{ animationDelay: '0.5s' }}>
+              <div className="hero-stat">
+                <p className="hero-stat-value">10K+</p>
+                <p className="hero-stat-label">African Books</p>
+              </div>
+              <div className="hero-stat-divider" />
+              <div className="hero-stat">
+                <p className="hero-stat-value">500K+</p>
+                <p className="hero-stat-label">Active Readers</p>
+              </div>
+              <div className="hero-stat-divider" />
+              <div className="hero-stat">
+                <p className="hero-stat-value">4.8</p>
+                <p className="hero-stat-label">App Rating</p>
               </div>
             </div>
-          </a>
+          </div>
+
+          {/* Hero Image */}
+          <div className="hero-image-wrapper animate-fade-up" style={{ animationDelay: '0.3s' }}>
+          <img src={Hero} alt="hero" />
+          </div>
         </div>
       </div>
-
-      <div className="lib-header-image">
-        <img src={Hero} alt="hero" />
-      </div>
-    </div>
+    </section>
   );
 };
 
 export default Header;
+

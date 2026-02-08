@@ -20,12 +20,11 @@ const GenreById = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (typeof params.id === "string") {
+    if (/^[A-Za-z\s-]+$/.test(params.id)) {
       dispatch(fetchAllGenre());
-    const genre = allGenre.find((g) => g.title.toLowerCase() === params.id.toLowerCase());
-    dispatch(fetchBookByGenre(genre?.id));
-  }
-    else{
+      const genre = allGenre.find((g) => g.title.toLowerCase() === params.id.toLowerCase());
+      dispatch(fetchBookByGenre(genre?.id));
+    } else {
       dispatch(fetchBookByGenre(params.id));
     }
   }, [dispatch, params.id]);

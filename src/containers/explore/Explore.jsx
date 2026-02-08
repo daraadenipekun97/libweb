@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import "./explore.css";
 import SingleBook from "../../components/singleBook/SingleBook";
 import { fetchAllTrendingBooksUnauth } from "../../Actions";
+import { ChevronRight } from "lucide-react";
+
 
 const Explore = () => {
   const dispatch = useDispatch();
@@ -52,18 +54,26 @@ const Explore = () => {
     }
   }, [searchedBooksUnauth]);
 
+
   return (
-    <div className="lib-explore">
-      <div className="lib-explore-wrapper">
-        <div className="lib-explore-top-items">
-          <h1>Get access to Africa’s Largest Libri</h1>
-          <p>
-            Discover the best of African writing on Nigeria's largest reading platform, designed for
-            book lovers like you! Our digital library is the biggest in Africa, offering an
-            unparalleled collection of African ebooks, novels and stories.
-          </p>
+    <section id="library" className="books-section">
+      <div className="container books-container">
+        {/* Section Header */}
+        <div className="books-header">
+          <div className="books-header-content">
+            <p className="books-label">Our Collection</p>
+            <h2 className="books-title">Trending African Books</h2>
+            <p className="books-description">
+              Explore our vast collection of ebooks from renowned African authors that will transport you across the continent.
+            </p>
+          </div>
+          {/* <button className="btn btn--outline books-view-all">
+            View More Books
+            <ChevronRight />
+          </button> */}
         </div>
 
+        {/* Books Grid */}
         <SingleBook
           searchBar={true}
           datas={slicedTrendingBooks}
@@ -81,8 +91,9 @@ const Explore = () => {
           subtext="Enjoy seamless access to Nigeria's novel app, featuring the best of African literature"
         />
       </div>
-    </div>
+    </section>
   );
+
 };
 
 export default Explore;

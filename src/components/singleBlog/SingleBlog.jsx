@@ -68,7 +68,7 @@ const SingleBlog = () => {
           </a>
           <h1 className="header-title">{blogById?.title}</h1>
           <p className="header-blog-author">
-          {`Written by ${blogById.writer_name ? blogById.writer_name : "Admin"}`}
+            {`Written by ${blogById.writer_name ? blogById.writer_name : "Admin"}`}
           </p>
           <img
             src={blogById.blog_image_data ? blogById?.blog_image_data : Placeholder}
@@ -78,15 +78,14 @@ const SingleBlog = () => {
         </div>
       </div>
 
-      <div className="blog-body-container blog-container" 
-      
-       dangerouslySetInnerHTML={{ __html: blogById?.content }}
+      <div
+        className="blog-body-container blog-container"
+        dangerouslySetInnerHTML={{ __html: blogById?.content }}
       />
 
-        {/* {paragraph?.map((item) => (
+      {/* {paragraph?.map((item) => (
           <p className="blog-post-text">{item.splitText}</p>
         ))} */}
-      
 
       <div className="blog-share blog-container">
         <span className="share-title">Share this blog post</span>

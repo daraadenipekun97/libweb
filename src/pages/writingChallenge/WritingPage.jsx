@@ -169,7 +169,7 @@ const WritingPage = () => {
 
   useEffect(() => {
     if (createArticleSuccess) {
-      console.log("article created successfully");
+      // console.log("article created successfully");
       dispatch(fetchArticleByUser());
       // setTimeout(() => {
       //   dispatch(sendArticleLink({
@@ -203,7 +203,7 @@ const WritingPage = () => {
 
   useEffect(() => {
     if (editArticleSuccess) {
-      console.log("article edited successfully");
+      // console.log("article edited successfully");
       dispatch(fetchArticleByUser());
     }
 
@@ -225,12 +225,12 @@ const WritingPage = () => {
           editor={ClassicEditor}
           data={articleByUser?.content}
           onReady={(editor) => {
-            console.log("CKEditor5 React Component is ready to use!", editor);
+            // console.log("CKEditor5 React Component is ready to use!", editor);
             setEditor(editor);
           }}
           onChange={(event, editor) => {
             const data = editor.getData();
-            console.log({ event, editor, data });
+            // console.log({ event, editor, data });
             setWordLimitValidation(false);
             setArticleText(data);
           }}

@@ -1,11 +1,21 @@
 import { all, call, takeEvery, fork } from "redux-saga/effects";
 import requestFunction from "../Utils/sagasGenericFunction";
 
-import { FETCH_ALL_COUNTRIES, FETCH_SONGS, HIDE_FACEBOOK_ICON, FETCH_ALL_BANNERS } from "../ActionTypes";
+import {
+  FETCH_ALL_COUNTRIES,
+  FETCH_SONGS,
+  HIDE_FACEBOOK_ICON,
+  FETCH_ALL_BANNERS,
+} from "../ActionTypes";
 
 import { getCountries, getSongs, facebookHide, getBanners } from "../Api";
 
-import { fetchAllCountriesSuccess, fetchSongsSuccess, hideFacebookIconSuccess, fetchAllBannersSuccess } from "../Actions";
+import {
+  fetchAllCountriesSuccess,
+  fetchSongsSuccess,
+  hideFacebookIconSuccess,
+  fetchAllBannersSuccess,
+} from "../Actions";
 
 export const fetchCountryRequest = function* ({ payload }) {
   yield call(requestFunction, fetchAllCountriesSuccess, getCountries, payload);

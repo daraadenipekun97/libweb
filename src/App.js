@@ -11,9 +11,7 @@ import MessengerChat from "./plugin/MessengerChat";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Alan from "./plugin/Alan";
 
-
 import { GoogleOAuthProvider } from "@react-oauth/google";
-
 
 const LandingPage = lazy(() => import("./pages/landingPage/LandingPage"));
 const LoginPage = lazy(() => import("./pages/loginPage/LoginPage"));
@@ -54,23 +52,18 @@ const BlogWriteupPage = lazy(() => import("./pages/blog/BlogWriteup"));
 const NotfoundPage = lazy(() => import("./pages/notFound/NotFound"));
 
 function App() {
-
   const userDataRegister = JSON.parse(localStorage.getItem("userRegData"));
   const userDataLogin = JSON.parse(localStorage.getItem("userLoginData"));
 
   const user =
     userDataRegister !== null ? userDataRegister : userDataLogin !== null ? userDataLogin : null;
 
-
-
-  
-
   return (
     <>
       <GoogleOAuthProvider clientId="218460719300-c7mfmeul7tjt7fhrosljpni5kmmmeobd.apps.googleusercontent.com">
         <Provider store={store}>
           <BrowserRouter>
-          <Alan user={user} /> 
+            <Alan user={user} />
             <ErrorBoundary>
               <Suspense fallback={<Preloader />}>
                 <Routes>

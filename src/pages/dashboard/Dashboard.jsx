@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import UserNavbar from "../../components/userNavbar/UserNavbar";
 import SingleBook from "../../components/singleBook/SingleBook";
 import "./dashboard.css";
-import { fetchAllTrendingBooks, fetchSubscriptionDetails, fetchProfile } from "../../Actions";
+import { fetchAllTrendingBooks, fetchSubscriptionDetails, fetchProfile, fetchAllBanners } from "../../Actions";
 import { Community, Footer, Header, WritingCompetition } from "../../containers";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -86,13 +86,14 @@ const Dashboard = () => {
   const { trendingBooks } = useSelector((state) => state.books);
   const { subscriptionDetails } = useSelector((state) => state.profile);
   const { profileData } = useSelector((state) => state.profile);
+  const { allBanners } = useSelector((state) => state.getAll);
+
 
   const [slicedTrendingBooks, setSlicedTrendingBooks] = useState([]);
   const [show, setShow] = useState(false);
   const [showChallengeModal, setShowChallengeModal] = useState(false);
   const [showRedirectModal, setShowRedirectModal] = useState(false);
   const [showNotification, setShowNotification] = useState(true);
-
 
   const verifyCheckHandler = () => {
     Swal.fire({
@@ -117,6 +118,7 @@ const Dashboard = () => {
     dispatch(fetchAllTrendingBooks());
     dispatch(fetchSubscriptionDetails());
     setShowChallengeModal(true);
+    dispatch(fetchAllBanners());
   }, [dispatch]);
 
   useEffect(() => {
@@ -196,7 +198,15 @@ const Dashboard = () => {
       {/* <ActionBanner /> */}
       <Footer />
       <Modal handleClose={handleClose} show={show} handleNavigate={handleNavigate} />
-      <NotificationModal showNotification={showNotification} setShowNotification={setShowNotification} />
+      {allBanners.length !== 0 ? (
+            <NotificationModal
+              showNotification={showNotification}
+              setShowNotification={setShowNotification}
+              allBanners={allBanners}
+            />
+          ) : (
+        <></>
+      )}
       {/* <ChallengeModal
         handleClose={handleCloseChallenge}
         show={showChallengeModal}

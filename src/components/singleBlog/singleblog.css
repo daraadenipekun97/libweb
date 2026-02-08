@@ -37,15 +37,12 @@
   /* border: solid; */
 }
 
-.header-blog-author{
+.header-blog-author {
   margin-bottom: 1rem;
   color: #78787d;
-  font-weight:500;
+  font-weight: 500;
   width: 100%;
   text-align: center;
-
-
-
 }
 
 .header-img {
@@ -62,7 +59,6 @@
   /* border: solid; */
   padding: 2rem 0;
   color: #78787d;
-
 }
 
 .blog-sub-heading {

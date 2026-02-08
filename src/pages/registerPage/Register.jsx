@@ -120,23 +120,29 @@ const Register = ({ user }) => {
     // setShowNameDesc(false)
     const firstChar = e.target.value.trim().charAt(0);
     if (e.target.name === "firstname") {
-      setFocused({ ...focused, 
+      setFocused({
+        ...focused,
         firstname: e.target.value === "" || !/^[A-Z]$/.test(firstChar), // Check if empty OR first letter is not uppercase
       });
       console.log("Updated Focused State:", focused);
     } else if (e.target.name === "lastname") {
-      setFocused({ ...focused, 
-        lastname: e.target.value === "" || !/^[A-Z]$/.test(firstChar), 
-      });
+      setFocused({ ...focused, lastname: e.target.value === "" || !/^[A-Z]$/.test(firstChar) });
     } else if (e.target.name === "email") {
       setFocused({ ...focused, email: e.target.value === "" });
       console.log("Updated Focused State:", focused);
     } else if (e.target.name === "phone") {
-      setFocused({ ...focused, phone: e.target.value === ""  });
+      setFocused({ ...focused, phone: e.target.value === "" });
     } else if (e.target.name === "password") {
-      setFocused({ ...focused, password: e.target.value === "" || !/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(e.target.value) });
+      setFocused({
+        ...focused,
+        password:
+          e.target.value === "" ||
+          !/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(
+            e.target.value
+          ),
+      });
     } else if (e.target.name === "dob") {
-      setFocused({ ...focused, dob: e.target.value === ""});
+      setFocused({ ...focused, dob: e.target.value === "" });
     }
   };
 
@@ -274,7 +280,7 @@ const Register = ({ user }) => {
   const countryHandler = (e) => {
     setPhoneNumberCountry(e.code);
     setCountryError(false);
-    console.log('country is', e)
+    console.log("country is", e);
     if (e) {
       setCountryId(e);
     }
@@ -327,14 +333,15 @@ const Register = ({ user }) => {
       formValues.lastname !== "" &&
       formValues.email !== "" &&
       formValues.password !== "" &&
-      (phoneValue.length !== 0) &&
+      phoneValue.length !== 0 &&
       formValues.dob !== "" &&
       countryId.label !== undefined &&
       termsCheckBox === true &&
-      /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(formValues.password) &&
+      /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/.test(
+        formValues.password
+      ) &&
       /^[A-Z'][a-zA-Z' -]*$/.test(formValues.firstname) &&
       /^[A-Z'][a-zA-Z' -]*$/.test(formValues.lastname)
-      
     ) {
       setFormState({
         ...formState,
@@ -470,7 +477,7 @@ const Register = ({ user }) => {
                   focused={focused.firstname.toString()}
                   onChange={(e) => firstnameHandler(e)}
                   pattern="^[A-Z][a-zA-Z'\- ]*$"
-                  />
+                />
 
                 <p className="register-validation-error-text">
                   firstname is required (Uppercase first)
@@ -488,7 +495,7 @@ const Register = ({ user }) => {
                   focused={focused.lastname.toString()}
                   onChange={(e) => lastnameHandler(e)}
                   pattern="^[A-Z][a-zA-Z'\- ]*$"
-                  />
+                />
                 <p className="register-validation-error-text">
                   lastname is required (Uppercase first)
                 </p>
